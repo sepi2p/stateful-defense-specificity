@@ -63,6 +63,8 @@ LABEL_PRESERVING = {"restore", "boundary_probe"}
 COUNTERFACTUAL_L2 = 100.0
 # Published CIFAR-10 Blacklight parameters (third_party/stateful_monitoring_baselines/blacklight).
 BLACKLIGHT = {"window_size": 20, "num_hashes_keep": 50, "round": 50, "step_size": 1, "threshold": 25}
+# ImageNet setting from the Blacklight paper (Sec. 7 / Table 15): window 50, all else unchanged.
+BLACKLIGHT_IMAGENET = BLACKLIGHT | {"window_size": 50}
 
 
 def blacklight_salt(shape=(32, 32, 3)) -> np.ndarray:
@@ -77,8 +79,9 @@ class BlacklightTracker:
     module; `test_blacklight_port.py` checks this port against it query by query.
     """
 
-    def __init__(self, salt: np.ndarray):
+    def __init__(self, salt: np.ndarray, params: dict | None = None):
         self.salt = salt
+        self.p = dict(BLACKLIGHT if params is None else params)
         self.hash_dict: dict[str, list[int]] = {}
         self.input_idx = 0
         self.counts: list[int] = []
@@ -87,11 +90,13 @@ class BlacklightTracker:
     def hashes(self, hwc01: np.ndarray) -> list[str]:
         array = (np.array(hwc01) * 255.0 + self.salt) % 255.0
         array = array.reshape(-1)
-        array = (np.around(array / BLACKLIGHT["round"], decimals=0) * BLACKLIGHT["round"]).astype(np.int16)
-        width = BLACKLIGHT["window_size"] * array.itemsize
-        stride = BLACKLIGHT["step_size"] * array.itemsize
-        total = int((len(array) - BLACKLIGHT["window_size"] + 1) / BLACKLIGHT["step_size"])
+        array = (np.around(array / self.p["round"], decimals=0) * self.p["round"]).astype(np.int16)
+        width = self.p["window_size"] * array.itemsize
+        stride = self.p["step_size"] * array.itemsize
+        total = int((len(array) - self.p["window_size"] + 1) / self.p["step_size"])
         raw = array.tobytes()
+        if total > 20000:
+            return self._top_hashes_vectorized(raw, total, width, stride)
         # Consecutive queries share almost all quantized windows, so memoize window -> reversed digest.
         cache = self.digest_cache
         found = set()
@@ -101,7 +106,19 @@ class BlacklightTracker:
                 digest = cache[window] = hashlib.sha256(window).hexdigest()[::-1]
             found.add(digest)
         # Same as the release: reverse-sorted digests, first num_hashes_keep.
-        return heapq.nlargest(BLACKLIGHT["num_hashes_keep"], found)
+        return heapq.nlargest(self.p["num_hashes_keep"], found)
+
+    def _top_hashes_vectorized(self, raw: bytes, total: int, width: int, stride: int) -> list[str]:
+        """Same result as the release for large inputs: top-S of the reversed SHA-256 hex digests.
+
+        The reversed hex string of digest d equals bytes(nibble_swap(b) for b in reversed(d)).hex(),
+        so the top-S selection is a bytewise sort of those 32-byte keys; only the winners become strings.
+        """
+        digests = b"".join(hashlib.sha256(raw[i * stride : i * stride + width]).digest() for i in range(total))
+        d = np.frombuffer(digests, dtype=np.uint8).reshape(total, 32)[:, ::-1]
+        keys = np.ascontiguousarray(((d & 0x0F) << 4) | (d >> 4)).view(np.dtype((np.void, 32))).ravel()
+        unique = np.unique(keys)  # ascending bytewise == ascending reversed-hex order
+        return [bytes(k).hex() for k in unique[::-1][: self.p["num_hashes_keep"]]]
 
     def add(self, hwc01: np.ndarray) -> int:
         self.input_idx += 1
@@ -117,7 +134,7 @@ class BlacklightTracker:
 
     def summary(self):
         counts = np.asarray(self.counts)
-        hit = np.flatnonzero(counts >= BLACKLIGHT["threshold"])
+        hit = np.flatnonzero(counts >= self.p["threshold"])
         return {"max_match": int(counts.max()) if len(counts) else 0,
                 "first_alarm": int(hit[0] + 1) if len(hit) else -1}
 
@@ -146,7 +163,8 @@ def values_for(images, logits, start, workload, objective, lam, label, target):
     raise ValueError(objective)
 
 
-def prepare_manifest_generic(path: Path, dataset, labels: np.ndarray, model, device, seed: int, split_counts: dict) -> "pd.DataFrame":
+def prepare_manifest_generic(path: Path, dataset, labels: np.ndarray, model, device, seed: int, split_counts: dict,
+                             classes=None) -> "pd.DataFrame":
     """Class-balanced manifest for any labelled dataset: clean and both corrupted starts correctly classified."""
     import pandas as pd
 
@@ -155,7 +173,7 @@ def prepare_manifest_generic(path: Path, dataset, labels: np.ndarray, model, dev
     need = sum(split_counts.values())
     rng = np.random.default_rng(seed)
     rows = []
-    for label in np.unique(labels):
+    for label in (np.unique(labels) if classes is None else classes):
         candidates = rng.permutation(np.flatnonzero(labels == label))
         chosen = []
         for index in candidates:
@@ -178,12 +196,14 @@ def prepare_manifest_generic(path: Path, dataset, labels: np.ndarray, model, dev
 
 
 def run_session(model, clean, start, label, workload, objective, lam, seed, budget, device, delta_net, salt, lfc_seed=-1,
-                optimizer="nes", simba_step=8.0 / 255.0):
-    recorder = Recorder.create(model, label, device, delta_net)
-    blacklight = BlacklightTracker(salt)
-    recorder.detectors["blacklight"] = blacklight
-    if lfc_seed >= 0:
-        recorder.detectors["lfc_phase1"] = LFCPhase1(d=start[0].numel(), seed=lfc_seed, bern_scale=0.0)
+                optimizer="nes", simba_step=8.0 / 255.0, blacklight_params=None, lfc_params=None,
+                nes_step=0.25 / 255.0, nes_tile=1, observe_detectors=True):
+    recorder = Recorder.create(model, label, device, delta_net, observe_detectors=observe_detectors)
+    blacklight = BlacklightTracker(salt, blacklight_params)
+    if observe_detectors:
+        recorder.detectors["blacklight"] = blacklight
+    if lfc_seed >= 0 and observe_detectors:
+        recorder.detectors["lfc_phase1"] = LFCPhase1(d=start[0].numel(), seed=lfc_seed, params=lfc_params, bern_scale=0.0)
     current = start.clone()
     current_logits = recorder.submit_batch(current)
     target = int(current_logits[0].clone().index_fill_(0, torch.tensor([label], device=device), -torch.inf).argmax())
@@ -197,7 +217,7 @@ def run_session(model, clean, start, label, workload, objective, lam, seed, budg
     else:
         # The frozen runner draws a SimBA ordering before every session; keep the RNG stream identical.
         torch.randperm(current[0].numel() if workload == "denoise" else current.shape[1] * 8 * 8, generator=generator, device=device)
-    eps, step, sigma, pairs = 8.0 / 255.0, 0.25 / 255.0, 2.0 / 255.0, 8
+    eps, step, sigma, pairs = 8.0 / 255.0, nes_step, 2.0 / 255.0, 8
     accepted = []
     while recorder.calls < budget:
         if objective == "random_walk":
@@ -228,7 +248,13 @@ def run_session(model, clean, start, label, workload, objective, lam, seed, budg
             continue
         if recorder.calls + 2 * pairs + 1 > budget:
             break
-        directions = torch.randn((pairs, *current.shape[1:]), generator=generator, device=device)
+        if nes_tile > 1:
+            # "tiling": search a coarse grid and upsample (Ilyas et al. 2019); the default path is unchanged
+            c, h, w = current.shape[1:]
+            coarse = torch.randn((pairs, c, h // nes_tile, w // nes_tile), generator=generator, device=device)
+            directions = F.interpolate(coarse, size=(h, w), mode="nearest")
+        else:
+            directions = torch.randn((pairs, *current.shape[1:]), generator=generator, device=device)
         proposals = torch.cat([project(current - sigma * directions, start, eps),
                                project(current + sigma * directions, start, eps)])
         proposal_logits = recorder.submit_batch(proposals)
@@ -273,10 +299,10 @@ def run_session(model, clean, start, label, workload, objective, lam, seed, budg
         "predictions": np.asarray(recorder.predictions, dtype=np.int16),
         "blacklight_counts": np.asarray(blacklight.counts, dtype=np.int16),
     }
-    if lfc_seed >= 0:
+    if lfc_seed >= 0 and observe_detectors:
         arrays["lfc_assignment"] = np.asarray(recorder.detectors["lfc_phase1"].assignment, dtype=np.int32)
         arrays["lfc_best_match"] = np.asarray(recorder.detectors["lfc_phase1"].best_match, dtype=np.int16)
-    for name in ("gwad_plus", "gwad"):
+    for name in ("gwad_plus", "gwad") if observe_detectors else ():
         observations = recorder.detectors[name].detector.observations
         arrays[f"{name}_query_indices"] = np.asarray([r["query_index"] for r in observations], dtype=np.int16)
         arrays[f"{name}_scores"] = np.asarray([r["score"] for r in observations], dtype=np.float32)
@@ -302,10 +328,16 @@ def main():
     parser.add_argument("--denoise-lambda", type=float, default=0.5)
     parser.add_argument("--deblur-lambda", type=float, default=1.0)
     parser.add_argument("--max-images", type=int, default=0)
+    parser.add_argument("--splits", default="", help="comma-separated manifest splits to run (main stage; default all non-development)")
     parser.add_argument("--model-name", default="resnet18_seed0", help="resnet18_seedN, bbb_*, robustbench_<name>, or gtsrb32")
     parser.add_argument("--optimizer", choices=["nes", "simba"], default="nes")
-    parser.add_argument("--dataset", choices=["cifar10", "gtsrb32"], default="cifar10")
+    parser.add_argument("--dataset", choices=["cifar10", "gtsrb32", "imagenet"], default="cifar10")
+    parser.add_argument("--imagenet-root", default="/home/sepi/Study/coding/data/imagenet/val")
+    parser.add_argument("--imagenet-classes", type=int, default=100, help="classes sampled (seeded) for the ImageNet manifest")
     parser.add_argument("--gtsrb-root", default="data/gtsrb")
+    parser.add_argument("--nes-step-255", type=float, default=0.25)
+    parser.add_argument("--nes-tile", type=int, default=1)
+    parser.add_argument("--no-detectors", action="store_true", help="development-only tuning runs")
     parser.add_argument("--lfc-seed", type=int, default=-1, help="add the Lee-Fang-Chang Phase-1 observer with this detector seed")
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--num-shards", type=int, default=1)
@@ -313,7 +345,23 @@ def main():
     set_seed(args.seed)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    if args.dataset == "gtsrb32":
+    blacklight_params, lfc_params = None, None
+    if args.dataset == "imagenet":
+        from torchvision.models import ResNet50_Weights, resnet50
+
+        from experiments.gate_trajectory_signatures.lfc_detector import LFC_IMAGENET
+        net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
+        model = torch.nn.Sequential(transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)), net).to(device).eval()
+        dataset = datasets.ImageFolder(args.imagenet_root, transform=transforms.Compose(
+            [transforms.Resize(256), transforms.CenterCrop(224), transforms.ToTensor()]))
+        labels = np.asarray(dataset.targets)
+        classes = np.sort(np.random.default_rng(args.seed).choice(1000, args.imagenet_classes, replace=False))
+        manifest = prepare_manifest_generic(args.manifest, dataset, labels, model, device, args.seed,
+                                            split_counts={"development": 1, "fit": 1, "calibration": 1, "evaluation": 2},
+                                            classes=classes)
+        blacklight_params, lfc_params = BLACKLIGHT_IMAGENET, LFC_IMAGENET
+        salt = blacklight_salt((224, 224, 3))
+    elif args.dataset == "gtsrb32":
         from experiments.eaai_gtsrb.gtsrb_common import gtsrb_dataset, load_checkpoint
         model, _payload = load_checkpoint(args.checkpoint, device)
         dataset = gtsrb_dataset(args.gtsrb_root, "test", 32)
@@ -326,8 +374,11 @@ def main():
         dataset = datasets.CIFAR10(args.dataset_root, train=False, download=False, transform=transforms.ToTensor())
         manifest = prepare_manifest(args.manifest, dataset, model, device, args.seed)
     _, _, delta_net = load_official_components(torch.device("cpu"))
-    salt = blacklight_salt()
+    if args.dataset != "imagenet":
+        salt = blacklight_salt()
     subset = manifest[manifest.split == "development"] if args.stage == "development" else manifest[manifest.split != "development"]
+    if args.splits:
+        subset = subset[subset.split.isin([x.strip() for x in args.splits.split(",")])]
     if args.max_images > 0:
         subset = subset.head(args.max_images)
     subset = subset.iloc[args.shard :: args.num_shards]
@@ -339,7 +390,7 @@ def main():
         "delta_net_sha256": sha256(GWAD_ROOT / "model/delta/delta_ann.pt"),
         "checkpoint_sha256": sha256(args.checkpoint) if args.checkpoint.exists() else None,
         "model_name": args.model_name, "optimizer": args.optimizer, "dataset": args.dataset,
-        "blacklight": BLACKLIGHT,
+        "blacklight": BLACKLIGHT_IMAGENET if args.dataset == "imagenet" else BLACKLIGHT,
         "counterfactual_l2": COUNTERFACTUAL_L2,
     })
     summary_path = args.output_dir / f"sessions_shard{args.shard}.jsonl"
@@ -363,7 +414,10 @@ def main():
                 seed = session_seed(args.seed, row.dataset_index, workload, objective, optimizer, lam)
                 started = time.time()
                 result, arrays = run_session(model, clean, start, label, workload, objective, lam, seed,
-                                             args.budget, device, delta_net, salt, args.lfc_seed, optimizer=args.optimizer)
+                                             args.budget, device, delta_net, salt, args.lfc_seed, optimizer=args.optimizer,
+                                             blacklight_params=blacklight_params, lfc_params=lfc_params,
+                                             nes_step=args.nes_step_255 / 255.0, nes_tile=args.nes_tile,
+                                             observe_detectors=not args.no_detectors)
                 trace = args.output_dir / "traces" / f"{sid}.npz"
                 trace.parent.mkdir(parents=True, exist_ok=True)
                 np.savez_compressed(trace, **arrays)

@@ -181,3 +181,19 @@ shuffled, occlusion, KernelSHAP, RISE, LIME; random walk 4.5%; JPEG/brightness s
 is an intent signal against optimizing and explanation clients, but it matures only after
 most attacks have succeeded (median first success ~480 queries), flags monotone
 degradation sweeps, and cannot separate attack-equivalent clients.
+
+## Addendum 2026-09-26: X9 ImageNet corpus (frozen before the run)
+
+ImageNet-1k validation images (Resize 256, CenterCrop 224), torchvision ResNet-50
+(IMAGENET1K_V1); 100 classes sampled with seed 20260924; manifest 1 development, 1 fit,
+1 calibration, 2 evaluation images per class; this run uses fit + evaluation only (300 images),
+both corrupted starts, all six objectives (3,600 sessions). Detectors: Blacklight with the
+paper's ImageNet setting (window 50; S=50, T=25, q=50, p=1); Lee-Fang-Chang with the paper's
+ImageNet setting (q=80, r=75, w=50, k=20, threshold 7) and the frozen Phase-2 configuration;
+GWAD / GWAD+ as released (CIFAR-trained Delta-Net, reported with that caveat).
+NES hyperparameters chosen on 20 DEVELOPMENT images only (attack success, detectors off),
+grid tile {1,4,8} x step {0.25,1,2}/255: tile 8 (8x8 coarse directions, nearest upsampling),
+step 1/255 (success 0.88 vs 0.28 for the CIFAR setting); sigma 2/255, 8 pairs, eps 8/255
+unchanged. The same NES settings are used for every objective.
+P12. P8-P11 as stated for X4-X6, evaluated on this corpus; for P8 the query-only family is
+     reported both with and without GWAD (whose released model is CIFAR-trained).

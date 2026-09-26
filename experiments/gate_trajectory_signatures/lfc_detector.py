@@ -50,6 +50,7 @@ def ljung_box_p(x: np.ndarray, lags: int) -> float:
 
 
 LFC_CIFAR = {"N": 256, "q": 80, "r": 45, "w": 20, "k": 15, "threshold": 33, "min_len": 15, "alpha": 0.025}
+LFC_IMAGENET = LFC_CIFAR | {"r": 75, "w": 50, "k": 20, "threshold": 7}  # paper's ImageNet setting
 
 
 def draw_window_starts(d: int, r: int, w: int, k: int, rng: np.random.Generator, max_tries: int = 100000) -> np.ndarray:
