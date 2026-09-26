@@ -40,6 +40,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from experiments.gate_trajectory_signatures.lfc_detector import LFCPhase1  # noqa: E402
 from experiments.gate_trajectory_signatures.run_stateful_specificity_sessions import (  # noqa: E402
     GWAD_ROOT,
     Recorder,
@@ -145,10 +146,12 @@ def values_for(images, logits, start, workload, objective, lam, label, target):
     raise ValueError(objective)
 
 
-def run_session(model, clean, start, label, workload, objective, lam, seed, budget, device, delta_net, salt):
+def run_session(model, clean, start, label, workload, objective, lam, seed, budget, device, delta_net, salt, lfc_seed=-1):
     recorder = Recorder.create(model, label, device, delta_net)
     blacklight = BlacklightTracker(salt)
     recorder.detectors["blacklight"] = blacklight
+    if lfc_seed >= 0:
+        recorder.detectors["lfc_phase1"] = LFCPhase1(d=start[0].numel(), seed=lfc_seed, bern_scale=0.0)
     current = start.clone()
     current_logits = recorder.submit_batch(current)
     target = int(current_logits[0].clone().index_fill_(0, torch.tensor([label], device=device), -torch.inf).argmax())
@@ -215,6 +218,9 @@ def run_session(model, clean, start, label, workload, objective, lam, seed, budg
         "predictions": np.asarray(recorder.predictions, dtype=np.int16),
         "blacklight_counts": np.asarray(blacklight.counts, dtype=np.int16),
     }
+    if lfc_seed >= 0:
+        arrays["lfc_assignment"] = np.asarray(recorder.detectors["lfc_phase1"].assignment, dtype=np.int32)
+        arrays["lfc_best_match"] = np.asarray(recorder.detectors["lfc_phase1"].best_match, dtype=np.int16)
     for name in ("gwad_plus", "gwad"):
         observations = recorder.detectors[name].detector.observations
         arrays[f"{name}_query_indices"] = np.asarray([r["query_index"] for r in observations], dtype=np.int16)
@@ -241,6 +247,7 @@ def main():
     parser.add_argument("--denoise-lambda", type=float, default=0.5)
     parser.add_argument("--deblur-lambda", type=float, default=1.0)
     parser.add_argument("--max-images", type=int, default=0)
+    parser.add_argument("--lfc-seed", type=int, default=-1, help="add the Lee-Fang-Chang Phase-1 observer with this detector seed")
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--num-shards", type=int, default=1)
     args = parser.parse_args()
@@ -285,7 +292,7 @@ def main():
                 seed = session_seed(args.seed, row.dataset_index, workload, objective, optimizer, lam)
                 started = time.time()
                 result, arrays = run_session(model, clean, start, label, workload, objective, lam, seed,
-                                             args.budget, device, delta_net, salt)
+                                             args.budget, device, delta_net, salt, args.lfc_seed)
                 trace = args.output_dir / "traces" / f"{sid}.npz"
                 trace.parent.mkdir(parents=True, exist_ok=True)
                 np.savez_compressed(trace, **arrays)

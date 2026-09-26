@@ -1,0 +1,18 @@
+{
+  "shuffled|0.01|blacklight": 26.0,
+  "shuffled|0.01|gwad_plus": -Infinity,
+  "shuffled|0.01|gwad": 1.812055585211088e-05,
+  "shuffled|0.01|ljung_box": 2.79907868189163,
+  "shuffled|0.001|blacklight": 26.0,
+  "shuffled|0.001|gwad_plus": -Infinity,
+  "shuffled|0.001|gwad": 3.432615050919635e-05,
+  "shuffled|0.001|ljung_box": 4.618851507607697,
+  "noise|0.01|blacklight": 4.0,
+  "noise|0.01|gwad_plus": 5.107448600279785,
+  "noise|0.01|gwad": 5.107448600279785,
+  "noise|0.01|ljung_box": 2.572770883171942,
+  "noise|0.001|blacklight": 5.0,
+  "noise|0.001|gwad_plus": 5.1419345256190985,
+  "noise|0.001|gwad": 5.1419345256190985,
+  "noise|0.001|ljung_box": 3.3536604547456994
+}

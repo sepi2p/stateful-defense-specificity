@@ -31,6 +31,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from experiments.gate_trajectory_signatures.lfc_detector import LB_ALPHA, LB_MIN_LEN, ljung_box_p  # noqa: E402,F401
 from experiments.gate_trajectory_signatures.run_specificity_workloads import (  # noqa: E402
     BLACKLIGHT,
     BlacklightTracker,
@@ -41,24 +42,6 @@ from experiments.gate_trajectory_signatures.run_stateful_specificity_sessions im
     load_cifar_model,
     load_official_components,
 )
-
-LB_ALPHA = 0.025
-LB_MIN_LEN = 15
-
-
-def ljung_box_p(x: np.ndarray, lags: int) -> float:
-    x = np.asarray(x, dtype=np.float64)
-    n = len(x)
-    if n < max(LB_MIN_LEN, lags + 2):
-        return 1.0
-    x = x - x.mean()
-    denom = float((x * x).sum())
-    if denom <= 0.0:
-        return 1.0
-    r = np.array([(x[:-k] * x[k:]).sum() / denom for k in range(1, lags + 1)])
-    q = n * (n + 2) * np.sum(r**2 / (n - np.arange(1, lags + 1)))
-    return float(chi2.sf(q, lags))
-
 
 def observe(model, device, delta_net, salt, images: torch.Tensor, label: int, batch: int = 64):
     """Stream images through the model with GWAD, GWAD+ and Blacklight observing."""
