@@ -112,3 +112,20 @@ Mechanism of the P8 failure: SimBA's acceptance rate depends on the objective (a
 and GWAD's inter-query delta features pick this up ("acceptance-rate leak"). NES updates on
 a fixed schedule and shows no such leak. At released thresholds every SimBA session is
 still blocked; an attacker can remove the leak by matching a benign acceptance rate.
+
+# X5-X6 robustness corpora (2026-09-26), scored against frozen P8-P11
+
+score_robustness_corpus.py; analysis/robustness_predictions.json in each corpus directory.
+
+| corpus (sessions) | P8 query-only vs Tier B (max AUROC) | P8 vs random walk | P9 output pre-flip vs Tier C (max) | P10 output vs Tier B (min) | P11 LFC on Tier B (min) |
+|---|---|---|---|---|---|
+| NES ResNet-18 seed 0 (main, 4,800) | 0.62 (1 cell) | 1.00 | 0.60-0.62 (post hoc) | 1.00 | 0.99 |
+| SimBA ResNet-18 (4,000) | FAILED: GWAD+ 0.97 (Blacklight 0.54) | n/a | 0.63 | 1.00 | 1.00 |
+| NES VGG19-BN (4,800) | 0.53 | 1.00 | 0.61 | 1.00 | 0.995 |
+| NES robust ResNet-50, Engstrom (4,800) | 0.52 | 1.00 | 0.67 | 1.00 | 1.00 |
+| NES ResNet-18 seed 1 (4,800) | 0.54 | 1.00 | 0.59 | 1.00 | 0.985 |
+| NES ResNet-18 seed 2 (4,800) | 0.54 | 1.00 | 0.59 | 1.00 | 1.00 |
+| NES GTSRB 32 px, 43 classes (4,536) | 0.50 | 1.00 | FAILED narrowly: 0.711 [0.674, 0.747] (deblur boundary_probe; other cells 0.67-0.69) | 0.97 | 0.97 |
+
+Two frozen predictions failed across 32,536 new sessions: P8 for GWAD+ under SimBA
+(acceptance-rate leak, see X4) and P9 on GTSRB by 0.011 (CI includes 0.70).

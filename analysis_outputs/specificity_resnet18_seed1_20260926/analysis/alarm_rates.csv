@@ -1,0 +1,13 @@
+workload,objective,lfc,blacklight_native,gwad_plus_native,flipped
+deblur,attack,1.0,1.0,1.0,0.64
+deblur,boundary_probe,0.995,1.0,1.0,0.635
+deblur,confidence_boost,1.0,1.0,1.0,0.03
+deblur,counterfactual,1.0,1.0,1.0,0.63
+deblur,random_walk,1.0,1.0,1.0,0.07
+deblur,restore,0.985,1.0,1.0,0.06
+denoise,attack,1.0,1.0,1.0,0.755
+denoise,boundary_probe,1.0,1.0,1.0,0.755
+denoise,confidence_boost,1.0,1.0,1.0,0.125
+denoise,counterfactual,1.0,1.0,1.0,0.73
+denoise,random_walk,1.0,1.0,1.0,0.145
+denoise,restore,1.0,1.0,1.0,0.17

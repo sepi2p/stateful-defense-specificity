@@ -1,0 +1,421 @@
+workload,negative,prefix,n_eval_pairs,median_prefix,detector,auroc,note,lo,hi
+denoise,boundary_probe,128,200,128.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,boundary_probe,128,200,128.0,single:bl_max,0.5173875,,0.47145000000000004,0.56653875
+denoise,boundary_probe,128,200,128.0,single:out_pref_slope,0.520975,,0.5074493750000001,0.5382262499999999
+denoise,boundary_probe,128,200,128.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,boundary_probe,128,200,128.0,logreg:blacklight,0.53895,,0.48827437500000004,0.5856465624999999
+denoise,boundary_probe,128,200,128.0,logreg:query_only_all,0.53895,,0.4922015625,0.5813275000000001
+denoise,boundary_probe,128,200,128.0,logreg:output_trajectory,0.544725,,0.495819375,0.5933293749999999
+denoise,boundary_probe,256,200,256.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,boundary_probe,256,200,256.0,single:bl_max,0.4945,,0.44651968750000004,0.5416946875
+denoise,boundary_probe,256,200,256.0,single:out_pref_slope,0.5507,,0.5322706250000001,0.57130125
+denoise,boundary_probe,256,200,256.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,boundary_probe,256,200,256.0,logreg:blacklight,0.486225,,0.44893375,0.520864375
+denoise,boundary_probe,256,200,256.0,logreg:query_only_all,0.486225,,0.45089624999999994,0.523786875
+denoise,boundary_probe,256,200,256.0,logreg:output_trajectory,0.626325,,0.5858062500000001,0.669301875
+denoise,boundary_probe,512,200,512.0,single:gwad_plus_max,0.4898625,,0.42590843749999996,0.5445103124999999
+denoise,boundary_probe,512,200,512.0,single:bl_max,0.5266875,,0.47955781250000007,0.57712
+denoise,boundary_probe,512,200,512.0,single:out_pref_slope,0.597225,,0.5725724999999999,0.6244824999999999
+denoise,boundary_probe,512,200,512.0,logreg:gwad_plus,0.5272749999999999,,0.47388187500000006,0.57882875
+denoise,boundary_probe,512,200,512.0,logreg:blacklight,0.52155,,0.47489812499999995,0.565743125
+denoise,boundary_probe,512,200,512.0,logreg:query_only_all,0.53485,,0.48188749999999997,0.5849068749999999
+denoise,boundary_probe,512,200,512.0,logreg:output_trajectory,0.762575,,0.71042,0.80485125
+denoise,boundary_probe,1024,200,1024.0,single:gwad_plus_max,0.525475,,0.46769968749999996,0.5817603125
+denoise,boundary_probe,1024,200,1024.0,single:bl_max,0.531,,0.48263187500000004,0.5814031249999999
+denoise,boundary_probe,1024,200,1024.0,single:out_pref_slope,0.69815,,0.6678725,0.7340275
+denoise,boundary_probe,1024,200,1024.0,logreg:gwad_plus,0.61,,0.5592425,0.6650743749999999
+denoise,boundary_probe,1024,200,1024.0,logreg:blacklight,0.540175,,0.49733687499999996,0.5834306250000001
+denoise,boundary_probe,1024,200,1024.0,logreg:query_only_all,0.5926750000000001,,0.5418875000000001,0.6429018750000001
+denoise,boundary_probe,1024,200,1024.0,logreg:output_trajectory,0.9332,,0.9048987500000001,0.9555018750000001
+denoise,boundary_probe,attack_truncated,180,635.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,boundary_probe,attack_truncated,180,635.0,single:bl_max,0.5048302469135802,,0.4549957561728395,0.5524598765432099
+denoise,boundary_probe,attack_truncated,180,635.0,single:out_pref_slope,0.5133950617283951,,0.4967515432098765,0.5317407407407407
+denoise,boundary_probe,attack_truncated,180,635.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,boundary_probe,attack_truncated,180,635.0,logreg:blacklight,0.5109876543209877,,0.46036882716049377,0.5611188271604938
+denoise,boundary_probe,attack_truncated,180,635.0,logreg:query_only_all,0.5109876543209877,,0.4575802469135802,0.5602222222222223
+denoise,boundary_probe,attack_truncated,180,635.0,logreg:output_trajectory,0.7631172839506173,,0.7178325617283949,0.8052831790123457
+denoise,boundary_probe,pre_either_flip,178,608.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,boundary_probe,pre_either_flip,178,608.0,single:bl_max,0.5040556747885369,,0.4556475665951269,0.5507933815174851
+denoise,boundary_probe,pre_either_flip,178,608.0,single:out_pref_slope,0.4925198838530489,,0.4765480999873753,0.5078935740436814
+denoise,boundary_probe,pre_either_flip,178,608.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,boundary_probe,pre_either_flip,178,608.0,logreg:blacklight,0.5089635147077389,,0.45988117030677944,0.5619492488322181
+denoise,boundary_probe,pre_either_flip,178,608.0,logreg:query_only_all,0.5089635147077389,,0.4548881138745108,0.5594061671506123
+denoise,boundary_probe,pre_either_flip,178,608.0,logreg:output_trajectory,0.5671316752935236,,0.5365428923115768,0.6006193978033076
+denoise,confidence_boost,128,200,128.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,confidence_boost,128,200,128.0,single:bl_max,0.4868875,,0.4408334375,0.53565
+denoise,confidence_boost,128,200,128.0,single:out_pref_slope,1.0,,0.9999999999999999,1.0
+denoise,confidence_boost,128,200,128.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,confidence_boost,128,200,128.0,logreg:blacklight,0.5349499999999999,,0.509845,0.5605012500000001
+denoise,confidence_boost,128,200,128.0,logreg:query_only_all,0.5349499999999999,,0.5113121875000001,0.56118
+denoise,confidence_boost,128,200,128.0,logreg:output_trajectory,1.0,,0.9999999999999999,1.0
+denoise,confidence_boost,256,200,256.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,confidence_boost,256,200,256.0,single:bl_max,0.5024624999999999,,0.45924687499999994,0.5477878125
+denoise,confidence_boost,256,200,256.0,single:out_pref_slope,1.0,,0.9999999999999999,1.0
+denoise,confidence_boost,256,200,256.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,confidence_boost,256,200,256.0,logreg:blacklight,0.5131749999999999,,0.49257124999999996,0.534351875
+denoise,confidence_boost,256,200,256.0,logreg:query_only_all,0.5131749999999999,,0.494599375,0.5331325
+denoise,confidence_boost,256,200,256.0,logreg:output_trajectory,1.0,,0.9999999999999999,1.0
+denoise,confidence_boost,512,200,512.0,single:gwad_plus_max,0.4925,,0.4339571874999999,0.556603125
+denoise,confidence_boost,512,200,512.0,single:bl_max,0.5060625,,0.46473625,0.549530625
+denoise,confidence_boost,512,200,512.0,single:out_pref_slope,1.0,,0.9999999999999999,1.0
+denoise,confidence_boost,512,200,512.0,logreg:gwad_plus,0.493775,,0.43457125,0.555249375
+denoise,confidence_boost,512,200,512.0,logreg:blacklight,0.518175,,0.47364875,0.56035125
+denoise,confidence_boost,512,200,512.0,logreg:query_only_all,0.49687499999999996,,0.4455875,0.5468099999999999
+denoise,confidence_boost,512,200,512.0,logreg:output_trajectory,1.0,,0.9999999999999999,1.0
+denoise,confidence_boost,1024,200,1024.0,single:gwad_plus_max,0.4656125,,0.4032184375,0.525235625
+denoise,confidence_boost,1024,200,1024.0,single:bl_max,0.4766500000000001,,0.43409906249999997,0.524508125
+denoise,confidence_boost,1024,200,1024.0,single:out_pref_slope,1.0,,0.9999999999999999,1.0
+denoise,confidence_boost,1024,200,1024.0,logreg:gwad_plus,0.45275,,0.39404625,0.5076099999999999
+denoise,confidence_boost,1024,200,1024.0,logreg:blacklight,0.4710500000000001,,0.411196875,0.5239075
+denoise,confidence_boost,1024,200,1024.0,logreg:query_only_all,0.448475,,0.3949025,0.49923187500000005
+denoise,confidence_boost,1024,200,1024.0,logreg:output_trajectory,1.0,,0.9999999999999999,1.0
+denoise,confidence_boost,attack_truncated,180,635.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,confidence_boost,attack_truncated,180,635.0,single:bl_max,0.47771604938271606,,0.43108873456790126,0.5250119598765433
+denoise,confidence_boost,attack_truncated,180,635.0,single:out_pref_slope,0.990895061728395,,0.9756003086419751,1.0
+denoise,confidence_boost,attack_truncated,180,635.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,confidence_boost,attack_truncated,180,635.0,logreg:blacklight,0.49929012345679014,,0.45564506172839503,0.5422847222222222
+denoise,confidence_boost,attack_truncated,180,635.0,logreg:query_only_all,0.49929012345679014,,0.45695910493827163,0.5406581790123457
+denoise,confidence_boost,attack_truncated,180,635.0,logreg:output_trajectory,0.9943827160493828,,0.983085648148148,1.0
+denoise,confidence_boost,pre_either_flip,178,641.5,single:gwad_plus_max,,no GWAD window yet,,
+denoise,confidence_boost,pre_either_flip,178,641.5,single:bl_max,0.4798794344148466,,0.4317273702815301,0.5265110150233555
+denoise,confidence_boost,pre_either_flip,178,641.5,single:out_pref_slope,0.9943820224719101,,0.9831460674157302,1.0
+denoise,confidence_boost,pre_either_flip,178,641.5,logreg:gwad_plus,,no GWAD window yet,,
+denoise,confidence_boost,pre_either_flip,178,641.5,logreg:blacklight,0.49854816311071837,,0.4567179017800783,0.5429940979674283
+denoise,confidence_boost,pre_either_flip,178,641.5,logreg:query_only_all,0.49854816311071837,,0.4547721247317258,0.5418207928291882
+denoise,confidence_boost,pre_either_flip,178,641.5,logreg:output_trajectory,0.9943504608004039,,0.9775280898876404,1.0
+denoise,counterfactual,128,200,128.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,counterfactual,128,200,128.0,single:bl_max,0.5192375,,0.4736568750000001,0.565579375
+denoise,counterfactual,128,200,128.0,single:out_pref_slope,0.507275,,0.499219375,0.517053125
+denoise,counterfactual,128,200,128.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,counterfactual,128,200,128.0,logreg:blacklight,0.5442375,,0.5064615625000001,0.5820946875
+denoise,counterfactual,128,200,128.0,logreg:query_only_all,0.5442375,,0.509316875,0.584089375
+denoise,counterfactual,128,200,128.0,logreg:output_trajectory,0.582625,,0.5432193750000001,0.620693125
+denoise,counterfactual,256,200,256.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,counterfactual,256,200,256.0,single:bl_max,0.5255375,,0.47777187500000007,0.5703724999999998
+denoise,counterfactual,256,200,256.0,single:out_pref_slope,0.50925,,0.5019218750000001,0.517625625
+denoise,counterfactual,256,200,256.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,counterfactual,256,200,256.0,logreg:blacklight,0.5428,,0.49135906250000005,0.5918875
+denoise,counterfactual,256,200,256.0,logreg:query_only_all,0.5428,,0.49590562500000007,0.5947459375
+denoise,counterfactual,256,200,256.0,logreg:output_trajectory,0.58815,,0.55434875,0.6238056250000001
+denoise,counterfactual,512,200,512.0,single:gwad_plus_max,0.4855125,,0.43517593749999994,0.5399096874999999
+denoise,counterfactual,512,200,512.0,single:bl_max,0.5414625,,0.49728093749999996,0.5910221874999999
+denoise,counterfactual,512,200,512.0,single:out_pref_slope,0.5106250000000001,,0.5037731249999999,0.51905125
+denoise,counterfactual,512,200,512.0,logreg:gwad_plus,0.492425,,0.437643125,0.548356875
+denoise,counterfactual,512,200,512.0,logreg:blacklight,0.5246500000000001,,0.50001875,0.5499875000000001
+denoise,counterfactual,512,200,512.0,logreg:query_only_all,0.5041,,0.45666937500000004,0.550350625
+denoise,counterfactual,512,200,512.0,logreg:output_trajectory,0.609675,,0.569543125,0.6507275
+denoise,counterfactual,1024,200,1024.0,single:gwad_plus_max,0.474975,,0.41740812499999996,0.5309818749999998
+denoise,counterfactual,1024,200,1024.0,single:bl_max,0.4340375,,0.3910712499999999,0.4779028125
+denoise,counterfactual,1024,200,1024.0,single:out_pref_slope,0.506475,,0.49882437500000004,0.5147762499999999
+denoise,counterfactual,1024,200,1024.0,logreg:gwad_plus,0.48935000000000006,,0.43507250000000003,0.548025625
+denoise,counterfactual,1024,200,1024.0,logreg:blacklight,0.429675,,0.374824375,0.482109375
+denoise,counterfactual,1024,200,1024.0,logreg:query_only_all,0.436,,0.38552937500000006,0.49074999999999996
+denoise,counterfactual,1024,200,1024.0,logreg:output_trajectory,0.670775,,0.6322224999999999,0.7074287499999999
+denoise,counterfactual,attack_truncated,180,635.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,counterfactual,attack_truncated,180,635.0,single:bl_max,0.458858024691358,,0.4166234567901234,0.5028904320987655
+denoise,counterfactual,attack_truncated,180,635.0,single:out_pref_slope,0.49962962962962965,,0.4793510802469136,0.520804012345679
+denoise,counterfactual,attack_truncated,180,635.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,counterfactual,attack_truncated,180,635.0,logreg:blacklight,0.4848456790123457,,0.4458009259259259,0.5270146604938271
+denoise,counterfactual,attack_truncated,180,635.0,logreg:query_only_all,0.4848456790123457,,0.44256095679012347,0.5268124999999999
+denoise,counterfactual,attack_truncated,180,635.0,logreg:output_trajectory,0.7503703703703704,,0.7076929012345679,0.7939621913580247
+denoise,counterfactual,pre_either_flip,178,631.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,counterfactual,pre_either_flip,178,631.0,single:bl_max,0.45663426335058704,,0.4160065017043303,0.4998686245423557
+denoise,counterfactual,pre_either_flip,178,631.0,single:out_pref_slope,0.5083007196061103,,0.4903089887640449,0.5248745423557631
+denoise,counterfactual,pre_either_flip,178,631.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,counterfactual,pre_either_flip,178,631.0,logreg:blacklight,0.46452468122711776,,0.413700921600808,0.5148868514076506
+denoise,counterfactual,pre_either_flip,178,631.0,logreg:query_only_all,0.46452468122711776,,0.4112154399697008,0.5124423999495012
+denoise,counterfactual,pre_either_flip,178,631.0,logreg:output_trajectory,0.5397361444262088,,0.4994271556621639,0.5788749842191642
+denoise,random_walk,128,200,128.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,random_walk,128,200,128.0,single:bl_max,0.9020875,,0.8751859375,0.92784125
+denoise,random_walk,128,200,128.0,single:out_pref_slope,0.755825,,0.7213975,0.795375625
+denoise,random_walk,128,200,128.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,random_walk,128,200,128.0,logreg:blacklight,1.0,,0.9999999999999999,1.0
+denoise,random_walk,128,200,128.0,logreg:query_only_all,1.0,,0.9999999999999999,1.0
+denoise,random_walk,128,200,128.0,logreg:output_trajectory,0.912675,,0.887243125,0.9353499999999999
+denoise,random_walk,256,200,256.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,random_walk,256,200,256.0,single:bl_max,0.8917375,,0.86223625,0.9194503125000001
+denoise,random_walk,256,200,256.0,single:out_pref_slope,0.7796500000000001,,0.74962375,0.813226875
+denoise,random_walk,256,200,256.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,random_walk,256,200,256.0,logreg:blacklight,0.9999999999999999,,0.9999999999999999,1.0
+denoise,random_walk,256,200,256.0,logreg:query_only_all,0.9999999999999999,,0.9999999999999999,1.0
+denoise,random_walk,256,200,256.0,logreg:output_trajectory,0.955475,,0.9375462500000001,0.97293125
+denoise,random_walk,512,200,512.0,single:gwad_plus_max,0.7224125,,0.6724996875000001,0.7671384375
+denoise,random_walk,512,200,512.0,single:bl_max,0.9059375000000001,,0.880225,0.9315353125
+denoise,random_walk,512,200,512.0,single:out_pref_slope,0.835175,,0.8092875,0.865024375
+denoise,random_walk,512,200,512.0,logreg:gwad_plus,1.0,,0.9999999999999999,1.0
+denoise,random_walk,512,200,512.0,logreg:blacklight,1.0,,0.9999999999999999,1.0
+denoise,random_walk,512,200,512.0,logreg:query_only_all,1.0,,0.9999999999999999,1.0
+denoise,random_walk,512,200,512.0,logreg:output_trajectory,0.9775,,0.9621625,0.990150625
+denoise,random_walk,1024,200,1024.0,single:gwad_plus_max,0.8790875,,0.84637125,0.9105934375
+denoise,random_walk,1024,200,1024.0,single:bl_max,0.8620875,,0.8323540625,0.892174375
+denoise,random_walk,1024,200,1024.0,single:out_pref_slope,0.9191,,0.8998981249999999,0.939788125
+denoise,random_walk,1024,200,1024.0,logreg:gwad_plus,1.0,,0.9999999999999999,1.0
+denoise,random_walk,1024,200,1024.0,logreg:blacklight,1.0,,0.9999999999999999,1.0
+denoise,random_walk,1024,200,1024.0,logreg:query_only_all,1.0,,0.9999999999999999,1.0
+denoise,random_walk,1024,200,1024.0,logreg:output_trajectory,0.9993749999999999,,0.99825,1.0
+denoise,random_walk,attack_truncated,180,635.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,random_walk,attack_truncated,180,635.0,single:bl_max,0.8666203703703703,,0.8359016203703703,0.8947145061728395
+denoise,random_walk,attack_truncated,180,635.0,single:out_pref_slope,0.846820987654321,,0.808726851851852,0.8862052469135803
+denoise,random_walk,attack_truncated,180,635.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,random_walk,attack_truncated,180,635.0,logreg:blacklight,1.0,,0.9999999999999999,1.0
+denoise,random_walk,attack_truncated,180,635.0,logreg:query_only_all,1.0,,0.9999999999999999,1.0
+denoise,random_walk,attack_truncated,180,635.0,logreg:output_trajectory,0.9935802469135803,,0.9875925925925926,0.9975617283950617
+denoise,random_walk,pre_either_flip,180,635.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,random_walk,pre_either_flip,180,635.0,single:bl_max,0.8666203703703703,,0.8359016203703703,0.8947145061728395
+denoise,random_walk,pre_either_flip,180,635.0,single:out_pref_slope,0.846820987654321,,0.808726851851852,0.8862052469135803
+denoise,random_walk,pre_either_flip,180,635.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,random_walk,pre_either_flip,180,635.0,logreg:blacklight,1.0,,0.9999999999999999,1.0
+denoise,random_walk,pre_either_flip,180,635.0,logreg:query_only_all,1.0,,0.9999999999999999,1.0
+denoise,random_walk,pre_either_flip,180,635.0,logreg:output_trajectory,0.9935802469135803,,0.9875925925925926,0.9975617283950617
+denoise,restore,128,200,128.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,restore,128,200,128.0,single:bl_max,0.5465125,,0.5012962500000001,0.5901675000000002
+denoise,restore,128,200,128.0,single:out_pref_slope,0.8842,,0.861090625,0.9074025
+denoise,restore,128,200,128.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,restore,128,200,128.0,logreg:blacklight,0.5576000000000001,,0.5055206250000001,0.6085009374999999
+denoise,restore,128,200,128.0,logreg:query_only_all,0.5576000000000001,,0.5054453124999999,0.60945125
+denoise,restore,128,200,128.0,logreg:output_trajectory,0.9964000000000001,,0.991374375,0.999425625
+denoise,restore,256,200,256.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,restore,256,200,256.0,single:bl_max,0.5190125,,0.470039375,0.5663003124999999
+denoise,restore,256,200,256.0,single:out_pref_slope,0.9177,,0.898996875,0.936425625
+denoise,restore,256,200,256.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,restore,256,200,256.0,logreg:blacklight,0.5061249999999999,,0.450631875,0.560806875
+denoise,restore,256,200,256.0,logreg:query_only_all,0.5061249999999999,,0.452935,0.5603018750000001
+denoise,restore,256,200,256.0,logreg:output_trajectory,0.999925,,0.9996999999999999,1.0
+denoise,restore,512,200,512.0,single:gwad_plus_max,0.52425,,0.4634293749999999,0.5808690625
+denoise,restore,512,200,512.0,single:bl_max,0.4991625,,0.44931937499999997,0.5493840624999999
+denoise,restore,512,200,512.0,single:out_pref_slope,0.9351,,0.9177243749999999,0.951425
+denoise,restore,512,200,512.0,logreg:gwad_plus,0.518675,,0.46536374999999996,0.5736893750000001
+denoise,restore,512,200,512.0,logreg:blacklight,0.51305,,0.46472375000000005,0.5591900000000001
+denoise,restore,512,200,512.0,logreg:query_only_all,0.5184249999999999,,0.466243125,0.56925875
+denoise,restore,512,200,512.0,logreg:output_trajectory,0.999975,,0.99985,1.0
+denoise,restore,1024,200,1024.0,single:gwad_plus_max,0.4449875,,0.3932203125,0.498389375
+denoise,restore,1024,200,1024.0,single:bl_max,0.4705875,,0.4236346875,0.51771125
+denoise,restore,1024,200,1024.0,single:out_pref_slope,0.9676,,0.9558449999999998,0.978900625
+denoise,restore,1024,200,1024.0,logreg:gwad_plus,0.51005,,0.45098250000000006,0.5710625
+denoise,restore,1024,200,1024.0,logreg:blacklight,0.4755,,0.42076937499999995,0.534985625
+denoise,restore,1024,200,1024.0,logreg:query_only_all,0.49460000000000004,,0.43374625,0.55125625
+denoise,restore,1024,200,1024.0,logreg:output_trajectory,1.0,,0.9999999999999999,1.0
+denoise,restore,attack_truncated,180,635.0,single:gwad_plus_max,,no GWAD window yet,,
+denoise,restore,attack_truncated,180,635.0,single:bl_max,0.5275154320987654,,0.4831739969135802,0.5732172067901234
+denoise,restore,attack_truncated,180,635.0,single:out_pref_slope,0.942067901234568,,0.9185077160493827,0.9629328703703703
+denoise,restore,attack_truncated,180,635.0,logreg:gwad_plus,,no GWAD window yet,,
+denoise,restore,attack_truncated,180,635.0,logreg:blacklight,0.5126543209876544,,0.46697145061728396,0.5544583333333334
+denoise,restore,attack_truncated,180,635.0,logreg:query_only_all,0.5126543209876544,,0.46669675925925924,0.5583040123456791
+denoise,restore,attack_truncated,180,635.0,logreg:output_trajectory,0.9940123456790123,,0.9826211419753085,1.0
+denoise,restore,pre_either_flip,178,641.5,single:gwad_plus_max,,no GWAD window yet,,
+denoise,restore,pre_either_flip,178,641.5,single:bl_max,0.5249810629970963,,0.47898978979926776,0.576949327736397
+denoise,restore,pre_either_flip,178,641.5,single:out_pref_slope,0.9372869587173336,,0.9050569688170685,0.963396351470774
+denoise,restore,pre_either_flip,178,641.5,logreg:gwad_plus,,no GWAD window yet,,
+denoise,restore,pre_either_flip,178,641.5,logreg:blacklight,0.51180406514329,,0.4683097146824896,0.5549867440979674
+denoise,restore,pre_either_flip,178,641.5,logreg:query_only_all,0.51180406514329,,0.4673462946597652,0.5582352291377352
+denoise,restore,pre_either_flip,178,641.5,logreg:output_trajectory,0.9870597146824895,,0.9674575495518242,0.9999376656987754
+deblur,boundary_probe,128,200,128.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,boundary_probe,128,200,128.0,single:bl_max,0.4748625000000001,,0.424980625,0.5286965625
+deblur,boundary_probe,128,200,128.0,single:out_pref_slope,0.502425,,0.49559875,0.50955
+deblur,boundary_probe,128,200,128.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,boundary_probe,128,200,128.0,logreg:blacklight,0.45812499999999995,,0.405886875,0.511563125
+deblur,boundary_probe,128,200,128.0,logreg:query_only_all,0.45812499999999995,,0.4055125,0.5135656249999999
+deblur,boundary_probe,128,200,128.0,logreg:output_trajectory,0.488475,,0.452445625,0.52420875
+deblur,boundary_probe,256,200,256.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,boundary_probe,256,200,256.0,single:bl_max,0.5324875,,0.4816778124999999,0.582444375
+deblur,boundary_probe,256,200,256.0,single:out_pref_slope,0.5049250000000001,,0.49944874999999994,0.511150625
+deblur,boundary_probe,256,200,256.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,boundary_probe,256,200,256.0,logreg:blacklight,0.50395,,0.45319624999999997,0.5503881249999999
+deblur,boundary_probe,256,200,256.0,logreg:query_only_all,0.50395,,0.459724375,0.5496143750000001
+deblur,boundary_probe,256,200,256.0,logreg:output_trajectory,0.540325,,0.5144456250000001,0.57050625
+deblur,boundary_probe,512,200,512.0,single:gwad_plus_max,0.4903625,,0.43477062499999997,0.5478053125
+deblur,boundary_probe,512,200,512.0,single:bl_max,0.5433875,,0.49286312499999996,0.5913334375
+deblur,boundary_probe,512,200,512.0,single:out_pref_slope,0.511475,,0.5027487500000001,0.5225531250000001
+deblur,boundary_probe,512,200,512.0,logreg:gwad_plus,0.499,,0.4424087500000001,0.5497224999999999
+deblur,boundary_probe,512,200,512.0,logreg:blacklight,0.55045,,0.4953675,0.603448125
+deblur,boundary_probe,512,200,512.0,logreg:query_only_all,0.5104,,0.45575312500000004,0.564879375
+deblur,boundary_probe,512,200,512.0,logreg:output_trajectory,0.6109749999999999,,0.564851875,0.6585118750000001
+deblur,boundary_probe,1024,200,1024.0,single:gwad_plus_max,0.5362999999999999,,0.4828659375,0.5913190625000001
+deblur,boundary_probe,1024,200,1024.0,single:bl_max,0.5090874999999999,,0.45195906250000006,0.5594909374999999
+deblur,boundary_probe,1024,200,1024.0,single:out_pref_slope,0.5801499999999999,,0.556774375,0.6062525
+deblur,boundary_probe,1024,200,1024.0,logreg:gwad_plus,0.48750000000000004,,0.429451875,0.5454412500000001
+deblur,boundary_probe,1024,200,1024.0,logreg:blacklight,0.5082,,0.4511725,0.562958125
+deblur,boundary_probe,1024,200,1024.0,logreg:query_only_all,0.4979,,0.4371375,0.560123125
+deblur,boundary_probe,1024,200,1024.0,logreg:output_trajectory,0.831475,,0.7885231249999999,0.8667287499999999
+deblur,boundary_probe,attack_truncated,197,1021.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,boundary_probe,attack_truncated,197,1021.0,single:bl_max,0.48012059058465817,,0.4299125202916849,0.5228445721353294
+deblur,boundary_probe,attack_truncated,197,1021.0,single:out_pref_slope,0.5001159524852483,,0.4896235409312273,0.5104756628617073
+deblur,boundary_probe,attack_truncated,197,1021.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,boundary_probe,attack_truncated,197,1021.0,logreg:blacklight,0.47571439614522404,,0.42433327320982245,0.5235686309876575
+deblur,boundary_probe,attack_truncated,197,1021.0,logreg:query_only_all,0.47571439614522404,,0.42816357030585683,0.5257813909144786
+deblur,boundary_probe,attack_truncated,197,1021.0,logreg:output_trajectory,0.7535365508000722,,0.7143922801412044,0.7905724187688423
+deblur,boundary_probe,pre_either_flip,197,975.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,boundary_probe,pre_either_flip,197,975.0,single:bl_max,0.47760828673761235,,0.42859130614032825,0.52174914323997
+deblur,boundary_probe,pre_either_flip,197,975.0,single:out_pref_slope,0.4983895488159963,,0.4874371924038238,0.5091100002576722
+deblur,boundary_probe,pre_either_flip,197,975.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,boundary_probe,pre_either_flip,197,975.0,logreg:blacklight,0.4737560875054755,,0.4234294880053596,0.5246759772217784
+deblur,boundary_probe,pre_either_flip,197,975.0,logreg:query_only_all,0.4737560875054755,,0.42322592697570155,0.5265318611662243
+deblur,boundary_probe,pre_either_flip,197,975.0,logreg:output_trajectory,0.5834986729882244,,0.5458083176582751,0.624272720245304
+deblur,confidence_boost,128,200,128.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,confidence_boost,128,200,128.0,single:bl_max,0.44875,,0.39619999999999994,0.49889750000000005
+deblur,confidence_boost,128,200,128.0,single:out_pref_slope,0.999875,,0.9994750000000001,1.0
+deblur,confidence_boost,128,200,128.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,confidence_boost,128,200,128.0,logreg:blacklight,0.43128750000000005,,0.3783775,0.4830825
+deblur,confidence_boost,128,200,128.0,logreg:query_only_all,0.43128750000000005,,0.37625749999999997,0.48562999999999995
+deblur,confidence_boost,128,200,128.0,logreg:output_trajectory,0.999725,,0.999199375,1.0
+deblur,confidence_boost,256,200,256.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,confidence_boost,256,200,256.0,single:bl_max,0.44279999999999997,,0.3962675,0.4928446875
+deblur,confidence_boost,256,200,256.0,single:out_pref_slope,1.0,,0.9999999999999999,1.0
+deblur,confidence_boost,256,200,256.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,confidence_boost,256,200,256.0,logreg:blacklight,0.427325,,0.3795496875,0.47884250000000006
+deblur,confidence_boost,256,200,256.0,logreg:query_only_all,0.427325,,0.3758796875,0.4786271875
+deblur,confidence_boost,256,200,256.0,logreg:output_trajectory,0.999975,,0.999775,1.0
+deblur,confidence_boost,512,200,512.0,single:gwad_plus_max,0.49661249999999996,,0.444140625,0.548284375
+deblur,confidence_boost,512,200,512.0,single:bl_max,0.43346250000000003,,0.38725874999999993,0.4803068750000001
+deblur,confidence_boost,512,200,512.0,single:out_pref_slope,0.9999,,0.9993987499999999,1.0
+deblur,confidence_boost,512,200,512.0,logreg:gwad_plus,0.46545000000000003,,0.405545,0.5228356250000001
+deblur,confidence_boost,512,200,512.0,logreg:blacklight,0.4242,,0.36906125000000006,0.47474312500000004
+deblur,confidence_boost,512,200,512.0,logreg:query_only_all,0.41755,,0.363238125,0.468843125
+deblur,confidence_boost,512,200,512.0,logreg:output_trajectory,0.9995,,0.998374375,1.0
+deblur,confidence_boost,1024,200,1024.0,single:gwad_plus_max,0.49895,,0.4435390625000001,0.5572384375
+deblur,confidence_boost,1024,200,1024.0,single:bl_max,0.48198750000000007,,0.4355096875,0.5317140625
+deblur,confidence_boost,1024,200,1024.0,single:out_pref_slope,0.999925,,0.99969875,1.0
+deblur,confidence_boost,1024,200,1024.0,logreg:gwad_plus,0.493325,,0.438543125,0.549595625
+deblur,confidence_boost,1024,200,1024.0,logreg:blacklight,0.4824,,0.426003125,0.536425
+deblur,confidence_boost,1024,200,1024.0,logreg:query_only_all,0.47202500000000003,,0.409360625,0.5277149999999999
+deblur,confidence_boost,1024,200,1024.0,logreg:output_trajectory,0.99985,,0.9994,1.0
+deblur,confidence_boost,attack_truncated,197,1021.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,confidence_boost,attack_truncated,197,1021.0,single:bl_max,0.4882243809425649,,0.43871556855368604,0.533743461568193
+deblur,confidence_boost,attack_truncated,197,1021.0,single:out_pref_slope,0.9999226983431678,,0.999587724496895,1.0
+deblur,confidence_boost,attack_truncated,197,1021.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,confidence_boost,attack_truncated,197,1021.0,logreg:blacklight,0.48764461851632357,,0.43627444664897325,0.5424843464144914
+deblur,confidence_boost,attack_truncated,197,1021.0,logreg:query_only_all,0.48764461851632357,,0.43947022597851015,0.5419883274498184
+deblur,confidence_boost,attack_truncated,197,1021.0,logreg:output_trajectory,0.9998196294673917,,0.9993551753459249,1.0
+deblur,confidence_boost,pre_either_flip,194,1021.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,confidence_boost,pre_either_flip,194,1021.0,single:bl_max,0.48721968328196413,,0.4402573334041875,0.5364757147412053
+deblur,confidence_boost,pre_either_flip,194,1021.0,single:out_pref_slope,0.9999202890849187,,0.9996280157296206,1.0
+deblur,confidence_boost,pre_either_flip,194,1021.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,confidence_boost,pre_either_flip,194,1021.0,logreg:blacklight,0.48310128600276325,,0.43237724519077486,0.5387003135295994
+deblur,confidence_boost,pre_either_flip,194,1021.0,logreg:query_only_all,0.48310128600276325,,0.4335589595068552,0.5357523381868424
+deblur,confidence_boost,pre_either_flip,194,1021.0,logreg:output_trajectory,0.9999468593899459,,0.9997608672547561,1.0
+deblur,counterfactual,128,200,128.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,counterfactual,128,200,128.0,single:bl_max,0.4630375,,0.4149396875,0.5126878125000001
+deblur,counterfactual,128,200,128.0,single:out_pref_slope,0.5038,,0.49784874999999995,0.510000625
+deblur,counterfactual,128,200,128.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,counterfactual,128,200,128.0,logreg:blacklight,0.4535,,0.3996975,0.5095781249999999
+deblur,counterfactual,128,200,128.0,logreg:query_only_all,0.4535,,0.403440625,0.5051749999999999
+deblur,counterfactual,128,200,128.0,logreg:output_trajectory,0.528,,0.487204375,0.57003375
+deblur,counterfactual,256,200,256.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,counterfactual,256,200,256.0,single:bl_max,0.455,,0.40992124999999996,0.5056428125
+deblur,counterfactual,256,200,256.0,single:out_pref_slope,0.494475,,0.48889937499999997,0.499226875
+deblur,counterfactual,256,200,256.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,counterfactual,256,200,256.0,logreg:blacklight,0.4301125,,0.3800225,0.480769375
+deblur,counterfactual,256,200,256.0,logreg:query_only_all,0.4301125,,0.3805646875,0.48468281249999995
+deblur,counterfactual,256,200,256.0,logreg:output_trajectory,0.564325,,0.5300750000000001,0.6004768750000001
+deblur,counterfactual,512,200,512.0,single:gwad_plus_max,0.496525,,0.441471875,0.5501396875
+deblur,counterfactual,512,200,512.0,single:bl_max,0.4258875000000001,,0.375884375,0.47634562499999994
+deblur,counterfactual,512,200,512.0,single:out_pref_slope,0.5049,,0.4995975,0.5107506249999999
+deblur,counterfactual,512,200,512.0,logreg:gwad_plus,0.48982499999999995,,0.43726312500000003,0.540893125
+deblur,counterfactual,512,200,512.0,logreg:blacklight,0.4313,,0.382991875,0.48177562500000004
+deblur,counterfactual,512,200,512.0,logreg:query_only_all,0.46955,,0.41700875,0.5266568750000001
+deblur,counterfactual,512,200,512.0,logreg:output_trajectory,0.5434,,0.51534375,0.5724768750000001
+deblur,counterfactual,1024,200,1024.0,single:gwad_plus_max,0.47163750000000004,,0.41334156250000004,0.5274265625
+deblur,counterfactual,1024,200,1024.0,single:bl_max,0.49326250000000005,,0.4400359375,0.5420496874999999
+deblur,counterfactual,1024,200,1024.0,single:out_pref_slope,0.5101999999999999,,0.501245625,0.5204825
+deblur,counterfactual,1024,200,1024.0,logreg:gwad_plus,0.4745,,0.4181675000000001,0.5289487500000001
+deblur,counterfactual,1024,200,1024.0,logreg:blacklight,0.49297499999999994,,0.4521925,0.5311275
+deblur,counterfactual,1024,200,1024.0,logreg:query_only_all,0.4731,,0.417561875,0.530854375
+deblur,counterfactual,1024,200,1024.0,logreg:output_trajectory,0.585275,,0.55267,0.619589375
+deblur,counterfactual,attack_truncated,197,1021.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,counterfactual,attack_truncated,197,1021.0,single:bl_max,0.4809837924192842,,0.4355191450436754,0.5272636501842356
+deblur,counterfactual,attack_truncated,197,1021.0,single:out_pref_slope,0.5108351155659769,,0.4957097580458142,0.5262484217578397
+deblur,counterfactual,attack_truncated,197,1021.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,counterfactual,attack_truncated,197,1021.0,logreg:blacklight,0.4763328093998815,,0.4340423613079441,0.5180261021927902
+deblur,counterfactual,attack_truncated,197,1021.0,logreg:query_only_all,0.4763328093998815,,0.4312466180525136,0.5172601716096781
+deblur,counterfactual,attack_truncated,197,1021.0,logreg:output_trajectory,0.7676312195624726,,0.7286447731196372,0.8074480146357803
+deblur,counterfactual,pre_either_flip,197,955.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,counterfactual,pre_either_flip,197,955.0,single:bl_max,0.47834265247751806,,0.4335502074261125,0.5237853977170244
+deblur,counterfactual,pre_either_flip,197,955.0,single:out_pref_slope,0.5232033806591255,,0.5046960756525548,0.542769718364297
+deblur,counterfactual,pre_either_flip,197,955.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,counterfactual,pre_either_flip,197,955.0,logreg:blacklight,0.477878842536525,,0.4445077172820738,0.5138408616558015
+deblur,counterfactual,pre_either_flip,197,955.0,logreg:query_only_all,0.477878842536525,,0.4445856631193796,0.5121389368445464
+deblur,counterfactual,pre_either_flip,197,955.0,logreg:output_trajectory,0.5912803731093303,,0.5540177536138524,0.6292477260429282
+deblur,random_walk,128,200,128.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,random_walk,128,200,128.0,single:bl_max,0.8894375000000001,,0.8577478125,0.9192496874999999
+deblur,random_walk,128,200,128.0,single:out_pref_slope,0.7782,,0.742038125,0.8157543749999999
+deblur,random_walk,128,200,128.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,random_walk,128,200,128.0,logreg:blacklight,1.0,,0.9999999999999999,1.0
+deblur,random_walk,128,200,128.0,logreg:query_only_all,1.0,,0.9999999999999999,1.0
+deblur,random_walk,128,200,128.0,logreg:output_trajectory,0.8336000000000001,,0.7957937500000001,0.867295625
+deblur,random_walk,256,200,256.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,random_walk,256,200,256.0,single:bl_max,0.8757874999999999,,0.8426743750000001,0.9068509375
+deblur,random_walk,256,200,256.0,single:out_pref_slope,0.7755000000000001,,0.738855,0.8120499999999999
+deblur,random_walk,256,200,256.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,random_walk,256,200,256.0,logreg:blacklight,1.0,,0.9999999999999999,1.0
+deblur,random_walk,256,200,256.0,logreg:query_only_all,1.0,,0.9999999999999999,1.0
+deblur,random_walk,256,200,256.0,logreg:output_trajectory,0.8788750000000001,,0.8462225,0.9081275
+deblur,random_walk,512,200,512.0,single:gwad_plus_max,0.6884,,0.6405215625,0.7354540625
+deblur,random_walk,512,200,512.0,single:bl_max,0.8803749999999999,,0.8474946875,0.9082593749999999
+deblur,random_walk,512,200,512.0,single:out_pref_slope,0.819975,,0.788471875,0.852778125
+deblur,random_walk,512,200,512.0,logreg:gwad_plus,1.0,,0.9999999999999999,1.0
+deblur,random_walk,512,200,512.0,logreg:blacklight,1.0,,0.9999999999999999,1.0
+deblur,random_walk,512,200,512.0,logreg:query_only_all,1.0,,0.9999999999999999,1.0
+deblur,random_walk,512,200,512.0,logreg:output_trajectory,0.91935,,0.8940549999999999,0.940755
+deblur,random_walk,1024,200,1024.0,single:gwad_plus_max,0.821075,,0.78156125,0.8581571875
+deblur,random_walk,1024,200,1024.0,single:bl_max,0.8732250000000001,,0.8436409375,0.8995171875
+deblur,random_walk,1024,200,1024.0,single:out_pref_slope,0.9072749999999999,,0.884188125,0.9285793749999999
+deblur,random_walk,1024,200,1024.0,logreg:gwad_plus,1.0,,0.9999999999999999,1.0
+deblur,random_walk,1024,200,1024.0,logreg:blacklight,1.0,,0.9999999999999999,1.0
+deblur,random_walk,1024,200,1024.0,logreg:query_only_all,1.0,,0.9999999999999999,1.0
+deblur,random_walk,1024,200,1024.0,logreg:output_trajectory,0.9865749999999999,,0.975448125,0.9941774999999999
+deblur,random_walk,attack_truncated,197,1021.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,random_walk,attack_truncated,197,1021.0,single:bl_max,0.8726326367595145,,0.8430206266587646,0.9017570022417482
+deblur,random_walk,attack_truncated,197,1021.0,single:out_pref_slope,0.8816511633899353,,0.8518017727846632,0.9094591460743642
+deblur,random_walk,attack_truncated,197,1021.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,random_walk,attack_truncated,197,1021.0,logreg:blacklight,1.0,,0.9999999999999999,1.0
+deblur,random_walk,attack_truncated,197,1021.0,logreg:query_only_all,1.0,,0.9999999999999999,1.0
+deblur,random_walk,attack_truncated,197,1021.0,logreg:output_trajectory,0.9818598778633821,,0.9700559148651086,0.9914974619289341
+deblur,random_walk,pre_either_flip,197,1021.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,random_walk,pre_either_flip,197,1021.0,single:bl_max,0.8726326367595145,,0.8430206266587646,0.9017570022417482
+deblur,random_walk,pre_either_flip,197,1021.0,single:out_pref_slope,0.8816511633899353,,0.8518017727846632,0.9094591460743642
+deblur,random_walk,pre_either_flip,197,1021.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,random_walk,pre_either_flip,197,1021.0,logreg:blacklight,1.0,,0.9999999999999999,1.0
+deblur,random_walk,pre_either_flip,197,1021.0,logreg:query_only_all,1.0,,0.9999999999999999,1.0
+deblur,random_walk,pre_either_flip,197,1021.0,logreg:output_trajectory,0.9818598778633821,,0.9700559148651086,0.9914974619289341
+deblur,restore,128,200,128.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,restore,128,200,128.0,single:bl_max,0.47400000000000003,,0.42552187500000005,0.519055625
+deblur,restore,128,200,128.0,single:out_pref_slope,0.8528,,0.8213974999999999,0.88275625
+deblur,restore,128,200,128.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,restore,128,200,128.0,logreg:blacklight,0.4978625,,0.4495146875,0.5437896875
+deblur,restore,128,200,128.0,logreg:query_only_all,0.4978625,,0.4533753125,0.5428390625000001
+deblur,restore,128,200,128.0,logreg:output_trajectory,0.9922500000000001,,0.986424375,0.997850625
+deblur,restore,256,200,256.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,restore,256,200,256.0,single:bl_max,0.53135,,0.4798396875000001,0.5770796875
+deblur,restore,256,200,256.0,single:out_pref_slope,0.90195,,0.8780112499999999,0.9253037499999999
+deblur,restore,256,200,256.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,restore,256,200,256.0,logreg:blacklight,0.53455,,0.47818375,0.5867193749999999
+deblur,restore,256,200,256.0,logreg:query_only_all,0.53455,,0.48259437499999996,0.584944375
+deblur,restore,256,200,256.0,logreg:output_trajectory,0.99945,,0.9985499999999999,0.99995
+deblur,restore,512,200,512.0,single:gwad_plus_max,0.50415,,0.44971406249999996,0.5569878125000001
+deblur,restore,512,200,512.0,single:bl_max,0.552475,,0.49953812500000006,0.600713125
+deblur,restore,512,200,512.0,single:out_pref_slope,0.9339,,0.91334375,0.9530025
+deblur,restore,512,200,512.0,logreg:gwad_plus,0.4837,,0.4324887499999999,0.5390775
+deblur,restore,512,200,512.0,logreg:blacklight,0.5552,,0.49807062500000004,0.61029
+deblur,restore,512,200,512.0,logreg:query_only_all,0.5516749999999999,,0.49469500000000005,0.6075481250000001
+deblur,restore,512,200,512.0,logreg:output_trajectory,0.997425,,0.993324375,0.9998
+deblur,restore,1024,200,1024.0,single:gwad_plus_max,0.5149625,,0.4644765625,0.5665825000000001
+deblur,restore,1024,200,1024.0,single:bl_max,0.541925,,0.4950375,0.5887168749999999
+deblur,restore,1024,200,1024.0,single:out_pref_slope,0.967525,,0.9535481249999999,0.9791506249999999
+deblur,restore,1024,200,1024.0,logreg:gwad_plus,0.524525,,0.468099375,0.5792525000000001
+deblur,restore,1024,200,1024.0,logreg:blacklight,0.5346375,,0.48672187499999997,0.5838278125
+deblur,restore,1024,200,1024.0,logreg:query_only_all,0.5358499999999999,,0.479244375,0.58890875
+deblur,restore,1024,200,1024.0,logreg:output_trajectory,0.99875,,0.9962000000000001,0.999975
+deblur,restore,attack_truncated,197,1021.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,restore,attack_truncated,197,1021.0,single:bl_max,0.5401453271148445,,0.49130034270401196,0.5861832951119585
+deblur,restore,attack_truncated,197,1021.0,single:out_pref_slope,0.9595970006957149,,0.9415599474348734,0.9749568399082688
+deblur,restore,attack_truncated,197,1021.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,restore,attack_truncated,197,1021.0,logreg:blacklight,0.47834265247751806,,0.44499407353964293,0.510527841480069
+deblur,restore,attack_truncated,197,1021.0,logreg:query_only_all,0.47834265247751806,,0.44700713751964755,0.5087099641835656
+deblur,restore,attack_truncated,197,1021.0,logreg:output_trajectory,0.9984797340823004,,0.9964441237857198,0.9998453966863355
+deblur,restore,pre_either_flip,197,1021.0,single:gwad_plus_max,,no GWAD window yet,,
+deblur,restore,pre_either_flip,197,1021.0,single:bl_max,0.5401453271148445,,0.49130034270401196,0.5861832951119585
+deblur,restore,pre_either_flip,197,1021.0,single:out_pref_slope,0.9640547295730373,,0.9475308562446856,0.977456904326316
+deblur,restore,pre_either_flip,197,1021.0,logreg:gwad_plus,,no GWAD window yet,,
+deblur,restore,pre_either_flip,197,1021.0,logreg:blacklight,0.528202221134273,,0.47939782009327736,0.5715143394573424
+deblur,restore,pre_either_flip,197,1021.0,logreg:query_only_all,0.528202221134273,,0.47913821536241596,0.5738643098250406
+deblur,restore,pre_either_flip,197,1021.0,logreg:output_trajectory,0.9992527506506222,,0.9976538947151434,0.9999742327810559
