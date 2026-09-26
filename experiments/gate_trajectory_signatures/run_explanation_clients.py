@@ -50,17 +50,18 @@ def blur(x: torch.Tensor) -> torch.Tensor:
 
 
 @torch.no_grad()
-def probs(model, device, images: torch.Tensor, label: int) -> np.ndarray:
+def probs(model, device, images: torch.Tensor, label: int, batch: int = 256) -> np.ndarray:
+    batch = min(batch, 32) if images.shape[-1] > 64 else batch  # 224-px inputs on an 8 GB GPU
     out = []
-    for i in range(0, len(images), 256):
-        out.append(F.softmax(model(images[i : i + 256].to(device)), 1)[:, label].cpu())
+    for i in range(0, len(images), batch):
+        out.append(F.softmax(model(images[i : i + batch].to(device)), 1)[:, label].cpu())
     return torch.cat(out).numpy().astype(np.float64)
 
 
 # ---------------- clients: each returns (query stream, function(p_label) -> pixel saliency) -------------
 
-def client_lime(x, rng):
-    queries, masks, segments, _means = lime_session(x, 40, 1000, rng)
+def client_lime(x, rng, n_segments=40):
+    queries, masks, segments, _means = lime_session(x, n_segments, 1000, rng)
     return queries, lambda p: lime_weights(masks, p)[segments]
 
 
@@ -93,10 +94,10 @@ def client_kernelshap(x, rng, grid=4, samples=500):
     return queries, saliency
 
 
-def client_occlusion(x, rng, patch=4):
+def client_occlusion(x, rng, patch=4, stride=1):
     h, w = x.shape[-2:]
     fill = x.mean(dim=(2, 3), keepdim=True)
-    positions = [(r, c) for r in range(h - patch + 1) for c in range(w - patch + 1)]
+    positions = [(r, c) for r in range(0, h - patch + 1, stride) for c in range(0, w - patch + 1, stride)]
     queries = [x.clone()]
     for r, c in positions:
         q = x.clone()
@@ -128,6 +129,14 @@ def client_rise(x, rng, n=1000, s=7, p1=0.5):
 
 
 BUILDERS = {"lime": client_lime, "kernelshap": client_kernelshap, "occlusion": client_occlusion, "rise": client_rise}
+# 224-px settings (frozen in the preregistration): LIME 50 segments, KernelSHAP 8 x 8 grid of 28-px
+# cells, occlusion 32-px patch at stride 8 (625 + 1 queries), RISE unchanged (7 x 7 grid, 1,000 masks).
+IMAGENET_BUILDERS = {
+    "lime": lambda x, rng: client_lime(x, rng, n_segments=50),
+    "kernelshap": lambda x, rng: client_kernelshap(x, rng, grid=8),
+    "occlusion": lambda x, rng: client_occlusion(x, rng, patch=32, stride=8),
+    "rise": client_rise,
+}
 
 
 def smooth_random_saliency(rng, h: int = 32, grid: int = 4) -> np.ndarray:
@@ -165,20 +174,37 @@ def main():
     parser.add_argument("--seed", type=int, default=20260926)
     parser.add_argument("--lfc-seed", type=int, default=20260926)
     parser.add_argument("--max-images", type=int, default=0)
+    parser.add_argument("--dataset", choices=["cifar10", "imagenet"], default="cifar10")
+    parser.add_argument("--imagenet-root", default="/home/sepi/Study/coding/data/imagenet/val")
+    parser.add_argument("--splits", default="", help="comma-separated manifest splits (default: all non-development)")
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--num-shards", type=int, default=1)
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = load_cifar_model("resnet18_seed0", args.checkpoint, device).eval()
-    dataset = datasets.CIFAR10("/home/sepi/data/cifar10", train=False, download=False, transform=transforms.ToTensor())
+    builders, blacklight_params, lfc_params, salt_shape = BUILDERS, None, None, (32, 32, 3)
+    if args.dataset == "imagenet":
+        from torchvision.models import ResNet50_Weights, resnet50
+
+        from experiments.gate_trajectory_signatures.lfc_detector import LFC_IMAGENET
+        from experiments.gate_trajectory_signatures.run_specificity_workloads import BLACKLIGHT_IMAGENET
+        net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
+        model = torch.nn.Sequential(transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)), net).to(device).eval()
+        dataset = datasets.ImageFolder(args.imagenet_root, transform=transforms.Compose(
+            [transforms.Resize(256), transforms.CenterCrop(224), transforms.ToTensor()]))
+        builders, blacklight_params, lfc_params, salt_shape = IMAGENET_BUILDERS, BLACKLIGHT_IMAGENET, LFC_IMAGENET, (224, 224, 3)
+    else:
+        model = load_cifar_model("resnet18_seed0", args.checkpoint, device).eval()
+        dataset = datasets.CIFAR10("/home/sepi/data/cifar10", train=False, download=False, transform=transforms.ToTensor())
     manifest = pd.read_csv(args.manifest)
     subset = manifest[manifest.split != "development"]
+    if args.splits:
+        subset = subset[subset.split.isin([v.strip() for v in args.splits.split(",")])]
     if args.max_images > 0:
         subset = subset.head(args.max_images)
     subset = subset.iloc[args.shard :: args.num_shards]
     _, _, delta_net = load_official_components(torch.device("cpu"))
-    salt = blacklight_salt()
+    salt = blacklight_salt(salt_shape)
     clients = [c.strip() for c in args.clients.split(",") if c.strip()]
     atomic_json(args.output_dir / f"metadata_shard{args.shard}.json", {"args": {k: str(v) for k, v in vars(args).items()}})
     summary_path = args.output_dir / f"sessions_shard{args.shard}.jsonl"
@@ -195,12 +221,14 @@ def main():
             seed = session_seed(args.seed, int(row.dataset_index), client)
             rng = np.random.default_rng(seed)
             started = time.time()
-            queries, saliency_fn = BUILDERS[client](x, rng)
-            result, arrays = run_stream(model, device, delta_net, salt, queries, label, lfc_seed=args.lfc_seed)
+            queries, saliency_fn = builders[client](x, rng)
+            result, arrays = run_stream(model, device, delta_net, salt, queries, label, lfc_seed=args.lfc_seed,
+                                        batch=16 if args.dataset == "imagenet" else 64,
+                                        blacklight_params=blacklight_params, lfc_params=lfc_params)
             p = probs(model, device, queries, label)
             sal = saliency_fn(p)
             auc = deletion_auc(model, device, x, sal, label, rng, fill="mean")
-            auc_random = float(np.mean([deletion_auc(model, device, x, smooth_random_saliency(rng), label, rng, fill="mean") for _ in range(10)]))
+            auc_random = float(np.mean([deletion_auc(model, device, x, smooth_random_saliency(rng, h=sal.shape[0]), label, rng, fill="mean") for _ in range(10)]))
             auc_blur = deletion_auc(model, device, x, sal, label, rng, fill="blur")
             auc_random_pixel_blur = float(np.mean([deletion_auc(model, device, x, rng.random(sal.shape), label, rng, fill="blur") for _ in range(10)]))
             trace = args.output_dir / "traces" / f"{sid}.npz"

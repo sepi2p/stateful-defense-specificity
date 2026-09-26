@@ -74,12 +74,13 @@ def build_stream(control: str, dataset, clean: torch.Tensor, pool: np.ndarray, s
     raise ValueError(control)
 
 
-def run_stream(model, device, delta_net, salt, stream: torch.Tensor, label: int, batch: int = 64, lfc_seed: int = -1):
+def run_stream(model, device, delta_net, salt, stream: torch.Tensor, label: int, batch: int = 64, lfc_seed: int = -1,
+               blacklight_params=None, lfc_params=None):
     recorder = Recorder.create(model, label, device, delta_net)
-    blacklight = BlacklightTracker(salt)
+    blacklight = BlacklightTracker(salt, blacklight_params)
     recorder.detectors["blacklight"] = blacklight
     if lfc_seed >= 0:
-        recorder.detectors["lfc_phase1"] = LFCPhase1(d=stream[0].numel(), seed=lfc_seed, bern_scale=0.0)
+        recorder.detectors["lfc_phase1"] = LFCPhase1(d=stream[0].numel(), seed=lfc_seed, params=lfc_params, bern_scale=0.0)
     for i in range(0, len(stream), batch):
         recorder.submit_batch(stream[i : i + batch].to(device))
     arrays = {

@@ -197,3 +197,21 @@ step 1/255 (success 0.88 vs 0.28 for the CIFAR setting); sigma 2/255, 8 pairs, e
 unchanged. The same NES settings are used for every objective.
 P12. P8-P11 as stated for X4-X6, evaluated on this corpus; for P8 the query-only family is
      reported both with and without GWAD (whose released model is CIFAR-trained).
+
+## Addendum 2026-09-26 (22:50): X9 restoration invalid at 224 px; X10 ImageNet explanation tier (frozen before the run)
+
+Observed during X9 (first 735 sessions; no detector result inspected): the restore objective
+accepts 0% of NES steps at 224 px under the frozen tiled NES, and 0-12% (PSNR gain ~0) under
+untiled NES at step 0.25/255 or 1/255 on 10 development images. Zeroth-order restoration does
+not make progress at this dimensionality, so X9 restore sessions are reported as an invalid
+workload (the client never moves) and excluded from P8/P10/P11 on ImageNet; confidence_boost
+remains the matched Tier-B objective there. All other X9 objectives make progress (attack
+success 77-85%; confidence_boost +5 margin; boundary_probe reaches the boundary).
+
+X10: LIME (50 SLIC segments, 1,000 samples), KernelSHAP (8 x 8 grid of 28-px cells, blurred
+fill, 500 coalitions), occlusion (32-px patch, stride 8: 625 + 1 queries), RISE (unchanged)
+on the 200 ImageNet evaluation images, ResNet-50, Blacklight / Lee-Fang-Chang ImageNet
+settings, GWAD as released. Utility metric as amended for X2.
+P13a. Blacklight alarms on >= 90% of LIME, KernelSHAP and occlusion sessions.
+P13b. Every client passes the P6c utility rule.
+RISE, GWAD, GWAD+ and Lee-Fang-Chang: reported without prediction.
