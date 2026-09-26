@@ -1,0 +1,13 @@
+workload,objective,decision,threshold,value,lower,upper,source_images
+denoise,attack,calibrated_alarm,0.99999918938272,0.35,0.285,0.42,200
+denoise,attack,native_alarm,0.99999918938272,1.0,1.0,1.0,200
+denoise,random_walk,calibrated_alarm,0.99999918938272,0.025,0.005,0.05,200
+denoise,random_walk,native_alarm,0.99999918938272,1.0,1.0,1.0,200
+denoise,restore,calibrated_alarm,0.99999918938272,0.34,0.275,0.405,200
+denoise,restore,native_alarm,0.99999918938272,1.0,1.0,1.0,200
+deblur,attack,calibrated_alarm,0.9999986498760336,0.555,0.485,0.62,200
+deblur,attack,native_alarm,0.9999986498760336,1.0,1.0,1.0,200
+deblur,random_walk,calibrated_alarm,0.9999986498760336,0.09,0.05,0.13,200
+deblur,random_walk,native_alarm,0.9999986498760336,1.0,1.0,1.0,200
+deblur,restore,calibrated_alarm,0.9999986498760336,0.52,0.45,0.59,200
+deblur,restore,native_alarm,0.9999986498760336,1.0,1.0,1.0,200

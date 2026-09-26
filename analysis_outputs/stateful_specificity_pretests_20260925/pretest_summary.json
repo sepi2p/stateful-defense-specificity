@@ -1,0 +1,46 @@
+{
+  "T1_blacklight_shuffled_alarm_rate": 0.0,
+  "T1_blacklight_shuffled_max_match_median": 15.0,
+  "T2_gwad_plus_shuffled_alarm_rate": 0.0,
+  "T2_gwad_plus_shuffled_median_windows": 0.0,
+  "T2_gwad_shuffled_alarm_rate": 0.0,
+  "T7_seconds_per_shuffled_session": 3.1087706089019775,
+  "T3_noise_blacklight_alarm_rate": 0.0,
+  "T3_noise_gwad_plus_alarm_rate": 1.0,
+  "T3_noise_lb_flag_rate": {
+    "5": 0.0,
+    "10": 0.0,
+    "20": 0.0,
+    "40": 0.05
+  },
+  "T3_shuffled_lb_flag_rate_h20": 0.05,
+  "T3_corpus_lb_flag_rate": {
+    "attack": {
+      "5": 1.0,
+      "10": 1.0,
+      "20": 1.0,
+      "40": 1.0
+    },
+    "random_walk": {
+      "5": 1.0,
+      "10": 1.0,
+      "20": 1.0,
+      "40": 1.0
+    },
+    "restore": {
+      "5": 0.85,
+      "10": 0.99,
+      "20": 1.0,
+      "40": 1.0
+    }
+  },
+  "T4_lime_blacklight_alarm_rate": 1.0,
+  "T4_lime_blacklight_median_first_alarm": 7.0,
+  "T4_lime_gwad_plus_alarm_rate": 0.0,
+  "T4_lime_gwad_plus_median_windows": 742.0,
+  "T4_lime_lb_flag_rate_h20": 0.1,
+  "T5_deletion_auc_lime_median": 0.21263740956783295,
+  "T5_deletion_auc_random_median": 0.6726333767175674,
+  "T5_lime_better_than_random_frac": 1.0,
+  "T7_seconds_per_lime_session": 2.031619906425476
+}
