@@ -129,3 +129,55 @@ random orders; a client passes if the median paired difference (random - client)
 with a source-image bootstrap 95% CI excluding 0 on the evaluation split. The per-image
 >= 90% rule is dropped as arbitrary. The original pixel/blur variant is reported as a
 sensitivity row. P6a and P6b are unchanged.
+
+## Addendum 2026-09-26: X4-X6 robustness corpora (frozen before the runs)
+
+Corpora (all with GWAD, GWAD+, Blacklight and Lee-Fang-Chang Phase 1 online; same
+objectives, starts, eps, budget and analysis as the NES CIFAR-10 corpus):
+- X4 SimBA: pixel basis, 8/255 steps, CIFAR-10 ResNet-18 seed 0, frozen manifest; five
+  optimizing objectives (the objective-free walk is optimizer-independent).
+- X6 second models, NES: BlackboxBench VGG19-BN; RobustBench Engstrom2019Robustness
+  (L-inf-robust ResNet-50); ResNet-18 seeds 1 and 2. Each model gets its own manifest
+  (same seed and split counts), since start eligibility depends on the model.
+- X5 GTSRB at 32 px: ResNet-18 trained with train_gtsrb_models.py --image-size 32
+  (15 epochs), 43 classes x (1 development, 2 fit, 2 calibration, 5 evaluation) images.
+  Detectors run as released (CIFAR-10 parameters and Delta-Net).
+
+P8. For every corpus, the query-only detectors (GWAD+, Blacklight, their combination)
+    give evaluation AUROC <= 0.62 for attack vs each Tier-B objective (restore,
+    confidence_boost) at 1,024 calls, and >= 0.90 vs the random walk where it exists.
+P9. Symmetric pre-flip cut (pre_either_flip), output trajectory, attack vs boundary_probe
+    and vs counterfactual: AUROC <= 0.70 on every new corpus.
+P10. Output trajectory vs restore and confidence_boost at 1,024 calls: AUROC >= 0.90 on
+    every new corpus.
+P11. Lee-Fang-Chang (frozen configuration) alarms on >= 90% of restore and
+    confidence_boost evaluation sessions on every new corpus.
+
+## Addendum 2026-09-26: X7 output diagnostic (result) and exploratory follow-up E1
+
+Result (analyze_output_diagnostic.py; outputs in analysis_outputs/output_diagnostic_20260926/):
+the planned interpretable statistic (reference-margin drawdown) separates attacks from
+restore and confidence_boost (AUROC 0.99-1.00, full sessions) but is INVERTED against
+explanation clients (KernelSHAP 0.00-0.03, LIME 0.01-0.28, occlusion 0.35-0.81): masking
+collapses the margin harder than an attack. With a single threshold at 1% FPR on pooled
+calibration benign traffic, the two-stage detector (similarity alarm AND drawdown) detects
+0.0-0.2% of attacks. The drawdown diagnostic is therefore reported as a negative result.
+
+E1 (EXPLORATORY; declared after seeing the drawdown result, before computing E1 on any
+split). Statistic: Kendall's tau between query index and reference margin within the
+largest Lee-Fang-Chang Phase-1 subsequence (reference = its first query's prediction);
+score = -tau (persistent decline = attack-like). Same two-stage design and pooled
+calibration threshold (1% FPR, calibration split); evaluated once on the evaluation split
+(early = first 256 queries; full). Success criterion: attack TPR >= 50% at that threshold
+with every benign workload's FPR <= 5%. Attack-equivalent clients reported separately. If
+E1 succeeds it is reported as exploratory and must be confirmed on the X4-X6 corpora
+before any claim.
+
+E1 result (2026-09-26): FAILED its success criterion. Full sessions: attack TPR 98.2% at
+the pooled 1% calibration threshold; FPR <= 0.5% on restore, confidence_boost, noise,
+shuffled, occlusion, KernelSHAP, RISE, LIME; random walk 4.5%; JPEG/brightness sweep
+12.5% (> 5%). First 256 queries: attack TPR 5.0%. Attack-equivalent: counterfactual
+98.5%, boundary_probe 56.2% (full). Reading: a persistent decline of the reference margin
+is an intent signal against optimizing and explanation clients, but it matures only after
+most attacks have succeeded (median first success ~480 queries), flags monotone
+degradation sweeps, and cannot separate attack-equivalent clients.

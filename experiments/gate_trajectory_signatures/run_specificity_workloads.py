@@ -146,7 +146,39 @@ def values_for(images, logits, start, workload, objective, lam, label, target):
     raise ValueError(objective)
 
 
-def run_session(model, clean, start, label, workload, objective, lam, seed, budget, device, delta_net, salt, lfc_seed=-1):
+def prepare_manifest_generic(path: Path, dataset, labels: np.ndarray, model, device, seed: int, split_counts: dict) -> "pd.DataFrame":
+    """Class-balanced manifest for any labelled dataset: clean and both corrupted starts correctly classified."""
+    import pandas as pd
+
+    if path.exists():
+        return pd.read_csv(path)
+    need = sum(split_counts.values())
+    rng = np.random.default_rng(seed)
+    rows = []
+    for label in np.unique(labels):
+        candidates = rng.permutation(np.flatnonzero(labels == label))
+        chosen = []
+        for index in candidates:
+            clean = dataset[int(index)][0].unsqueeze(0).to(device)
+            batch = torch.cat([clean, corruption(clean, "denoise", int(index), seed), corruption(clean, "deblur", int(index), seed)])
+            with torch.no_grad():
+                if bool(model(batch).argmax(1).eq(int(label)).all()):
+                    chosen.append(int(index))
+            if len(chosen) == need:
+                break
+        cursor = 0
+        for split, count in split_counts.items():
+            for index in chosen[cursor : cursor + count]:
+                rows.append({"dataset_index": index, "source_label": int(label), "split": split})
+            cursor += count
+    frame = pd.DataFrame(rows).sort_values(["split", "source_label", "dataset_index"])
+    path.parent.mkdir(parents=True, exist_ok=True)
+    frame.to_csv(path, index=False)
+    return frame
+
+
+def run_session(model, clean, start, label, workload, objective, lam, seed, budget, device, delta_net, salt, lfc_seed=-1,
+                optimizer="nes", simba_step=8.0 / 255.0):
     recorder = Recorder.create(model, label, device, delta_net)
     blacklight = BlacklightTracker(salt)
     recorder.detectors["blacklight"] = blacklight
@@ -159,8 +191,12 @@ def run_session(model, clean, start, label, workload, objective, lam, seed, budg
         current_value, direction = values_for(current, current_logits, start, workload, objective, lam, label, target)
     generator = torch.Generator(device=device)
     generator.manual_seed(seed)
-    # The frozen runner draws a SimBA ordering before every session; keep the RNG stream identical.
-    torch.randperm(current[0].numel() if workload == "denoise" else current.shape[1] * 8 * 8, generator=generator, device=device)
+    if optimizer == "simba":
+        # Pixel-basis SimBA (the 8/255 setting of check_rank_equivalence.py) for every objective.
+        order = torch.randperm(current[0].numel(), generator=generator, device=device)
+    else:
+        # The frozen runner draws a SimBA ordering before every session; keep the RNG stream identical.
+        torch.randperm(current[0].numel() if workload == "denoise" else current.shape[1] * 8 * 8, generator=generator, device=device)
     eps, step, sigma, pairs = 8.0 / 255.0, 0.25 / 255.0, 2.0 / 255.0, 8
     accepted = []
     while recorder.calls < budget:
@@ -170,6 +206,25 @@ def run_session(model, clean, start, label, workload, objective, lam, seed, budg
             current = project(current + step * delta, start, eps)
             current_logits = recorder.submit_batch(current)
             accepted.append(1)
+            continue
+        if optimizer == "simba":
+            if recorder.calls + 2 > budget:
+                break
+            delta = torch.zeros_like(current).flatten()
+            delta[int(order[len(accepted) % len(order)])] = simba_step
+            delta = delta.view_as(current)
+            candidates = torch.cat([project(current - delta, start, eps), project(current + delta, start, eps)])
+            cand_logits = recorder.submit_batch(candidates)
+            cand_values, direction = values_for(candidates, cand_logits, start, workload, objective, lam, label, target)
+            best = None
+            for i in range(2):
+                if objective in LABEL_PRESERVING and int(cand_logits[i].argmax()) != label:
+                    continue
+                if better(cand_values[i], current_value[0], direction) and (best is None or better(cand_values[i], cand_values[best], direction)):
+                    best = i
+            if best is not None:
+                current, current_logits, current_value = candidates[best : best + 1], cand_logits[best : best + 1], cand_values[best : best + 1]
+            accepted.append(-1 if best is None else best)
             continue
         if recorder.calls + 2 * pairs + 1 > budget:
             break
@@ -247,6 +302,10 @@ def main():
     parser.add_argument("--denoise-lambda", type=float, default=0.5)
     parser.add_argument("--deblur-lambda", type=float, default=1.0)
     parser.add_argument("--max-images", type=int, default=0)
+    parser.add_argument("--model-name", default="resnet18_seed0", help="resnet18_seedN, bbb_*, robustbench_<name>, or gtsrb32")
+    parser.add_argument("--optimizer", choices=["nes", "simba"], default="nes")
+    parser.add_argument("--dataset", choices=["cifar10", "gtsrb32"], default="cifar10")
+    parser.add_argument("--gtsrb-root", default="data/gtsrb")
     parser.add_argument("--lfc-seed", type=int, default=-1, help="add the Lee-Fang-Chang Phase-1 observer with this detector seed")
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--num-shards", type=int, default=1)
@@ -254,9 +313,18 @@ def main():
     set_seed(args.seed)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = load_cifar_model("resnet18_seed0", args.checkpoint, device).eval()
-    dataset = datasets.CIFAR10(args.dataset_root, train=False, download=False, transform=transforms.ToTensor())
-    manifest = prepare_manifest(args.manifest, dataset, model, device, args.seed)
+    if args.dataset == "gtsrb32":
+        from experiments.eaai_gtsrb.gtsrb_common import gtsrb_dataset, load_checkpoint
+        model, _payload = load_checkpoint(args.checkpoint, device)
+        dataset = gtsrb_dataset(args.gtsrb_root, "test", 32)
+        labels = np.asarray([int(label) for _path, label in dataset._samples])
+        manifest = prepare_manifest_generic(args.manifest, dataset, labels, model, device, args.seed,
+                                            split_counts={"development": 1, "fit": 2, "calibration": 2, "evaluation": 5})
+    else:
+        checkpoint = args.checkpoint if args.model_name.startswith("resnet18_seed") else None
+        model = load_cifar_model(args.model_name, checkpoint, device).eval()
+        dataset = datasets.CIFAR10(args.dataset_root, train=False, download=False, transform=transforms.ToTensor())
+        manifest = prepare_manifest(args.manifest, dataset, model, device, args.seed)
     _, _, delta_net = load_official_components(torch.device("cpu"))
     salt = blacklight_salt()
     subset = manifest[manifest.split == "development"] if args.stage == "development" else manifest[manifest.split != "development"]
@@ -269,7 +337,8 @@ def main():
         "args": {k: str(v) for k, v in vars(args).items()},
         "gwad_commit": subprocess.check_output(["git", "-C", str(GWAD_ROOT), "rev-parse", "HEAD"], text=True).strip(),
         "delta_net_sha256": sha256(GWAD_ROOT / "model/delta/delta_ann.pt"),
-        "checkpoint_sha256": sha256(args.checkpoint),
+        "checkpoint_sha256": sha256(args.checkpoint) if args.checkpoint.exists() else None,
+        "model_name": args.model_name, "optimizer": args.optimizer, "dataset": args.dataset,
         "blacklight": BLACKLIGHT,
         "counterfactual_l2": COUNTERFACTUAL_L2,
     })
@@ -284,7 +353,9 @@ def main():
             start = corruption(clean, workload, int(row.dataset_index), args.seed)
             lam = args.denoise_lambda if workload == "denoise" else args.deblur_lambda
             for objective in objectives:
-                optimizer = "random_walk" if objective == "random_walk" else "nes"
+                if objective == "random_walk" and args.optimizer != "nes":
+                    continue  # the objective-free walk is optimizer-independent; run once with the NES corpus
+                optimizer = "random_walk" if objective == "random_walk" else args.optimizer
                 sid = f"{row.split}__{row.dataset_index}__{workload}__{objective}__{optimizer}__l{lam:.7g}"
                 if sid in completed:
                     continue
@@ -292,13 +363,14 @@ def main():
                 seed = session_seed(args.seed, row.dataset_index, workload, objective, optimizer, lam)
                 started = time.time()
                 result, arrays = run_session(model, clean, start, label, workload, objective, lam, seed,
-                                             args.budget, device, delta_net, salt, args.lfc_seed)
+                                             args.budget, device, delta_net, salt, args.lfc_seed, optimizer=args.optimizer)
                 trace = args.output_dir / "traces" / f"{sid}.npz"
                 trace.parent.mkdir(parents=True, exist_ok=True)
                 np.savez_compressed(trace, **arrays)
                 record = {"session_id": sid, "split": row.split, "dataset_index": int(row.dataset_index),
                           "source_label": label, "workload": workload, "objective": objective,
                           "optimizer": optimizer, "lambda": float(lam), "session_seed": seed,
+                          "model_name": args.model_name, "dataset": args.dataset,
                           "elapsed_seconds": time.time() - started,
                           "trace": str(trace.relative_to(args.output_dir))} | result
                 with summary_path.open("a") as handle:
