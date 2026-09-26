@@ -94,3 +94,21 @@ still beat random; LIME's CI includes 0 (0.015 [-0.019, 0.060]).
 
 Every legitimate explanation client is blocked by at least one released or 2026 detector
 in most sessions, except RISE (flagged by Blacklight in 16% of sessions, by no other).
+
+# X4 SimBA corpus results (2026-09-26)
+
+`analysis_outputs/specificity_simba_20260926/` (4,000 sessions; pixel SimBA, 8/255 steps).
+Evaluation AUROC, attack vs benign (1,024 calls | symmetric pre-flip cut):
+- Blacklight: restore 0.48-0.50, confidence_boost 0.49-0.53, boundary_probe 0.56-0.63 | 0.48-0.52.
+- GWAD+: restore 0.92-0.97, confidence_boost 0.74-0.87, boundary_probe 0.83-0.91,
+  counterfactual 0.59-0.66 (no GWAD window before the pre-flip cut).
+- Output trajectory: restore / confidence_boost 1.00 | 1.00; boundary_probe 0.98-0.99 | 0.58-0.63;
+  counterfactual 0.66-0.76 | 0.58-0.60.
+- Lee-Fang-Chang: 100% alarms on every objective. Native Blacklight and GWAD+: 100% alarms on
+  every objective.
+Predictions: P8 FAILED for GWAD+ (held for Blacklight). P9 held (0.58-0.63). P10 held. P11 held.
+Mechanism of the P8 failure: SimBA's acceptance rate depends on the objective (attack
+78-92% of steps accepted, restore 50-67%, confidence_boost 44-80%, boundary_probe 43-49%),
+and GWAD's inter-query delta features pick this up ("acceptance-rate leak"). NES updates on
+a fixed schedule and shows no such leak. At released thresholds every SimBA session is
+still blocked; an attacker can remove the leak by matching a benign acceptance rate.
