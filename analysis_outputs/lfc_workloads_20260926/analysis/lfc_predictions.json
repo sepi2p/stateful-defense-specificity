@@ -1,0 +1,22 @@
+{
+  "sha": {
+    "analysis_outputs/lfc_workloads_20260926": {
+      "sessions": 4800,
+      "matched_original": 4800,
+      "sha_identical": 4800
+    },
+    "analysis_outputs/lfc_controls_20260926": {
+      "sessions": 4800,
+      "matched_original": 4800,
+      "sha_identical": 4800
+    }
+  },
+  "checks": {
+    "P7a_restore_ge_90pct": true,
+    "P7a_confidence_boost_ge_90pct": true,
+    "P7b_attack_ge_95pct": true,
+    "P7c_shuffled_le_2pct": true,
+    "P7c_noise_le_2pct": true,
+    "P7d_random_walk_ge_90pct": true
+  }
+}

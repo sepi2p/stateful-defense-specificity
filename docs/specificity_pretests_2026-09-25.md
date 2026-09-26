@@ -50,3 +50,25 @@ median query 776, i.e. rare chance collisions over long sessions). P5a GWAD fami
 no alarm: held. P5b GWAD+ on noise >= 90%: held (99%). P5c Blacklight on sweep
 >= 90%: held (98%). P5d Ljung-Box <= 5% on shuffled and noise: held (2.5%, 2.8%,
 near the nominal 2.5%).
+
+# X1 Lee-Fang-Chang full-detector results (2026-09-26)
+
+`analysis_outputs/lfc_workloads_20260926/analysis/` (lfc_alarm_rates.csv, lfc_predictions.json).
+Regenerated corpora: 9,600/9,600 sessions SHA-256-identical to the original query streams.
+Evaluation split, frozen configuration (Phase 1 online; Phase 2 Ljung-Box, lags min(10, n//5), re-run on every update).
+
+| objective | denoise alarm (median first query) | deblur alarm (median first query) |
+|---|---|---|
+| attack | 1.000 (91) | 1.000 (124) |
+| restore | 1.000 (98) | 0.990 (217) |
+| confidence_boost | 1.000 (97) | 1.000 (128.5) |
+| boundary_probe | 1.000 (88.5) | 0.995 (121) |
+| counterfactual | 1.000 (86) | 1.000 (121.5) |
+| random_walk | 1.000 (15.5) | 1.000 (15) |
+| shuffled (clean, n=2,000) | 0.000 | |
+| noise (clean, n=200) | 0.000 | |
+| sweep (clean, n=200) | 0.555 (189) | |
+
+Lag-20 sensitivity: same rates within 0.01. All P7 predictions held (P7a-d).
+The detector reproduces its paper's CIFAR-10 TPR 1.00 / FPR 0.00 on the paper's
+own benign types and flags 99-100% of benign optimizers at the attack's timing.
