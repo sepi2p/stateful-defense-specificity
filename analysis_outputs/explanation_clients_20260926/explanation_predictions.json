@@ -1,0 +1,10 @@
+{
+  "P6a_kernelshap_blacklight_ge_90pct_first_le_50": true,
+  "P6c_kernelshap_utility": true,
+  "P6a_lime_blacklight_ge_90pct_first_le_50": true,
+  "P6c_lime_utility": true,
+  "P6a_occlusion_blacklight_ge_90pct_first_le_50": true,
+  "P6c_occlusion_utility": true,
+  "P6b_rise_blacklight_le_10pct": false,
+  "P6c_rise_utility": true
+}

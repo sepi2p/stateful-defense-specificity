@@ -72,3 +72,25 @@ Evaluation split, frozen configuration (Phase 1 online; Phase 2 Ljung-Box, lags 
 Lag-20 sensitivity: same rates within 0.01. All P7 predictions held (P7a-d).
 The detector reproduces its paper's CIFAR-10 TPR 1.00 / FPR 0.00 on the paper's
 own benign types and flags 99-100% of benign optimizers at the attack's timing.
+
+# X2 explanation-traffic results (2026-09-26)
+
+`analysis_outputs/explanation_clients_20260926/` (explanation_summary.csv,
+explanation_predictions.json). Evaluation split, n = 200 images per client; Wilson 95% CIs;
+alarm rate (median first-alarm query).
+
+| client (queries) | Blacklight | GWAD+ | GWAD | Lee-Fang-Chang | utility: random - client deletion AUC, median [95% CI] |
+|---|---|---|---|---|---|
+| LIME (1,000) | 1.00 (6) | 0.00 | 0.00 | 0.41 (409) | 0.198 [0.166, 0.234] |
+| KernelSHAP (500) | 1.00 (3) | 0.31 (265) | 0.31 (260) | 0.67 (126) | 0.152 [0.130, 0.198] |
+| Occlusion (842) | 1.00 (2) | 1.00 (259) | 1.00 (258) | 1.00 (17) | 0.258 [0.224, 0.286] |
+| RISE (1,000) | 0.16 (720) | 0.00 | 0.00 | 0.00 | 0.161 [0.132, 0.189] |
+
+Predictions: P6a (Blacklight >= 90%, median first alarm <= 50 on LIME, KernelSHAP,
+occlusion) held for all three. P6b (Blacklight <= 10% on RISE) FAILED: 16% [12, 22],
+alarms late (median query 720). P6c (utility, primary metric) held for all four clients.
+Sensitivity (pixel-order random baseline, blurred fill): KernelSHAP, occlusion and RISE
+still beat random; LIME's CI includes 0 (0.015 [-0.019, 0.060]).
+
+Every legitimate explanation client is blocked by at least one released or 2026 detector
+in most sessions, except RISE (flagged by Blacklight in 16% of sessions, by no other).
