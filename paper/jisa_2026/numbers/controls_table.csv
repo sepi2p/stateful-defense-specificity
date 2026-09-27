@@ -1,0 +1,4 @@
+control,blacklight,gwad_plus,gwad,lfc_seq50,lfc_online
+noise,0.0,0.99,1.0,0.0,0.0
+shuffled,0.0105,0.0,0.0,0.0,0.0
+sweep,0.98,1.0,1.0,0.015,0.5675

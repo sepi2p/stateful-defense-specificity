@@ -1,0 +1,26 @@
+\begin{table*}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Stateful defenses and the benign traffic on which their false-positive rates were measured, as reported in the
+respective papers. None of the evaluations includes a benign client that optimizes or explains.}
+\label{tab:defenses}
+\begin{tabular}{L{2.0cm}L{3.5cm}L{4.3cm}L{2.7cm}}
+\toprule
+Defense & Detection signal & Benign traffic in its evaluation & Reported false positives \\
+\midrule
+Chen et al.~\cite{chen2020stateful} & Distance of a query to its nearest earlier queries in a learned similarity embedding &
+The training set, streamed in random order & 0.1\% (the threshold is set at this rate) \\[3pt]
+Blacklight~\cite{li2022blacklight} & Hashes of quantized pixel windows shared between queries &
+One million ImageNet training images; Flickr images of 20 ImageNet labels; frames of YouTube Faces videos &
+0.37\%; 0.37\% on average; 1.74\% \\[3pt]
+QPA~\cite{li2025qpa} & Anomaly detection on a graph that links each query to similar earlier ones &
+Dataset images mixed with attack queries at an anomaly rate of 1\%; frames of YouTube Faces videos &
+0.06--0.07\% on average; 0.23\% \\[3pt]
+GWAD, GWAD+~\cite{park2025gwad} & Histogram of similarities between successive query updates, classified by a network &
+Shuffled CIFAR-10, Tiny-ImageNet and ImageNet images; driving and aerial image sequences; movie frames at three levels of similarity &
+0--0.03\%; 0\% and 1.29\%; 0\%, 0\% and 17.99\% \\[3pt]
+Lee et al.~\cite{lee2026softlabel} & Groups of similar queries, then a test for serial correlation of the soft labels &
+Sequences of 50 queries: random dataset images, Gaussian-noise copies of one image, camera stills &
+0.00 on CIFAR-10; at most 0.06 overall \\
+\bottomrule
+\end{tabular}
+\end{table*}

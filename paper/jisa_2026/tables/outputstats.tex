@@ -1,0 +1,25 @@
+\begin{table}[!tbp]
+\centering\small
+\caption{AUROC of two single output statistics for separating attack sessions from each client (evaluation split; fixed orientation, larger means more attack-like; nothing is fitted). Both are computed within the largest group of similar queries. Drawdown was planned in advance; trend was introduced after the drawdown result and is exploratory.}
+\label{tab:outputstats}
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{2}{c}{Margin drawdown} & \multicolumn{2}{c}{Margin trend} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Attack vs & 256 queries & full & 256 queries & full \\
+\midrule
+Restoration & 0.75 & 0.99 & 0.99 & 1.00 \\
+Confidence raising & 0.81 & 1.00 & 1.00 & 1.00 \\
+LIME & 0.28 & 0.27 & 0.96 & 1.00 \\
+KernelSHAP & 0.00 & 0.03 & 0.99 & 1.00 \\
+Occlusion & 0.35 & 0.79 & 0.99 & 1.00 \\
+RISE & 1.00 & 1.00 & 0.99 & 0.99 \\
+Shuffled test images & 1.00 & 0.96 & 1.00 & 1.00 \\
+Gaussian noise ($\sigma=0.1$) & 1.00 & 1.00 & 1.00 & 1.00 \\
+JPEG/brightness sweep & 0.74 & 0.73 & 0.82 & 0.95 \\
+Random walk & 0.91 & 0.98 & 0.71 & 1.00 \\
+Boundary probing & 0.51 & 0.70 & 0.52 & 0.79 \\
+Counterfactual search & 0.50 & 0.52 & 0.46 & 0.52 \\
+\bottomrule
+\end{tabular}
+\end{table}

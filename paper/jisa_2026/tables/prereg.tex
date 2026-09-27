@@ -1,0 +1,71 @@
+\begin{footnotesize}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{L{0.9cm}L{1.9cm}L{5.0cm}L{3.4cm}L{1.1cm}}
+\caption{Frozen predictions and their outcomes (evaluation split). ``Main'' is the CIFAR-10 ResNet-18 NES corpus. Predictions P8--P11 were frozen for each later corpus and P12 applies them to ImageNet, where restoration is excluded as an invalid workload.}\label{tab:prereg}\\
+\toprule
+ID & Corpus & Prediction & Outcome & Verdict \\
+\midrule
+\endfirsthead
+\toprule
+ID & Corpus & Prediction & Outcome & Verdict \\
+\midrule
+\endhead
+P1 & main & Query-only detectors: AUROC $\le0.60$ against every matched NES client, full session & 39 of 40 cells; maximum 0.62 & \textbf{failed} \\
+P2 & main & Query-only detectors separate the random walk better than any matched client & random walk $\ge0.86$; matched clients $\le0.62$ & held \\
+P3 & main & Model outputs: AUROC $\ge0.90$ against restoration and confidence raising & 0.99--1.00 at 128 to 1{,}021 queries & held \\
+P4 & main & Model outputs: AUROC $\le0.75$ against Tier~C before the attack's first label change & 0.78--0.82 & \textbf{failed} \\
+P5a & controls & Blacklight alarms on $\le1\%$ of shuffled sessions & 1.05\% (42/4000) & \textbf{failed} \\
+P5a & controls & GWAD and GWAD+ never alarm on shuffled sessions & 0/4000 and 0/4000 & held \\
+P5b & controls & GWAD+ alarms on $\ge90\%$ of Gaussian-noise sessions & 99\% & held \\
+P5c & controls & Blacklight alarms on $\ge90\%$ of sweep sessions & 98\% & held \\
+P5d & controls & Ljung--Box test alone (20 lags, whole session) flags $\le5\%$ of shuffled and noise sessions & 2.5\% and 2.8\% & held \\
+P6a & explanation, 32\,px & Blacklight blocks $\ge90\%$ of LIME, KernelSHAP and occlusion sessions, median first alarm $\le50$ & 100\%; first alarm at 2--6 & held \\
+P6b & explanation, 32\,px & Blacklight blocks $\le10\%$ of RISE sessions & 16\% & \textbf{failed} \\
+P6c & explanation, 32\,px & Every client beats random orderings (median difference $>0$, interval excludes 0) & medians 0.15--0.26; lower bounds $\ge0.13$ & held \\
+P13a & explanation, 224\,px & Blacklight blocks $\ge90\%$ of LIME, KernelSHAP and occlusion sessions & 100\% & held \\
+P13b & explanation, 224\,px & Every client beats random orderings (median difference $>0$, interval excludes 0) & medians 0.16--0.27; lower bounds $\ge0.15$ & held \\
+P7a & main & Lee et al.\ (online) flags $\ge90\%$ of restoration and confidence-raising sessions & 99--100\% & held \\
+P7b & main & Lee et al.\ (online) flags $\ge95\%$ of attack sessions & 100\% & held \\
+P7c & controls & Lee et al.\ (online) flags $\le2\%$ of shuffled and noise sessions & 0\% & held \\
+P7d & main & Lee et al.\ (online) flags $\ge90\%$ of random walks & 100\% & held \\
+P8 & SimBA & Query-only detectors: AUROC $\le0.62$ against Tier~B & maximum 0.974 (query only all) & \textbf{failed} \\
+P9 & SimBA & Model outputs: AUROC $\le0.70$ against Tier~C before either label change & maximum 0.63 & held \\
+P10 & SimBA & Model outputs: AUROC $\ge0.90$ against Tier~B & minimum 1.00 & held \\
+P11 & SimBA & Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions & minimum 100.0\% & held \\
+P8 & VGG19-BN & Query-only detectors: AUROC $\le0.62$ against Tier~B & maximum 0.53 & held \\
+P8 & VGG19-BN & Query-only detectors: AUROC $\ge0.90$ against the random walk & minimum 1.00 & held \\
+P9 & VGG19-BN & Model outputs: AUROC $\le0.70$ against Tier~C before either label change & maximum 0.61 & held \\
+P10 & VGG19-BN & Model outputs: AUROC $\ge0.90$ against Tier~B & minimum 1.00 & held \\
+P11 & VGG19-BN & Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions & minimum 99.5\% & held \\
+P8 & robust ResNet-50 & Query-only detectors: AUROC $\le0.62$ against Tier~B & maximum 0.52 & held \\
+P8 & robust ResNet-50 & Query-only detectors: AUROC $\ge0.90$ against the random walk & minimum 1.00 & held \\
+P9 & robust ResNet-50 & Model outputs: AUROC $\le0.70$ against Tier~C before either label change & maximum 0.67 & held \\
+P10 & robust ResNet-50 & Model outputs: AUROC $\ge0.90$ against Tier~B & minimum 1.00 & held \\
+P11 & robust ResNet-50 & Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions & minimum 100.0\% & held \\
+P8 & seed 1 & Query-only detectors: AUROC $\le0.62$ against Tier~B & maximum 0.54 & held \\
+P8 & seed 1 & Query-only detectors: AUROC $\ge0.90$ against the random walk & minimum 1.00 & held \\
+P9 & seed 1 & Model outputs: AUROC $\le0.70$ against Tier~C before either label change & maximum 0.59 & held \\
+P10 & seed 1 & Model outputs: AUROC $\ge0.90$ against Tier~B & minimum 1.00 & held \\
+P11 & seed 1 & Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions & minimum 98.5\% & held \\
+P8 & seed 2 & Query-only detectors: AUROC $\le0.62$ against Tier~B & maximum 0.54 & held \\
+P8 & seed 2 & Query-only detectors: AUROC $\ge0.90$ against the random walk & minimum 1.00 & held \\
+P9 & seed 2 & Model outputs: AUROC $\le0.70$ against Tier~C before either label change & maximum 0.59 & held \\
+P10 & seed 2 & Model outputs: AUROC $\ge0.90$ against Tier~B & minimum 1.00 & held \\
+P11 & seed 2 & Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions & minimum 100.0\% & held \\
+P8 & GTSRB & Query-only detectors: AUROC $\le0.62$ against Tier~B & maximum 0.50 & held \\
+P8 & GTSRB & Query-only detectors: AUROC $\ge0.90$ against the random walk & minimum 1.00 & held \\
+P9 & GTSRB & Model outputs: AUROC $\le0.70$ against Tier~C before either label change & maximum 0.711 & \textbf{failed} \\
+P10 & GTSRB & Model outputs: AUROC $\ge0.90$ against Tier~B & minimum 0.96 & held \\
+P11 & GTSRB & Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions & minimum 96.7\% & held \\
+P12 & ImageNet & Query-only detectors: AUROC $\le0.62$ against Tier~B & maximum 0.621 (query only all) & \textbf{failed} \\
+P12 & ImageNet & Query-only detectors: AUROC $\ge0.90$ against the random walk & minimum 1.00 & held \\
+P12 & ImageNet & Model outputs: AUROC $\le0.70$ against Tier~C before either label change & maximum 0.697 & held \\
+P12 & ImageNet & Model outputs: AUROC $\ge0.90$ against Tier~B & minimum 1.00 & held \\
+P12 & ImageNet & Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions & minimum 98.5\% & held \\
+P14a & throttled SimBA & GWAD+ AUROC $\le0.65$, throttled attack against restoration & 0.54 and 0.49 & held \\
+P14b & throttled SimBA & Throttled attack succeeds in $\ge50\%$ of the sessions & 78\% and 56\% & held \\
+P15 & sensitivity & Every variant of the Lee et al.\ detector that reproduces the paper flags $\ge90\%$ of Tier-B sessions (online) & 3 of 4 variants reproduce the paper; minimum 99\% & held \\
+E1 & main (exploratory) & Trend statistic, two-stage, 1\% pooled threshold: detects $\ge50\%$ of attacks with $\le5\%$ on every benign client & attacks 98\%; worst benign client 12.5\% (sweep) & \textbf{failed} \\
+\bottomrule
+\end{longtable}
+\end{footnotesize}

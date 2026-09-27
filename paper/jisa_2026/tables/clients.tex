@@ -1,0 +1,26 @@
+\begin{table*}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Clients. All optimizing clients of a corpus share the optimizer, the start image, the perturbation ball
+($\epsilon=8/255$) and the query budget. $y$ is the source label, $z$ the degraded start image, $p_y$ the model's
+probability of $y$, and $m_y$ the margin of $y$ over the strongest other class.}
+\label{tab:clients}
+\begin{tabular}{L{2.0cm}L{2.6cm}L{5.3cm}L{2.6cm}}
+\toprule
+Group & Client & What it does & Acceptance of a step \\
+\midrule
+Adversarial & Attack & Maximizes the cross-entropy of $y$ & If the objective improves \\[3pt]
+Tier A: explanation & LIME, KernelSHAP, occlusion, RISE & Queries masked copies of the clean image following a fixed or random design; fits or averages the
+responses & No optimization \\[3pt]
+Tier B: matched benign & Restoration & Minimizes the squared distance to a classical restoration of $z$ (smoothing for the noisy start,
+unsharp masking for the blurred start) & If the objective improves and the label stays $y$ \\
+ & Confidence raising & Maximizes $\log p_y$ & If the objective improves \\[3pt]
+Tier C: attack-equivalent & Boundary probing & Minimizes $m_y$ & If the objective improves and the label stays $y$ \\
+ & Counterfactual search & Minimizes the cross-entropy of the runner-up class of $z$ plus a penalty on the distance to $z$ &
+If the objective improves \\[3pt]
+Controls & Random walk & Random sign steps inside the perturbation ball & Every step \\
+ & Shuffled images & 1{,}024 distinct test images & No optimization \\
+ & Gaussian noise & Independent noise ($\sigma=0.1$) added to one clean image & No optimization \\
+ & Sweep & One clean image at 32 JPEG qualities and 32 brightness levels & No optimization \\
+\bottomrule
+\end{tabular}
+\end{table*}

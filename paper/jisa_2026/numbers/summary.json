@@ -1,0 +1,24 @@
+{
+  "blacklight_per_query_main": {
+    "attack": 0.5218,
+    "boundary_probe": 0.556,
+    "confidence_boost": 0.5324,
+    "counterfactual": 0.5331,
+    "random_walk": 0.999,
+    "restore": 0.5266
+  },
+  "rank_equivalence": {
+    "sessions": 80,
+    "attacks_flipped": 80,
+    "identical_before_flip": 80,
+    "divergence_minus_flip": [
+      1,
+      2
+    ],
+    "median_flip_query": 581.5,
+    "min_flip": 17,
+    "max_flip": 2904,
+    "calls": 4097
+  },
+  "total_distinct_sessions": 43336
+}

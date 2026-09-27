@@ -1,0 +1,4 @@
+control,sessions,queries,blacklight_flagged_queries,blacklight_session_alarm,gwad_plus_session_alarm,gwad_session_alarm,lfc_session_alarm,gwad_plus_median_windows
+noise,400,409600,0,0.0,0.99,1.0,0.0,766.0
+shuffled,4000,4096000,42,0.0105,0.0,0.0,0.0,0.0
+sweep,400,409600,28012,0.98,1.0,1.0,0.5675,766.0

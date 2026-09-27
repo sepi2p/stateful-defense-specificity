@@ -1,0 +1,22 @@
+\begin{table*}[!tbp]
+\centering\small
+\caption{Operating points on the main corpus and its controls (evaluation split). ``Released'' is the detector's published decision rule; the other rows recalibrate the session-level threshold on the calibration split of a control so that at most the stated fraction of its sessions is blocked. Blacklight is recalibrated on shuffled test images. GWAD and GWAD+ never produce a decision window on shuffled images, so they are recalibrated on the Gaussian-noise control. Ranges are over the two starts.}
+\label{tab:operating}
+\resizebox{\textwidth}{!}{\begin{tabular}{llcccccccc}
+\toprule
+& & \multicolumn{3}{c}{Optimizing clients blocked (\%)} & \multicolumn{3}{c}{Controls blocked (\%)} & \multicolumn{2}{c}{Median first alarm} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}\cmidrule(lr){9-10}
+Detector & Threshold & Attack & Restoration & Conf.\ raising & Shuffled & Noise & Sweep & Attack & Restoration \\
+\midrule
+Blacklight & released & 100.0 & 100.0 & 100.0 & 1.2 & 0.0 & 97.0 & 4--5 & 4 \\
+ & shuffled, 1\% & 100.0 & 100.0 & 100.0 & 0.0 & 0.0 & 95.5 & 6 & 5--6 \\
+ & shuffled, 0.1\% & 100.0 & 100.0 & 100.0 & 0.0 & 0.0 & 95.5 & 6 & 5--6 \\[2pt]
+GWAD & released & 100.0 & 100.0 & 100.0 & 0.0 & 100.0 & 100.0 & 258 & 258 \\
+ & noise, 1\% & 99.0--99.5 & 100.0 & 99.5 & 0.0 & 2.5 & 100.0 & 268--277 & 266--287 \\
+ & noise, 0.1\% & 98.0--99.0 & 99.5--100.0 & 99.0--99.5 & 0.0 & 1.5 & 100.0 & 273--287 & 269--291 \\[2pt]
+GWAD+ & released & 100.0 & 100.0 & 100.0 & 0.0 & 99.0 & 100.0 & 259 & 259 \\
+ & noise, 1\% & 99.0--99.5 & 100.0 & 99.5 & 0.0 & 2.5 & 100.0 & 271--280 & 266--288 \\
+ & noise, 0.1\% & 98.0--99.0 & 99.5--100.0 & 99.0 & 0.0 & 1.5 & 100.0 & 274--287 & 269--291 \\
+\bottomrule
+\end{tabular}}
+\end{table*}

@@ -1,14 +1,16 @@
-\begin{table}[t]
+\begin{table}[!tbp]
 \centering\small
-\caption{Non-optimizing controls on CIFAR-10 (fraction of sessions alarmed at released operating points). Faithfulness of the Lee et al.\ reimplementation (50 images): SimBA 1.00, Square 1.00, shuffled 0.00, noise 0.00 (paper: TPR 1.00, FPR 0.00).}
+\caption{Non-optimizing control streams on CIFAR-10: sessions alarmed (\%) at released operating points, all splits. Each stream has 1{,}024 queries.}
 \label{tab:controls}
-\resizebox{\textwidth}{!}{\begin{tabular}{lrccc}
+\resizebox{\textwidth}{!}{\begin{tabular}{lrccccc}
 \toprule
-Control stream & Sessions & Blacklight & GWAD+ & Lee et al.\ Phase 2 \\
+& & & & & \multicolumn{2}{c}{Lee et al.} \\
+\cmidrule(lr){6-7}
+Control stream & Sessions & Blacklight & GWAD & GWAD+ & sequence-50 & online \\
 \midrule
-i.i.d. $\mathcal{N}(0,0.1^2)$ noise & 400 & 0.000 & 0.990 & 0.028 \\
-Shuffled test images & 4000 & 0.011 & 0.000 & 0.025 \\
-JPEG/brightness sweep & 400 & 0.980 & 1.000 & 1.000 \\
+Shuffled test images & 4{,}000 & 1.1 & 0.0 & 0.0 & 0.0 & 0.0 \\
+Gaussian noise ($\sigma=0.1$) & 400 & 0.0 & 100.0 & 99.0 & 0.0 & 0.0 \\
+JPEG/brightness sweep & 400 & 98.0 & 100.0 & 100.0 & 1.5 & 56.8 \\
 \bottomrule
 \end{tabular}}
 \end{table}

@@ -1,0 +1,34 @@
+{
+  "cifar10/resnet18_seed0": [
+    0.9184,
+    10000
+  ],
+  "cifar10/resnet18_seed1": [
+    0.922,
+    10000
+  ],
+  "cifar10/resnet18_seed2": [
+    0.9172,
+    10000
+  ],
+  "cifar10/bbb_vgg19_bn": [
+    0.9334,
+    10000
+  ],
+  "cifar10/robustbench_Engstrom2019Robustness": [
+    0.8703,
+    10000
+  ],
+  "gtsrb32/resnet18": [
+    0.9140934283452098,
+    12630
+  ],
+  "imagenet/resnet50_v1_full_val": [
+    0.76144,
+    50000
+  ],
+  "imagenet/resnet50_v1_100_classes": [
+    0.735,
+    5000
+  ]
+}
