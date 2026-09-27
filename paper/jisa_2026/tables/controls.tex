@@ -1,0 +1,14 @@
+\begin{table}[t]
+\centering\small
+\caption{Non-optimizing controls on CIFAR-10 (fraction of sessions alarmed at released operating points). Faithfulness of the Lee et al.\ reimplementation (50 images): SimBA 1.00, Square 1.00, shuffled 0.00, noise 0.00 (paper: TPR 1.00, FPR 0.00).}
+\label{tab:controls}
+\resizebox{\textwidth}{!}{\begin{tabular}{lrccc}
+\toprule
+Control stream & Sessions & Blacklight & GWAD+ & Lee et al.\ Phase 2 \\
+\midrule
+i.i.d. $\mathcal{N}(0,0.1^2)$ noise & 400 & 0.000 & 0.990 & 0.028 \\
+Shuffled test images & 4000 & 0.011 & 0.000 & 0.025 \\
+JPEG/brightness sweep & 400 & 0.980 & 1.000 & 1.000 \\
+\bottomrule
+\end{tabular}}
+\end{table}

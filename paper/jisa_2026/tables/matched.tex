@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\centering\small
+\caption{Matched-objective specificity across corpora (evaluation split, 1,024 queries unless noted). Columns 2--3: AUROC separating the attack from matched benign optimizers (Tier B: restoration and confidence raising; ImageNet: confidence raising only, restoration makes no progress at 224\,px). ``vs drift'': query-only AUROC against the objective-free random walk. Model outputs: logistic model on the classifier's own outputs, against Tier B and against attack-equivalent clients (Tier C) before either session changes the label. Last column: fraction of Tier-B sessions blocked by the reimplemented Lee et al.\ detector. Ranges are over both corrupted starts and the pooled objectives.}
+\label{tab:matched}
+\resizebox{\textwidth}{!}{\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{Query-only detectors (AUROC)} & \multicolumn{2}{c}{Model outputs (AUROC)} & Lee et al. \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-6}
+Corpus & GWAD+ vs B & Blacklight vs B & vs drift & vs B & vs C, pre-flip & blocks B \\
+\midrule
+CIFAR-10 ResNet-18 (seed 0) & 0.45--0.52 & 0.45--0.52 & 1.00 & 1.00 & 0.59--0.62 & 0.99--1.00 \\
+CIFAR-10 ResNet-18 (seed 1) & 0.48--0.53 & 0.50--0.54 & 1.00 & 1.00 & 0.53--0.59 & 0.98--1.00 \\
+CIFAR-10 ResNet-18 (seed 2) & 0.45--0.52 & 0.47--0.53 & 1.00 & 1.00 & 0.54--0.59 & 1.00 \\
+CIFAR-10 VGG19-BN & 0.43--0.53 & 0.46--0.49 & 1.00 & 1.00 & 0.55--0.61 & 0.99--1.00 \\
+CIFAR-10 robust ResNet-50 & 0.49--0.51 & 0.48--0.52 & 1.00 & 1.00 & 0.59--0.67 & 1.00 \\
+GTSRB ResNet-18 & 0.48--0.49 & 0.45--0.50 & 1.00 & 0.96--1.00 & 0.67--0.71 & 0.97--1.00 \\
+ImageNet ResNet-50 & 0.60--0.62 & 0.54 & 1.00 & 1.00 & 0.62--0.70 & 0.98--1.00 \\
+CIFAR-10 ResNet-18, SimBA & 0.74--0.97 & 0.48--0.53 & -- & 1.00 & 0.58--0.63 & 1.00 \\
+\bottomrule
+\end{tabular}}
+\end{table*}

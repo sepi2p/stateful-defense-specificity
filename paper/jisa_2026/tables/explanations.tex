@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering\small
+\caption{Explanation clients: fraction of sessions blocked at released operating points (median first-alarm query in parentheses), 200 evaluation images per cell. Utility: median reduction in deletion AUC relative to a smooth random ordering (all bootstrap 95\% CIs exclude 0).}
+\label{tab:explanations}
+\resizebox{\textwidth}{!}{\begin{tabular}{llrcccc}
+\toprule
+Resolution & Client & Queries & Blacklight & GWAD+ & Lee et al. & Utility \\
+\midrule
+32 px & KernelSHAP & 500 & 1.00 (3) & 0.30 (265) & 0.67 (126) & 0.152 \\
+32 px & LIME & 1000 & 1.00 (6) & 0.00 & 0.41 (409) & 0.198 \\
+32 px & Occlusion & 842 & 1.00 (2) & 1.00 (259) & 1.00 (17) & 0.258 \\
+32 px & RISE & 1000 & 0.16 (720) & 0.00 & 0.00 & 0.161 \\
+224 px & KernelSHAP & 500 & 1.00 (3) & 0.09 (284) & 0.32 (75) & 0.162 \\
+224 px & LIME & 1000 & 1.00 (5) & 0.05 (260) & 0.30 (89) & 0.268 \\
+224 px & Occlusion & 626 & 1.00 (2) & 0.97 (259) & 0.99 (18) & 0.233 \\
+224 px & RISE & 1000 & 0.04 (85) & 0.00 & 0.32 (140) & 0.230 \\
+\bottomrule
+\end{tabular}}
+\end{table}
