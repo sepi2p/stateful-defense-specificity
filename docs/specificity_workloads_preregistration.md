@@ -411,7 +411,7 @@ not evaluable for the lime package at 32 px, whose default segmentation returns 
 for most images. The deletion-metric rule of P6c/P13b/P17d is also met by these empty
 explanations, so it does not establish that an explanation is informative.
 
-## X15 (2026-09-28): validity of the library explanations and enforcement with rejection
+## X15 (2026-09-27, 23:29 +0330): validity of the library explanations and enforcement with rejection
 
 Reason. An external review of the draft raised two objections that the record above cannot
 answer. (1) The deletion rule of P6c/P13b/P17d is met by empty explanations, so nothing in the
