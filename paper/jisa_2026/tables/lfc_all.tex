@@ -1,0 +1,23 @@
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{The reimplemented detector of Lee et al.\ under further settings: evaluation sessions flagged (\%), both starts pooled. Tested: attack sessions in which at least 15 of the first 50 queries fall into one group, so that a test is applied at all. Capped at 50: the test is applied at every update to the 50 most recent members of a group. 5 lags: the test uses five lags instead of $\min(10,\lfloor n/5\rfloor)$. Walk: the objective-free random walk under the three schedules of Table~\ref{tab:lfc}.}
+\label{tab:lfcall}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lcccccccc}
+\toprule
+& & \multicolumn{3}{c}{Whole session, groups capped at 50} & \multicolumn{3}{c}{First 50, every update, 5 lags} & \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Corpus & Tested & Attack & Restor. & Conf. & Attack & Restor. & Conf. & Walk \\
+\midrule
+CIFAR-10, ResNet-18 (seed 0), NES & 68.8 & 98.8 & 99.5 & 100.0 & 11.0 & 8.0 & 10.5 & 100.0 \\
+CIFAR-10, ResNet-18 (seed 1), NES & 69.0 & 98.8 & 99.8 & 99.8 & 8.8 & 9.3 & 9.0 & 100.0 \\
+CIFAR-10, ResNet-18 (seed 2), NES & 72.0 & 99.5 & 100.0 & 99.8 & 9.3 & 8.5 & 12.0 & 100.0 \\
+CIFAR-10, VGG19-BN, NES & 70.3 & 100.0 & 99.8 & 100.0 & 11.8 & 11.3 & 9.5 & 100.0 \\
+CIFAR-10, robust ResNet-50, NES & 68.8 & 100.0 & 100.0 & 100.0 & 16.0 & 14.5 & 12.5 & 100.0 \\
+GTSRB, ResNet-18, NES & 36.2 & 99.8 & 98.1 & 100.0 & 6.7 & 7.1 & 8.6 & 99.8--100.0 \\
+ImageNet, ResNet-50, tiled NES & 100.0 & 99.8 & -- & 100.0 & 76.3 & -- & 67.3 & 98.8--100.0 \\
+CIFAR-10, ResNet-18 (seed 0), SimBA & 100.0 & 100.0 & 100.0 & 100.0 & 99.8 & 88.0 & 99.8 & -- \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

@@ -1,21 +1,23 @@
-\begin{table*}[!tbp]
-\centering\small
-\caption{Utility of the explanation clients on the evaluation images. Primary metric: deletion area with per-channel mean fill; ``Random'' is the mean over ten spatially smooth random orderings; ``Difference'' is the median paired difference (random minus client) with its bootstrap 95\% interval; ``Better'' is the share of images on which the client's area is smaller. Sensitivity metric: blurred fill and random pixel orderings, the metric originally planned.}
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Utility of the explanation clients on the evaluation images. Rule used: deletion area with per-channel mean fill; ``Random'' is the mean over ten spatially smooth random orderings; ``Difference'' is the median paired difference (random minus client) with its bootstrap 95\% interval (2{,}000 resamples); ``Better'' is the share of images on which the client's area is smaller. Rule planned first: blurred fill and random orderings of single pixels, with the requirement that the client be better on 90\% of the images, which no client meets.}
 \label{tab:explutility}
-\resizebox{\textwidth}{!}{\begin{tabular}{rlccccc}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{rlcccccc}
 \toprule
-& & \multicolumn{4}{c}{Primary metric} & Sensitivity metric \\
-\cmidrule(lr){3-6}\cmidrule(lr){7-7}
-Pixels & Client & Client & Random & Difference & Better (\%) & Difference \\
+& & \multicolumn{4}{c}{Rule used} & \multicolumn{2}{c}{Rule planned first} \\
+\cmidrule(lr){3-6}\cmidrule(lr){7-8}
+Pixels & Client & Client & Random & Difference & Better (\%) & Difference & Better (\%) \\
 \midrule
-32 & LIME & 0.25 & 0.50 & 0.198 {[}0.166, 0.234{]} & 84 & 0.015 {[}$-$0.019, 0.060{]} \\
- & KernelSHAP & 0.33 & 0.49 & 0.152 {[}0.130, 0.198{]} & 80 & 0.078 {[}0.017, 0.108{]} \\
- & Occlusion & 0.20 & 0.49 & 0.258 {[}0.224, 0.286{]} & 92 & 0.060 {[}0.005, 0.093{]} \\
- & RISE & 0.31 & 0.50 & 0.161 {[}0.132, 0.189{]} & 85 & 0.055 {[}0.029, 0.097{]} \\
-224 & LIME & 0.13 & 0.43 & 0.268 {[}0.230, 0.291{]} & 96 & 0.000 {[}$-$0.018, 0.020{]} \\
- & KernelSHAP & 0.21 & 0.42 & 0.162 {[}0.146, 0.182{]} & 88 & 0.024 {[}0.005, 0.045{]} \\
- & Occlusion & 0.12 & 0.39 & 0.233 {[}0.207, 0.259{]} & 92 & 0.001 {[}$-$0.011, 0.023{]} \\
- & RISE & 0.14 & 0.41 & 0.230 {[}0.204, 0.244{]} & 98 & $-$0.005 {[}$-$0.023, 0.011{]} \\
+32 & LIME & 0.25 & 0.50 & 0.198 {[}0.166, 0.234{]} & 84.0 & 0.015 {[}$-$0.019, 0.060{]} & 53.0 \\
+ & KernelSHAP & 0.33 & 0.49 & 0.152 {[}0.130, 0.198{]} & 79.5 & 0.078 {[}0.017, 0.108{]} & 59.0 \\
+ & Occlusion & 0.20 & 0.49 & 0.258 {[}0.224, 0.286{]} & 91.5 & 0.060 {[}0.005, 0.093{]} & 57.0 \\
+ & RISE & 0.31 & 0.50 & 0.161 {[}0.132, 0.189{]} & 85.0 & 0.055 {[}0.029, 0.097{]} & 63.0 \\
+224 & LIME & 0.13 & 0.43 & 0.268 {[}0.230, 0.291{]} & 96.5 & 0.000 {[}$-$0.018, 0.020{]} & 49.5 \\
+ & KernelSHAP & 0.21 & 0.42 & 0.162 {[}0.146, 0.182{]} & 88.0 & 0.024 {[}0.005, 0.045{]} & 58.0 \\
+ & Occlusion & 0.12 & 0.39 & 0.233 {[}0.207, 0.259{]} & 92.0 & 0.001 {[}$-$0.011, 0.023{]} & 50.5 \\
+ & RISE & 0.14 & 0.41 & 0.230 {[}0.204, 0.244{]} & 98.5 & $-$0.005 {[}$-$0.023, 0.011{]} & 47.0 \\
 \bottomrule
-\end{tabular}}
-\end{table*}
+\end{tabular}
+\end{adjustbox}
+\end{table}

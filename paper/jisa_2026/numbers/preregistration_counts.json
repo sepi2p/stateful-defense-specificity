@@ -1,0 +1,48 @@
+{
+  "checks": 67,
+  "held": 59,
+  "failed": 8,
+  "checks_P1_P15": 55,
+  "failed_P1_P15": 6,
+  "failed_P1_P15_first_analysis": 7,
+  "verdict_changed": [
+    [
+      "P5a",
+      "controls"
+    ]
+  ],
+  "failed_ids": [
+    [
+      "P1",
+      "main"
+    ],
+    [
+      "P4",
+      "main"
+    ],
+    [
+      "P6b",
+      "explanation, 32\\,px"
+    ],
+    [
+      "P8",
+      "SimBA"
+    ],
+    [
+      "P9",
+      "GTSRB"
+    ],
+    [
+      "P12",
+      "ImageNet"
+    ],
+    [
+      "P16b",
+      "NES variants"
+    ],
+    [
+      "P17c",
+      "libraries, 224\\,px"
+    ]
+  ]
+}

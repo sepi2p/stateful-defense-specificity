@@ -1,22 +1,25 @@
-\begin{table*}[!tbp]
-\centering\small
-\caption{Operating points on the main corpus and its controls (evaluation split). ``Released'' is the detector's published decision rule; the other rows recalibrate the session-level threshold on the calibration split of a control so that at most the stated fraction of its sessions is blocked. Blacklight is recalibrated on shuffled test images. GWAD and GWAD+ never produce a decision window on shuffled images, so they are recalibrated on the Gaussian-noise control. Ranges are over the two starts.}
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Operating points on the main corpus and its controls (evaluation split): sessions with an alarm (\%) and median query index of the first alarm. ``Released'' is the published decision rule. The other rows set the session-level threshold on the calibration split of the named control so that at most the stated number of its sessions raise an alarm; only controls on which the released rule raises alarms give a threshold that is less sensitive than the released one. Calibrated on the sweep, GWAD and GWAD+ raise no alarm on any stream, because the released network gives the sweeps its largest score; these rows are omitted. Restor.: restoration; Conf.: confidence raising. Ranges are over the two starts.}
 \label{tab:operating}
-\resizebox{\textwidth}{!}{\begin{tabular}{llcccccccc}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llccccccccc}
 \toprule
-& & \multicolumn{3}{c}{Optimizing clients blocked (\%)} & \multicolumn{3}{c}{Controls blocked (\%)} & \multicolumn{2}{c}{Median first alarm} \\
-\cmidrule(lr){3-5}\cmidrule(lr){6-8}\cmidrule(lr){9-10}
-Detector & Threshold & Attack & Restoration & Conf.\ raising & Shuffled & Noise & Sweep & Attack & Restoration \\
+& & \multicolumn{3}{c}{Optimizing clients (\%)} & \multicolumn{3}{c}{Controls (\%)} & \multicolumn{3}{c}{Median first alarm} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}\cmidrule(lr){9-11}
+Detector & Threshold & Attack & Restor. & Conf. & Shuffled & Noise & Sweep & Attack & Restor. & Conf. \\
 \midrule
-Blacklight & released & 100.0 & 100.0 & 100.0 & 1.2 & 0.0 & 97.0 & 4--5 & 4 \\
- & shuffled, 1\% & 100.0 & 100.0 & 100.0 & 0.0 & 0.0 & 95.5 & 6 & 5--6 \\
- & shuffled, 0.1\% & 100.0 & 100.0 & 100.0 & 0.0 & 0.0 & 95.5 & 6 & 5--6 \\[2pt]
-GWAD & released & 100.0 & 100.0 & 100.0 & 0.0 & 100.0 & 100.0 & 258 & 258 \\
- & noise, 1\% & 99.0--99.5 & 100.0 & 99.5 & 0.0 & 2.5 & 100.0 & 268--277 & 266--287 \\
- & noise, 0.1\% & 98.0--99.0 & 99.5--100.0 & 99.0--99.5 & 0.0 & 1.5 & 100.0 & 273--287 & 269--291 \\[2pt]
-GWAD+ & released & 100.0 & 100.0 & 100.0 & 0.0 & 99.0 & 100.0 & 259 & 259 \\
- & noise, 1\% & 99.0--99.5 & 100.0 & 99.5 & 0.0 & 2.5 & 100.0 & 271--280 & 266--288 \\
- & noise, 0.1\% & 98.0--99.0 & 99.5--100.0 & 99.0 & 0.0 & 1.5 & 100.0 & 274--287 & 269--291 \\
+Blacklight & released ($T=25$) & 100.0 & 100.0 & 100.0 & 0.0 & 0.0 & 95.5 & 6 & 5--6 & 5--6 \\
+ & sweep, $\le1$ of 100 ($T=47$) & 80.0--82.0 & 77.0--78.5 & 74.5--82.5 & 0.0 & 0.0 & 4.0 & 256--281.5 & 239--256 & 256--290 \\
+ & sweep, none of 100 ($T=48$) & 28.5--30.0 & 30.5--34.5 & 26.5--28.5 & 0.0 & 0.0 & 1.5 & 375--383.5 & 341--443 & 426--579 \\[2pt]
+GWAD & released & 100.0 & 100.0 & 100.0 & 0.0 & 100.0 & 100.0 & 258 & 258 & 258 \\
+ & shuffled, $\le1\%$ & 100.0 & 100.0 & 100.0 & 1.6 & 100.0 & 100.0 & 258 & 258 & 258 \\
+ & noise, $\le1$ of 100 & 99.0--99.5 & 100.0 & 99.5 & 0.0 & 2.5 & 100.0 & 268--277 & 265.5--287 & 268--274 \\
+ & noise, none of 100 & 98.0--99.0 & 99.5--100.0 & 99.0--99.5 & 0.0 & 1.5 & 100.0 & 273--287 & 269--291 & 273--288.5 \\[2pt]
+GWAD+ & released & 100.0 & 100.0 & 100.0 & 0.0 & 99.0 & 100.0 & 259 & 259 & 259 \\
+ & noise, $\le1$ of 100 & 99.0--99.5 & 100.0 & 99.5 & 0.0 & 2.5 & 100.0 & 271--280.5 & 266--288 & 268--274 \\
+ & noise, none of 100 & 98.0--99.0 & 99.5--100.0 & 99.0 & 0.0 & 1.5 & 100.0 & 274--287 & 269--291 & 275.5--288.5 \\
 \bottomrule
-\end{tabular}}
-\end{table*}
+\end{tabular}
+\end{adjustbox}
+\end{table}

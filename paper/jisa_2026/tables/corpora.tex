@@ -1,19 +1,21 @@
-\begin{table*}[!tbp]
-\centering\small
-\caption{Corpora. Each source image contributes two degraded starts and one session per client and start. Attack success is the fraction of evaluation sessions in which some query is classified differently from the source label within the budget; the last column is the median query index of the first such query among successful sessions. Ranges are over the two starts. The ImageNet corpus uses the fit and evaluation images only.}
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Corpora. Each source image contributes two degraded starts and one session per client and start. Acc.: clean test accuracy (ImageNet: 73.5\% on the 100 classes from which the source images are drawn). Images: source images in the fit, calibration and evaluation splits. Success: evaluation sessions of the attack in which some query is classified differently from the source label within the budget. Queries: median index of the first such query among successful sessions. Ranges are over the two starts.}
 \label{tab:corpora}
-\resizebox{\textwidth}{!}{\begin{tabular}{llrlrrrr}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llrrllrrr}
 \toprule
-Dataset & Model (clean accuracy, \%) & Pixels & Optimizer & Images fit/cal./eval. & Sessions & Attack success (\%) & Median queries to success \\
+Dataset & Model & Acc.\ (\%) & Pixels & Optimizer & Images & Sessions & Success (\%) & Queries \\
 \midrule
-CIFAR-10 & ResNet-18 (seed 0) (91.8) & 32 & NES & 100/100/200 & 4{,}800 & 64--78 & 383--592 \\
-CIFAR-10 & ResNet-18 (seed 1) (92.2) & 32 & NES & 100/100/200 & 4{,}800 & 64--76 & 323--581 \\
-CIFAR-10 & ResNet-18 (seed 2) (91.7) & 32 & NES & 100/100/200 & 4{,}800 & 50--70 & 357--657 \\
-CIFAR-10 & VGG19-BN (93.3) & 32 & NES & 100/100/200 & 4{,}800 & 40--76 & 293--569 \\
-CIFAR-10 & robust ResNet-50 (87.0) & 32 & NES & 100/100/200 & 4{,}800 & 4--7 & 218--541 \\
-GTSRB & ResNet-18 (91.4) & 32 & NES & 84/84/210 & 4{,}536 & 20--36 & 424--482 \\
-ImageNet & ResNet-50 (76.1) & 224 & tiled NES & 100/0/200 & 3{,}600 & 80--84 & 199--214 \\
-CIFAR-10 & ResNet-18 (seed 0) (91.8) & 32 & SimBA & 100/100/200 & 4{,}000 & 85--90 & 360--544 \\
+CIFAR-10 & ResNet-18 (seed 0) & 91.8 & 32 & NES & 100/100/200 & 4{,}800 & 64.0--78.5 & 383--592 \\
+CIFAR-10 & ResNet-18 (seed 1) & 92.2 & 32 & NES & 100/100/200 & 4{,}800 & 64.0--75.5 & 323--581 \\
+CIFAR-10 & ResNet-18 (seed 2) & 91.7 & 32 & NES & 100/100/200 & 4{,}800 & 50.0--69.5 & 357--657 \\
+CIFAR-10 & VGG19-BN & 93.3 & 32 & NES & 100/100/200 & 4{,}800 & 39.5--76.5 & 293--569 \\
+CIFAR-10 & robust ResNet-50 & 87.0 & 32 & NES & 100/100/200 & 4{,}800 & 4.5--7.0 & 217.5--541 \\
+GTSRB & ResNet-18 & 91.4 & 32 & NES & 84/84/210 & 4{,}536 & 20.5--35.7 & 424--482 \\
+ImageNet & ResNet-50 & 76.1 & 224 & tiled NES & 100/0/200 & 3{,}600 & 80.0--83.5 & 199--214.5 \\
+CIFAR-10 & ResNet-18 (seed 0) & 91.8 & 32 & SimBA & 100/100/200 & 4{,}000 & 85.0--89.5 & 360--544 \\
 \bottomrule
-\end{tabular}}
-\end{table*}
+\end{tabular}
+\end{adjustbox}
+\end{table}

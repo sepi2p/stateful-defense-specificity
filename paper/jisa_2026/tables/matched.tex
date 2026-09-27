@@ -1,21 +1,23 @@
-\begin{table*}[!tbp]
-\centering\small
-\caption{Matched-objective specificity (evaluation split; AUROC at the full session length unless noted). Tier B: restoration and confidence raising (ImageNet: confidence raising only, because restoration makes no progress at $224\times224$ pixels, Section~\ref{sec:threats}). The random walk was generated with the NES corpora only. Model outputs: logistic model on the classifier's own outputs, against Tier B and against attack-equivalent clients (Tier C) on the queries that precede the first label change of either session. Ranges are over both starts and the pooled objectives.}
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Matched-objective separability: AUROC of logistic models on each detector's session statistics (fitted on the fit split, evaluation split shown, full session). Tier B: restoration and confidence raising (ImageNet: confidence raising only, Section~\ref{sec:threats}). The random walk was generated with the NES corpora only. Model outputs: logistic model on the classifier's own outputs; against Tier~C it uses only the queries that precede the first label change of either session. Ranges are over the two starts and the clients of the tier.}
 \label{tab:matched}
-\resizebox{\textwidth}{!}{\begin{tabular}{lcccccc}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lccccccc}
 \toprule
-& \multicolumn{2}{c}{Attack vs Tier B} & \multicolumn{2}{c}{Attack vs random walk} & \multicolumn{2}{c}{Model outputs} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
-Corpus & GWAD+ & Blacklight & GWAD+ & Blacklight & vs Tier B & vs Tier C, pre-flip \\
+& \multicolumn{3}{c}{Attack vs Tier B} & \multicolumn{2}{c}{Attack vs random walk} & \multicolumn{2}{c}{Model outputs} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Corpus & GWAD & GWAD+ & Blacklight & GWAD+ & Blacklight & vs Tier B & vs Tier C \\
 \midrule
-CIFAR-10, ResNet-18 (seed 0), NES & 0.45--0.52 & 0.45--0.52 & 1.00 & 1.00 & 1.00 & 0.59--0.62 \\
-CIFAR-10, ResNet-18 (seed 1), NES & 0.48--0.53 & 0.50--0.54 & 1.00 & 1.00 & 1.00 & 0.53--0.59 \\
-CIFAR-10, ResNet-18 (seed 2), NES & 0.45--0.52 & 0.47--0.53 & 1.00 & 1.00 & 1.00 & 0.54--0.59 \\
-CIFAR-10, VGG19-BN, NES & 0.43--0.53 & 0.46--0.49 & 1.00 & 1.00 & 1.00 & 0.55--0.61 \\
-CIFAR-10, robust ResNet-50, NES & 0.49--0.51 & 0.48--0.52 & 1.00 & 1.00 & 1.00 & 0.59--0.67 \\
-GTSRB, ResNet-18, NES & 0.48--0.49 & 0.45--0.50 & 1.00 & 1.00 & 0.96--1.00 & 0.67--0.71 \\
-ImageNet, ResNet-50, tiled NES & 0.60--0.62 & 0.54 & 1.00 & 1.00 & 1.00 & 0.62--0.70 \\
-CIFAR-10, ResNet-18 (seed 0), SimBA & 0.74--0.97 & 0.48--0.53 & -- & -- & 1.00 & 0.58--0.63 \\
+CIFAR-10, ResNet-18 (seed 0), NES & 0.45--0.53 & 0.45--0.52 & 0.46--0.51 & 1.00 & 1.00 & 1.00 & 0.59--0.62 \\
+CIFAR-10, ResNet-18 (seed 1), NES & 0.48--0.53 & 0.48--0.53 & 0.50--0.52 & 1.00 & 1.00 & 1.00 & 0.53--0.59 \\
+CIFAR-10, ResNet-18 (seed 2), NES & 0.45--0.53 & 0.45--0.52 & 0.47--0.54 & 1.00 & 1.00 & 1.00 & 0.54--0.59 \\
+CIFAR-10, VGG19-BN, NES & 0.43--0.53 & 0.43--0.53 & 0.46--0.51 & 1.00 & 1.00 & 1.00 & 0.55--0.61 \\
+CIFAR-10, robust ResNet-50, NES & 0.49--0.51 & 0.49--0.51 & 0.47--0.50 & 1.00 & 1.00 & 1.00 & 0.59--0.67 \\
+GTSRB, ResNet-18, NES & 0.48--0.49 & 0.48--0.49 & 0.45--0.49 & 1.00 & 1.00 & 0.96--1.00 & 0.67--0.71 \\
+ImageNet, ResNet-50, tiled NES & 0.60--0.62 & 0.60--0.62 & 0.46--0.51 & 1.00 & 1.00 & 1.00 & 0.62--0.70 \\
+CIFAR-10, ResNet-18 (seed 0), SimBA & 0.74--0.97 & 0.74--0.97 & 0.48--0.54 & -- & -- & 1.00 & 0.58--0.63 \\
 \bottomrule
-\end{tabular}}
-\end{table*}
+\end{tabular}
+\end{adjustbox}
+\end{table}

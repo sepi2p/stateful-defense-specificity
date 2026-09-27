@@ -1,21 +1,23 @@
-\begin{table*}[!tbp]
-\centering\small
-\caption{The reimplemented detector of Lee et al.\ on matched clients: evaluation sessions flagged (\%), both starts pooled. Sequence-50 applies the paper's evaluation protocol to the first 50 queries of a session; online re-testing repeats the test whenever a subsequence grows. Restor.: restoration; Conf.: confidence raising; Walk: objective-free random walk. Dashes: workload not valid or not generated for that corpus.}
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{The reimplemented detector of Lee et al.\ on matched clients: evaluation sessions flagged (\%), both starts pooled. First 50, one test: the first 50 queries are grouped and every group of at least 15 queries is tested once. Every update: the test is applied whenever a group of at least 15 queries gains a member, and alarms up to query 50 are counted. Whole session: the same without a limit on the number of queries. Restor.: restoration; Conf.: confidence raising. Dashes: workload not valid. The objective-free random walk is flagged in 98.8--100\% of the sessions under every schedule.}
 \label{tab:lfc}
-\resizebox{\textwidth}{!}{\begin{tabular}{lcccccccc}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lccccccccc}
 \toprule
-& \multicolumn{4}{c}{Sequence-50 (the paper's protocol)} & \multicolumn{4}{c}{Online re-testing} \\
-\cmidrule(lr){2-5}\cmidrule(lr){6-9}
-Corpus & Attack & Restor. & Conf. & Walk & Attack & Restor. & Conf. & Walk \\
+& \multicolumn{3}{c}{First 50, one test} & \multicolumn{3}{c}{First 50, every update} & \multicolumn{3}{c}{Whole session} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+Corpus & Attack & Restor. & Conf. & Attack & Restor. & Conf. & Attack & Restor. & Conf. \\
 \midrule
-CIFAR-10, ResNet-18 (seed 0), NES & 7.2 & 10.0 & 9.0 & 100.0 & 100.0 & 99.5 & 100.0 & 100.0 \\
-CIFAR-10, ResNet-18 (seed 1), NES & 5.0 & 9.5 & 7.0 & 100.0 & 100.0 & 99.2 & 100.0 & 100.0 \\
-CIFAR-10, ResNet-18 (seed 2), NES & 11.5 & 12.2 & 10.8 & 100.0 & 99.8 & 100.0 & 100.0 & 100.0 \\
-CIFAR-10, VGG19-BN, NES & 9.0 & 11.8 & 6.8 & 100.0 & 100.0 & 99.8 & 100.0 & 100.0 \\
-CIFAR-10, robust ResNet-50, NES & 22.0 & 24.8 & 20.8 & 100.0 & 100.0 & 100.0 & 100.0 & 100.0 \\
-GTSRB, ResNet-18, NES & 9.5 & 12.4 & 9.5 & 99.8 & 99.8 & 98.3 & 100.0 & 100.0 \\
-ImageNet, ResNet-50, tiled NES & 69.0 & -- & 57.8 & 98.8 & 99.8 & -- & 99.2 & 100.0 \\
-CIFAR-10, ResNet-18 (seed 0), SimBA & 99.8 & 80.0 & 99.8 & -- & 100.0 & 100.0 & 100.0 & -- \\
+CIFAR-10, ResNet-18 (seed 0), NES & 7.3 & 10.0 & 9.0 & 16.3 & 13.8 & 13.8 & 100.0 & 99.5 & 100.0 \\
+CIFAR-10, ResNet-18 (seed 1), NES & 5.0 & 9.5 & 7.0 & 11.0 & 13.5 & 12.0 & 100.0 & 99.3 & 100.0 \\
+CIFAR-10, ResNet-18 (seed 2), NES & 11.5 & 12.3 & 10.8 & 19.3 & 16.5 & 18.0 & 99.8 & 100.0 & 100.0 \\
+CIFAR-10, VGG19-BN, NES & 9.0 & 11.8 & 6.8 & 18.5 & 18.0 & 13.5 & 100.0 & 99.8 & 100.0 \\
+CIFAR-10, robust ResNet-50, NES & 22.0 & 24.8 & 20.8 & 27.5 & 28.5 & 28.0 & 100.0 & 100.0 & 100.0 \\
+GTSRB, ResNet-18, NES & 9.5 & 12.4 & 9.5 & 14.0 & 14.3 & 12.9 & 99.8 & 98.3 & 100.0 \\
+ImageNet, ResNet-50, tiled NES & 69.0 & -- & 57.8 & 77.3 & -- & 65.3 & 99.8 & -- & 99.3 \\
+CIFAR-10, ResNet-18 (seed 0), SimBA & 99.8 & 80.0 & 99.8 & 99.8 & 86.8 & 99.8 & 100.0 & 100.0 & 100.0 \\
 \bottomrule
-\end{tabular}}
-\end{table*}
+\end{tabular}
+\end{adjustbox}
+\end{table}

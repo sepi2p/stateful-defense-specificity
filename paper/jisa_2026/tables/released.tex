@@ -1,0 +1,24 @@
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Released operating points on every corpus (evaluation split). GWAD and GWAD+ raise an alarm in every session of the attack and of the Tier-B clients in every corpus, GWAD+ at query 259; the table therefore shows Blacklight. Sessions: sessions in which Blacklight raises an alarm. First alarm: median query index of its first alarm. Queries: share of queries that it flags, which it would reject. Attack succeeds before alarm: successful attack sessions whose first misclassified query precedes the first alarm of the detector, or that raise no alarm, as a share of the successful attack sessions. Tier B as in Table~\ref{tab:matched}. Ranges are over the two starts and the clients of the tier.}
+\label{tab:released}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lcccccccc}
+\toprule
+& \multicolumn{6}{c}{Blacklight} & \multicolumn{2}{c}{Attack succeeds} \\
+& \multicolumn{2}{c}{sessions (\%)} & \multicolumn{2}{c}{first alarm} & \multicolumn{2}{c}{queries (\%)} & \multicolumn{2}{c}{before alarm (\%)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+Corpus & attack & Tier B & attack & Tier B & attack & Tier B & Blacklight & GWAD+ \\
+\midrule
+CIFAR-10, ResNet-18 (seed 0), NES & 100.0 & 100.0 & 6 & 5--6 & 38.9--41.4 & 39.4--42.9 & 2.8 & 27.4 \\
+CIFAR-10, ResNet-18 (seed 1), NES & 100.0 & 100.0 & 5--6 & 5--6 & 40.2--42.9 & 40.4--43.4 & 5.7 & 32.3 \\
+CIFAR-10, ResNet-18 (seed 2), NES & 100.0 & 100.0 & 5--6 & 5--6 & 38.6--42.1 & 38.8--42.7 & 5.0 & 27.6 \\
+CIFAR-10, VGG19-BN, NES & 100.0 & 100.0 & 5 & 5--7 & 41.1--41.8 & 39.5--41.9 & 8.2 & 35.3 \\
+CIFAR-10, robust ResNet-50, NES & 100.0 & 100.0 & 6--7 & 6--7 & 39.4--40.9 & 39.0--42.2 & 4.3 & 39.1 \\
+GTSRB, ResNet-18, NES & 100.0 & 100.0 & 4--5 & 4.5--6 & 43.4--43.7 & 43.3--45.7 & 3.4 & 31.4 \\
+ImageNet, ResNet-50, tiled NES & 13.0--15.0 & 18.0 & 715--732 & 664--766 & 0.0 & 0.0 & 97.6 & 60.9 \\
+CIFAR-10, ResNet-18 (seed 0), SimBA & 100.0 & 100.0 & 2 & 2 & 99.9 & 99.9 & 0.0 & 23.2 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

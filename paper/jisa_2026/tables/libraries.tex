@@ -1,0 +1,21 @@
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Explanation clients as implemented by libraries (200 evaluation images at $32\times32$ pixels, 100 at $224\times224$): sessions with an alarm (\%), with the median query index of the first alarm in parentheses, and the share of queries that Blacklight flags (\%). Lee et al.: test at every update of a group, within the first 50 queries and over the whole session. Utility: median reduction of the deletion area relative to spatially smooth random orderings, with its bootstrap 95\% interval. n/a: the stream is shorter than the 259 queries that GWAD+ needs before its first decision. At $32\times32$ pixels the default segmentation of the \texttt{lime} package returns a median of one superpixel, so that its samples are copies of the image and its explanation carries no information; the row shows what the package sends, and its utility value is not meaningful.}
+\label{tab:libraries}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{rlrcccccc}
+\toprule
+& & & \multicolumn{2}{c}{Blacklight} & & \multicolumn{2}{c}{Lee et al.} & \\
+\cmidrule(lr){4-5}\cmidrule(lr){7-8}
+Pixels & Client & Queries & sessions & queries & GWAD+ & first 50 & whole session & Utility \\
+\midrule
+32 & LIME (\texttt{lime} package) & 1{,}000 & 100 (3) & 99.8 & 100 (260) & 77.0 & 97.0 & 0.188 {[}0.151, 0.232{]} \\
+ & KernelSHAP (Captum) & 1{,}000 & 100 (3) & 92.9 & 10 (763) & 2.0 & 86.0 & 0.281 {[}0.256, 0.315{]} \\
+ & Occlusion (Captum) & 226 & 100 (2) & 99.6 & n/a & 95.0 & 99.5 & 0.202 {[}0.161, 0.241{]} \\[2pt]
+224 & LIME (\texttt{lime} package) & 1{,}000 & 100 (5) & 98.3 & 1 (259) & 19.0 & 33.0 & 0.266 {[}0.225, 0.290{]} \\
+ & KernelSHAP (Captum) & 1{,}000 & 100 (3) & 98.4 & 5 (861) & 16.0 & 62.0 & 0.270 {[}0.256, 0.297{]} \\
+ & Occlusion (Captum) & 785 & 100 (2) & 99.9 & 49 (259) & 96.0 & 100.0 & 0.256 {[}0.220, 0.303{]} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

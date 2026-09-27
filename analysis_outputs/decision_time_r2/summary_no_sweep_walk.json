@@ -1,0 +1,67 @@
+{
+  "calibration_pool": [
+    "confidence_boost",
+    "kernelshap",
+    "lime",
+    "noise",
+    "occlusion",
+    "restore",
+    "rise",
+    "shuffled"
+  ],
+  "calibration_sessions": 1900,
+  "success_cdf": {
+    "64": 0.0825,
+    "128": 0.1225,
+    "192": 0.1525,
+    "256": 0.1925,
+    "384": 0.28,
+    "512": 0.375,
+    "640": 0.475,
+    "768": 0.5725,
+    "896": 0.6475,
+    "1021": 0.7125
+  },
+  "sequential": {
+    "thresholds": {
+      "64": 1.0,
+      "128": 0.9999999999999999,
+      "192": 0.4924738219895288,
+      "256": 1.0,
+      "384": 0.6666666666666669,
+      "512": 0.47962022994129166,
+      "640": 0.35464593114241,
+      "768": 0.3997586219507735,
+      "896": 0.4349496914515333,
+      "1021": 0.3827014091758391
+    },
+    "per_prefix_level": 0.0015789473684210526,
+    "pooled_rate_calibration": 0.007368421052631579,
+    "pooled_rate_evaluation": 0.012368421052631579,
+    "attacks_flagged_by_end": 0.9975,
+    "successful_attacks": 285,
+    "successful_attacks_flagged_before_success": 163,
+    "fraction_flagged_before_success": 0.5719298245614035
+  },
+  "per_prefix_1pct": {
+    "thresholds": {
+      "64": 0.4666666666666666,
+      "128": 0.33333333333333337,
+      "192": 0.33333333333333337,
+      "256": 0.33333333333333337,
+      "384": 0.2943592254134029,
+      "512": 0.29861790606653627,
+      "640": 0.26236306729264475,
+      "768": 0.24220985370917625,
+      "896": 0.24220985370917625,
+      "1021": 0.253551912568306
+    },
+    "per_prefix_level": 0.01,
+    "pooled_rate_calibration": 0.04894736842105263,
+    "pooled_rate_evaluation": 0.056578947368421055,
+    "attacks_flagged_by_end": 0.9975,
+    "successful_attacks": 285,
+    "successful_attacks_flagged_before_success": 231,
+    "fraction_flagged_before_success": 0.8105263157894737
+  }
+}

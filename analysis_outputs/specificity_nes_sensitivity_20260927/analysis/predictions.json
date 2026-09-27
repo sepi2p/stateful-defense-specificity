@@ -1,0 +1,30 @@
+{
+  "P16a_alarm_ge_99pct": {
+    "minimum_blacklight": 1.0,
+    "minimum_gwad_plus": 1.0,
+    "held": true
+  },
+  "P16b_blacklight_le_0.62": {
+    "maximum": 0.65905,
+    "cells": 10,
+    "held": false
+  },
+  "P16c_gwad_plus_minus_acceptance_le_0.05": {
+    "maximum_difference": -0.023724999999999996,
+    "cells": 6,
+    "held": true
+  },
+  "P16d_no_acceptance_test_gwad_plus_le_0.62": {
+    "maximum": 0.589825,
+    "cells": 4,
+    "held": true
+  },
+  "P16e_gwad_plus_vs_restore_rises_by_0.10": {
+    "variant": "v1_step1",
+    "gain_by_start": {
+      "denoise": 0.4374,
+      "deblur": 0.48812500000000003
+    },
+    "held": true
+  }
+}

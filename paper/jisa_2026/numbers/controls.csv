@@ -1,0 +1,7 @@
+scope,control,sessions,queries,blacklight_alarm,blacklight_alarm_sessions,blacklight_alarm_recorded_rule_sessions,blacklight_flagged_queries,gwad_alarm,gwad_plus_alarm,gwad_median_windows,gwad_plus_median_windows,gwad_plus_flagged_windows
+all_splits,noise,400,409600,0.0,0,0,0.0,1.0,0.99,767.0,766.0,1.0
+all_splits,shuffled,4000,4096000,0.0,0,42,0.0,0.0,0.0,767.0,0.0,
+all_splits,sweep,400,409600,0.9625,385,392,0.05726318359375,1.0,1.0,767.0,766.0,1.0
+evaluation,noise,200,204800,0.0,0,0,0.0,1.0,0.99,767.0,766.0,1.0
+evaluation,shuffled,2000,2048000,0.0,0,25,0.0,0.0,0.0,767.0,0.0,
+evaluation,sweep,200,204800,0.955,191,194,0.06193359375,1.0,1.0,767.0,766.0,1.0

@@ -1,24 +1,94 @@
 {
-  "blacklight_per_query_main": {
-    "attack": 0.5218,
-    "boundary_probe": 0.556,
-    "confidence_boost": 0.5324,
-    "counterfactual": 0.5331,
-    "random_walk": 0.999,
-    "restore": 0.5266
+  "blacklight_first_alarm_main": {
+    "attack": {
+      "median": 6.0,
+      "q25": 3.0,
+      "q75": 12.25,
+      "max": 18
+    },
+    "restore": {
+      "median": 6.0,
+      "q25": 3.0,
+      "q75": 11.0,
+      "max": 18
+    },
+    "confidence_boost": {
+      "median": 6.0,
+      "q25": 3.0,
+      "q75": 12.0,
+      "max": 18
+    }
+  },
+  "blacklight_first_alarm_ks_vs_attack": {
+    "restore": {
+      "D": 0.0425,
+      "p": 0.8635251702254226
+    },
+    "confidence_boost": {
+      "D": 0.04,
+      "p": 0.9067578225553679
+    }
+  },
+  "blacklight_first_alarm_pairs_main": {
+    "pairs": 800,
+    "benign_same_query": 0.1675,
+    "benign_earlier": 0.44,
+    "benign_later": 0.3925
+  },
+  "sessions": {
+    "matched_corpora": 36136,
+    "control_streams": 4800,
+    "explanation_32px": 1600,
+    "explanation_224px": 800,
+    "total": 43336,
+    "by_split": {
+      "calibration": 9608,
+      "evaluation": 22920,
+      "fit": 10808
+    },
+    "matched_corpora_distinct_query_streams": 35261,
+    "matched_corpora_sessions_repeating_a_stream": 875,
+    "repeated_streams_by_client": {
+      "restore": 392,
+      "random_walk": 400
+    },
+    "repeated_streams_corpora": [
+      "cifar_nes_robust",
+      "cifar_nes_seed0",
+      "cifar_nes_seed1",
+      "cifar_nes_seed2",
+      "cifar_nes_vgg19bn"
+    ]
+  },
+  "replay_with_observer": {
+    "cifar_nes_seed0": {
+      "sessions": 4800,
+      "identical_digests": 4800
+    },
+    "cifar_controls": {
+      "sessions": 4800,
+      "identical_digests": 4800
+    }
   },
   "rank_equivalence": {
     "sessions": 80,
     "attacks_flipped": 80,
-    "identical_before_flip": 80,
-    "divergence_minus_flip": [
-      1,
-      2
-    ],
-    "median_flip_query": 581.5,
-    "min_flip": 17,
+    "identical_through_flip": 80,
+    "divergence_minus_flip": {
+      "1": 35,
+      "2": 45
+    },
+    "median_flip_query": 582.5,
+    "min_flip": 19,
     "max_flip": 2904,
     "calls": 4097
   },
-  "total_distinct_sessions": 43336
+  "imagenet_restoration": {
+    "sessions": 600,
+    "sessions_without_accepted_step": 576,
+    "largest_number_of_accepted_steps": 3,
+    "accepted_steps_in_total": 28,
+    "iterations_per_session": 60,
+    "largest_psnr_gain": 0.09192940107855918
+  }
 }

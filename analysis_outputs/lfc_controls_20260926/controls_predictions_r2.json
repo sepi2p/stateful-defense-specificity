@@ -1,0 +1,8 @@
+{
+  "P5a_blacklight_shuffled_le_1pct": true,
+  "P5a_gwad_family_shuffled_no_alarm": true,
+  "P5b_gwad_plus_noise_ge_90pct": true,
+  "P5c_blacklight_sweep_ge_90pct": true,
+  "P5d_ljung_box_shuffled_le_5pct": true,
+  "P5d_ljung_box_noise_le_5pct": true
+}

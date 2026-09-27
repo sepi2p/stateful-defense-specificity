@@ -1,10 +1,10 @@
 detector,client,n,blocked,median_first_alarm,iqr_low,iqr_high,ks_vs_attack,ks_p
-blacklight,attack,400,1.0,4.0,2.0,8.0,,
-blacklight,restore,400,1.0,4.0,3.0,8.0,0.03,0.9938843539519258
-blacklight,confidence_boost,400,1.0,4.0,2.0,8.0,0.033,0.9843558982396782
-blacklight,lime,200,1.0,6.0,4.0,8.0,,
+blacklight,attack,400,1.0,6.0,3.0,12.25,,
+blacklight,restore,400,1.0,6.0,3.0,11.0,0.043,0.8635251702254226
+blacklight,confidence_boost,400,1.0,6.0,3.0,12.0,0.04,0.9067578225553679
+blacklight,lime,200,1.0,6.0,4.0,9.0,,
 blacklight,occlusion,200,1.0,2.0,2.0,2.0,,
-blacklight,shuffled,2000,0.013,856.0,633.0,921.0,,
+blacklight,shuffled,2000,0.0,,,,,
 gwad_plus,attack,400,1.0,259.0,259.0,259.0,,
 gwad_plus,restore,400,1.0,259.0,259.0,259.0,0.0,1.0
 gwad_plus,confidence_boost,400,1.0,259.0,259.0,259.0,0.0,1.0

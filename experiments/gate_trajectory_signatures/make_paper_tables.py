@@ -69,6 +69,11 @@ def rng(values, digits=2, scale=1.0):
     return a if a == b else f"{a}--{b}"
 
 
+def med(values):
+    """Range of medians: one decimal only where a median is not an integer."""
+    return rng(values, 1).replace(".0", "")
+
+
 def pct(values, digits=0):
     return rng(values if isinstance(values, (list, tuple, np.ndarray, pd.Series)) else [values], digits, 100.0)
 
@@ -115,7 +120,7 @@ def table_corpora():
         att = util[(util.corpus == key) & (util.objective == "attack")]
         rows.append([data, model, fmt(100 * acc[acc_key][0], 1), "224" if data == "ImageNet" else "32", opt,
                      f"{i.fit_images}/{i.calibration_images}/{i.eval_images}", f"{i.sessions:,}".replace(",", "{,}"),
-                     pct(att.flipped_frac.tolist(), 1), rng(att.median_first_flip.tolist(), 1)])
+                     pct(att.flipped_frac.tolist(), 1), med(att.median_first_flip.tolist())])
     head = ("Dataset & Model & Acc.\\ (\\%) & Pixels & Optimizer & Images & Sessions & Success (\\%) & Queries \\\\\n\\midrule")
     wrap("corpora", head + "\n" + rows_tex(rows),
          "Corpora. Each source image contributes two degraded starts and one session per client and start. Acc.: clean test "
@@ -189,14 +194,14 @@ def table_operating():
         for k, (calibration, target, label) in enumerate(options):
             g = t[(t.detector == det) & (t.calibration == calibration) & (t.target_fpr.isna() if target is None else np.isclose(t.target_fpr, target))]
             cell = lambda obj: pct(g[g.objective == obj].blocked.tolist(), 1)  # noqa: E731
-            med = lambda obj: rng(g[g.objective == obj].median_first_alarm.tolist(), 1)  # noqa: E731
+            med_ = lambda obj: med(g[g.objective == obj].median_first_alarm.tolist())  # noqa: E731
             if det == "blacklight" and calibration != "native":
                 thr = cal[(cal.detector == det) & (cal.reference == "sweep") & np.isclose(cal.target_fpr, target)].threshold.iloc[0]
                 label += f" ($T={int(thr)}$)"
             last = k == len(options) - 1 and det != "gwad_plus"
             rows.append([det_name if k == 0 else "", label, cell("attack"), cell("restore"), cell("confidence_boost"),
-                         cell("shuffled"), cell("noise"), cell("sweep"), med("attack"), med("restore"),
-                         med("confidence_boost") + (" \\\\[2pt]" if last else "")])
+                         cell("shuffled"), cell("noise"), cell("sweep"), med_("attack"), med_("restore"),
+                         med_("confidence_boost") + (" \\\\[2pt]" if last else "")])
     head = ("& & \\multicolumn{3}{c}{Optimizing clients (\\%)} & \\multicolumn{3}{c}{Controls (\\%)} & "
             "\\multicolumn{3}{c}{Median first alarm} \\\\\n\\cmidrule(lr){3-5}\\cmidrule(lr){6-8}\\cmidrule(lr){9-11}\n"
             "Detector & Threshold & Attack & Restor. & Conf. & Shuffled & Noise & Sweep & Attack & Restor. & Conf. \\\\\n\\midrule")
@@ -221,26 +226,28 @@ def table_released():
         tier_b = [o for o in ("restore", "confidence_boost") if o not in invalid]
         a = util[(util.corpus == key) & (util.objective == "attack")]
         b = util[(util.corpus == key) & util.objective.isin(tier_b)]
+        assert min(a.gwad_plus_alarm.min(), b.gwad_plus_alarm.min(), a.gwad_alarm.min(), b.gwad_alarm.min()) == 1.0  # stated in the caption
+        assert set(a.gwad_plus_first_median) | set(b.gwad_plus_first_median) == {259.0}
         s = before.loc[key]
         rows.append([corpus_label(c),
                      pct(a.blacklight_alarm.tolist(), 1), pct(b.blacklight_alarm.tolist(), 1),
-                     rng(a.blacklight_first_median.tolist(), 1), rng(b.blacklight_first_median.tolist(), 1),
+                     med(a.blacklight_first_median.tolist()), med(b.blacklight_first_median.tolist()),
                      pct(a.blacklight_flagged_queries.tolist(), 1), pct(b.blacklight_flagged_queries.tolist(), 1),
-                     pct(a.gwad_plus_alarm.tolist(), 1), pct(b.gwad_plus_alarm.tolist(), 1),
                      pct(s.blacklight_success_before_alarm_frac, 1), pct(s.gwad_plus_success_before_alarm_frac, 1)])
-    head = ("& \\multicolumn{6}{c}{Blacklight} & \\multicolumn{2}{c}{GWAD+} & \\multicolumn{2}{c}{Attack succeeds} \\\\\n"
+    head = ("& \\multicolumn{6}{c}{Blacklight} & \\multicolumn{2}{c}{Attack succeeds} \\\\\n"
             "& \\multicolumn{2}{c}{sessions (\\%)} & \\multicolumn{2}{c}{first alarm} & \\multicolumn{2}{c}{queries (\\%)} & "
-            "\\multicolumn{2}{c}{sessions (\\%)} & \\multicolumn{2}{c}{before alarm (\\%)} \\\\\n"
-            "\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}\\cmidrule(lr){6-7}\\cmidrule(lr){8-9}\\cmidrule(lr){10-11}\n"
-            "Corpus & attack & Tier B & attack & Tier B & attack & Tier B & attack & Tier B & Blacklight & GWAD+ \\\\\n\\midrule")
+            "\\multicolumn{2}{c}{before alarm (\\%)} \\\\\n"
+            "\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}\\cmidrule(lr){6-7}\\cmidrule(lr){8-9}\n"
+            "Corpus & attack & Tier B & attack & Tier B & attack & Tier B & Blacklight & GWAD+ \\\\\n\\midrule")
     wrap("released", head + "\n" + rows_tex(rows),
-         "Released operating points on every corpus (evaluation split). Sessions: sessions in which the detector raises an "
-         "alarm. First alarm: median query index of Blacklight's first alarm; the first alarm of GWAD+ is at query 259 in every "
-         "session of every corpus. Queries: share of queries that Blacklight flags, which it would reject. Attack succeeds "
-         "before alarm: successful attack sessions whose first misclassified query precedes the first alarm, or that raise "
-         "no alarm, as a share of the successful attack sessions. Tier B as in Table~\\ref{tab:matched}. Ranges are over the "
-         "two starts and the clients of the tier.",
-         "tab:released", "lcccccccccc", colsep="3pt")
+         "Released operating points on every corpus (evaluation split). GWAD and GWAD+ raise an alarm in every session of the "
+         "attack and of the Tier-B clients in every corpus, GWAD+ at query 259; the table therefore shows Blacklight. "
+         "Sessions: sessions in which Blacklight raises an alarm. First alarm: median query index of its first alarm. "
+         "Queries: share of queries that it flags, which it would reject. Attack succeeds before alarm: successful attack "
+         "sessions whose first misclassified query precedes the first alarm of the detector, or that raise no alarm, as a share "
+         "of the successful attack sessions. Tier B as in Table~\\ref{tab:matched}. Ranges are over the two starts and the "
+         "clients of the tier.",
+         "tab:released", "lcccccccc", colsep="4pt")
 
 
 def explanation_rows(files, clients, sched_keys, numbers):
@@ -302,20 +309,22 @@ def table_lfc():
     for c in CORPORA:
         key, _data, _d, _model, _acc, _opt, invalid = c
         r = [corpus_label(c)]
-        for schedule in ("update50", "online"):
-            for obj in ("attack", "restore", "confidence_boost", "random_walk"):
+        for schedule in ("single50", "update50", "online"):
+            for obj in ("attack", "restore", "confidence_boost"):
                 r.append("--" if obj in invalid or (key, obj) not in sched.index else pct(sched.loc[(key, obj), schedule], 1))
         rows.append(r)
-    head = ("& \\multicolumn{4}{c}{First 50 queries} & \\multicolumn{4}{c}{Whole session} \\\\\n"
-            "\\cmidrule(lr){2-5}\\cmidrule(lr){6-9}\n"
-            "Corpus & Attack & Restor. & Conf. & Walk & Attack & Restor. & Conf. & Walk \\\\\n\\midrule")
+    head = ("& \\multicolumn{3}{c}{First 50, one test} & \\multicolumn{3}{c}{First 50, every update} & "
+            "\\multicolumn{3}{c}{Whole session} \\\\\n"
+            "\\cmidrule(lr){2-4}\\cmidrule(lr){5-7}\\cmidrule(lr){8-10}\n"
+            "Corpus & Attack & Restor. & Conf. & Attack & Restor. & Conf. & Attack & Restor. & Conf. \\\\\n\\midrule")
     wrap("lfc", head + "\n" + rows_tex(rows),
          "The reimplemented detector of Lee et al.\\ on matched clients: evaluation sessions flagged (\\%), both starts pooled. "
-         "The test is applied whenever a group of at least 15 similar queries gains a member, as the paper describes; "
-         "``first 50 queries'' counts alarms up to query 50, the length of the attack sequences in the paper's evaluation. "
-         "Restor.: restoration; Conf.: confidence raising; Walk: objective-free random walk. Dashes: workload not valid or "
-         "not generated for that corpus. Table~\\ref{tab:lfcall} gives two further schedules.",
-         "tab:lfc", "lcccccccc")
+         "First 50, one test: the first 50 queries are grouped and every group of at least 15 queries is tested once. "
+         "Every update: the test is applied whenever a group of at least 15 queries gains a member, and alarms up to "
+         "query 50 are counted. Whole session: the same without a limit on the number of queries. "
+         "Restor.: restoration; Conf.: confidence raising. Dashes: workload not valid. The objective-free random walk "
+         "is flagged in 98.8--100\\% of the sessions under every schedule.",
+         "tab:lfc", "lccccccccc", colsep="3pt")
 
 
 def table_leak():
@@ -389,11 +398,21 @@ def table_lfc_all():
     for c in CORPORA:
         key, _data, _d, _model, _acc, _opt, invalid = c
         r = [corpus_label(c), pct(sched.loc[(key, "attack"), "tested50"], 1)]
-        for schedule in ("single50", "update50", "online_cap50"):
+        for schedule in ("online_cap50", "update50_lag5"):
             for obj in ("attack", "restore", "confidence_boost"):
                 r.append("--" if obj in invalid or (key, obj) not in sched.index else pct(sched.loc[(key, obj), schedule], 1))
+        r.append("--" if (key, "random_walk") not in sched.index else rng([sched.loc[(key, "random_walk"), s] for s in ("single50", "update50", "online")], 1, 100.0))
         rows.append(r)
-    rows[-1][-1] += " \\\\[2pt]"
+    head = ("& & \\multicolumn{3}{c}{Whole session, groups capped at 50} & \\multicolumn{3}{c}{First 50, every update, 5 lags} & \\\\\n"
+            "\\cmidrule(lr){3-5}\\cmidrule(lr){6-8}\n"
+            "Corpus & Tested & Attack & Restor. & Conf. & Attack & Restor. & Conf. & Walk \\\\\n\\midrule")
+    wrap("lfc_all", head + "\n" + rows_tex(rows),
+         "The reimplemented detector of Lee et al.\\ under further settings: evaluation sessions flagged (\\%), both starts "
+         "pooled. Tested: attack sessions in which at least 15 of the first 50 queries fall into one group, so that a test is "
+         "applied at all. Capped at 50: the test is applied at every update to the 50 most recent members of a group. "
+         "5 lags: the test uses five lags instead of $\\min(10,\\lfloor n/5\\rfloor)$. Walk: the objective-free random walk "
+         "under the three schedules of Table~\\ref{tab:lfc}.",
+         "tab:lfcall", "lcccccccc", colsep="3pt")
     labels = {"cifar_controls": "Controls, 32 px", "cifar_explain": "Explanation, 32 px", "imagenet_explain": "Explanation, 224 px"}
     clients = {"cifar_controls": ("shuffled", "noise", "sweep"), "cifar_explain": ("lime", "kernelshap", "occlusion", "rise"),
                "imagenet_explain": ("lime", "kernelshap", "occlusion", "rise")}
@@ -403,19 +422,10 @@ def table_lfc_all():
             s = sched.loc[(key, obj)]
             other.append([label + ": " + OBJECTIVE_NAMES[obj].split(" (")[0], pct(s.tested50, 1), pct(s.single50, 1), pct(s.update50, 1),
                           pct(s.online, 1), pct(s.online_cap50, 1)])
-    head = ("& & \\multicolumn{3}{c}{First 50, one test} & \\multicolumn{3}{c}{First 50, test at every update} & "
-            "\\multicolumn{3}{c}{Whole session, groups capped at 50} \\\\\n"
-            "\\cmidrule(lr){3-5}\\cmidrule(lr){6-8}\\cmidrule(lr){9-11}\n"
-            "Corpus & Tested & Attack & Restor. & Conf. & Attack & Restor. & Conf. & Attack & Restor. & Conf. \\\\\n\\midrule")
-    wrap("lfc_all", head + "\n" + rows_tex(rows),
-         "The reimplemented detector of Lee et al.\\ under further schedules: evaluation sessions flagged (\\%), both starts "
-         "pooled. Tested: attack sessions in which at least 15 of the first 50 queries fall into one group, so that a test is "
-         "applied at all. One test: every group of at least 15 queries is tested once, after query 50. Capped at 50: the test "
-         "is applied at every update to the 50 most recent members of a group.",
-         "tab:lfcall", "lcccccccccc", colsep="3pt")
     head2 = "Stream & Tested & First 50, one test & First 50, every update & Whole session & Whole session, capped \\\\\n\\midrule"
     wrap("lfc_other", head2 + "\n" + rows_tex(other),
-         "The same schedules on control streams and explanation clients: evaluation sessions flagged (\\%).",
+         "The reimplemented detector of Lee et al.\\ on control streams and on our explanation clients: evaluation sessions "
+         "flagged (\\%) under four schedules. Tested: sessions in which at least 15 of the first 50 queries fall into one group.",
          "tab:lfcother", "lccccc")
 
 
@@ -507,9 +517,10 @@ def table_explanation_utility():
 
 
 def table_sensitivity():
-    s = pd.read_csv(A / "lfc_sensitivity_20260927/sensitivity_summary.csv").set_index(["stream", "variant"])
-    variants = [("frozen", "Configuration used"), ("salt_unit", "Salt in $[0,1)$"), ("literal_fixed", "Rounding, fixed thresholds"),
-                ("literal_fresh", "Rounding, redrawn per query")]
+    # the repetition of X12 with the added variant; identical to the first run in all other cells
+    s = pd.read_csv(A / "lfc_sensitivity_r2/sensitivity_summary.csv").set_index(["stream", "variant"])
+    variants = [("frozen", "Configuration used"), ("strict_threshold", "Grouping above the threshold"), ("salt_unit", "Salt in $[0,1)$"),
+                ("literal_fixed", "Rounding, fixed thresholds"), ("literal_fresh", "Rounding, redrawn per query")]
     streams = ["simba", "square", "shuffled", "noise", "noise_small", "sweep", "attack", "restore", "confidence_boost"]
     rows = []
     for schedule, name in (("seq50_flag", "First 50, one test"), ("alarm_within_50", "First 50, every update"), ("alarm", "Whole session")):
@@ -596,7 +607,10 @@ def main():
     for fn in (table_corpora, table_controls, table_matched, table_operating, table_released, table_explanations, table_libraries,
                table_lfc, table_leak, table_nes, table_lfc_all, table_effects, table_full, table_explanation_utility,
                table_sensitivity, table_decision, table_output_stats):
-        fn()
+        try:
+            fn()
+        except (KeyError, FileNotFoundError) as error:  # an input of this table has not been produced yet
+            print(f"SKIPPED {fn.__name__}: missing {error}")
 
 
 if __name__ == "__main__":

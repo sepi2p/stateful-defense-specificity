@@ -1,57 +1,68 @@
-id,corpus,prediction,outcome,verdict
-P1,main,"Query-only detectors: AUROC $\le0.60$ against every matched NES client, full session",39 of 40 cells; maximum 0.62,\textbf{failed}
-P2,main,Query-only detectors separate the random walk better than any matched client,random walk $\ge0.86$; matched clients $\le0.62$,held
-P3,main,Model outputs: AUROC $\ge0.90$ against restoration and confidence raising,"0.99--1.00 at 128 to 1{,}021 queries",held
-P4,main,Model outputs: AUROC $\le0.75$ against Tier~C before the attack's first label change,0.78--0.82,\textbf{failed}
-P5a,controls,Blacklight alarms on $\le1\%$ of shuffled sessions,1.05\% (42/4000),\textbf{failed}
-P5a,controls,GWAD and GWAD+ never alarm on shuffled sessions,0/4000 and 0/4000,held
-P5b,controls,GWAD+ alarms on $\ge90\%$ of Gaussian-noise sessions,99\%,held
-P5c,controls,Blacklight alarms on $\ge90\%$ of sweep sessions,98\%,held
-P5d,controls,"Ljung--Box test alone (20 lags, whole session) flags $\le5\%$ of shuffled and noise sessions",2.5\% and 2.8\%,held
-P6a,"explanation, 32\,px","Blacklight blocks $\ge90\%$ of LIME, KernelSHAP and occlusion sessions, median first alarm $\le50$",100\%; first alarm at 2--6,held
-P6b,"explanation, 32\,px",Blacklight blocks $\le10\%$ of RISE sessions,16\%,\textbf{failed}
-P6c,"explanation, 32\,px","Every client beats random orderings (median difference $>0$, interval excludes 0)",medians 0.15--0.26; lower bounds $\ge0.13$,held
-P13a,"explanation, 224\,px","Blacklight blocks $\ge90\%$ of LIME, KernelSHAP and occlusion sessions",100\%,held
-P13b,"explanation, 224\,px","Every client beats random orderings (median difference $>0$, interval excludes 0)",medians 0.16--0.27; lower bounds $\ge0.15$,held
-P7a,main,Lee et al.\ (online) flags $\ge90\%$ of restoration and confidence-raising sessions,99--100\%,held
-P7b,main,Lee et al.\ (online) flags $\ge95\%$ of attack sessions,100\%,held
-P7c,controls,Lee et al.\ (online) flags $\le2\%$ of shuffled and noise sessions,0\%,held
-P7d,main,Lee et al.\ (online) flags $\ge90\%$ of random walks,100\%,held
-P8,SimBA,Query-only detectors: AUROC $\le0.62$ against Tier~B,maximum 0.974 (query only all),\textbf{failed}
-P9,SimBA,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.63,held
-P10,SimBA,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,held
-P11,SimBA,Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions,minimum 100.0\%,held
-P8,VGG19-BN,Query-only detectors: AUROC $\le0.62$ against Tier~B,maximum 0.53,held
-P8,VGG19-BN,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,held
-P9,VGG19-BN,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.61,held
-P10,VGG19-BN,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,held
-P11,VGG19-BN,Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions,minimum 99.5\%,held
-P8,robust ResNet-50,Query-only detectors: AUROC $\le0.62$ against Tier~B,maximum 0.52,held
-P8,robust ResNet-50,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,held
-P9,robust ResNet-50,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.67,held
-P10,robust ResNet-50,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,held
-P11,robust ResNet-50,Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions,minimum 100.0\%,held
-P8,seed 1,Query-only detectors: AUROC $\le0.62$ against Tier~B,maximum 0.54,held
-P8,seed 1,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,held
-P9,seed 1,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.59,held
-P10,seed 1,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,held
-P11,seed 1,Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions,minimum 98.5\%,held
-P8,seed 2,Query-only detectors: AUROC $\le0.62$ against Tier~B,maximum 0.54,held
-P8,seed 2,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,held
-P9,seed 2,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.59,held
-P10,seed 2,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,held
-P11,seed 2,Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions,minimum 100.0\%,held
-P8,GTSRB,Query-only detectors: AUROC $\le0.62$ against Tier~B,maximum 0.50,held
-P8,GTSRB,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,held
-P9,GTSRB,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.711,\textbf{failed}
-P10,GTSRB,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 0.96,held
-P11,GTSRB,Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions,minimum 96.7\%,held
-P12,ImageNet,Query-only detectors: AUROC $\le0.62$ against Tier~B,maximum 0.621 (query only all),\textbf{failed}
-P12,ImageNet,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,held
-P12,ImageNet,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.697,held
-P12,ImageNet,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,held
-P12,ImageNet,Lee et al.\ (online) flags $\ge90\%$ of Tier-B sessions,minimum 98.5\%,held
-P14a,throttled SimBA,"GWAD+ AUROC $\le0.65$, throttled attack against restoration",0.54 and 0.49,held
-P14b,throttled SimBA,Throttled attack succeeds in $\ge50\%$ of the sessions,78\% and 56\%,held
-P15,sensitivity,Every variant of the Lee et al.\ detector that reproduces the paper flags $\ge90\%$ of Tier-B sessions (online),3 of 4 variants reproduce the paper; minimum 99\%,held
-E1,main (exploratory),"Trend statistic, two-stage, 1\% pooled threshold: detects $\ge50\%$ of attacks with $\le5\%$ on every benign client",attacks 98\%; worst benign client 12.5\% (sweep),\textbf{failed}
+id,corpus,prediction,outcome,held,first_outcome,first_held,changed
+P1,main,"Query-only detectors: AUROC $\le0.60$ against every matched NES client, full session",38 of 40 cells; maximum 0.624,False,39 of 40 cells; maximum 0.620,False,True
+P2,main,Query-only detectors separate the random walk better than any matched client,random walk $\ge0.86$ (single statistics; logistic models 1.00); matched clients $\le0.62$,True,random walk $\ge0.86$ (single statistics; logistic models 1.00); matched clients $\le0.62$,True,False
+P3,main,Model outputs: AUROC $\ge0.90$ against restoration and confidence raising,"0.99--1.00 at 128 to 1{,}021 queries",True,"0.99--1.00 at 128 to 1{,}021 queries",True,False
+P4,main,Model outputs: AUROC $\le0.75$ against Tier~C before the attack's first label change,0.78--0.82,False,0.78--0.82,False,False
+P5a,controls,Blacklight raises an alarm in $\le1\%$ of the shuffled sessions,0.00\% (0/4000),True,1.05\% (42/4000),False,True
+P5a,controls,GWAD and GWAD+ raise no alarm in shuffled sessions,0/4000 and 0/4000,True,0/4000 and 0/4000,True,False
+P5b,controls,GWAD+ raises an alarm in $\ge90\%$ of the Gaussian-noise sessions,99\% (396/400),True,99\% (396/400),True,False
+P5c,controls,Blacklight raises an alarm in $\ge90\%$ of the sweep sessions,96.3\% (385/400),True,98.0\% (392/400),True,True
+P5d,controls,"Ljung--Box test alone (20 lags, whole session) flags $\le5\%$ of shuffled and of noise sessions",2.5\% and 2.8\%,True,2.5\% and 2.8\%,True,False
+P6a,"explanation, 32\,px","Blacklight raises an alarm in $\ge90\%$ of the LIME, KernelSHAP and occlusion sessions, median first alarm $\le50$",100\%; median first alarm 2--6,True,100\%; median first alarm 2--6,True,False
+P6b,"explanation, 32\,px",Blacklight raises an alarm in $\le10\%$ of the RISE sessions,10.5\%,False,16.0\%,False,True
+P6c,"explanation, 32\,px","Every client beats spatially smooth random orderings (amended rule: median difference $>0$, interval excludes 0)",medians 0.152--0.258; smallest lower bound 0.130,True,medians 0.152--0.258; smallest lower bound 0.130,True,False
+P13a,"explanation, 224\,px","Blacklight raises an alarm in $\ge90\%$ of the LIME, KernelSHAP and occlusion sessions",100\%,True,100\%,True,False
+P13b,"explanation, 224\,px","Every client beats spatially smooth random orderings (amended rule: median difference $>0$, interval excludes 0)",medians 0.162--0.268; smallest lower bound 0.146,True,medians 0.162--0.268; smallest lower bound 0.146,True,False
+P7a,main,"Lee et al.\ (test on every update, whole session) flags $\ge90\%$ of restoration and confidence-raising sessions",99.0\%--100.0\%,True,99.0\%--100.0\%,True,False
+P7b,main,The same schedule flags $\ge95\%$ of attack sessions,100.0\%,True,100.0\%,True,False
+P7c,controls,The same schedule flags $\le2\%$ of shuffled and noise sessions,0.0\%,True,0.0\%,True,False
+P7d,main,The same schedule flags $\ge90\%$ of random walks,100.0\%,True,100.0\%,True,False
+P8,SimBA,Query-only detectors: AUROC $\le0.62$ against Tier~B,"maximum 0.974 (GWAD+ 0.97, Blacklight 0.54, all 0.97)",False,"maximum 0.974 (GWAD+ 0.97, Blacklight 0.54, all 0.97)",False,False
+P9,SimBA,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.628,True,maximum 0.628,True,False
+P10,SimBA,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,True,minimum 1.00,True,False
+P11,SimBA,"Lee et al.\ (test on every update, whole session) flags $\ge90\%$ of Tier-B sessions, per start",minimum 100.0\%,True,minimum 100.0\%,True,False
+P8,VGG19-BN,Query-only detectors: AUROC $\le0.62$ against Tier~B,"maximum 0.527 (GWAD+ 0.53, Blacklight 0.51, all 0.50)",True,"maximum 0.527 (GWAD+ 0.53, Blacklight 0.49, all 0.51)",True,False
+P8,VGG19-BN,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,True,minimum 1.00,True,False
+P9,VGG19-BN,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.610,True,maximum 0.610,True,False
+P10,VGG19-BN,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,True,minimum 1.00,True,False
+P11,VGG19-BN,"Lee et al.\ (test on every update, whole session) flags $\ge90\%$ of Tier-B sessions, per start",minimum 99.5\%,True,minimum 99.5\%,True,False
+P8,robust ResNet-50,Query-only detectors: AUROC $\le0.62$ against Tier~B,"maximum 0.512 (GWAD+ 0.51, Blacklight 0.50, all 0.51)",True,"maximum 0.524 (GWAD+ 0.51, Blacklight 0.52, all 0.51)",True,True
+P8,robust ResNet-50,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,True,minimum 1.00,True,False
+P9,robust ResNet-50,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.674,True,maximum 0.674,True,False
+P10,robust ResNet-50,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,True,minimum 1.00,True,False
+P11,robust ResNet-50,"Lee et al.\ (test on every update, whole session) flags $\ge90\%$ of Tier-B sessions, per start",minimum 100.0\%,True,minimum 100.0\%,True,False
+P8,seed 1,Query-only detectors: AUROC $\le0.62$ against Tier~B,"maximum 0.539 (GWAD+ 0.53, Blacklight 0.52, all 0.54)",True,"maximum 0.541 (GWAD+ 0.53, Blacklight 0.54, all 0.54)",True,True
+P8,seed 1,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,True,minimum 1.00,True,False
+P9,seed 1,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.590,True,maximum 0.590,True,False
+P10,seed 1,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,True,minimum 1.00,True,False
+P11,seed 1,"Lee et al.\ (test on every update, whole session) flags $\ge90\%$ of Tier-B sessions, per start",minimum 98.5\%,True,minimum 98.5\%,True,False
+P8,seed 2,Query-only detectors: AUROC $\le0.62$ against Tier~B,"maximum 0.538 (GWAD+ 0.52, Blacklight 0.54, all 0.54)",True,"maximum 0.536 (GWAD+ 0.52, Blacklight 0.53, all 0.54)",True,True
+P8,seed 2,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,True,minimum 1.00,True,False
+P9,seed 2,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.591,True,maximum 0.591,True,False
+P10,seed 2,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,True,minimum 1.00,True,False
+P11,seed 2,"Lee et al.\ (test on every update, whole session) flags $\ge90\%$ of Tier-B sessions, per start",minimum 100.0\%,True,minimum 100.0\%,True,False
+P8,GTSRB,Query-only detectors: AUROC $\le0.62$ against Tier~B,"maximum 0.495 (GWAD+ 0.49, Blacklight 0.49, all 0.49)",True,"maximum 0.500 (GWAD+ 0.49, Blacklight 0.50, all 0.48)",True,True
+P8,GTSRB,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,True,minimum 1.00,True,False
+P9,GTSRB,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.711,False,maximum 0.711,False,False
+P10,GTSRB,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 0.96,True,minimum 0.96,True,False
+P11,GTSRB,"Lee et al.\ (test on every update, whole session) flags $\ge90\%$ of Tier-B sessions, per start",minimum 96.7\%,True,minimum 96.7\%,True,False
+P12,ImageNet,Query-only detectors: AUROC $\le0.62$ against Tier~B,"maximum 0.621 (GWAD+ 0.62, Blacklight 0.51, all 0.59)",False,"maximum 0.621 (GWAD+ 0.62, Blacklight 0.54, all 0.62)",False,False
+P12,ImageNet,Query-only detectors: AUROC $\ge0.90$ against the random walk,minimum 1.00,True,minimum 1.00,True,False
+P12,ImageNet,Model outputs: AUROC $\le0.70$ against Tier~C before either label change,maximum 0.697,True,maximum 0.697,True,False
+P12,ImageNet,Model outputs: AUROC $\ge0.90$ against Tier~B,minimum 1.00,True,minimum 1.00,True,False
+P12,ImageNet,"Lee et al.\ (test on every update, whole session) flags $\ge90\%$ of Tier-B sessions, per start",minimum 98.5\%,True,minimum 98.5\%,True,False
+P14a,throttled SimBA,"GWAD+ AUROC $\le0.65$, throttled attack against restoration",0.54 and 0.49,True,0.54 and 0.49,True,False
+P14b,throttled SimBA,The throttled attack succeeds in $\ge50\%$ of the sessions,78.0\% and 55.5\%,True,78.0\% and 55.5\%,True,False
+P15,sensitivity,Every variant of the Lee et al.\ detector that reproduces the paper's rates flags $\ge90\%$ of Tier-B sessions (whole session),3 of 4 variants reproduce them; minimum 99\%,True,3 of 4 variants reproduce them; minimum 99\%,True,False
+P16a,NES variants,Blacklight and GWAD+ raise an alarm in $\ge99\%$ of the sessions of every client,minimum 100\%,True,minimum 100\%,True,False
+P16b,NES variants,Blacklight: AUROC $\le0.62$ against every valid Tier-B client,maximum 0.659 (10 cells),False,maximum 0.659 (10 cells),False,False
+P16c,NES variants,With an acceptance test: AUROC of GWAD+ exceeds that of the acceptance rate alone by $\le0.05$,largest difference $-$0.024 (6 cells),True,largest difference $-$0.024 (6 cells),True,False
+P16d,NES variants,Without an acceptance test: GWAD+ AUROC $\le0.62$,maximum 0.590 (4 cells),True,maximum 0.590 (4 cells),True,False
+P16e,NES variants,With a larger step the GWAD+ AUROC against restoration rises by $\ge0.10$ on at least one start,+0.44 and +0.49 at step 1/255 (restoration invalid at 2/255),True,+0.44 and +0.49 at step 1/255 (restoration invalid at 2/255),True,False
+P17a,"libraries, 32\,px","Blacklight raises an alarm in $\ge90\%$ of the sessions of each library client, median first alarm $\le50$",100\%; median first alarm 2--3,True,100\%; median first alarm 2--3,True,False
+P17b,"libraries, 32\,px",Blacklight flags $\ge90\%$ of the queries of each library client,92.9\%--99.8\%,True,92.9\%--99.8\%,True,False
+P17d,"libraries, 32\,px",Every library client beats spatially smooth random orderings,medians 0.188--0.281; smallest lower bound 0.151; the row of the \texttt{lime} package is not meaningful (Table~\ref{tab:libraries}),True,medians 0.188--0.281; smallest lower bound 0.151; the row of the \texttt{lime} package is not meaningful (Table~\ref{tab:libraries}),True,False
+P17a,"libraries, 224\,px","Blacklight raises an alarm in $\ge90\%$ of the sessions of each library client, median first alarm $\le50$",100\%; median first alarm 2--5,True,100\%; median first alarm 2--5,True,False
+P17b,"libraries, 224\,px",Blacklight flags $\ge90\%$ of the queries of each library client,98.3\%--99.9\%,True,98.3\%--99.9\%,True,False
+P17c,"libraries, 224\,px",GWAD+ raises an alarm in $\ge90\%$ of the Captum occlusion sessions,49.0\%,False,49.0\%,False,False
+P17d,"libraries, 224\,px",Every library client beats spatially smooth random orderings,medians 0.256--0.270; smallest lower bound 0.220,True,medians 0.256--0.270; smallest lower bound 0.220,True,False

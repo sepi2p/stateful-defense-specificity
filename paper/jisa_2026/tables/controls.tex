@@ -1,16 +1,18 @@
 \begin{table}[!tbp]
-\centering\small
-\caption{Non-optimizing control streams on CIFAR-10: sessions alarmed (\%) at released operating points, all splits. Each stream has 1{,}024 queries.}
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Non-optimizing control streams on CIFAR-10 (evaluation split, 1{,}024 queries per stream): sessions in which the detector raises an alarm (\%) at its released operating point and, for Blacklight, the share of queries that it flags. Lee et al.: the reimplemented detector with the test applied at every update of a group, within the first 50 queries and over the whole session.}
 \label{tab:controls}
-\resizebox{\textwidth}{!}{\begin{tabular}{lrccccc}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrcccccc}
 \toprule
-& & & & & \multicolumn{2}{c}{Lee et al.} \\
-\cmidrule(lr){6-7}
-Control stream & Sessions & Blacklight & GWAD & GWAD+ & sequence-50 & online \\
+& & \multicolumn{2}{c}{Blacklight} & & & \multicolumn{2}{c}{Lee et al.} \\
+\cmidrule(lr){3-4}\cmidrule(lr){7-8}
+Control stream & Sessions & sessions & queries & GWAD & GWAD+ & first 50 & whole session \\
 \midrule
-Shuffled test images & 4{,}000 & 1.1 & 0.0 & 0.0 & 0.0 & 0.0 \\
-Gaussian noise ($\sigma=0.1$) & 400 & 0.0 & 100.0 & 99.0 & 0.0 & 0.0 \\
-JPEG/brightness sweep & 400 & 98.0 & 100.0 & 100.0 & 1.5 & 56.8 \\
+Shuffled test images & 2{,}000 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+Gaussian noise ($\sigma=0.1$) & 200 & 0.0 & 0.0 & 100.0 & 99.0 & 0.0 & 0.0 \\
+JPEG/brightness sweep & 200 & 95.5 & 6.2 & 100.0 & 100.0 & 2.0 & 55.5 \\
 \bottomrule
-\end{tabular}}
+\end{tabular}
+\end{adjustbox}
 \end{table}

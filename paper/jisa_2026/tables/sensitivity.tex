@@ -1,21 +1,30 @@
-\begin{table*}[!tbp]
-\centering\small
-\caption{Sensitivity of the reimplemented detector of Lee et al.\ to choices the paper leaves open: sessions flagged (\%). Streams of the first six columns: 50 calibration images; matched NES sessions: 50 evaluation images, both starts. Noise: $\sigma=0.1$ on the $[0,1]$ scale; small noise: $\sigma=0.1$ intensity levels on the 0--255 scale.}
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Sensitivity of the reimplemented detector of Lee et al.\ to choices that the paper leaves open: sessions flagged (\%). Streams of the first six columns: 50 calibration images; matched NES sessions: 50 evaluation images, both starts. Noise: $\sigma=0.1$ on the $[0,1]$ scale; small noise: $\sigma=0.1$ intensity levels on the 0--255 scale.}
 \label{tab:sensitivity}
-\resizebox{\textwidth}{!}{\begin{tabular}{llccccccccc}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llccccccccc}
 \toprule
 & & \multicolumn{2}{c}{Attacks of the paper} & \multicolumn{4}{c}{Benign and control streams} & \multicolumn{3}{c}{Matched NES sessions} \\
 \cmidrule(lr){3-4}\cmidrule(lr){5-8}\cmidrule(lr){9-11}
 Schedule & Phase-1 variant & SimBA & Square & Shuffled & Noise & Small noise & Sweep & Attack & Restor. & Conf. \\
 \midrule
-Sequence-50 & Frozen configuration & 100.0 & 98.0 & 0.0 & 0.0 & 4.0 & 0.0 & 3.0 & 9.0 & 13.0 \\
+First 50, one test & Configuration used & 100.0 & 98.0 & 0.0 & 0.0 & 4.0 & 0.0 & 3.0 & 9.0 & 13.0 \\
+ & Grouping above the threshold & 100.0 & 98.0 & 0.0 & 0.0 & 4.0 & 0.0 & 5.0 & 8.0 & 11.0 \\
  & Salt in $[0,1)$ & 100.0 & 98.0 & 0.0 & 0.0 & 4.0 & 8.0 & 16.0 & 17.0 & 24.0 \\
- & Literal rounding, fixed thresholds & 100.0 & 98.0 & 0.0 & 0.0 & 4.0 & 6.0 & 13.0 & 14.0 & 24.0 \\
- & Literal rounding, redrawn per query & 4.0 & 2.0 & 0.0 & 0.0 & 2.0 & 2.0 & 0.0 & 0.0 & 0.0 \\
-Online & Frozen configuration & 100.0 & 100.0 & 0.0 & 0.0 & 36.0 & 60.0 & 100.0 & 100.0 & 100.0 \\
+ & Rounding, fixed thresholds & 100.0 & 98.0 & 0.0 & 0.0 & 4.0 & 6.0 & 13.0 & 14.0 & 24.0 \\
+ & Rounding, redrawn per query & 4.0 & 2.0 & 0.0 & 0.0 & 2.0 & 2.0 & 0.0 & 0.0 & 0.0 \\[2pt]
+First 50, every update & Configuration used & 100.0 & 98.0 & 0.0 & 0.0 & 18.0 & 0.0 & 9.0 & 13.0 & 17.0 \\
+ & Grouping above the threshold & 100.0 & 98.0 & 0.0 & 0.0 & 18.0 & 0.0 & 11.0 & 10.0 & 16.0 \\
+ & Salt in $[0,1)$ & 100.0 & 98.0 & 0.0 & 0.0 & 18.0 & 8.0 & 23.0 & 28.0 & 29.0 \\
+ & Rounding, fixed thresholds & 100.0 & 98.0 & 0.0 & 0.0 & 18.0 & 6.0 & 21.0 & 25.0 & 27.0 \\
+ & Rounding, redrawn per query & 4.0 & 2.0 & 0.0 & 0.0 & 2.0 & 2.0 & 0.0 & 0.0 & 0.0 \\[2pt]
+Whole session & Configuration used & 100.0 & 100.0 & 0.0 & 0.0 & 36.0 & 60.0 & 100.0 & 100.0 & 100.0 \\
+ & Grouping above the threshold & 100.0 & 100.0 & 0.0 & 0.0 & 36.0 & 54.0 & 100.0 & 100.0 & 100.0 \\
  & Salt in $[0,1)$ & 100.0 & 100.0 & 0.0 & 0.0 & 36.0 & 92.0 & 100.0 & 99.0 & 100.0 \\
- & Literal rounding, fixed thresholds & 100.0 & 100.0 & 0.0 & 0.0 & 36.0 & 92.0 & 100.0 & 99.0 & 100.0 \\
- & Literal rounding, redrawn per query & 64.0 & 28.0 & 0.0 & 0.0 & 20.0 & 6.0 & 4.0 & 4.0 & 3.0 \\
+ & Rounding, fixed thresholds & 100.0 & 100.0 & 0.0 & 0.0 & 36.0 & 92.0 & 100.0 & 99.0 & 100.0 \\
+ & Rounding, redrawn per query & 64.0 & 28.0 & 0.0 & 0.0 & 20.0 & 6.0 & 4.0 & 4.0 & 3.0 \\
 \bottomrule
-\end{tabular}}
-\end{table*}
+\end{tabular}
+\end{adjustbox}
+\end{table}

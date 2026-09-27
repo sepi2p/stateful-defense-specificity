@@ -1,21 +1,23 @@
-\begin{table*}[!tbp]
-\centering\small
-\caption{Explanation clients: sessions blocked (\%) at released operating points, 200 evaluation images per row; the median query index of the first alarm is given in parentheses. Utility is the median reduction in deletion area relative to a spatially smooth random ordering, with its bootstrap 95\% interval.}
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Explanation clients, our implementations of the four query designs (200 evaluation images per row): sessions with an alarm (\%), with the median query index of the first alarm in parentheses, and the share of queries that Blacklight flags (\%). Lee et al.: test at every update of a group, within the first 50 queries and over the whole session. Utility: median reduction of the deletion area relative to spatially smooth random orderings, with its bootstrap 95\% interval.}
 \label{tab:explanations}
-\resizebox{\textwidth}{!}{\begin{tabular}{rlrccccc}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{rlrcccccc}
 \toprule
-& & & & & \multicolumn{2}{c}{Lee et al.} & \\
-\cmidrule(lr){6-7}
-Pixels & Client & Queries & Blacklight & GWAD+ & sequence-50 & online & Utility \\
+& & & \multicolumn{2}{c}{Blacklight} & & \multicolumn{2}{c}{Lee et al.} & \\
+\cmidrule(lr){4-5}\cmidrule(lr){7-8}
+Pixels & Client & Queries & sessions & queries & GWAD+ & first 50 & whole session & Utility \\
 \midrule
-32 & LIME & 1{,}000 & 100 (6) & 0 & 0.0 & 40.5 (409) & 0.198 {[}0.166, 0.234{]} \\
- & KernelSHAP & 500 & 100 (3) & 30.5 (265) & 2.0 & 66.5 (126) & 0.152 {[}0.130, 0.198{]} \\
- & Occlusion & 842 & 100 (2) & 100 (259) & 91.5 & 100 (17) & 0.258 {[}0.224, 0.286{]} \\
- & RISE & 1{,}000 & 16 (720) & 0 & 0.0 & 0 & 0.161 {[}0.132, 0.189{]} \\[2pt]
-224 & LIME & 1{,}000 & 100 (5) & 5 (260) & 2.0 & 30.5 (89) & 0.268 {[}0.230, 0.291{]} \\
- & KernelSHAP & 500 & 100 (3) & 9 (284) & 2.5 & 32 (75) & 0.162 {[}0.146, 0.182{]} \\
- & Occlusion & 626 & 100 (2) & 97.5 (259) & 95.0 & 99.5 (18) & 0.233 {[}0.207, 0.259{]} \\
- & RISE & 1{,}000 & 3.5 (85) & 0 & 2.0 & 32 (140) & 0.230 {[}0.204, 0.244{]} \\
+32 & LIME & 1{,}000 & 100 (6) & 97.2 & 0 & 0.5 & 40.5 & 0.198 {[}0.166, 0.234{]} \\
+ & KernelSHAP & 500 & 100 (3) & 99.2 & 30.5 (265) & 7.5 & 66.5 & 0.152 {[}0.130, 0.198{]} \\
+ & Occlusion & 842 & 100 (2) & 99.9 & 100 (259) & 97.5 & 100.0 & 0.258 {[}0.224, 0.286{]} \\
+ & RISE & 1{,}000 & 10.5 (768) & 0.5 & 0 & 0.0 & 0.0 & 0.161 {[}0.132, 0.189{]} \\[2pt]
+224 & LIME & 1{,}000 & 100 (5) & 98.4 & 5 (260) & 12.0 & 30.5 & 0.268 {[}0.230, 0.291{]} \\
+ & KernelSHAP & 500 & 100 (3) & 98.6 & 9 (284) & 13.0 & 32.0 & 0.162 {[}0.146, 0.182{]} \\
+ & Occlusion & 626 & 100 (2) & 99.8 & 97.5 (259) & 97.0 & 99.5 & 0.233 {[}0.207, 0.259{]} \\
+ & RISE & 1{,}000 & 3 (189) & 1.2 & 0 & 5.0 & 32.0 & 0.230 {[}0.204, 0.244{]} \\
 \bottomrule
-\end{tabular}}
-\end{table*}
+\end{tabular}
+\end{adjustbox}
+\end{table}

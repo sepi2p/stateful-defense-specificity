@@ -1,0 +1,72 @@
+{
+  "P8_query_only_vs_tierB_le_0.62": {
+    "restore|logreg:gwad_plus": [
+      0.506,
+      true
+    ],
+    "restore|logreg:blacklight": [
+      0.521,
+      true
+    ],
+    "restore|logreg:query_only_all": [
+      0.512,
+      true
+    ],
+    "confidence_boost|logreg:gwad_plus": [
+      0.534,
+      true
+    ],
+    "confidence_boost|logreg:blacklight": [
+      0.522,
+      true
+    ],
+    "confidence_boost|logreg:query_only_all": [
+      0.539,
+      true
+    ]
+  },
+  "P8_query_only_vs_random_walk_ge_0.90": {
+    "logreg:gwad_plus": [
+      1.0,
+      true
+    ],
+    "logreg:blacklight": [
+      1.0,
+      true
+    ],
+    "logreg:query_only_all": [
+      1.0,
+      true
+    ]
+  },
+  "P9_output_pre_flip_vs_tierC_le_0.70": {
+    "boundary_probe": [
+      0.59,
+      true
+    ],
+    "counterfactual": [
+      0.559,
+      true
+    ]
+  },
+  "P10_output_vs_tierB_ge_0.90": {
+    "restore": [
+      0.998,
+      true
+    ],
+    "confidence_boost": [
+      1.0,
+      true
+    ]
+  },
+  "P11_lfc_tierB_ge_90pct": {
+    "restore": [
+      0.985,
+      true
+    ],
+    "confidence_boost": [
+      1.0,
+      true
+    ]
+  }
+}

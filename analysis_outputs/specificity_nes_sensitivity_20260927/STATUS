@@ -1,0 +1,5 @@
+started 2026-09-27T15:53:58+03:30 pid 856882
+v1_step1 2026-09-27T16:08:22+03:30: 1800 sessions, 0 shard(s) nonzero
+v2_step2 2026-09-27T16:22:10+03:30: 1800 sessions, 0 shard(s) nonzero
+v3_step2_always 2026-09-27T16:35:48+03:30: 1800 sessions, 0 shard(s) nonzero
+DONE

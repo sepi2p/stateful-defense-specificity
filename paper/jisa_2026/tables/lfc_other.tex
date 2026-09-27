@@ -1,0 +1,24 @@
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{The reimplemented detector of Lee et al.\ on control streams and on our explanation clients: evaluation sessions flagged (\%) under four schedules. Tested: sessions in which at least 15 of the first 50 queries fall into one group.}
+\label{tab:lfcother}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lccccc}
+\toprule
+Stream & Tested & First 50, one test & First 50, every update & Whole session & Whole session, capped \\
+\midrule
+Controls, 32 px: Shuffled test images & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+Controls, 32 px: Gaussian noise & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+Controls, 32 px: JPEG/brightness sweep & 2.0 & 2.0 & 2.0 & 55.5 & 55.5 \\
+Explanation, 32 px: LIME & 16.5 & 0.0 & 0.5 & 40.5 & 72.0 \\
+Explanation, 32 px: KernelSHAP & 87.0 & 2.0 & 7.5 & 66.5 & 89.5 \\
+Explanation, 32 px: Occlusion & 100.0 & 91.5 & 97.5 & 100.0 & 100.0 \\
+Explanation, 32 px: RISE & 0.0 & 0.0 & 0.0 & 0.0 & 0.0 \\
+Explanation, 224 px: LIME & 100.0 & 2.0 & 12.0 & 30.5 & 98.5 \\
+Explanation, 224 px: KernelSHAP & 100.0 & 2.5 & 13.0 & 32.0 & 83.0 \\
+Explanation, 224 px: Occlusion & 100.0 & 95.0 & 97.0 & 99.5 & 100.0 \\
+Explanation, 224 px: RISE & 58.5 & 2.0 & 5.0 & 32.0 & 94.0 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

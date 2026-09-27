@@ -1,0 +1,23 @@
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{AUROC of the margin trend for separating attack sessions from the sessions of other clients on every corpus, after 256 queries and over the full session (evaluation split, both starts pooled; exploratory). Explanation clients exist for two models only. Ranges are over the clients of the group.}
+\label{tab:outputstatsall}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lcccccccc}
+\toprule
+& \multicolumn{2}{c}{Tier B} & \multicolumn{2}{c}{Explanation clients} & \multicolumn{2}{c}{Boundary probing} & \multicolumn{2}{c}{Counterfactual search} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+Corpus & 256 & full & 256 & full & 256 & full & 256 & full \\
+\midrule
+CIFAR-10, ResNet-18 (seed 0), NES & 0.99--1.00 & 1.00 & 0.94--0.99 & 1.00 & 0.52 & 0.79 & 0.46 & 0.52 \\
+CIFAR-10, ResNet-18 (seed 1), NES & 0.99--1.00 & 1.00 & -- & -- & 0.54 & 0.79 & 0.48 & 0.53 \\
+CIFAR-10, ResNet-18 (seed 2), NES & 0.99--1.00 & 1.00 & -- & -- & 0.50 & 0.73 & 0.48 & 0.51 \\
+CIFAR-10, VGG19-BN, NES & 0.99--1.00 & 1.00 & -- & -- & 0.49 & 0.73 & 0.43 & 0.59 \\
+CIFAR-10, robust ResNet-50, NES & 0.99--1.00 & 1.00 & -- & -- & 0.38 & 0.34 & 0.44 & 0.39 \\
+GTSRB, ResNet-18, NES & 0.92--0.98 & 0.99--1.00 & -- & -- & 0.41 & 0.46 & 0.40 & 0.36 \\
+ImageNet, ResNet-50, tiled NES & 1.00 & 1.00 & 1.00 & 1.00 & 0.67 & 0.89 & 0.52 & 0.66 \\
+CIFAR-10, ResNet-18 (seed 0), SimBA & 1.00 & 1.00 & -- & -- & 0.49 & 0.92 & 0.38 & 0.60 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

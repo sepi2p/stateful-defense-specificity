@@ -204,8 +204,9 @@ def later_experiments() -> list[dict]:
                          "outcome": pc(gp, 1), "held": gp >= 0.90})
         lows = {k: float(e.loc[k, "util_diff"].split("[")[1].split(",")[0]) for k in e.index}
         meds = {k: float(e.loc[k, "util_diff"].split(" ")[0]) for k in e.index}
+        note = "; the row of the \\texttt{lime} package is not meaningful (Table~\\ref{tab:libraries})" if directory == "cifar10" else ""
         rows.append({"id": "P17d", "corpus": label, "prediction": "Every library client beats spatially smooth random orderings",
-                     "outcome": f"medians {fmt(min(meds.values()), 3)}--{fmt(max(meds.values()), 3)}; smallest lower bound {fmt(min(lows.values()), 3)}",
+                     "outcome": f"medians {fmt(min(meds.values()), 3)}--{fmt(max(meds.values()), 3)}; smallest lower bound {fmt(min(lows.values()), 3)}" + note,
                      "held": all(v > 0 for v in lows.values()) and all(v > 0 for v in meds.values())})
     return rows
 
