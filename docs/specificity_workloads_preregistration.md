@@ -323,3 +323,16 @@ Predictions (each is checked per start and per Tier-B client, full session):
 
 Whatever the outcome, the manuscript reports all five checks and the AUROC of GWAD,
 GWAD+ and Blacklight for every cell.
+
+### Amendment to X13, 2026-09-27 15:58 (+0330), before any X13 result is analysed
+
+The smoke test of the generator (one fit image, outputs in the scratch directory, detector
+results not inspected) showed that with a sign step of 2/255 the restoration client did not
+change the margin of that image at all, which suggests that it accepts no step, as on
+ImageNet. A client that never moves is not a matched optimizer. Validity rule, fixed now:
+in the variants with an acceptance test (V1, V2) a benign client is a valid workload only
+if its median acceptance rate on the FIT split is at least 0.10. Cells of invalid workloads
+are reported and marked, and they are excluded from P16b, P16c and P16e. If restoration is
+invalid in V2, P16e is evaluated on V1 instead, and if it is invalid in both, P16e is
+reported as not testable. V3 has no acceptance test, so every client is valid there by
+construction; its restoration client moves without the label check.
