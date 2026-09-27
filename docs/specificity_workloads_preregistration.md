@@ -410,3 +410,73 @@ Outcome of X13 and X14 (2026-09-27): P16a, P16c, P16d, P16e held; P16b failed (B
 not evaluable for the lime package at 32 px, whose default segmentation returns one superpixel
 for most images. The deletion-metric rule of P6c/P13b/P17d is also met by these empty
 explanations, so it does not establish that an explanation is informative.
+
+## X15 (2026-09-28): validity of the library explanations and enforcement with rejection
+
+Reason. An external review of the draft raised two objections that the record above cannot
+answer. (1) The deletion rule of P6c/P13b/P17d is met by empty explanations, so nothing in the
+record shows that the flagged library clients do useful work. (2) The detectors only observed
+the streams. That Blacklight "flags 98 to 100% of the queries" does not show what a client
+receives when the published response, rejection of flagged queries, is applied.
+
+Material. The 300 sessions of X14 at 224 px (lime_package, captum_kernelshap,
+captum_occlusion; one evaluation image of each of 100 ImageNet classes), for which the traces
+hold every model output and the match count of Blacklight for every query. Secondary, without
+predictions: the 600 sessions of X14 at 32 px and the sessions of our own explanation clients
+(X2, X10).
+
+Prior knowledge when this is written. Known from X14: Blacklight flags 98.3 to 99.9% of the
+queries of the three clients at 224 px, first alarm at a median of 2 to 5 queries; the lime
+package segments the 224-px images into 23 to 53 superpixels and the 32-px images into one
+superpixel at the median; the values of the old deletion rule. Not known: any quantity of the
+rule R2 below, any explanation computed under rejection.
+
+Rule R2 (informative explanation). Deletion area as before (sixteen steps, per-channel mean
+fill, probability of the source label). Two changes remove the defect of the old rule.
+
+- Ties in the attribution are broken by a spatially smooth random field (random 4 x 4 grid,
+  bilinear upsampling), the same field for an explanation and for its reference orderings.
+- The reference is a randomization of the explanation itself that keeps its spatial
+  structure, 20 draws per explanation: if the map has at most 256 distinct values (maps that
+  are constant on segments), the values are permuted among the level sets of the map;
+  otherwise (occlusion, RISE) the map is flipped at random in both directions and shifted
+  circularly by offsets drawn uniformly.
+- d = mean reference area - area of the explanation, per image. An explanation client is
+  informative if the median of d over the images is positive and its bootstrap 95% interval
+  (2,000 resamples of images) excludes zero.
+
+A constant map has d = 0 exactly under R2. This is a property of the construction and is
+checked in the code, not predicted.
+
+Enforcement. Every query enters the history of Blacklight, flagged or not, as in the released
+code (`add_img`). The three clients choose their queries without regard to the answers, so the
+set of flagged queries under enforcement is the recorded one (match count > 25). The library
+is run again with the seed of the session; every query is compared with the recorded stream
+(SHA-256 of the whole stream); answers are served from the recorded outputs. Handling of a
+rejected query by the client:
+
+- H1, substitution: the client puts the uniform distribution in the place of a rejected answer
+  and the library code runs unchanged (all three clients).
+- H2, answered queries only: the surrogate model of the lime package is fitted on the answered
+  samples alone (lime package only; Captum offers no entry point for this, and none is built).
+
+Reported per client: share of answered queries; whether the client obtains the prediction for
+its unperturbed image; Spearman rank correlation between the attribution maps with and without
+enforcement (pixel level; 0 if the enforced map is constant); overlap of the fifth of the image
+area with the largest attributions (0.2 by chance); d under R2.
+
+Predictions (224 px, each library client separately):
+
+- P18a. Without enforcement at least 95% of the explanations have ten or more distinct
+  attribution values, and the client is informative by R2.
+- P18b. Under enforcement with H1 the median Spearman correlation with the explanation
+  without enforcement is below 0.3.
+- P18c. Under enforcement with H1 the median of d is below one quarter of the median of d
+  without enforcement.
+- P18d. The lime package at 32 px is not informative by R2 (the interval of the median of d
+  includes zero).
+
+No prediction is made for H2, for the Captum clients at 32 px, or for our own clients; these
+are reported. If the stream of a session cannot be regenerated bit for bit, the session is
+excluded from the enforcement analysis and counted; if more than 10% of the sessions of a
+client are excluded, P18b and P18c are declared not evaluable for that client.
