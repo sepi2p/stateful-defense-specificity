@@ -24,6 +24,7 @@ import numpy as np
 import pandas as pd
 import torch
 import torch.nn.functional as F
+from scipy.special import comb
 from torchvision import datasets, transforms
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -86,7 +87,8 @@ def client_kernelshap(x, rng, grid=4, samples=500):
     def saliency(p):
         # KernelSHAP weights: huge weight on the full/empty coalitions enforces efficiency
         s = z.sum(1)
-        w = np.where((s == 0) | (s == m), 1e6, (m - 1) / (np.array([math.comb(m, int(k)) for k in s]) * s * (m - s) + 1e-12))
+        # float binomials: exact integers overflow int64 for m = 64 (8 x 8 grid) and break lstsq
+        w = np.where((s == 0) | (s == m), 1e6, (m - 1) / (comb(m, s, exact=False) * s * (m - s) + 1e-12))
         a = np.hstack([z.astype(np.float64), np.ones((len(z), 1))])
         coef = np.linalg.lstsq(a * np.sqrt(w)[:, None], p * np.sqrt(w), rcond=None)[0][:-1]
         return np.kron(coef.reshape(grid, grid), np.ones((cell, cell)))

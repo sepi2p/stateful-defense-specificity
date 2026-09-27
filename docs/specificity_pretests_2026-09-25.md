@@ -129,3 +129,24 @@ score_robustness_corpus.py; analysis/robustness_predictions.json in each corpus 
 
 Two frozen predictions failed across 32,536 new sessions: P8 for GWAD+ under SimBA
 (acceptance-rate leak, see X4) and P9 on GTSRB by 0.011 (CI includes 0.70).
+
+# X9 ImageNet corpus results (2026-09-27)
+
+`analysis_outputs/specificity_imagenet_20260926/` (3,600 sessions; ResNet-50, 224 px, 100 classes,
+tiled NES; score.log, analysis/). Restore is excluded as an invalid workload (0% accepted steps,
+frozen before inspection); its sessions are trivially separable because the client never moves
+(GWAD+ 0.999), which says nothing about specificity.
+
+Evaluation AUROC at 1,024 calls, attack vs:
+- confidence_boost (matched Tier B): GWAD+ 0.60-0.62 [0.56, 0.68], Blacklight 0.54 [0.48, 0.60],
+  combined 0.60-0.62; output trajectory 1.00.
+- random walk: 1.00 for every detector.
+- boundary_probe: GWAD+ 0.84-0.87, Blacklight 0.59-0.60 (acceptance-rate leak: boundary_probe
+  accepts 23-27% of tiled-NES steps vs 67-76% for the attack; same mechanism as SimBA).
+- counterfactual: GWAD+ 0.52-0.59, Blacklight 0.52-0.53.
+Native alarm rates: GWAD+ 100% of every objective; Blacklight (paper's ImageNet setting) 30-38%
+of attacks vs 37-38% of confidence_boost (96-98% of random walks); Lee-Fang-Chang 98.5-100% of
+confidence_boost and 99.5-100% of attacks.
+Predictions (restore excluded): P8 vs confidence_boost at the 0.62 bound (GWAD+ 0.621 denoise,
+CI includes the bound; Blacklight 0.54 held); P8 vs random walk held; P9 held (0.64, 0.70);
+P10 held (1.00); P11 held (0.985).
