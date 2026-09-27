@@ -150,3 +150,20 @@ confidence_boost and 99.5-100% of attacks.
 Predictions (restore excluded): P8 vs confidence_boost at the 0.62 bound (GWAD+ 0.621 denoise,
 CI includes the bound; Blacklight 0.54 held); P8 vs random walk held; P9 held (0.64, 0.70);
 P10 held (1.00); P11 held (0.985).
+
+# X10 ImageNet explanation-traffic results (2026-09-27)
+
+`analysis_outputs/explanation_clients_imagenet_20260926/` (800 sessions, 0 duplicate ids; ResNet-50,
+224 px, 200 evaluation images; Blacklight / Lee-Fang-Chang ImageNet settings; GWAD as released).
+Alarm rate [Wilson 95% CI] (median first-alarm query); utility = random - client deletion AUC.
+
+| client (queries) | Blacklight | GWAD+ | Lee-Fang-Chang | utility (primary) | utility (pixel/blur sensitivity) |
+|---|---|---|---|---|---|
+| LIME (1,000) | 1.00 [0.98, 1.00] (5) | 0.05 | 0.31 (89) | 0.268 [0.230, 0.291] | 0.000 [-0.018, 0.020] |
+| KernelSHAP (500) | 1.00 [0.98, 1.00] (3) | 0.09 | 0.32 (75) | 0.162 [0.146, 0.182] | 0.024 [0.005, 0.045] |
+| Occlusion (626) | 1.00 [0.98, 1.00] (2) | 0.975 (259) | 0.995 (18) | 0.233 [0.207, 0.259] | 0.001 [-0.011, 0.023] |
+| RISE (1,000) | 0.035 [0.02, 0.07] (85) | 0.00 | 0.32 (140) | 0.230 [0.204, 0.244] | -0.005 [-0.023, 0.011] |
+
+Predictions: P13a (Blacklight >= 90% on LIME, KernelSHAP, occlusion) held; P13b (utility, primary
+metric) held for all four; RISE <= 10% held (3.5%). As at 32 px, the pixel-order/blur sensitivity
+metric rates most clients near random at 224 px (only KernelSHAP stays significant).
