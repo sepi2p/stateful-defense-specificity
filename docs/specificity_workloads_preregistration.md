@@ -215,3 +215,60 @@ settings, GWAD as released. Utility metric as amended for X2.
 P13a. Blacklight alarms on >= 90% of LIME, KernelSHAP and occlusion sessions.
 P13b. Every client passes the P6c utility rule.
 RISE, GWAD, GWAD+ and Lee-Fang-Chang: reported without prediction.
+
+## Addendum 2026-09-27: X11 acceptance-throttled SimBA attack (frozen before the run)
+
+Motivation: on the SimBA corpus GWAD+ separates the attack from benign clients (P8 failed),
+and acceptance rates differ by objective. Whether the acceptance rate *causes* the separation,
+and whether an attacker can remove it, has not been tested.
+Design: CIFAR-10, ResNet-18 seed 0, frozen manifest (fit + evaluation images, both starts),
+pixel SimBA at 8/255 as in X4, objective = attack (CE of the source label), with one change:
+an improving step is accepted only while the session's running acceptance rate stays at or
+below a cap r*. For each session r* is drawn (deterministically from the session seed) from the
+acceptance rates of the SimBA *restore* sessions of the FIT split with the same start
+(`throttle_rates_restore_fit.json`). Detectors online as in X4. 600 sessions.
+Analysis: same logistic models and splits as the main analysis, positives = throttled attack,
+negatives = the existing SimBA restore sessions (primary) and confidence_boost (secondary).
+P14a. GWAD+ AUROC, throttled attack vs restore, <= 0.65 on both starts (unthrottled: 0.92-0.97).
+P14b. The throttled attack still succeeds within the budget in >= 50% of evaluation sessions
+      (unthrottled: 85-90%).
+Reported without prediction: Blacklight, output trajectory, Lee et al. alarms, median first
+success, and the comparison against confidence_boost (whose acceptance rate the attacker does
+not match).
+
+## Addendum 2026-09-27: post hoc analyses for the manuscript (declared as exploratory)
+
+Declared after all corpora were analysed; none of these has a frozen prediction and each is
+labelled exploratory or post hoc wherever it is reported.
+- Acceptance-only AUROC per (corpus, start, objective) cell, next to the GWAD+ and Blacklight
+  AUROCs (analyze_acceptance_leak.py, part 1).
+- Prefix sweep of the exploratory trend statistic E1 (decision-time curve): attack detection
+  rate at the pooled 1% calibration threshold for prefixes 64-1,021 queries, against the
+  distribution of attack first-success times.
+- Per-query Blacklight flag rates per objective; first-alarm distributions (Figure 1).
+
+## Addendum 2026-09-27: X12 sensitivity of the Lee-Fang-Chang reimplementation (frozen before the run)
+
+A close reading of arXiv 2606.21592 (Sec. 5.1) shows two departures of the frozen
+reimplementation from the literal text: the salt is drawn from [0, N) rather than [0, 1], and the
+randomized rounding term is switched off (as already recorded on 2026-09-26) rather than applied at
+the stated rate (1/w)(x mod q)/q. The paper does not say whether the rounding randomness is redrawn
+for every query. Also noted: the paper evaluates sequences of 50 queries; our sessions have 1,021.
+Variants (lfc_sensitivity.py): frozen; salt_unit; literal_fixed (paper's rate, one rounding
+threshold per position fixed per detector); literal_fresh (paper's rate, redrawn per query).
+Part A: SimBA, Square, shuffled, noise streams on 50 calibration images. Part B: NES attack,
+restore, confidence_boost sessions on 50 evaluation images, both starts (300 sessions, replayed
+from the corpus seeds). Phase 2 as frozen.
+P15. Every variant that reproduces the paper on Part A (alarm >= 0.95 on SimBA and Square,
+     <= 0.05 on shuffled and noise) alarms on >= 90% of restore and of confidence_boost sessions.
+Reported without prediction: alarm rates within the first 50 queries.
+
+### Amendment to X12 (2026-09-27, before any X12 result was seen; the first launch was stopped after 12 minutes)
+Added (i) a small-noise stream, sigma = 0.1 intensity levels on the 0-255 scale, because the paper's
+noise scale is ambiguous and its own Blacklight baseline flags 97/100 noise sequences, which implies
+near-duplicate queries; (ii) the JPEG/brightness sweep; (iii) the paper's evaluation protocol as a
+second schedule ("sequence-50"): Phase 1 on the first 50 queries, Ljung-Box applied once to every
+subsequence of >= 15 queries (lags min(10, n//5); 5 as sensitivity). The frozen online schedule
+(re-test on every update) can accumulate false alarms on long benign near-duplicate streams; both
+schedules are reported. P15 is unchanged and refers to the online schedule. Reported without
+prediction: sequence-50 alarm rates for every stream and for attack, restore, confidence_boost.

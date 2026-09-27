@@ -148,7 +148,7 @@ def margin(logits: torch.Tensor, label: int) -> torch.Tensor:
 def values_for(images, logits, start, workload, objective, lam, label, target):
     """Objective value per candidate and whether it is maximized or minimized."""
     labels = torch.full((len(images),), label, device=images.device, dtype=torch.long)
-    if objective == "attack":
+    if objective in ("attack", "attack_throttled"):
         return F.cross_entropy(logits, labels, reduction="none"), "max"
     if objective == "restore":
         return restoration_loss(images, start.expand_as(images), workload, lam), "min"
@@ -197,13 +197,15 @@ def prepare_manifest_generic(path: Path, dataset, labels: np.ndarray, model, dev
 
 def run_session(model, clean, start, label, workload, objective, lam, seed, budget, device, delta_net, salt, lfc_seed=-1,
                 optimizer="nes", simba_step=8.0 / 255.0, blacklight_params=None, lfc_params=None,
-                nes_step=0.25 / 255.0, nes_tile=1, observe_detectors=True):
+                nes_step=0.25 / 255.0, nes_tile=1, observe_detectors=True, throttle_rate=None, extra_observers=None):
     recorder = Recorder.create(model, label, device, delta_net, observe_detectors=observe_detectors)
     blacklight = BlacklightTracker(salt, blacklight_params)
     if observe_detectors:
         recorder.detectors["blacklight"] = blacklight
     if lfc_seed >= 0 and observe_detectors:
         recorder.detectors["lfc_phase1"] = LFCPhase1(d=start[0].numel(), seed=lfc_seed, params=lfc_params, bern_scale=0.0)
+    if extra_observers:
+        recorder.detectors.update(extra_observers)  # objects with submit(raw) and summary()
     current = start.clone()
     current_logits = recorder.submit_batch(current)
     target = int(current_logits[0].clone().index_fill_(0, torch.tensor([label], device=device), -torch.inf).argmax())
@@ -242,6 +244,12 @@ def run_session(model, clean, start, label, workload, objective, lam, seed, budg
                     continue
                 if better(cand_values[i], current_value[0], direction) and (best is None or better(cand_values[i], cand_values[best], direction)):
                     best = i
+            if best is not None and throttle_rate is not None:
+                # X11: the attacker accepts an improving step only while its running acceptance rate
+                # stays at or below the rate of a benign reference client.
+                moved = sum(1 for a in accepted if a >= 0)
+                if (moved + 1) / (len(accepted) + 1) > throttle_rate:
+                    best = None
             if best is not None:
                 current, current_logits, current_value = candidates[best : best + 1], cand_logits[best : best + 1], cand_values[best : best + 1]
             accepted.append(-1 if best is None else best)
@@ -338,6 +346,8 @@ def main():
     parser.add_argument("--nes-step-255", type=float, default=0.25)
     parser.add_argument("--nes-tile", type=int, default=1)
     parser.add_argument("--no-detectors", action="store_true", help="development-only tuning runs")
+    parser.add_argument("--throttle-rates", type=Path, default=None,
+                        help="JSON {start: [benign acceptance rates]} for the attack_throttled objective (SimBA)")
     parser.add_argument("--lfc-seed", type=int, default=-1, help="add the Lee-Fang-Chang Phase-1 observer with this detector seed")
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--num-shards", type=int, default=1)
@@ -383,6 +393,9 @@ def main():
         subset = subset.head(args.max_images)
     subset = subset.iloc[args.shard :: args.num_shards]
     objectives = [o.strip() for o in args.objectives.split(",") if o.strip()]
+    throttle_rates = json.loads(args.throttle_rates.read_text()) if args.throttle_rates else None
+    if "attack_throttled" in objectives and (throttle_rates is None or args.optimizer != "simba"):
+        raise ValueError("attack_throttled needs --optimizer simba and --throttle-rates")
     atomic_json(args.output_dir / f"metadata_shard{args.shard}.json", {
         "stage": args.stage,
         "args": {k: str(v) for k, v in vars(args).items()},
@@ -412,19 +425,23 @@ def main():
                     continue
                 # Same seed derivation as the frozen gate, so attack/restore/random_walk replay exactly.
                 seed = session_seed(args.seed, row.dataset_index, workload, objective, optimizer, lam)
+                throttle = None
+                if objective == "attack_throttled":
+                    rates = throttle_rates[workload]
+                    throttle = float(rates[seed % len(rates)])
                 started = time.time()
                 result, arrays = run_session(model, clean, start, label, workload, objective, lam, seed,
                                              args.budget, device, delta_net, salt, args.lfc_seed, optimizer=args.optimizer,
                                              blacklight_params=blacklight_params, lfc_params=lfc_params,
                                              nes_step=args.nes_step_255 / 255.0, nes_tile=args.nes_tile,
-                                             observe_detectors=not args.no_detectors)
+                                             observe_detectors=not args.no_detectors, throttle_rate=throttle)
                 trace = args.output_dir / "traces" / f"{sid}.npz"
                 trace.parent.mkdir(parents=True, exist_ok=True)
                 np.savez_compressed(trace, **arrays)
                 record = {"session_id": sid, "split": row.split, "dataset_index": int(row.dataset_index),
                           "source_label": label, "workload": workload, "objective": objective,
                           "optimizer": optimizer, "lambda": float(lam), "session_seed": seed,
-                          "model_name": args.model_name, "dataset": args.dataset,
+                          "model_name": args.model_name, "dataset": args.dataset, "throttle_rate": throttle,
                           "elapsed_seconds": time.time() - started,
                           "trace": str(trace.relative_to(args.output_dir))} | result
                 with summary_path.open("a") as handle:

@@ -68,13 +68,24 @@ def draw_window_starts(d: int, r: int, w: int, k: int, rng: np.random.Generator,
 
 
 class LFCPhase1:
-    def __init__(self, d: int = 3072, seed: int = 0, params: dict | None = None, bern_scale: float | None = None):
+    def __init__(self, d: int = 3072, seed: int = 0, params: dict | None = None, bern_scale: float | None = None,
+                 salt_unit: bool = False, rounding: str = "fresh", rate_unsalted: bool = False):
+        """Defaults reproduce the configuration frozen for the corpus runs when bern_scale = 0.
+
+        Sensitivity options (Appendix B): salt_unit draws the salt from [0, 1) as the paper states
+        (default: [0, N)); rounding = "fixed" draws one rounding threshold per position when the
+        detector is created, so that identical inputs quantize identically ("fresh" redraws them for
+        every query); rate_unsalted computes the rounding rate from x mod q as written in the paper
+        (default: from the salted value).
+        """
         self.p = dict(LFC_CIFAR if params is None else params)
         rng = np.random.default_rng(seed)
-        self.salt = float(rng.random()) * self.p["N"]
+        self.salt = float(rng.random()) * (1.0 if salt_unit else self.p["N"])
         self.starts = draw_window_starts(d, self.p["r"], self.p["w"], self.p["k"], rng)
         self.bern_scale = 1.0 / self.p["w"] if bern_scale is None else bern_scale
         self.noise = np.random.default_rng(seed + 1)  # per-query Bernoulli rounding
+        self.rounding, self.rate_unsalted = rounding, rate_unsalted
+        self.fixed_u = np.random.default_rng(seed + 2).random(d)
         self.subsequences: list[set[bytes]] = []
         self.index: dict[bytes, set[int]] = {}  # window hash -> subsequences containing it
         self.assignment: list[int] = []  # subsequence id per query
@@ -82,8 +93,11 @@ class LFCPhase1:
 
     def window_hashes(self, x01: np.ndarray) -> list[bytes]:
         N, q, w = self.p["N"], self.p["q"], self.p["w"]
-        v = np.mod(np.asarray(x01, dtype=np.float64).reshape(-1) * (N - 1) + self.salt, N)
-        level = np.floor(v / q) + (self.noise.random(v.shape) < self.bern_scale * np.mod(v, q) / q)
+        x = np.asarray(x01, dtype=np.float64).reshape(-1) * (N - 1)
+        v = np.mod(x + self.salt, N)
+        rate = self.bern_scale * np.mod(x if self.rate_unsalted else v, q) / q
+        u = self.fixed_u if self.rounding == "fixed" else self.noise.random(v.shape)
+        level = np.floor(v / q) + (u < rate)
         level = level.astype(np.int16)
         return [hashlib.blake2b(np.int32(s).tobytes() + level[s : s + w].tobytes(), digest_size=16).digest() for s in self.starts]
 
@@ -139,3 +153,23 @@ def phase2_alarm(assignment: np.ndarray, p_matrix_logits: np.ndarray, min_len: i
         if ljung_box_p(probs[idx, c1], h) < alpha:
             return t + 1
     return -1
+
+
+def phase2_batch(assignment: np.ndarray, logits: np.ndarray, length: int = 50, min_len: int = 15, alpha: float = 0.025,
+                 lags: str | int = "min10") -> bool:
+    """The paper's evaluation protocol: a sequence of `length` queries is given, Phase 1 groups it, and the
+    Ljung-Box test is applied ONCE to every subsequence with at least min_len members."""
+    assignment = np.asarray(assignment)[:length]
+    logits = np.asarray(logits, dtype=np.float64)[:length]
+    z = logits - logits.max(1, keepdims=True)
+    probs = np.exp(z) / np.exp(z).sum(1, keepdims=True)
+    for sid in np.unique(assignment):
+        idx = np.flatnonzero(assignment == sid)
+        n = len(idx)
+        if n < min_len:
+            continue
+        h = min(10, n // 5) if lags == "min10" else int(lags)
+        if h >= 1 and ljung_box_p(probs[idx, int(logits[idx[0]].argmax())], h) < alpha:
+            return True
+    return False
+

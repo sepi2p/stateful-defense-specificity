@@ -47,7 +47,8 @@ def simba_margin(model, start, label, keep_label, seed, budget, eps=8 / 255, ste
         queries += [candidates[:1], candidates[1:]]
         outputs += [logits[:1], logits[1:]]
         if first_flip < 0 and bool((logits.argmax(1) != label).any()):
-            first_flip = len(queries) - 1 - int(logits[1].argmax() != label and logits[0].argmax() == label)
+            # 0-based position in `queries` of the first candidate the model labels differently
+            first_flip = len(queries) - 2 if int(logits[0].argmax()) != label else len(queries) - 1
         values = margin(logits, label)
         best = None
         for i in range(2):
@@ -66,7 +67,7 @@ def main():
     parser.add_argument("--images", type=int, default=40)
     parser.add_argument("--budget", type=int, default=1024)
     parser.add_argument("--step-255", type=float, default=8.0)
-    parser.add_argument("--output", default="analysis_outputs/stateful_specificity_workloads_20260925/rank_equivalence_simba.csv")
+    parser.add_argument("--output", default="analysis_outputs/stateful_specificity_workloads_20260925/rank_equivalence_simba_v2.csv")
     args = parser.parse_args()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = load_cifar_model("resnet18_seed0", Path("checkpoints/cifar10_resnet18_seed_study/resnet18_seed0.pt"), device).eval()
@@ -83,16 +84,19 @@ def main():
             n = min(len(qa), len(qb))
             same = [(torch.equal(qa[i], qb[i]) and torch.equal(oa[i], ob[i])) for i in range(n)]
             first_diff = next((i for i, s in enumerate(same) if not s), -1)
-            rows.append({"dataset_index": int(row.dataset_index), "workload": workload, "attack_first_flip": flip,
-                         "first_divergence": first_diff, "calls": n,
-                         "identical_before_flip": bool(all(same[: flip if flip >= 0 else n]))})
+            rows.append({"dataset_index": int(row.dataset_index), "workload": workload,
+                         "attack_first_flip": flip + 1 if flip >= 0 else -1,          # 1-based query number
+                         "first_divergence": first_diff + 1 if first_diff >= 0 else -1,  # 1-based query number
+                         "calls": n,
+                         "identical_through_flip": bool(all(same[: flip + 1 if flip >= 0 else n]))})
     frame = pd.DataFrame(rows)
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     frame.to_csv(args.output, index=False)
     flipped = frame[frame.attack_first_flip >= 0]
     print(f"sessions={len(frame)} attack_flipped={len(flipped)} "
-          f"identical_before_flip={frame.identical_before_flip.mean():.3f} "
-          f"divergence_after_or_at_flip={(flipped.first_divergence >= flipped.attack_first_flip).mean():.3f}")
+          f"identical_through_flip={frame.identical_through_flip.mean():.3f} "
+          f"divergence_minus_flip={sorted(set((flipped.first_divergence - flipped.attack_first_flip).tolist()))} "
+          f"median_flip={flipped.attack_first_flip.median()} range={flipped.attack_first_flip.min()}-{flipped.attack_first_flip.max()}")
     print(frame.head(10).to_string(index=False))
 
 

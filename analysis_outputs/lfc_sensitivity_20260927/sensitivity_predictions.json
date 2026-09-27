@@ -1,0 +1,38 @@
+{
+  "frozen": {
+    "reproduces_paper": true,
+    "min_benign_optimizer_alarm": 1.0,
+    "P15_holds": true,
+    "reproduces_paper_seq50_protocol": true,
+    "seq50_attack": 0.03,
+    "seq50_restore": 0.09,
+    "seq50_confidence_boost": 0.13
+  },
+  "salt_unit": {
+    "reproduces_paper": true,
+    "min_benign_optimizer_alarm": 0.99,
+    "P15_holds": true,
+    "reproduces_paper_seq50_protocol": true,
+    "seq50_attack": 0.16,
+    "seq50_restore": 0.17,
+    "seq50_confidence_boost": 0.24
+  },
+  "literal_fixed": {
+    "reproduces_paper": true,
+    "min_benign_optimizer_alarm": 0.99,
+    "P15_holds": true,
+    "reproduces_paper_seq50_protocol": true,
+    "seq50_attack": 0.13,
+    "seq50_restore": 0.14,
+    "seq50_confidence_boost": 0.24
+  },
+  "literal_fresh": {
+    "reproduces_paper": false,
+    "min_benign_optimizer_alarm": 0.03,
+    "P15_holds": null,
+    "reproduces_paper_seq50_protocol": false,
+    "seq50_attack": 0.0,
+    "seq50_restore": 0.0,
+    "seq50_confidence_boost": 0.0
+  }
+}

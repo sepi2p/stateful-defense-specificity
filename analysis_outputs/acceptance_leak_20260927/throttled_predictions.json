@@ -1,0 +1,22 @@
+{
+  "P14a_gwad_plus_throttled_vs_restore_le_0.65": {
+    "denoise": [
+      0.544,
+      true
+    ],
+    "deblur": [
+      0.491,
+      true
+    ]
+  },
+  "P14b_throttled_success_ge_0.50": {
+    "denoise": [
+      0.78,
+      true
+    ],
+    "deblur": [
+      0.555,
+      true
+    ]
+  }
+}
