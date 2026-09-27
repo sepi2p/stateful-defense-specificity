@@ -1,7 +1,8 @@
 {
   "checks": 67,
-  "held": 59,
+  "held": 58,
   "failed": 8,
+  "evaluable_in_part": 1,
   "checks_P1_P15": 55,
   "failed_P1_P15": 6,
   "failed_P1_P15_first_analysis": 7,

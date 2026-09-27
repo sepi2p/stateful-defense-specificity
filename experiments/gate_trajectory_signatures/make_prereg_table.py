@@ -204,10 +204,14 @@ def later_experiments() -> list[dict]:
                          "outcome": pc(gp, 1), "held": gp >= 0.90})
         lows = {k: float(e.loc[k, "util_diff"].split("[")[1].split(",")[0]) for k in e.index}
         meds = {k: float(e.loc[k, "util_diff"].split(" ")[0]) for k in e.index}
-        note = "; the row of the \\texttt{lime} package is not meaningful (Table~\\ref{tab:libraries})" if directory == "cifar10" else ""
+        held = all(v > 0 for v in lows.values()) and all(v > 0 for v in meds.values())
+        note = ""
+        if directory == "cifar10":  # the package returns one superpixel for most images: its explanations are empty
+            note = "; not evaluable for the \\texttt{lime} package, whose explanations are empty (Table~\\ref{tab:libraries})"
+            held = None
         rows.append({"id": "P17d", "corpus": label, "prediction": "Every library client beats spatially smooth random orderings",
                      "outcome": f"medians {fmt(min(meds.values()), 3)}--{fmt(max(meds.values()), 3)}; smallest lower bound {fmt(min(lows.values()), 3)}" + note,
-                     "held": all(v > 0 for v in lows.values()) and all(v > 0 for v in meds.values())})
+                     "held": held})
     return rows
 
 
@@ -226,6 +230,8 @@ def main():
     frame.to_csv(N / "preregistration_outcomes.csv", index=False)
 
     def verdict(held):
+        if held is None or pd.isna(held):
+            return "in part"
         return "held" if held else "\\textbf{failed}"
 
     lines = []
@@ -240,15 +246,18 @@ def main():
             "control streams). ``Main'' is the CIFAR-10 ResNet-18 NES corpus. P8--P11 were written for each later corpus; P12 applies "
             "them to ImageNet, where restoration is excluded as an invalid workload. Outcomes are those of the corrected analysis "
             "(Blacklight's published rule); where the first analysis gave a different outcome or verdict, it is given in brackets. "
-            "P16 and P17 were run after the correction.}\\label{tab:prereg}\\\\\n\\toprule\n" + head + "\n\\endfirsthead\n\\toprule\n"
-            + head + "\n\\endhead\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{longtable}\n\\end{footnotesize}\n")
+            "P16 and P17 were run after the correction. The rule of P6c, P13b and P17d does not establish that an explanation is informative (Section~\\ref{sec:res-expl}).}\\label{tab:prereg}\\\\\n\\toprule\n" + head + "\n\\endfirsthead\n"
+            + "\\multicolumn{5}{l}{\\emph{Table~\\thetable\\ (continued)}}\\\\\n\\toprule\n" + head + "\n\\endhead\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{longtable}\n\\end{footnotesize}\n")
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "prereg.tex").write_text(text)
-    counts = {"checks": len(frame), "held": int(frame.held.sum()), "failed": int((~frame.held).sum()),
+    decided = frame[frame.held.notna()]
+    decided = decided.assign(held=decided.held.astype(bool))
+    counts = {"checks": len(frame), "held": int(decided.held.sum()), "failed": int((~decided.held).sum()),
+              "evaluable_in_part": int(frame.held.isna().sum()),
               "checks_P1_P15": len(final), "failed_P1_P15": int((~final.held).sum()),
               "failed_P1_P15_first_analysis": int((~first.held).sum()),
               "verdict_changed": final[final.held != final.first_held][["id", "corpus"]].values.tolist(),
-              "failed_ids": frame[~frame.held][["id", "corpus"]].values.tolist()}
+              "failed_ids": decided[~decided.held][["id", "corpus"]].values.tolist()}
     (N / "preregistration_counts.json").write_text(json.dumps(counts, indent=2))
     print(json.dumps(counts, indent=1))
     pd.set_option("display.width", 250)

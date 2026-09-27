@@ -392,3 +392,21 @@ stored, so this cannot be recomputed from the traces. X12 is repeated unchanged 
 variant, `strict_threshold` (the configuration used for every corpus, joining only above the
 threshold); output in `analysis_outputs/lfc_sensitivity_r2`. No prediction is attached; the
 manuscript reports the variant next to the others.
+
+## Note added 2026-09-27 (night): times in this file
+
+A second check of the manuscript found that the headings of two amendments above give times
+that are later than the commits which contain them: the amendment to X13 is headed "15:58" and
+was committed at 15:54:42 (commit b52ee9f), the amendment to X14 is headed "16:22" and was
+committed at 16:20:00 (commit 3116339). The times in the headings were written as estimates
+and are wrong by a few minutes; the commit times are authoritative. The X13 amendment was
+written 42 seconds AFTER the X13 run had been launched (15:53:58) and before any of its
+sessions had been analysed. The amendment to X12 says that the first launch was stopped "after
+12 minutes"; by the log it ran for about 4 minutes. The text above is left unchanged.
+
+Outcome of X13 and X14 (2026-09-27): P16a, P16c, P16d, P16e held; P16b failed (Blacklight
+0.659 against restoration at step 1/255). P17a and P17b held at both resolutions; P17c failed
+(GWAD+ alarms in 49% of the Captum occlusion sessions at 224 px); P17d held at 224 px and is
+not evaluable for the lime package at 32 px, whose default segmentation returns one superpixel
+for most images. The deletion-metric rule of P6c/P13b/P17d is also met by these empty
+explanations, so it does not establish that an explanation is informative.

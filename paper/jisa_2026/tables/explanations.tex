@@ -1,13 +1,13 @@
 \begin{table}[!tbp]
 \centering\footnotesize\setlength{\tabcolsep}{4pt}
-\caption{Explanation clients, our implementations of the four query designs (200 evaluation images per row): sessions with an alarm (\%), with the median query index of the first alarm in parentheses, and the share of queries that Blacklight flags (\%). Lee et al.: test at every update of a group, within the first 50 queries and over the whole session. Utility: median reduction of the deletion area relative to spatially smooth random orderings, with its bootstrap 95\% interval.}
+\caption{Explanation clients, our implementations of the four query designs (200 evaluation images per row): sessions with an alarm (\%), with the median query index of the first alarm in parentheses, and the share of queries that Blacklight flags (\%). Lee et al.: test at every update of a group, within the first 50 queries and over the whole session (one test after 50 queries: Tables~\ref{tab:lfcother} and~\ref{tab:lfcall}). Deletion: median reduction of the deletion area relative to spatially smooth random orderings, with its bootstrap 95\% interval; a descriptive quantity, see Section~\ref{sec:res-expl}.}
 \label{tab:explanations}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{rlrcccccc}
 \toprule
 & & & \multicolumn{2}{c}{Blacklight} & & \multicolumn{2}{c}{Lee et al.} & \\
 \cmidrule(lr){4-5}\cmidrule(lr){7-8}
-Pixels & Client & Queries & sessions & queries & GWAD+ & first 50 & whole session & Utility \\
+Pixels & Client & Queries & sessions & queries & GWAD+ & first 50 & whole session & Deletion \\
 \midrule
 32 & LIME & 1{,}000 & 100 (6) & 97.2 & 0 & 0.5 & 40.5 & 0.198 {[}0.166, 0.234{]} \\
  & KernelSHAP & 500 & 100 (3) & 99.2 & 30.5 (265) & 7.5 & 66.5 & 0.152 {[}0.130, 0.198{]} \\

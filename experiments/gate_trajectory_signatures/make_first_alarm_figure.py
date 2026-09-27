@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Figure: when does each stateful detector fire, for attacks vs matched benign vs ordinary traffic?
+"""Figure: when does each stateful detector raise its first alarm, for attacks vs matched benign vs ordinary traffic?
 
 Cumulative fraction of evaluation sessions alarmed by query q, one panel per detector at its
 released/frozen operating point (Blacklight native, GWAD+ native, Lee-Fang-Chang reimplementation).
@@ -96,7 +96,7 @@ def main():
         ax.set_axisbelow(True)
         for side in ("top", "right"):
             ax.spines[side].set_visible(False)
-    axes[0].set_ylabel("Fraction of sessions blocked")
+    axes[0].set_ylabel("Fraction of sessions with an alarm")
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="outside lower center", ncol=2, frameon=False, fontsize=7, handlelength=3.0,
                columnspacing=1.6)

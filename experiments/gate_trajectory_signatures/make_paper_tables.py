@@ -82,10 +82,11 @@ def interval(text):
     return text.replace("-0.000", "0.000").replace("-", "$-$").replace("[", "{[}").replace("]", "{]}")
 
 
-def wrap(name, body, caption, label, spec, size="\\footnotesize", colsep="4pt"):
+def wrap(name, body, caption, label, spec, size="\\footnotesize", colsep="4pt", sideways=False):
     inner = f"\\begin{{tabular}}{{{spec}}}\n\\toprule\n{body}\n\\bottomrule\n\\end{{tabular}}"
-    text = (f"\\begin{{table}}[!tbp]\n\\centering{size}\\setlength{{\\tabcolsep}}{{{colsep}}}\n\\caption{{{caption}}}\n\\label{{{label}}}\n"
-            f"\\begin{{adjustbox}}{{max width=\\textwidth}}\n{inner}\n\\end{{adjustbox}}\n\\end{{table}}\n")
+    env, place, width = ("sidewaystable", "[p]", "\\textheight") if sideways else ("table", "[!tbp]", "\\textwidth")
+    text = (f"\\begin{{{env}}}{place}\n\\centering{size}\\setlength{{\\tabcolsep}}{{{colsep}}}\n\\caption{{{caption}}}\n\\label{{{label}}}\n"
+            f"\\begin{{adjustbox}}{{max width={width}}}\n{inner}\n\\end{{adjustbox}}\n\\end{{{env}}}\n")
     (OUT / f"{name}.tex").write_text(text)
     print(f"wrote tables/{name}.tex")
 
@@ -213,7 +214,7 @@ def table_operating():
          "released one. Calibrated on the sweep, GWAD and GWAD+ raise no alarm on any stream, because the released network "
          "gives the sweeps its largest score; these rows are omitted. Restor.: restoration; Conf.: confidence raising. "
          "Ranges are over the two starts.",
-         "tab:operating", "llccccccccc", colsep="3pt")
+         "tab:operating", "llccccccccc", colsep="5pt", size="\\small", sideways=True)
 
 
 def table_released():
@@ -273,11 +274,12 @@ def explanation_rows(files, clients, sched_keys, numbers):
 
 EXPLANATION_HEAD = ("& & & \\multicolumn{2}{c}{Blacklight} & & \\multicolumn{2}{c}{Lee et al.} & \\\\\n"
                     "\\cmidrule(lr){4-5}\\cmidrule(lr){7-8}\n"
-                    "Pixels & Client & Queries & sessions & queries & GWAD+ & first 50 & whole session & Utility \\\\\n\\midrule")
+                    "Pixels & Client & Queries & sessions & queries & GWAD+ & first 50 & whole session & Deletion \\\\\n\\midrule")
 EXPLANATION_NOTE = ("sessions with an alarm (\\%), with the median query index of the first alarm in parentheses, and the share of "
                     "queries that Blacklight flags (\\%). Lee et al.: test at every update of a group, within the first 50 queries "
-                    "and over the whole session. Utility: median reduction of the deletion area relative to spatially smooth random "
-                    "orderings, with its bootstrap 95\\% interval.")
+                    "and over the whole session (one test after 50 queries: Tables~\\ref{tab:lfcother} and~\\ref{tab:lfcall}). "
+                    "Deletion: median reduction of the deletion area relative to spatially smooth random orderings, with its bootstrap "
+                    "95\\% interval; a descriptive quantity, see Section~\\ref{sec:res-expl}.")
 
 
 def table_explanations():
@@ -299,7 +301,7 @@ def table_libraries():
          "$224\\times224$): " + EXPLANATION_NOTE + " n/a: the stream is shorter than the 259 queries that GWAD+ needs "
          "before its first decision. At $32\\times32$ pixels the default segmentation of the \\texttt{lime} package returns a "
          "median of one superpixel, so that its samples are copies of the image and its explanation carries no information; "
-         "the row shows what the package sends, and its utility value is not meaningful.",
+         "the row shows what the package sends.",
          "tab:libraries", "rlrcccccc")
 
 
@@ -313,6 +315,15 @@ def table_lfc():
             for obj in ("attack", "restore", "confidence_boost"):
                 r.append("--" if obj in invalid or (key, obj) not in sched.index else pct(sched.loc[(key, obj), schedule], 1))
         rows.append(r)
+    rows[-1][-1] += " \\\\[2pt]"
+    for key, label in (("nes_v1_step1", "NES variant, step 1/255"), ("nes_v2_step2", "NES variant, step 2/255"),
+                       ("nes_v3_step2_always", "NES variant, step 2/255, always moves")):
+        r = [label]
+        for schedule in ("single50", "update50", "online"):
+            for obj in ("attack", "restore", "confidence_boost"):
+                star = "$^{\\ast}$" if (key, obj) == ("nes_v2_step2", "restore") else ""
+                r.append(pct(sched.loc[(key, obj), schedule], 1) + star)
+        rows.append(r)
     head = ("& \\multicolumn{3}{c}{First 50, one test} & \\multicolumn{3}{c}{First 50, every update} & "
             "\\multicolumn{3}{c}{Whole session} \\\\\n"
             "\\cmidrule(lr){2-4}\\cmidrule(lr){5-7}\\cmidrule(lr){8-10}\n"
@@ -322,7 +333,8 @@ def table_lfc():
          "First 50, one test: the first 50 queries are grouped and every group of at least 15 queries is tested once. "
          "Every update: the test is applied whenever a group of at least 15 queries gains a member, and alarms up to "
          "query 50 are counted. Whole session: the same without a limit on the number of queries. "
-         "Restor.: restoration; Conf.: confidence raising. Dashes: workload not valid. The objective-free random walk "
+         "Restor.: restoration; Conf.: confidence raising. Dashes: workload not valid. Last three rows: the variants of "
+         "Section~\\ref{sec:res-nes} (CIFAR-10, ResNet-18); $^{\\ast}$invalid workload. The objective-free random walk "
          "is flagged in 98.8--100\\% of the sessions under every schedule.",
          "tab:lfc", "lccccccccc", colsep="3pt")
 
@@ -353,8 +365,8 @@ def table_leak():
             "Optimizer & Benign clients & Attack & Benign & Acceptance alone & GWAD+ & Blacklight \\\\\n\\midrule")
     wrap("leak", head + "\n" + rows_tex(rows),
          "Acceptance rates. Upper block (not planned in advance): per optimizer, the fraction of iterations in which the "
-         "client's current image moved, and the AUROC for separating attack from benign sessions by that fraction alone, by "
-         "GWAD+, and by Blacklight. Lower blocks: the SimBA attack before and after its acceptance rate is throttled to that of "
+         "client's current image moved, and the AUROC for separating attack sessions from those of the matched client by that fraction "
+         "alone and by the logistic models on the session statistics of GWAD+ and of Blacklight. Lower blocks: the SimBA attack before and after its acceptance rate is throttled to that of "
          "the restoration client; the comparison with restoration was planned in advance (P14), the other three were not. "
          "Ranges are over the starts and, in the upper block, the clients of the tier.",
          "tab:leak", "llccccc")
@@ -384,9 +396,12 @@ def table_nes():
          "Sensitivity of the matched-objective result to the NES configuration (CIFAR-10, ResNet-18, 200 evaluation images, "
          "full session). Step: size of the sign step; the first row is the configuration of the main corpus. Moves: whether "
          "the client moves to the stepped point only if its objective improves (and, for restoration, the label is kept) or "
-         "always, as in NES as published. Success: attack success within the budget. At the released operating points Blacklight "
+         "always, as in NES as published (restoration then also drops its label check). Success: attack success within the budget. "
+         "AUROC: acceptance rate alone, and logistic models on the session statistics of each detector, fitted on the fit split. At the released operating points Blacklight "
          "and GWAD+ raise an alarm in every session of every row. $^{\\ast}$Invalid workload: the client accepts no step "
-         "(median acceptance rate on the fit split below 0.10). Ranges are over the two starts.",
+         "(median acceptance rate on the fit split below 0.10; 76 of its 400 evaluation sessions accept at least one step). "
+         "Each variant has 1{,}800 sessions (100 fit and 200 evaluation images, two starts, three clients). Ranges are over "
+         "the two starts.",
          "tab:nes", "llclcccccc", colsep="3pt")
 
 
@@ -453,7 +468,7 @@ def table_effects():
             "$p$: probability of the source label (its median at the start image is given with the corpus). PSNR gain is measured "
             "against the clean source image. Accepted: fraction of "
             "iterations in which the current image moved.}\\label{tab:effects}\\\\\n\\toprule\n" + head + "\n\\endfirsthead\n"
-            "\\toprule\n" + head + "\n\\endhead\n" + body + "\n\\bottomrule\n\\end{longtable}\n\\end{footnotesize}\n")
+            "\\multicolumn{6}{l}{\\emph{Table~\\thetable\\ (continued)}}\\\\\n\\toprule\n" + head + "\n\\endhead\n" + body + "\n\\bottomrule\n\\end{longtable}\n\\end{footnotesize}\n")
     (OUT / "effects.tex").write_text(text)
     print("wrote tables/effects.tex")
 
@@ -490,7 +505,8 @@ def table_full():
             "most 0.01 in every cell and is omitted. Single statistic: the largest score of GWAD+ and the largest match count of "
             "Blacklight over the session, oriented on the fit split. $^{\\ast}$Restoration accepts almost no step on ImageNet; "
             "its sessions are trivially separable and are excluded from all claims.}\\label{tab:full}\\\\\n\\toprule\n"
-            + head + "\n\\endfirsthead\n\\toprule\n" + head + "\n\\endhead\n" + body + "\n\\bottomrule\n\\end{longtable}\n\\end{footnotesize}\n\\end{landscape}\n")
+            + head + "\n\\endfirsthead\n\\multicolumn{7}{l}{\\emph{Table~\\thetable\\ (continued)}}\\\\\n\\toprule\n" + head
+            + "\n\\endhead\n" + body + "\n\\bottomrule\n\\end{longtable}\n\\end{footnotesize}\n\\end{landscape}\n")
     (OUT / "full.tex").write_text(text)
     print("wrote tables/full.tex")
 
@@ -508,7 +524,7 @@ def table_explanation_utility():
     head = ("& & \\multicolumn{4}{c}{Rule used} & \\multicolumn{2}{c}{Rule planned first} \\\\\n\\cmidrule(lr){3-6}\\cmidrule(lr){7-8}\n"
             "Pixels & Client & Client & Random & Difference & Better (\\%) & Difference & Better (\\%) \\\\\n\\midrule")
     wrap("explanation_utility", head + "\n" + rows_tex(rows),
-         "Utility of the explanation clients on the evaluation images. Rule used: deletion area with per-channel mean fill; "
+         "Deletion metric of the explanation clients on the evaluation images. Rule used: deletion area with per-channel mean fill; "
          "``Random'' is the mean over ten spatially smooth random orderings; ``Difference'' is the median paired difference "
          "(random minus client) with its bootstrap 95\\% interval (2{,}000 resamples); ``Better'' is the share of images on which the "
          "client's area is smaller. Rule planned first: blurred fill and random orderings of single pixels, with the requirement "
@@ -520,7 +536,7 @@ def table_sensitivity():
     # the repetition of X12 with the added variant; identical to the first run in all other cells
     s = pd.read_csv(A / "lfc_sensitivity_r2/sensitivity_summary.csv").set_index(["stream", "variant"])
     variants = [("frozen", "Configuration used"), ("strict_threshold", "Grouping above the threshold"), ("salt_unit", "Salt in $[0,1)$"),
-                ("literal_fixed", "Rounding, fixed thresholds"), ("literal_fresh", "Rounding, redrawn per query")]
+                ("literal_fixed", "Literal, fixed rounding"), ("literal_fresh", "Literal, rounding redrawn")]
     streams = ["simba", "square", "shuffled", "noise", "noise_small", "sweep", "attack", "restore", "confidence_boost"]
     rows = []
     for schedule, name in (("seq50_flag", "First 50, one test"), ("alarm_within_50", "First 50, every update"), ("alarm", "Whole session")):
@@ -535,8 +551,10 @@ def table_sensitivity():
     wrap("sensitivity", head + "\n" + rows_tex(rows),
          "Sensitivity of the reimplemented detector of Lee et al.\\ to choices that the paper leaves open: sessions flagged (\\%). "
          "Streams of the first six columns: 50 calibration images; matched NES sessions: 50 evaluation images, both starts. "
-         "Noise: $\\sigma=0.1$ on the $[0,1]$ scale; small noise: $\\sigma=0.1$ intensity levels on the 0--255 scale.",
-         "tab:sensitivity", "llccccccccc", colsep="3pt")
+         "Noise: $\\sigma=0.1$ on the $[0,1]$ scale; small noise: $\\sigma=0.1$ intensity levels on the 0--255 scale. "
+         "The two literal variants use the salt in $[0,1)$ and the rounding rule of the paper, with rounding thresholds drawn "
+         "once per position or redrawn for every query.",
+         "tab:sensitivity", "llccccccccc", colsep="5pt", size="\\small", sideways=True)
 
 
 def table_decision():

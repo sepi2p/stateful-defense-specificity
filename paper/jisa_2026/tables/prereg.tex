@@ -1,11 +1,12 @@
 \begin{footnotesize}
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{L{0.9cm}L{1.9cm}L{5.0cm}L{3.4cm}L{1.1cm}}
-\caption{Predictions that were written down in advance, and their outcomes. Evaluation split, except P5 (all splits of the control streams). ``Main'' is the CIFAR-10 ResNet-18 NES corpus. P8--P11 were written for each later corpus; P12 applies them to ImageNet, where restoration is excluded as an invalid workload. Outcomes are those of the corrected analysis (Blacklight's published rule); where the first analysis gave a different outcome or verdict, it is given in brackets. P16 and P17 were run after the correction.}\label{tab:prereg}\\
+\caption{Predictions that were written down in advance, and their outcomes. Evaluation split, except P5 (all splits of the control streams). ``Main'' is the CIFAR-10 ResNet-18 NES corpus. P8--P11 were written for each later corpus; P12 applies them to ImageNet, where restoration is excluded as an invalid workload. Outcomes are those of the corrected analysis (Blacklight's published rule); where the first analysis gave a different outcome or verdict, it is given in brackets. P16 and P17 were run after the correction. The rule of P6c, P13b and P17d does not establish that an explanation is informative (Section~\ref{sec:res-expl}).}\label{tab:prereg}\\
 \toprule
 ID & Corpus & Prediction & Outcome & Verdict \\
 \midrule
 \endfirsthead
+\multicolumn{5}{l}{\emph{Table~\thetable\ (continued)}}\\
 \toprule
 ID & Corpus & Prediction & Outcome & Verdict \\
 \midrule
@@ -72,7 +73,7 @@ P16d & NES variants & Without an acceptance test: GWAD+ AUROC $\le0.62$ & maximu
 P16e & NES variants & With a larger step the GWAD+ AUROC against restoration rises by $\ge0.10$ on at least one start & +0.44 and +0.49 at step 1/255 (restoration invalid at 2/255) & held \\
 P17a & libraries, 32\,px & Blacklight raises an alarm in $\ge90\%$ of the sessions of each library client, median first alarm $\le50$ & 100\%; median first alarm 2--3 & held \\
 P17b & libraries, 32\,px & Blacklight flags $\ge90\%$ of the queries of each library client & 92.9\%--99.8\% & held \\
-P17d & libraries, 32\,px & Every library client beats spatially smooth random orderings & medians 0.188--0.281; smallest lower bound 0.151; the row of the \texttt{lime} package is not meaningful (Table~\ref{tab:libraries}) & held \\
+P17d & libraries, 32\,px & Every library client beats spatially smooth random orderings & medians 0.188--0.281; smallest lower bound 0.151; not evaluable for the \texttt{lime} package, whose explanations are empty (Table~\ref{tab:libraries}) & in part \\
 P17a & libraries, 224\,px & Blacklight raises an alarm in $\ge90\%$ of the sessions of each library client, median first alarm $\le50$ & 100\%; median first alarm 2--5 & held \\
 P17b & libraries, 224\,px & Blacklight flags $\ge90\%$ of the queries of each library client & 98.3\%--99.9\% & held \\
 P17c & libraries, 224\,px & GWAD+ raises an alarm in $\ge90\%$ of the Captum occlusion sessions & 49.0\% & \textbf{failed} \\

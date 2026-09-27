@@ -66,7 +66,7 @@ def fig_protocol():
     ax.text(1.85, 2.38, "same optimizer, start image,\nperturbation ball, query budget", ha="center", va="center", fontsize=7.2,
             color=INK, style="italic")
     box(ax, (4.75, 1.55), 2.1, 1.65, "Classifier", ["model $f$ behind", "a prediction API"], "#eef1f6", INK2)
-    box(ax, (8.0, 1.55), 2.5, 1.65, "Stateful detector", ["per-client history;", "alarm $\\Rightarrow$ block"], "#e6effb", BLUE)
+    box(ax, (8.0, 1.55), 2.5, 1.65, "Stateful detector", ["history of queries;", "raises alarms"], "#e6effb", BLUE)
     arrow(ax, (3.6, 3.6), (4.75, 2.8), ORANGE)
     arrow(ax, (3.6, 1.15), (4.75, 1.95), AQUA)
     ax.text(4.32, 3.42, "queries", ha="center", fontsize=7, color=INK2)
@@ -95,13 +95,13 @@ def fig_leak():
         ax.scatter(g.acceptance_only_auroc, g.gwad_plus_auroc, s=26, marker=marker, facecolor=color, edgecolor=SURFACE, linewidth=0.7,
                    label=label, zorder=3)
     ax.scatter(nes.acceptance_only_auroc, nes.gwad_plus_auroc, s=30, marker="D", facecolor=YELLOW, edgecolor=SURFACE, linewidth=0.7,
-               label="NES with steps of 1/255 and 2/255, CIFAR-10", zorder=3)
+               label="NES with steps of 1/255 and 2/255, CIFAR-10", zorder=3, clip_on=False)
     t = thr[(thr.positive == "throttled attack") & (thr.negative == "restore")]
     u = thr[(thr.positive == "unthrottled attack") & (thr.negative == "restore")]
     ax.scatter(t.acceptance_only_auroc, t.gwad_plus_auroc, s=46, marker="^", facecolor="none", edgecolor=INK, linewidth=1.2,
                label="SimBA, attack throttled to the restoration\nclient's acceptance rate (vs restoration)", zorder=4)
-    ax.set_xlim(0.4, 1.02)
-    ax.set_ylim(0.4, 1.02)
+    ax.set_xlim(0.4, 1.03)
+    ax.set_ylim(0.4, 1.03)
     ax.set_xlabel("AUROC of the acceptance rate alone")
     ax.set_ylabel("AUROC of GWAD+")
     ax.grid(True, color=GRID, linewidth=0.6)
