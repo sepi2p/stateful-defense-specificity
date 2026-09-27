@@ -134,9 +134,13 @@ class BlacklightTracker:
 
     def summary(self):
         counts = np.asarray(self.counts)
+        # `first_alarm` keeps the rule with which every corpus was recorded (count >= T). The published rule
+        # is count > T (blacklight_rule.py); analyses apply it to the stored counts.
         hit = np.flatnonzero(counts >= self.p["threshold"])
+        published = np.flatnonzero(counts > self.p["threshold"])
         return {"max_match": int(counts.max()) if len(counts) else 0,
-                "first_alarm": int(hit[0] + 1) if len(hit) else -1}
+                "first_alarm": int(hit[0] + 1) if len(hit) else -1,
+                "first_alarm_published_rule": int(published[0] + 1) if len(published) else -1}
 
 
 def margin(logits: torch.Tensor, label: int) -> torch.Tensor:
@@ -197,7 +201,8 @@ def prepare_manifest_generic(path: Path, dataset, labels: np.ndarray, model, dev
 
 def run_session(model, clean, start, label, workload, objective, lam, seed, budget, device, delta_net, salt, lfc_seed=-1,
                 optimizer="nes", simba_step=8.0 / 255.0, blacklight_params=None, lfc_params=None,
-                nes_step=0.25 / 255.0, nes_tile=1, observe_detectors=True, throttle_rate=None, extra_observers=None):
+                nes_step=0.25 / 255.0, nes_tile=1, observe_detectors=True, throttle_rate=None, extra_observers=None,
+                nes_accept="improve"):
     recorder = Recorder.create(model, label, device, delta_net, observe_detectors=observe_detectors)
     blacklight = BlacklightTracker(salt, blacklight_params)
     if observe_detectors:
@@ -276,6 +281,8 @@ def run_session(model, clean, start, label, workload, objective, lam, seed, budg
         candidate_value, direction = values_for(candidate, candidate_logits, start, workload, objective, lam, label, target)
         allowed = objective not in LABEL_PRESERVING or int(candidate_logits.argmax()) == label
         take = bool(allowed and better(candidate_value[0], current_value[0], direction))
+        if nes_accept == "always":  # X13: NES as published, which moves to the stepped point unconditionally
+            take = True
         if take:
             current, current_logits, current_value = candidate, candidate_logits, candidate_value
         accepted.append(int(take))
@@ -345,6 +352,9 @@ def main():
     parser.add_argument("--gtsrb-root", default="data/gtsrb")
     parser.add_argument("--nes-step-255", type=float, default=0.25)
     parser.add_argument("--nes-tile", type=int, default=1)
+    parser.add_argument("--nes-accept", choices=["improve", "always"], default="improve",
+                        help="improve: move only if the objective improves (and the label is kept, for label-preserving "
+                             "clients); always: move to the stepped point unconditionally (X13)")
     parser.add_argument("--no-detectors", action="store_true", help="development-only tuning runs")
     parser.add_argument("--throttle-rates", type=Path, default=None,
                         help="JSON {start: [benign acceptance rates]} for the attack_throttled objective (SimBA)")
@@ -434,7 +444,8 @@ def main():
                                              args.budget, device, delta_net, salt, args.lfc_seed, optimizer=args.optimizer,
                                              blacklight_params=blacklight_params, lfc_params=lfc_params,
                                              nes_step=args.nes_step_255 / 255.0, nes_tile=args.nes_tile,
-                                             observe_detectors=not args.no_detectors, throttle_rate=throttle)
+                                             observe_detectors=not args.no_detectors, throttle_rate=throttle,
+                                             nes_accept=args.nes_accept)
                 trace = args.output_dir / "traces" / f"{sid}.npz"
                 trace.parent.mkdir(parents=True, exist_ok=True)
                 np.savez_compressed(trace, **arrays)
@@ -442,6 +453,7 @@ def main():
                           "source_label": label, "workload": workload, "objective": objective,
                           "optimizer": optimizer, "lambda": float(lam), "session_seed": seed,
                           "model_name": args.model_name, "dataset": args.dataset, "throttle_rate": throttle,
+                          "nes_step_255": args.nes_step_255, "nes_accept": args.nes_accept,
                           "elapsed_seconds": time.time() - started,
                           "trace": str(trace.relative_to(args.output_dir))} | result
                 with summary_path.open("a") as handle:

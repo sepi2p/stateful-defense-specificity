@@ -272,3 +272,54 @@ subsequence of >= 15 queries (lags min(10, n//5); 5 as sensitivity). The frozen 
 (re-test on every update) can accumulate false alarms on long benign near-duplicate streams; both
 schedules are reported. P15 is unchanged and refers to the online schedule. Reported without
 prediction: sequence-50 alarm rates for every stream and for attack, restore, confidence_boost.
+
+## Addendum 2026-09-27 (evening): correction of the Blacklight decision rule
+
+An independent check of the manuscript against the cited papers found that the project's
+Blacklight port flags a query whose fingerprint shares AT LEAST 25 hashes with an earlier
+one, whereas the paper and the release flag a query that shares MORE THAN 25
+(`match_num > threshold`). The per-query match counts are stored in every trace, so the
+published rule is applied to the stored counts (`blacklight_rule.py`); no session is
+regenerated and the session logs keep the recorded value. All Blacklight-dependent analyses
+are repeated (`analysis_r2` in each corpus). Predictions P1-P15 are evaluated again on the
+corrected analysis, and the manuscript reports for which checks the verdict changes. This
+correction was made after all results of P1-P15 were known.
+
+## Addendum 2026-09-27 (evening): X13 sensitivity of the matched-objective result to the NES configuration
+
+Written and committed before any X13 session is generated (the commit that adds this
+addendum precedes the run). Reason for the experiment: the chance-level result of P1/P8
+was obtained with one NES configuration (sign step 0.25/255, probes at 2/255, move only if
+the objective improves). Section 5.6 of the draft explains the separation under SimBA and
+tiled NES by the size of the accepted step. X13 tests whether the result under NES depends
+on the step size and on the acceptance test.
+
+Design: CIFAR-10, ResNet-18 seed 0, the frozen manifest, fit (100) and evaluation (200)
+images, both starts, objectives attack, restore, confidence_boost, budget 1,024, eight
+antithetic pairs, probes at 2/255, the same session seeds as the main corpus. Variants:
+
+- V1: sign step 1/255, move only if the objective improves (and the label is kept, for restore).
+- V2: sign step 2/255, same acceptance rule.
+- V3: sign step 2/255, the client always moves to the stepped point (NES as published by
+  Ilyas et al.; the label check of restore does not apply).
+
+1,800 sessions per variant. Detectors as in the main corpus (Blacklight with the published
+rule, released GWAD and GWAD+, Lee-Fang-Chang observer). Analysis as for the main corpus
+(`analyze_specificity_workloads.py`, fit split for fitting, evaluation split for reporting),
+plus the AUROC of the session's acceptance rate alone (orientation fixed on the fit split).
+
+Predictions (each is checked per start and per Tier-B client, full session):
+
+- P16a. At the released operating points Blacklight and GWAD+ raise an alarm in >= 99% of
+  the evaluation sessions of every client in every variant.
+- P16b. Blacklight: AUROC attack vs Tier-B client <= 0.62 in every cell of every variant.
+- P16c. V1 and V2: the AUROC of GWAD+ does not exceed the AUROC of the acceptance rate alone
+  by more than 0.05 in any cell.
+- P16d. V3 (no acceptance test): AUROC of GWAD+ <= 0.62 in every cell.
+- P16e. V2: the AUROC of GWAD+ against restore exceeds its value in the main corpus by at
+  least 0.10 on at least one start. This is the prediction of the explanation given in
+  Section 5.6 and the one most likely to fail; if it fails, the chance-level result does not
+  depend on the step size, and the explanation of Section 5.6 has to be restricted.
+
+Whatever the outcome, the manuscript reports all five checks and the AUROC of GWAD,
+GWAD+ and Blacklight for every cell.

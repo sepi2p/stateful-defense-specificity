@@ -6,12 +6,17 @@ Implements docs/specificity_workloads_preregistration.md: detectors are fitted
 split, with source-image bootstrap intervals. Only detector-visible signals are
 used: the query stream (GWAD, GWAD+, Blacklight) and the classifier's own logits
 with the first-query prediction as reference label.
+
+Revision 2 (2026-09-27): Blacklight's decisions follow the published rule (a query is
+flagged if it shares MORE THAN 25 hashes with an earlier one, see blacklight_rule.py); the
+first analysis counted 25 or more. A logistic model on the GWAD statistics alone was added.
+Results are written to <root>/analysis_r2; <root>/analysis holds the first analysis.
 """
 
 from __future__ import annotations
 
 import argparse
-import json
+import sys
 from functools import lru_cache
 from pathlib import Path
 
@@ -22,13 +27,21 @@ from sklearn.metrics import roc_auc_score
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
-BLACKLIGHT_THRESHOLD = 25
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from experiments.gate_trajectory_signatures import blacklight_rule  # noqa: E402
+
+BLACKLIGHT_THRESHOLD = blacklight_rule.THRESHOLD
 FIXED_PREFIXES = (128, 256, 512, 1024)
 FAMILIES = {
     "gwad_plus": lambda c: c.startswith("gwad_plus_"),
     "blacklight": lambda c: c.startswith("bl_"),
     "query_only_all": lambda c: c.startswith(("gwad", "bl_")),
     "output_trajectory": lambda c: c.startswith("out_"),
+    # added in revision 2; placed last so that the bootstrap draws of the families above are unchanged
+    "gwad": lambda c: c.startswith("gwad_") and not c.startswith("gwad_plus_"),
 }
 CANONICAL = ("gwad_plus_max", "bl_max", "out_pref_slope")
 
@@ -62,7 +75,7 @@ def features(trace, prefix: int) -> dict[str, float]:
         "out_top_competitor_changes": float(np.count_nonzero(np.diff(np.argsort(-probs, axis=1)[:, 1]))),
     }
     counts = trace["blacklight_counts"][:prefix].astype(np.float64)
-    out |= {"bl_max": counts.max(), "bl_mean": counts.mean(), "bl_frac_alarm": float((counts >= BLACKLIGHT_THRESHOLD).mean())}
+    out |= {"bl_max": counts.max(), "bl_mean": counts.mean(), "bl_frac_alarm": float(blacklight_rule.flagged(counts).mean())}
     for name in ("gwad", "gwad_plus"):
         keep = trace[f"{name}_query_indices"] < prefix
         scores = trace[f"{name}_scores"][keep].astype(np.float64)
@@ -92,11 +105,11 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path("analysis_outputs/stateful_specificity_workloads_20260925"))
     parser.add_argument("--bootstrap", type=int, default=1000)
+    parser.add_argument("--analysis-dir", default="analysis_r2")
     args = parser.parse_args()
-    out_dir = args.root / "analysis"
+    out_dir = args.root / args.analysis_dir
     out_dir.mkdir(parents=True, exist_ok=True)
-    sessions = pd.DataFrame([json.loads(line) for path in sorted(args.root.glob("sessions_shard*.jsonl"))
-                             for line in path.read_text().splitlines() if line.strip()])
+    sessions = pd.DataFrame(blacklight_rule.load_sessions(args.root))
     sessions = sessions.set_index("session_id")
 
     @lru_cache(maxsize=None)
