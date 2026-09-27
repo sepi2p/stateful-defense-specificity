@@ -369,3 +369,16 @@ Predictions (evaluation images, each resolution separately):
 
 No prediction is made for GWAD+ on the other two clients or for the detector of Lee et al.;
 their rates are reported.
+
+### Amendment to X14, 2026-09-27 16:22 (+0330), before the run
+
+The smoke test of the generator (one CIFAR-10 image, outputs in the scratch directory) showed
+two properties of the library clients that the design had not considered.
+
+- At 32 x 32 pixels the Captum occlusion client sends 226 queries, fewer than the 259 that
+  GWAD+ needs before its first decision. P17c can therefore not be tested at 32 px; it is
+  evaluated at 224 px only, and the 32-px cell is reported as "no decision possible".
+- At 32 x 32 pixels the default segmentation of the lime package (quickshift) returned two
+  superpixels for that image, so that its 1,000 samples contain at most four distinct images.
+  This is what the package does with its defaults on such images; the number of superpixels
+  is recorded for every session and reported. No prediction is changed.
