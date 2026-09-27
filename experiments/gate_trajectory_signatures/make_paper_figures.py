@@ -81,8 +81,10 @@ def fig_protocol():
 
 
 def fig_leak():
-    cells = pd.read_csv(A / "acceptance_leak_20260927/acceptance_vs_detectors.csv")
-    thr = pd.read_csv(A / "acceptance_leak_20260927/throttled_attack.csv")
+    cells = pd.read_csv(A / "acceptance_leak_r2/acceptance_vs_detectors.csv")
+    thr = pd.read_csv(A / "acceptance_leak_r2/throttled_attack.csv")
+    nes = pd.read_csv(A / "specificity_nes_sensitivity_20260927/analysis/cells.csv")
+    nes = nes[(nes.variant.isin(["v1_step1", "v2_step2"])) & nes.valid]
     groups = [("nes", "NES, CIFAR-10 and GTSRB (6 corpora)", BLUE, "o"), ("nes_tiled", "Tiled NES, ImageNet", ORANGE, "s"),
               ("simba", "SimBA, CIFAR-10", AQUA, "^")]
     fig, ax = plt.subplots(figsize=(4.3, 3.7), constrained_layout=True)
@@ -92,6 +94,8 @@ def fig_leak():
         g = cells[cells.optimizer == key]
         ax.scatter(g.acceptance_only_auroc, g.gwad_plus_auroc, s=26, marker=marker, facecolor=color, edgecolor=SURFACE, linewidth=0.7,
                    label=label, zorder=3)
+    ax.scatter(nes.acceptance_only_auroc, nes.gwad_plus_auroc, s=30, marker="D", facecolor=YELLOW, edgecolor=SURFACE, linewidth=0.7,
+               label="NES with steps of 1/255 and 2/255, CIFAR-10", zorder=3)
     t = thr[(thr.positive == "throttled attack") & (thr.negative == "restore")]
     u = thr[(thr.positive == "unthrottled attack") & (thr.negative == "restore")]
     ax.scatter(t.acceptance_only_auroc, t.gwad_plus_auroc, s=46, marker="^", facecolor="none", edgecolor=INK, linewidth=1.2,
@@ -104,7 +108,7 @@ def fig_leak():
     ax.set_axisbelow(True)
     for side in ("top", "right"):
         ax.spines[side].set_visible(False)
-    ax.legend(loc="upper left", frameon=False, fontsize=7, handletextpad=0.4)
+    ax.legend(loc="upper left", frameon=False, fontsize=6.6, handletextpad=0.4)
     save(fig, "acceptance_leak")
 
 
@@ -112,16 +116,14 @@ def fig_decision_time():
     panels = [("", "(a) calibrated on all benign traffic"), ("_no_sweep_walk", "(b) calibrated without sweep and walk")]
     fig, axes = plt.subplots(1, 2, figsize=(WIDTH, 3.0), sharey=True, constrained_layout=True)
     for ax, (tag, title) in zip(axes, panels):
-        rates = pd.read_csv(A / f"decision_time_20260927/decision_time_rates{tag}.csv")
-        summary = json.loads((A / f"decision_time_20260927/decision_time_summary{tag}.json").read_text())
-        piv = rates.pivot_table(index="prefix", columns="objective", values="alarm_rate")
-        protected = [o for o in summary.get("calibration_pool", piv.columns) if o in piv.columns]
-        if not tag:
-            protected = [o for o in piv.columns if o not in ("attack", "boundary_probe", "counterfactual")]
-        worst = piv[protected].max(axis=1)
+        rates = pd.read_csv(A / f"decision_time_r2/sequential_rates{tag}.csv")
+        summary = json.loads((A / f"decision_time_r2/summary{tag}.json").read_text())
+        piv = rates.pivot_table(index="prefix", columns="objective", values="flagged_by_prefix")
+        pool = [o for o in summary["calibration_pool"] if o in piv.columns]
+        worst = piv[pool].max(axis=1)
         cdf = pd.Series({int(k): v for k, v in summary["success_cdf"].items()}).sort_index()
         ax.plot(piv.index, piv["attack"], color=BLUE, linewidth=2.0, marker="o", markersize=3, label="Attack flagged")
-        ax.plot(cdf.index, cdf.values, color=ORANGE, linewidth=1.6, linestyle="--", marker="s", markersize=2.6, label="Attack already succeeded")
+        ax.plot(cdf.index, cdf.values, color=ORANGE, linewidth=1.6, linestyle="--", marker="s", markersize=2.6, label="Attack has succeeded")
         ax.plot(piv.index, piv["counterfactual"], color=AQUA, linewidth=1.5, linestyle="-.", label="Counterfactual search flagged (Tier C)")
         ax.plot(piv.index, piv["boundary_probe"], color=YELLOW, linewidth=1.5, linestyle=(0, (5, 1.5, 1, 1.5)), label="Boundary probing flagged (Tier C)")
         ax.plot(worst.index, worst.values, color=GREEN, linewidth=1.5, linestyle=":", label="Most-flagged client of the calibration pool")
@@ -136,7 +138,7 @@ def fig_decision_time():
         ax.set_axisbelow(True)
         for side in ("top", "right"):
             ax.spines[side].set_visible(False)
-    axes[0].set_ylabel("Fraction of sessions")
+    axes[0].set_ylabel("Fraction of sessions (cumulative)")
     handles, labels = axes[1].get_legend_handles_labels()
     fig.legend(handles, labels, loc="outside lower center", ncol=2, frameon=False, fontsize=6.8, handlelength=3.2,
                columnspacing=1.2)

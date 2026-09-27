@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
-"""Apply the two schedules of the reimplemented Lee-Fang-Chang detector to every logged session.
+"""Apply the schedules of the reimplemented Lee-Fang-Chang detector to every logged session.
 
-sequence-50: the paper's protocol. Phase 1 groups the first 50 queries; the Ljung-Box test is applied
-             once to every group with at least 15 members (lfc_detector.phase2_batch).
-online:      the test is repeated whenever a group grows (lfc_detector.phase2_alarm).
+The paper sends a group of similar queries to the test whenever the group "is updated" and has at
+least 15 members (Section 5.1, step 5), removes the oldest query of a group that exceeds a length
+which it does not state, and evaluates attack sequences of 50 queries. Schedules reported:
+
+update50   test on every update, first 50 queries of the session (the paper's design on the length of
+           the sequences of its evaluation); a session counts if an alarm is raised by query 50
+single50   the first 50 queries are grouped and every group of at least 15 is tested ONCE at the end
+           (lfc_detector.phase2_batch); the most lenient reading, a lower bound on update50
+online     test on every update over the whole session, groups of unbounded length
+online_cap50  the same with groups capped at their 50 most recent members
 
 Evaluation split only. Writes, unrounded,
   paper/jisa_2026/numbers/lfc_schedules_sessions.csv   one row per session
@@ -40,6 +47,11 @@ CORPORA = {
     "cifar_controls": "lfc_controls_20260926",
     "cifar_explain": "explanation_clients_20260926",
     "imagenet_explain": "explanation_clients_imagenet_20260926",
+    "cifar_libraries": "explanation_libraries_20260927/cifar10",
+    "imagenet_libraries": "explanation_libraries_20260927/imagenet",
+    "nes_v1_step1": "specificity_nes_sensitivity_20260927/v1_step1",
+    "nes_v2_step2": "specificity_nes_sensitivity_20260927/v2_step2",
+    "nes_v3_step2_always": "specificity_nes_sensitivity_20260927/v3_step2_always",
 }
 MIN_LENGTH = 15
 
@@ -57,21 +69,28 @@ def sessions():
                 trace = np.load(root / s["trace"])
                 assignment, logits = trace["lfc_assignment"], trace["logits"]
                 first = phase2_alarm(assignment, logits)
+                capped = phase2_alarm(assignment, logits, cap=50)
+                lag5 = phase2_alarm(assignment[:50], logits[:50], lags=5)
                 grouped = int(np.bincount(assignment[:50]).max())
                 yield {"corpus": name, "objective": s["objective"], "start": s["workload"], "session_id": s["session_id"],
                        "online": bool(first > 0), "online_first": int(first),
-                       "seq50": bool(phase2_batch(assignment, logits, 50)),
-                       "seq50_lag5": bool(phase2_batch(assignment, logits, 50, lags=5)),
+                       "online_cap50": bool(capped > 0), "online_cap50_first": int(capped),
+                       "update50": bool(0 < first <= 50), "update50_lag5": bool(lag5 > 0),
+                       "single50": bool(phase2_batch(assignment, logits, 50)),
+                       "single50_lag5": bool(phase2_batch(assignment, logits, 50, lags=5)),
                        "grouped50": grouped, "tested50": grouped >= MIN_LENGTH}
 
 
 def summarize(frame, keys):
     g = frame.groupby(keys)
-    out = g.agg(n=("online", "size"), online=("online", "mean"), seq50=("seq50", "mean"), seq50_lag5=("seq50_lag5", "mean"),
-                grouped50_median=("grouped50", "median"), tested50=("tested50", "mean"))
-    out["seq50_among_tested"] = frame[frame.tested50].groupby(keys).seq50.mean()
-    fired = frame[frame.online]
-    out["online_first_median"] = fired.groupby(keys).online_first.median()
+    out = g.agg(n=("online", "size"), update50=("update50", "mean"), single50=("single50", "mean"), online=("online", "mean"),
+                online_cap50=("online_cap50", "mean"), update50_lag5=("update50_lag5", "mean"),
+                single50_lag5=("single50_lag5", "mean"), grouped50_median=("grouped50", "median"), tested50=("tested50", "mean"))
+    out["update50_among_tested"] = frame[frame.tested50].groupby(keys).update50.mean()
+    out["single50_among_tested"] = frame[frame.tested50].groupby(keys).single50.mean()
+    out["online_first_median"] = frame[frame.online].groupby(keys).online_first.median()
+    out["online_cap50_first_median"] = frame[frame.online_cap50].groupby(keys).online_cap50_first.median()
+    out["update50_first_median"] = frame[frame.update50].groupby(keys).online_first.median()
     return out
 
 

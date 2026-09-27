@@ -8,8 +8,15 @@ native threshold. The table reports, on the evaluation split of every workload
 and control, the blocked fraction (Wilson 95% CI) and the median first-alarm
 query index among blocked sessions.
 
+Revision 2 (2026-09-27): Blacklight follows its published rule, count > T with T = 25 (the first
+analysis used count >= 25, so its "released" row was one match too sensitive and its rows calibrated
+on shuffled images, threshold 26 under ">=", were the published rule). Every detector is calibrated on
+each of the three controls; the calibration sizes and the rates achieved on the calibration split are
+written next to the thresholds. Blacklight's session alarm is also reported for a sweep of T.
+Output: analysis_outputs/stateful_specificity_operating_points_r2.
+
 Session scores and first-alarm rules:
-  blacklight   max match count; alarm at the first query whose count >= threshold (native 25)
+  blacklight   max match count; alarm at the first query whose count > threshold (released: 25)
   gwad_plus    max over windows of -log10(1 - p_attack); first window above threshold
                (native: the release's argmax decision); no window => never alarms
   gwad         same as gwad_plus without the screener
@@ -68,7 +75,7 @@ def per_session_signals(row) -> dict:
 def first_alarm(sig: dict, detector: str, threshold) -> int:
     """1-based query index of the first alarm, or -1."""
     if detector == "blacklight":
-        hit = np.flatnonzero(sig["blacklight_counts"] >= threshold)
+        hit = np.flatnonzero(sig["blacklight_counts"] > threshold)
         return int(hit[0] + 1) if len(hit) else -1
     if detector in ("gwad_plus", "gwad"):
         flags = sig[f"{detector}_native"] if threshold == "native" else sig[f"{detector}_score"] > threshold
@@ -92,21 +99,20 @@ def session_score(sig: dict, detector: str) -> float:
 
 
 def calibrate(scores: np.ndarray, target_fpr: float, detector: str):
-    """Smallest threshold with empirical FPR <= target under a strict '>' rule (">=" for Blacklight counts)."""
+    """Smallest threshold with empirical FPR <= target under the strict '>' rule that every detector uses."""
     finite = np.sort(scores[np.isfinite(scores)])
     if len(finite) == 0:
         return -np.inf  # reference never produces a score: any score alarms
     allowed = int(np.floor(target_fpr * len(scores)))
     # threshold at the (allowed+1)-th largest score so at most `allowed` sessions exceed it
-    kth = finite[::-1][min(allowed, len(finite) - 1)] if allowed < len(finite) else -np.inf
-    return kth + 1 if detector == "blacklight" else kth
+    return finite[::-1][min(allowed, len(finite) - 1)] if allowed < len(finite) else -np.inf
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--workloads", type=Path, default=Path("analysis_outputs/stateful_specificity_workloads_20260925"))
     parser.add_argument("--controls", type=Path, default=Path("analysis_outputs/stateful_specificity_controls_20260925"))
-    parser.add_argument("--output-dir", type=Path, default=Path("analysis_outputs/stateful_specificity_operating_points_20260926"))
+    parser.add_argument("--output-dir", type=Path, default=Path("analysis_outputs/stateful_specificity_operating_points_r2"))
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     sessions = pd.concat([load_sessions(args.workloads), load_sessions(args.controls)], ignore_index=True)
@@ -116,12 +122,19 @@ def main():
     for d in detectors:
         sessions[f"score_{d}"] = [session_score(s, d) for s in signals]
 
-    thresholds = {}
-    for reference in ("shuffled", "noise"):
+    thresholds, calibration = {}, []
+    for reference in ("shuffled", "noise", "sweep"):
         ref = sessions[(sessions.objective == reference) & (sessions.split == "calibration")]
         for target in (0.01, 0.001):
             for d in detectors:
-                thresholds[(reference, target, d)] = calibrate(ref[f"score_{d}"].to_numpy(), target, d)
+                scores = ref[f"score_{d}"].to_numpy()
+                thr = calibrate(scores, target, d)
+                thresholds[(reference, target, d)] = thr
+                calibration.append({"reference": reference, "target_fpr": target, "detector": d, "threshold": float(thr),
+                                    "calibration_sessions": len(scores), "sessions_with_a_score": int(np.isfinite(scores).sum()),
+                                    "allowed_sessions": int(np.floor(target * len(scores))),
+                                    "achieved_on_calibration": float((scores > thr).mean())})
+    pd.DataFrame(calibration).to_csv(args.output_dir / "calibration.csv", index=False)
     native = {"blacklight": NATIVE_BLACKLIGHT, "gwad_plus": "native", "gwad": "native", "ljung_box": NATIVE_LB}
 
     evaluation = sessions[sessions.split == "evaluation"]
@@ -143,6 +156,13 @@ def main():
             })
     table = pd.DataFrame(rows)
     table.to_csv(args.output_dir / "operating_points.csv", index=False)
+    sweep = []
+    for threshold in (25, 30, 35, 40, 45, 48, 49):
+        for objective, g in evaluation.groupby("objective"):
+            alarms = np.array([first_alarm(signals[i], "blacklight", threshold) for i in g.index])
+            sweep.append({"threshold": threshold, "objective": objective, "n": len(g), "blocked": float((alarms > 0).mean()),
+                          "median_first_alarm": float(np.median(alarms[alarms > 0])) if (alarms > 0).any() else np.nan})
+    pd.DataFrame(sweep).to_csv(args.output_dir / "blacklight_threshold_sweep.csv", index=False)
     (args.output_dir / "thresholds.json").write_text(json.dumps(
         {f"{r}|{t}|{d}": (v if isinstance(v, str) else float(v)) for (r, t, d), v in thresholds.items()}, indent=2))
     view = table[(table.calibration.isin(["native", "cal_shuffled"])) & (table.target_fpr.isin([None, 0.01]) | table.target_fpr.isna())]

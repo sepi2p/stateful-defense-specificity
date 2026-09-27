@@ -41,6 +41,8 @@ VARIANTS = {
     "salt_unit": dict(bern_scale=0.0, salt_unit=True),
     "literal_fixed": dict(bern_scale=None, salt_unit=True, rounding="fixed", rate_unsalted=True),
     "literal_fresh": dict(bern_scale=None, salt_unit=True, rounding="fresh", rate_unsalted=True),
+    # added 2026-09-27 (evening), after an independent check of the manuscript against the paper
+    "strict_threshold": dict(bern_scale=0.0, strict=True),
 }
 DETECTOR_SEED = 20260926
 
@@ -64,7 +66,7 @@ def score(obs: dict, logits: np.ndarray) -> dict:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", default="analysis_outputs/stateful_specificity_paper_gate_20260924/manifest.csv")
-    parser.add_argument("--output-dir", type=Path, default=Path("analysis_outputs/lfc_sensitivity_20260927"))
+    parser.add_argument("--output-dir", type=Path, default=Path("analysis_outputs/lfc_sensitivity_r2"))
     parser.add_argument("--images", type=int, default=50)
     parser.add_argument("--seed", type=int, default=20260924)
     args = parser.parse_args()

@@ -8,6 +8,11 @@ from the main analysis. Orientation is fixed on the fit split; AUROC is on the e
 
 Part 2 (X11): the SimBA attack with acceptance throttled to the restore client's rate, scored with the
 same logistic models, splits and bootstrap as the main analysis.
+
+Revision 2 (2026-09-27): reads the corrected separability results (analysis_r2, published Blacklight
+rule), also compares the throttled attack with the attack-equivalent clients (not part of P14; added
+after an independent check found a cell in which GWAD+ separates although the acceptance rates are
+matched), and writes to analysis_outputs/acceptance_leak_r2.
 """
 
 from __future__ import annotations
@@ -28,6 +33,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from experiments.gate_trajectory_signatures import blacklight_rule  # noqa: E402
 from experiments.gate_trajectory_signatures.analyze_specificity_workloads import FAMILIES, bootstrap_auc, features  # noqa: E402
 
 A = ROOT / "analysis_outputs"
@@ -47,8 +53,7 @@ INVALID = {("ImageNet tiled NES", "restore")}
 
 def load(directory: str) -> pd.DataFrame:
     root = A / directory
-    rows = [json.loads(line) for p in sorted(root.glob("sessions_shard*.jsonl")) for line in p.read_text().splitlines() if line.strip()]
-    frame = pd.DataFrame(rows)
+    frame = pd.DataFrame(blacklight_rule.load_sessions(root))
     frame["root"] = str(root)
     frame["accept"] = [float((np.asarray(a) >= 0).mean()) if o == "simba" else float((np.asarray(a) == 1).mean())
                        for a, o in zip(frame.accepted, frame.optimizer)]
@@ -64,7 +69,7 @@ def part1() -> pd.DataFrame:
     rows = []
     for label, (directory, optimizer) in CORPORA.items():
         s = load(directory)
-        sep = pd.read_csv(A / directory / "analysis/separability.csv")
+        sep = pd.read_csv(A / directory / "analysis_r2/separability.csv")
         for start in ("denoise", "deblur"):
             attack = s[(s.workload == start) & (s.objective == "attack")]
             for objective in BENIGN:
@@ -84,6 +89,7 @@ def part1() -> pd.DataFrame:
                     "accept_benign_median": float(ev[ev.y == 0].accept.median()),
                     "acceptance_only_auroc": auc, "attack_accepts_more": bool(sign > 0),
                     "gwad_plus_auroc": cell("logreg:gwad_plus"), "blacklight_auroc": cell("logreg:blacklight"),
+                    "gwad_auroc": cell("logreg:gwad"),
                 })
     return pd.DataFrame(rows)
 
@@ -103,7 +109,7 @@ def part2(bootstrap: int) -> pd.DataFrame:
     for start in ("denoise", "deblur"):
         positives = {"throttled attack": thr[(thr.workload == start)], "unthrottled attack": base[(base.workload == start) & (base.objective == "attack")]}
         for pos_name, pos in positives.items():
-            for objective in ("restore", "confidence_boost"):
+            for objective in ("restore", "confidence_boost", "boundary_probe", "counterfactual"):
                 neg = base[(base.workload == start) & (base.objective == objective)]
                 paired = pos.merge(neg, on=["dataset_index", "split"], suffixes=("_a", "_b"))
                 records = []
@@ -142,7 +148,7 @@ def part2(bootstrap: int) -> pd.DataFrame:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output-dir", type=Path, default=A / "acceptance_leak_20260927")
+    parser.add_argument("--output-dir", type=Path, default=A / "acceptance_leak_r2")
     parser.add_argument("--bootstrap", type=int, default=1000)
     parser.add_argument("--skip-throttled", action="store_true")
     args = parser.parse_args()

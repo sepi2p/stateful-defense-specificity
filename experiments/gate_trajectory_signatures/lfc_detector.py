@@ -69,15 +69,18 @@ def draw_window_starts(d: int, r: int, w: int, k: int, rng: np.random.Generator,
 
 class LFCPhase1:
     def __init__(self, d: int = 3072, seed: int = 0, params: dict | None = None, bern_scale: float | None = None,
-                 salt_unit: bool = False, rounding: str = "fresh", rate_unsalted: bool = False):
+                 salt_unit: bool = False, rounding: str = "fresh", rate_unsalted: bool = False, strict: bool = False):
         """Defaults reproduce the configuration frozen for the corpus runs when bern_scale = 0.
 
         Sensitivity options (Appendix B): salt_unit draws the salt from [0, 1) as the paper states
         (default: [0, N)); rounding = "fixed" draws one rounding threshold per position when the
         detector is created, so that identical inputs quantize identically ("fresh" redraws them for
         every query); rate_unsalted computes the rounding rate from x mod q as written in the paper
-        (default: from the salted value).
+        (default: from the salted value). strict: a query joins a group only if the number of shared
+        windows EXCEEDS the threshold, as the paper words it; the configuration used for every corpus
+        joins at "at least the threshold".
         """
+        self.strict = strict
         self.p = dict(LFC_CIFAR if params is None else params)
         rng = np.random.default_rng(seed)
         self.salt = float(rng.random()) * (1.0 if salt_unit else self.p["N"])
@@ -106,7 +109,7 @@ class LFCPhase1:
         counts = Counter(i for h in set(hashes) for i in self.index.get(h, ()))
         # most matching windows; ties go to the earliest subsequence
         best, best_count = min(counts.items(), key=lambda kv: (-kv[1], kv[0])) if counts else (-1, 0)
-        if best_count >= self.p["threshold"]:
+        if best_count > self.p["threshold"] or (best_count == self.p["threshold"] and not self.strict):
             chosen = best
         else:
             self.subsequences.append(set())
@@ -129,12 +132,17 @@ class LFCPhase1:
 
 
 def phase2_alarm(assignment: np.ndarray, p_matrix_logits: np.ndarray, min_len: int = 15, alpha: float = 0.025,
-                 lags: str | int = "min10", retest: str = "every") -> int:
+                 lags: str | int = "min10", retest: str = "every", cap: int | None = None) -> int:
     """1-based query index of the first Phase-2 alarm, or -1.
 
     lags: an int, or "min10" = min(10, n // 5) (a common software default).
-    retest: "every" = re-run the test whenever a subsequence of length >= min_len gains a member;
-            "once" = test each subsequence once, when it first reaches min_len.
+    retest: "every" = re-run the test whenever a subsequence of length >= min_len gains a member
+            (Section 5.1, step 5 of the paper: subsequences "that are updated and exceed a predetermined
+            length threshold are sent to Phase 2"); "once" = test each subsequence once, when it first
+            reaches min_len.
+    cap: if given, a subsequence keeps its `cap` most recent members ("If the length of a subsequence
+         exceeds a certain threshold, the oldest query will be removed"; the paper does not state the
+         value). The reference class is the one predicted for the oldest member that is kept.
     """
     logits = np.asarray(p_matrix_logits, dtype=np.float64)
     z = logits - logits.max(1, keepdims=True)
@@ -142,6 +150,8 @@ def phase2_alarm(assignment: np.ndarray, p_matrix_logits: np.ndarray, min_len: i
     members: dict[int, list[int]] = {}
     for t, sid in enumerate(np.asarray(assignment)):
         members.setdefault(int(sid), []).append(t)
+        if cap is not None and len(members[int(sid)]) > cap:
+            members[int(sid)] = members[int(sid)][-cap:]
         idx = members[int(sid)]
         n = len(idx)
         if n < min_len or (retest == "once" and n != min_len):

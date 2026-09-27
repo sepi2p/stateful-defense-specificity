@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Score an X4-X6 robustness corpus against the frozen predictions P8-P11.
 
-Reads the corpus's analysis/separability.csv (analyze_specificity_workloads.py) and
+Reads the corpus's separability.csv (analyze_specificity_workloads.py) and
 its traces (Lee-Fang-Chang Phase 2, native alarms). Evaluation split only.
+Revision 2 reads and writes <root>/analysis_r2 (published Blacklight rule).
 """
 
 from __future__ import annotations
@@ -19,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from experiments.gate_trajectory_signatures import blacklight_rule  # noqa: E402
 from experiments.gate_trajectory_signatures.lfc_detector import phase2_alarm  # noqa: E402
 
 TIER_B = ("restore", "confidence_boost")
@@ -29,11 +31,12 @@ QUERY_ONLY = ("logreg:gwad_plus", "logreg:blacklight", "logreg:query_only_all")
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("roots", nargs="+", type=Path)
+    parser.add_argument("--analysis-dir", default="analysis_r2")
     args = parser.parse_args()
     for root in args.roots:
-        sep = pd.read_csv(root / "analysis" / "separability.csv")
+        sep = pd.read_csv(root / args.analysis_dir / "separability.csv")
         cell = lambda neg, det, prefix: sep[(sep.negative == neg) & (sep.detector == det) & (sep.prefix == prefix)].auroc  # noqa: E731
-        sessions = [json.loads(line) for p in sorted(root.glob("sessions_shard*.jsonl")) for line in p.read_text().splitlines() if line.strip()]
+        sessions = blacklight_rule.load_sessions(root)
         rows = []
         for s in sessions:
             if s["split"] != "evaluation":
@@ -58,8 +61,8 @@ def main():
             "P10_output_vs_tierB_ge_0.90": {k: (round(v, 3), v >= 0.90) for k, v in p10.items()},
             "P11_lfc_tierB_ge_90pct": {k: (round(v, 3), v >= 0.90) for k, v in p11.items()},
         }
-        (root / "analysis" / "robustness_predictions.json").write_text(json.dumps(checks, indent=2, default=str))
-        rates.round(3).to_csv(root / "analysis" / "alarm_rates.csv")
+        (root / args.analysis_dir / "robustness_predictions.json").write_text(json.dumps(checks, indent=2, default=str))
+        rates.to_csv(root / args.analysis_dir / "alarm_rates.csv")
         print(f"===== {root.name}")
         print(rates.round(3).to_string())
         for name, entries in checks.items():

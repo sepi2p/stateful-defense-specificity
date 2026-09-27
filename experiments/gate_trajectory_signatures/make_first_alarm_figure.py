@@ -9,7 +9,6 @@ attack vs each matched benign client (restricted to sessions that alarmed).
 
 from __future__ import annotations
 
-import json
 import sys
 from pathlib import Path
 
@@ -25,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from experiments.gate_trajectory_signatures import blacklight_rule  # noqa: E402
 from experiments.gate_trajectory_signatures.lfc_detector import phase2_alarm  # noqa: E402
 
 OUT = ROOT / "analysis_outputs/figures_20260926"
@@ -44,7 +44,7 @@ SERIES = [
 ]
 DETECTORS = [("blacklight", "Blacklight"),
              ("gwad_plus", "GWAD+"),
-             ("lfc", "Lee et al. (online)")]
+             ("lfc", "Lee et al. (reimplemented)")]
 # The manuscript's text width is 390 pt (5.4 in); the figure is drawn at that width so that the
 # type is printed at its nominal size.
 WIDTH = 5.4
@@ -55,19 +55,17 @@ def load():
     rows = []
     for folder, objectives in SOURCES.items():
         root = ROOT / "analysis_outputs" / folder
-        for path in sorted(root.glob("sessions_shard*.jsonl")):
-            for line in path.read_text().splitlines():
-                s = json.loads(line)
-                if s["split"] != "evaluation" or s["objective"] not in objectives:
-                    continue
-                trace = np.load(root / s["trace"])
-                rows.append({
-                    "objective": s["objective"], "calls": int(s["calls"]),
-                    "first_success": int(s.get("first_success", -1)),
-                    "blacklight": s["detectors"]["blacklight"]["first_alarm"],
-                    "gwad_plus": s["detectors"]["gwad_plus"]["first_alarm"],
-                    "lfc": phase2_alarm(trace["lfc_assignment"], trace["logits"]),
-                })
+        for s in blacklight_rule.load_sessions(root):  # Blacklight's first alarm under its published rule
+            if s["split"] != "evaluation" or s["objective"] not in objectives:
+                continue
+            trace = np.load(root / s["trace"])
+            rows.append({
+                "objective": s["objective"], "calls": int(s["calls"]),
+                "first_success": int(s.get("first_success", -1)),
+                "blacklight": s["detectors"]["blacklight"]["first_alarm"],
+                "gwad_plus": s["detectors"]["gwad_plus"]["first_alarm"],
+                "lfc": phase2_alarm(trace["lfc_assignment"], trace["logits"]),
+            })
     return pd.DataFrame(rows)
 
 
@@ -87,6 +85,8 @@ def main():
             curve = [(np.where(first > 0, first, np.inf) <= q).mean() for q in grid]
             ax.step(grid, curve, where="post", color=color, linestyle=style, linewidth=width, label=label)
         ax.axvline(median_success, color=INK2, linewidth=0.9, linestyle=(0, (2, 2)))
+        if det == "lfc":  # length of the attack sequences in the evaluation of Lee et al.
+            ax.axvline(50, color=INK2, linewidth=0.9, linestyle=(0, (1, 2)))
         ax.set_xscale("log")
         ax.set_xlim(1, 1024)
         ax.set_ylim(-0.02, 1.02)

@@ -382,3 +382,13 @@ two properties of the library clients that the design had not considered.
   superpixels for that image, so that its 1,000 samples contain at most four distinct images.
   This is what the package does with its defaults on such images; the number of superpixels
   is recorded for every session and reported. No prediction is changed.
+
+## Addendum 2026-09-27 (evening): repetition of X12 with one more variant (not a prediction)
+
+The independent check also found that the paper of Lee et al. lets a query join a group if
+the number of shared windows "exceeds" the threshold (33 on CIFAR-10), whereas the
+reimplementation joins at 33 or more. The grouping is path dependent and the queries are not
+stored, so this cannot be recomputed from the traces. X12 is repeated unchanged with one added
+variant, `strict_threshold` (the configuration used for every corpus, joining only above the
+threshold); output in `analysis_outputs/lfc_sensitivity_r2`. No prediction is attached; the
+manuscript reports the variant next to the others.
