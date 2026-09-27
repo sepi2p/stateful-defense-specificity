@@ -336,3 +336,36 @@ are reported and marked, and they are excluded from P16b, P16c and P16e. If rest
 invalid in V2, P16e is evaluated on V1 instead, and if it is invalid in both, P16e is
 reported as not testable. V3 has no acceptance test, so every client is valid there by
 construction; its restoration client moves without the label check.
+
+## Addendum 2026-09-27 (evening): X14 explanation clients as implemented by libraries
+
+Written and committed before any X14 session is generated. Reason: the explanation clients
+of X2 and X10 are our own implementations of the query designs; a reader may ask whether
+library implementations send streams that the detectors treat differently.
+
+Design: clean evaluation images of the main CIFAR-10 manifest (200 images, 32 x 32) and one
+evaluation image per class of the ImageNet manifest (100 images, 224 x 224); the models,
+detectors and detector settings of X2 and X10 (Blacklight with the published rule). Clients,
+with every tensor that the library passes to the model recorded in order:
+
+- `lime_package`: lime 0.2.0.1, `lime_image` with its default settings.
+- `captum_kernelshap`: Captum 0.9.0 KernelShap, SLIC superpixels (50 segments, compactness 30,
+  sigma 3), 1,000 samples, hidden superpixels replaced by the mean colour of the image.
+- `captum_occlusion`: Captum 0.9.0 Occlusion, window 15 x 15 at stride 8 and baseline 0 at
+  224 px (the settings of the Captum tutorial), window 4 x 4 at stride 2 at 32 px.
+
+Prior knowledge: our own implementations of the three designs are flagged by Blacklight in
+100% of the sessions at a median of 2 to 6 queries, and occlusion is flagged by GWAD+ in
+97.5 to 100%.
+
+Predictions (evaluation images, each resolution separately):
+
+- P17a. Blacklight raises an alarm in >= 90% of the sessions of each of the three clients,
+  with a median first alarm at query <= 50.
+- P17b. Blacklight flags >= 90% of the queries of each of the three clients.
+- P17c. GWAD+ raises an alarm in >= 90% of the `captum_occlusion` sessions.
+- P17d. Each client is useful by the rule of X2 (median paired difference in deletion area
+  against spatially smooth random orderings > 0, bootstrap 95% interval excludes 0).
+
+No prediction is made for GWAD+ on the other two clients or for the detector of Lee et al.;
+their rates are reported.
