@@ -1,0 +1,1200 @@
+[DONE] evaluation__1011__clean__captum_kernelshap__r0 answered 68 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1011__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10768.49it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8079.65it/s]100%|██████████| 1000/1000 [00:00<00:00, 7804.33it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 810/1000 [00:00<00:00, 7998.59it/s]100%|██████████| 1000/1000 [00:00<00:00, 8265.79it/s]
+[DONE] evaluation__1011__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1109__clean__captum_kernelshap__r0 answered 45 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1109__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 93%|█████████▎| 933/1000 [00:00<00:00, 9327.43it/s]100%|██████████| 1000/1000 [00:00<00:00, 9110.96it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 90%|█████████ | 900/1000 [00:00<00:00, 8958.04it/s]100%|██████████| 1000/1000 [00:00<00:00, 9021.52it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 91%|█████████ | 910/1000 [00:00<00:00, 9060.78it/s]100%|██████████| 1000/1000 [00:00<00:00, 8987.90it/s]
+[DONE] evaluation__1109__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1142__clean__captum_kernelshap__r0 answered 71 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1142__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 810/1000 [00:00<00:00, 8092.75it/s]100%|██████████| 1000/1000 [00:00<00:00, 8067.35it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 88%|████████▊ | 880/1000 [00:00<00:00, 8566.94it/s]100%|██████████| 1000/1000 [00:00<00:00, 8597.60it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 90%|█████████ | 900/1000 [00:00<00:00, 8946.66it/s]100%|██████████| 1000/1000 [00:00<00:00, 9116.47it/s]
+[DONE] evaluation__1142__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1147__clean__captum_kernelshap__r0 answered 74 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1147__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 823/1000 [00:00<00:00, 8228.69it/s]100%|██████████| 1000/1000 [00:00<00:00, 8220.60it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13877.58it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 993/1000 [00:00<00:00, 9927.88it/s]100%|██████████| 1000/1000 [00:00<00:00, 9783.45it/s]
+[DONE] evaluation__1147__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1196__clean__captum_kernelshap__r0 answered 71 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1196__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 92%|█████████▏| 920/1000 [00:00<00:00, 9050.66it/s]100%|██████████| 1000/1000 [00:00<00:00, 9287.57it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 85%|████████▌ | 850/1000 [00:00<00:00, 8463.73it/s]100%|██████████| 1000/1000 [00:00<00:00, 8442.42it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 84%|████████▍ | 840/1000 [00:00<00:00, 8346.64it/s]100%|██████████| 1000/1000 [00:00<00:00, 8364.89it/s]
+[DONE] evaluation__1196__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1202__clean__captum_kernelshap__r0 answered 57 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1202__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 810/1000 [00:00<00:00, 7995.75it/s]100%|██████████| 1000/1000 [00:00<00:00, 8232.83it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 89%|████████▉ | 890/1000 [00:00<00:00, 8839.54it/s]100%|██████████| 1000/1000 [00:00<00:00, 8803.13it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 92%|█████████▏| 920/1000 [00:00<00:00, 9088.76it/s]100%|██████████| 1000/1000 [00:00<00:00, 9447.10it/s]
+[DONE] evaluation__1202__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__122__clean__captum_kernelshap__r0 answered 69 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__122__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8104.04it/s]100%|██████████| 1000/1000 [00:00<00:00, 8263.38it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 86%|████████▌ | 860/1000 [00:00<00:00, 8578.78it/s]100%|██████████| 1000/1000 [00:00<00:00, 8393.11it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12803.52it/s]
+[DONE] evaluation__122__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1290__clean__captum_kernelshap__r0 answered 60 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1290__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10296.11it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9877.24it/s]100%|██████████| 1000/1000 [00:00<00:00, 9910.76it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 90%|█████████ | 900/1000 [00:00<00:00, 8915.05it/s]100%|██████████| 1000/1000 [00:00<00:00, 9056.70it/s]
+[DONE] evaluation__1290__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1303__clean__captum_kernelshap__r0 answered 63 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1303__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 86%|████████▌ | 860/1000 [00:00<00:00, 8395.56it/s]100%|██████████| 1000/1000 [00:00<00:00, 8447.06it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8166.33it/s]100%|██████████| 1000/1000 [00:00<00:00, 8161.49it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 79%|███████▉  | 790/1000 [00:00<00:00, 7791.30it/s]100%|██████████| 1000/1000 [00:00<00:00, 7951.83it/s]
+[DONE] evaluation__1303__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1518__clean__captum_kernelshap__r0 answered 95 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1518__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 817/1000 [00:00<00:00, 8168.31it/s]100%|██████████| 1000/1000 [00:00<00:00, 7950.17it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8152.67it/s]100%|██████████| 1000/1000 [00:00<00:00, 8217.31it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 87%|████████▋ | 870/1000 [00:00<00:00, 8694.78it/s]100%|██████████| 1000/1000 [00:00<00:00, 8782.67it/s]
+[DONE] evaluation__1518__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1533__clean__captum_kernelshap__r0 answered 74 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1533__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10376.37it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8162.51it/s]100%|██████████| 1000/1000 [00:00<00:00, 8081.51it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8180.99it/s]100%|██████████| 1000/1000 [00:00<00:00, 8088.02it/s]
+[DONE] evaluation__1533__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1599__clean__captum_kernelshap__r0 answered 57 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1599__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 810/1000 [00:00<00:00, 8053.39it/s]100%|██████████| 1000/1000 [00:00<00:00, 7961.02it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 80%|████████  | 800/1000 [00:00<00:00, 7887.63it/s]100%|██████████| 1000/1000 [00:00<00:00, 8010.92it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 85%|████████▌ | 850/1000 [00:00<00:00, 8443.68it/s]100%|██████████| 1000/1000 [00:00<00:00, 8722.92it/s]
+[DONE] evaluation__1599__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1603__clean__captum_kernelshap__r0 answered 87 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1603__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 87%|████████▋ | 872/1000 [00:00<00:00, 8719.18it/s]100%|██████████| 1000/1000 [00:00<00:00, 8497.10it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 86%|████████▋ | 865/1000 [00:00<00:00, 8647.60it/s]100%|██████████| 1000/1000 [00:00<00:00, 8527.94it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10004.21it/s]
+[DONE] evaluation__1603__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1641__clean__captum_kernelshap__r0 answered 92 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1641__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 981/1000 [00:00<00:00, 9809.12it/s]100%|██████████| 1000/1000 [00:00<00:00, 9860.81it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10099.21it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 810/1000 [00:00<00:00, 7986.11it/s]100%|██████████| 1000/1000 [00:00<00:00, 8009.84it/s]
+[DONE] evaluation__1641__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1654__clean__captum_kernelshap__r0 answered 73 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1654__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 79%|███████▉  | 794/1000 [00:00<00:00, 7937.79it/s]100%|██████████| 1000/1000 [00:00<00:00, 8060.68it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8176.69it/s]100%|██████████| 1000/1000 [00:00<00:00, 8364.35it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 91%|█████████ | 910/1000 [00:00<00:00, 9083.10it/s]100%|██████████| 1000/1000 [00:00<00:00, 9016.77it/s]
+[DONE] evaluation__1654__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1709__clean__captum_kernelshap__r0 answered 60 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1709__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 810/1000 [00:00<00:00, 8004.72it/s]100%|██████████| 1000/1000 [00:00<00:00, 7857.95it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 80%|████████  | 800/1000 [00:00<00:00, 7948.65it/s]100%|██████████| 1000/1000 [00:00<00:00, 7865.00it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 84%|████████▍ | 838/1000 [00:00<00:00, 8378.39it/s]100%|██████████| 1000/1000 [00:00<00:00, 8255.97it/s]
+[DONE] evaluation__1709__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1745__clean__captum_kernelshap__r0 answered 57 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1745__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8269.57it/s]100%|██████████| 1000/1000 [00:00<00:00, 8301.80it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10213.57it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 94%|█████████▍| 940/1000 [00:00<00:00, 9379.88it/s]100%|██████████| 1000/1000 [00:00<00:00, 9125.63it/s]
+[DONE] evaluation__1745__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1751__clean__captum_kernelshap__r0 answered 79 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1751__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 978/1000 [00:00<00:00, 9778.54it/s]100%|██████████| 1000/1000 [00:00<00:00, 9847.82it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8292.08it/s]100%|██████████| 1000/1000 [00:00<00:00, 8412.03it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8177.02it/s]100%|██████████| 1000/1000 [00:00<00:00, 8160.19it/s]
+[DONE] evaluation__1751__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1866__clean__captum_kernelshap__r0 answered 76 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1866__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 810/1000 [00:00<00:00, 8078.76it/s]100%|██████████| 1000/1000 [00:00<00:00, 8070.55it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 80%|████████  | 800/1000 [00:00<00:00, 7919.14it/s]100%|██████████| 1000/1000 [00:00<00:00, 7947.84it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8035.40it/s]100%|██████████| 1000/1000 [00:00<00:00, 8330.46it/s]
+[DONE] evaluation__1866__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1882__clean__captum_kernelshap__r0 answered 67 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1882__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 88%|████████▊ | 877/1000 [00:00<00:00, 8769.53it/s]100%|██████████| 1000/1000 [00:00<00:00, 8427.73it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 80%|████████  | 800/1000 [00:00<00:00, 7849.01it/s]100%|██████████| 1000/1000 [00:00<00:00, 7910.44it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 79%|███████▉  | 790/1000 [00:00<00:00, 7864.46it/s]100%|██████████| 1000/1000 [00:00<00:00, 8004.81it/s]
+[DONE] evaluation__1882__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1897__clean__captum_kernelshap__r0 answered 66 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1897__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 85%|████████▌ | 850/1000 [00:00<00:00, 8399.74it/s]100%|██████████| 1000/1000 [00:00<00:00, 8512.38it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8111.15it/s]100%|██████████| 1000/1000 [00:00<00:00, 8418.34it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11496.25it/s]
+[DONE] evaluation__1897__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1966__clean__captum_kernelshap__r0 answered 95 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1966__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10762.77it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 93%|█████████▎| 930/1000 [00:00<00:00, 9260.62it/s]100%|██████████| 1000/1000 [00:00<00:00, 9061.36it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8224.03it/s]100%|██████████| 1000/1000 [00:00<00:00, 8600.58it/s]
+[DONE] evaluation__1966__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1978__clean__captum_kernelshap__r0 answered 76 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1978__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 86%|████████▌ | 860/1000 [00:00<00:00, 8593.49it/s]100%|██████████| 1000/1000 [00:00<00:00, 8606.33it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 86%|████████▌ | 860/1000 [00:00<00:00, 8402.44it/s]100%|██████████| 1000/1000 [00:00<00:00, 8259.69it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 84%|████████▍ | 840/1000 [00:00<00:00, 8330.41it/s]100%|██████████| 1000/1000 [00:00<00:00, 8292.92it/s]
+[DONE] evaluation__1978__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__1991__clean__captum_kernelshap__r0 answered 79 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__1991__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 91%|█████████ | 910/1000 [00:00<00:00, 8962.80it/s]100%|██████████| 1000/1000 [00:00<00:00, 8843.50it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 86%|████████▌ | 860/1000 [00:00<00:00, 8437.25it/s]100%|██████████| 1000/1000 [00:00<00:00, 8394.28it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8132.80it/s]100%|██████████| 1000/1000 [00:00<00:00, 8334.48it/s]
+[DONE] evaluation__1991__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__2105__clean__captum_kernelshap__r0 answered 61 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__2105__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 87%|████████▋ | 870/1000 [00:00<00:00, 8678.84it/s]100%|██████████| 1000/1000 [00:00<00:00, 8616.41it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10829.66it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9867.68it/s]100%|██████████| 1000/1000 [00:00<00:00, 9903.13it/s]
+[DONE] evaluation__2105__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__2148__clean__captum_kernelshap__r0 answered 58 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__2148__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 88%|████████▊ | 885/1000 [00:00<00:00, 8847.56it/s]100%|██████████| 1000/1000 [00:00<00:00, 8732.98it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8172.83it/s]100%|██████████| 1000/1000 [00:00<00:00, 8138.09it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8144.84it/s]100%|██████████| 1000/1000 [00:00<00:00, 8103.73it/s]
+[DONE] evaluation__2148__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__2170__clean__captum_kernelshap__r0 answered 23 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__2170__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 89%|████████▉ | 890/1000 [00:00<00:00, 8897.87it/s]100%|██████████| 1000/1000 [00:00<00:00, 8957.56it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 91%|█████████ | 910/1000 [00:00<00:00, 9086.04it/s]100%|██████████| 1000/1000 [00:00<00:00, 9014.37it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8198.33it/s]100%|██████████| 1000/1000 [00:00<00:00, 8156.25it/s]
+[DONE] evaluation__2170__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__2196__clean__captum_kernelshap__r0 answered 81 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__2196__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 806/1000 [00:00<00:00, 8058.61it/s]100%|██████████| 1000/1000 [00:00<00:00, 8166.02it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 85%|████████▌ | 850/1000 [00:00<00:00, 8457.52it/s]100%|██████████| 1000/1000 [00:00<00:00, 8509.63it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12543.98it/s]
+[DONE] evaluation__2196__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__2281__clean__captum_kernelshap__r0 answered 104 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__2281__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 91%|█████████ | 910/1000 [00:00<00:00, 8960.40it/s]100%|██████████| 1000/1000 [00:00<00:00, 9040.99it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 89%|████████▉ | 890/1000 [00:00<00:00, 8724.88it/s]100%|██████████| 1000/1000 [00:00<00:00, 8754.13it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 810/1000 [00:00<00:00, 8054.63it/s]100%|██████████| 1000/1000 [00:00<00:00, 8054.03it/s]
+[DONE] evaluation__2281__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__2487__clean__captum_kernelshap__r0 answered 60 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__2487__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8093.24it/s]100%|██████████| 1000/1000 [00:00<00:00, 8364.08it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 88%|████████▊ | 880/1000 [00:00<00:00, 8792.67it/s]100%|██████████| 1000/1000 [00:00<00:00, 8865.48it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 86%|████████▌ | 860/1000 [00:00<00:00, 8501.78it/s]100%|██████████| 1000/1000 [00:00<00:00, 8639.64it/s]
+[DONE] evaluation__2487__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__2488__clean__captum_kernelshap__r0 answered 60 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__2488__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 84%|████████▍ | 840/1000 [00:00<00:00, 8306.84it/s]100%|██████████| 1000/1000 [00:00<00:00, 8309.30it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12909.92it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 92%|█████████▏| 920/1000 [00:00<00:00, 9145.54it/s]100%|██████████| 1000/1000 [00:00<00:00, 9533.59it/s]
+[DONE] evaluation__2488__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__2582__clean__captum_kernelshap__r0 answered 80 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__2582__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 92%|█████████▏| 915/1000 [00:00<00:00, 9149.18it/s]100%|██████████| 1000/1000 [00:00<00:00, 9176.38it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 833/1000 [00:00<00:00, 8328.88it/s]100%|██████████| 1000/1000 [00:00<00:00, 8247.74it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 79%|███████▉  | 790/1000 [00:00<00:00, 7758.23it/s]100%|██████████| 1000/1000 [00:00<00:00, 7890.21it/s]
+[DONE] evaluation__2582__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__2601__clean__captum_kernelshap__r0 answered 71 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__2601__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 80%|████████  | 800/1000 [00:00<00:00, 7958.98it/s]100%|██████████| 1000/1000 [00:00<00:00, 8198.57it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8284.13it/s]100%|██████████| 1000/1000 [00:00<00:00, 8273.96it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 86%|████████▌ | 860/1000 [00:00<00:00, 8495.27it/s]100%|██████████| 1000/1000 [00:00<00:00, 8710.86it/s]
+[DONE] evaluation__2601__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__2774__clean__captum_kernelshap__r0 answered 56 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__2774__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8124.66it/s]100%|██████████| 1000/1000 [00:00<00:00, 7953.85it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8223.08it/s]100%|██████████| 1000/1000 [00:00<00:00, 8132.45it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11699.14it/s]
+[DONE] evaluation__2774__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__294__clean__captum_kernelshap__r0 answered 112 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__294__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11886.16it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 810/1000 [00:00<00:00, 7990.56it/s]100%|██████████| 1000/1000 [00:00<00:00, 7860.68it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 87%|████████▋ | 870/1000 [00:00<00:00, 8588.19it/s]100%|██████████| 1000/1000 [00:00<00:00, 8412.47it/s]
+[DONE] evaluation__294__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__2991__clean__captum_kernelshap__r0 answered 104 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__2991__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8199.68it/s]100%|██████████| 1000/1000 [00:00<00:00, 8292.37it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 85%|████████▌ | 850/1000 [00:00<00:00, 8475.21it/s]100%|██████████| 1000/1000 [00:00<00:00, 8370.79it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 85%|████████▌ | 850/1000 [00:00<00:00, 8489.12it/s]100%|██████████| 1000/1000 [00:00<00:00, 8576.89it/s]
+[DONE] evaluation__2991__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3020__clean__captum_kernelshap__r0 answered 69 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3020__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 812/1000 [00:00<00:00, 8118.42it/s]100%|██████████| 1000/1000 [00:00<00:00, 8012.70it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 822/1000 [00:00<00:00, 8218.62it/s]100%|██████████| 1000/1000 [00:00<00:00, 8262.12it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 91%|█████████ | 912/1000 [00:00<00:00, 9119.55it/s]100%|██████████| 1000/1000 [00:00<00:00, 9474.56it/s]
+[DONE] evaluation__3020__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3023__clean__captum_kernelshap__r0 answered 32 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3023__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 87%|████████▋ | 870/1000 [00:00<00:00, 8524.57it/s]100%|██████████| 1000/1000 [00:00<00:00, 8425.73it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12579.38it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8182.92it/s]100%|██████████| 1000/1000 [00:00<00:00, 8078.94it/s]
+[DONE] evaluation__3023__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3138__clean__captum_kernelshap__r0 answered 82 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3138__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 87%|████████▋ | 870/1000 [00:00<00:00, 8663.65it/s]100%|██████████| 1000/1000 [00:00<00:00, 8371.68it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 80%|████████  | 804/1000 [00:00<00:00, 8037.75it/s]100%|██████████| 1000/1000 [00:00<00:00, 8087.49it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 810/1000 [00:00<00:00, 8084.22it/s]100%|██████████| 1000/1000 [00:00<00:00, 7891.46it/s]
+[DONE] evaluation__3138__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3170__clean__captum_kernelshap__r0 answered 89 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3170__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 78%|███████▊  | 781/1000 [00:00<00:00, 7807.22it/s]100%|██████████| 1000/1000 [00:00<00:00, 7852.75it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8281.94it/s]100%|██████████| 1000/1000 [00:00<00:00, 8201.82it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 80%|████████  | 800/1000 [00:00<00:00, 7898.51it/s]100%|██████████| 1000/1000 [00:00<00:00, 8040.16it/s]
+[DONE] evaluation__3170__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3256__clean__captum_kernelshap__r0 answered 76 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3256__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8140.83it/s]100%|██████████| 1000/1000 [00:00<00:00, 8242.02it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 812/1000 [00:00<00:00, 8118.81it/s]100%|██████████| 1000/1000 [00:00<00:00, 8097.64it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11015.09it/s]
+[DONE] evaluation__3256__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3270__clean__captum_kernelshap__r0 answered 58 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3270__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 91%|█████████ | 910/1000 [00:00<00:00, 9083.29it/s]100%|██████████| 1000/1000 [00:00<00:00, 9371.85it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12419.62it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8077.39it/s]100%|██████████| 1000/1000 [00:00<00:00, 8080.03it/s]
+[DONE] evaluation__3270__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3313__clean__captum_kernelshap__r0 answered 73 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3313__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 84%|████████▍ | 840/1000 [00:00<00:00, 8387.31it/s]100%|██████████| 1000/1000 [00:00<00:00, 8245.35it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 80%|████████  | 800/1000 [00:00<00:00, 7971.29it/s]100%|██████████| 1000/1000 [00:00<00:00, 7933.62it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8143.66it/s]100%|██████████| 1000/1000 [00:00<00:00, 8270.83it/s]
+[DONE] evaluation__3313__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3317__clean__captum_kernelshap__r0 answered 75 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3317__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 88%|████████▊ | 880/1000 [00:00<00:00, 8774.17it/s]100%|██████████| 1000/1000 [00:00<00:00, 8410.80it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 93%|█████████▎| 930/1000 [00:00<00:00, 9088.69it/s]100%|██████████| 1000/1000 [00:00<00:00, 9112.19it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 84%|████████▍ | 840/1000 [00:00<00:00, 8288.63it/s]100%|██████████| 1000/1000 [00:00<00:00, 8806.57it/s]
+[DONE] evaluation__3317__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3368__clean__captum_kernelshap__r0 answered 64 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3368__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9750.68it/s]100%|██████████| 1000/1000 [00:00<00:00, 9680.06it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 96%|█████████▌| 960/1000 [00:00<00:00, 9528.90it/s]100%|██████████| 1000/1000 [00:00<00:00, 9556.27it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 79%|███████▉  | 790/1000 [00:00<00:00, 7855.97it/s]100%|██████████| 1000/1000 [00:00<00:00, 8123.57it/s]
+[DONE] evaluation__3368__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3437__clean__captum_kernelshap__r0 answered 77 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3437__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8282.28it/s]100%|██████████| 1000/1000 [00:00<00:00, 8532.08it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 79%|███████▉  | 791/1000 [00:00<00:00, 7908.97it/s]100%|██████████| 1000/1000 [00:00<00:00, 7994.08it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8236.95it/s]100%|██████████| 1000/1000 [00:00<00:00, 8468.31it/s]
+[DONE] evaluation__3437__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3479__clean__captum_kernelshap__r0 answered 70 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3479__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 84%|████████▍ | 840/1000 [00:00<00:00, 8399.05it/s]100%|██████████| 1000/1000 [00:00<00:00, 8652.92it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 87%|████████▋ | 868/1000 [00:00<00:00, 8679.78it/s]100%|██████████| 1000/1000 [00:00<00:00, 8308.40it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8123.20it/s]100%|██████████| 1000/1000 [00:00<00:00, 8309.75it/s]
+[DONE] evaluation__3479__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3482__clean__captum_kernelshap__r0 answered 85 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3482__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 812/1000 [00:00<00:00, 8118.96it/s]100%|██████████| 1000/1000 [00:00<00:00, 7991.77it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10263.58it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 91%|█████████ | 910/1000 [00:00<00:00, 9060.50it/s]100%|██████████| 1000/1000 [00:00<00:00, 8939.78it/s]
+[DONE] evaluation__3482__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3499__clean__captum_kernelshap__r0 answered 11 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3499__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 78%|███████▊  | 780/1000 [00:00<00:00, 7786.16it/s]100%|██████████| 1000/1000 [00:00<00:00, 7818.72it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 77%|███████▋  | 770/1000 [00:00<00:00, 7646.59it/s]100%|██████████| 1000/1000 [00:00<00:00, 7857.21it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 79%|███████▉  | 790/1000 [00:00<00:00, 7799.88it/s]100%|██████████| 1000/1000 [00:00<00:00, 7889.26it/s]
+[DONE] evaluation__3499__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3568__clean__captum_kernelshap__r0 answered 63 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3568__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 93%|█████████▎| 930/1000 [00:00<00:00, 9274.16it/s]100%|██████████| 1000/1000 [00:00<00:00, 9132.23it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 85%|████████▌ | 850/1000 [00:00<00:00, 8463.40it/s]100%|██████████| 1000/1000 [00:00<00:00, 8603.47it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 77%|███████▋  | 770/1000 [00:00<00:00, 7561.16it/s]100%|██████████| 1000/1000 [00:00<00:00, 7860.24it/s]
+[DONE] evaluation__3568__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3573__clean__captum_kernelshap__r0 answered 34 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3573__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 79%|███████▉  | 790/1000 [00:00<00:00, 7784.33it/s]100%|██████████| 1000/1000 [00:00<00:00, 8048.68it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 79%|███████▉  | 790/1000 [00:00<00:00, 7813.50it/s]100%|██████████| 1000/1000 [00:00<00:00, 7906.28it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11074.48it/s]
+[DONE] evaluation__3573__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3613__clean__captum_kernelshap__r0 answered 59 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3613__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12850.59it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 88%|████████▊ | 880/1000 [00:00<00:00, 8770.25it/s]100%|██████████| 1000/1000 [00:00<00:00, 8873.47it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 8101.84it/s]100%|██████████| 1000/1000 [00:00<00:00, 8033.97it/s]
+[DONE] evaluation__3613__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3671__clean__captum_kernelshap__r0 answered 29 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3671__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 80%|████████  | 800/1000 [00:00<00:00, 7976.41it/s]100%|██████████| 1000/1000 [00:00<00:00, 7904.37it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 77%|███████▋  | 770/1000 [00:00<00:00, 7654.62it/s]100%|██████████| 1000/1000 [00:00<00:00, 7800.31it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 81%|████████  | 810/1000 [00:00<00:00, 8071.51it/s]100%|██████████| 1000/1000 [00:00<00:00, 7926.69it/s]
+[DONE] evaluation__3671__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3692__clean__captum_kernelshap__r0 answered 56 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3692__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 94%|█████████▍| 945/1000 [00:00<00:00, 9448.66it/s]100%|██████████| 1000/1000 [00:00<00:00, 9398.05it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 92%|█████████▏| 915/1000 [00:00<00:00, 9149.09it/s]100%|██████████| 1000/1000 [00:00<00:00, 9041.46it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 89%|████████▉ | 890/1000 [00:00<00:00, 8868.15it/s]100%|██████████| 1000/1000 [00:00<00:00, 9032.17it/s]
+[DONE] evaluation__3692__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3713__clean__captum_kernelshap__r0 answered 76 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3713__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 79%|███████▉  | 790/1000 [00:00<00:00, 7825.10it/s]100%|██████████| 1000/1000 [00:00<00:00, 7801.35it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10287.24it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 7988.33it/s]100%|██████████| 1000/1000 [00:00<00:00, 7891.00it/s]
+[DONE] evaluation__3713__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3782__clean__captum_kernelshap__r0 answered 100 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3782__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 83%|████████▎ | 830/1000 [00:00<00:00, 8172.54it/s]100%|██████████| 1000/1000 [00:00<00:00, 8490.44it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 89%|████████▊ | 887/1000 [00:00<00:00, 8868.53it/s]100%|██████████| 1000/1000 [00:00<00:00, 8884.79it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 92%|█████████▏| 921/1000 [00:00<00:00, 9209.70it/s]100%|██████████| 1000/1000 [00:00<00:00, 9142.12it/s]
+[DONE] evaluation__3782__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3788__clean__captum_kernelshap__r0 answered 59 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3788__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 86%|████████▌ | 855/1000 [00:00<00:00, 8549.38it/s]100%|██████████| 1000/1000 [00:00<00:00, 8460.47it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 87%|████████▋ | 870/1000 [00:00<00:00, 8541.93it/s]100%|██████████| 1000/1000 [00:00<00:00, 8377.08it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 87%|████████▋ | 870/1000 [00:00<00:00, 8598.73it/s]100%|██████████| 1000/1000 [00:00<00:00, 8522.60it/s]
+[DONE] evaluation__3788__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3809__clean__captum_kernelshap__r0 answered 45 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3809__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 84%|████████▍ | 840/1000 [00:00<00:00, 8283.49it/s]100%|██████████| 1000/1000 [00:00<00:00, 8630.17it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9974.52it/s]100%|██████████| 1000/1000 [00:00<00:00, 9958.01it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 14473.70it/s]
+[DONE] evaluation__3809__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3817__clean__captum_kernelshap__r0 answered 99 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3817__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10249.08it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 14851.04it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10750.68it/s]
+[DONE] evaluation__3817__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3822__clean__captum_kernelshap__r0 answered 82 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3822__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 15113.63it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10870.44it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10025.37it/s]
+[DONE] evaluation__3822__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__3975__clean__captum_kernelshap__r0 answered 79 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__3975__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11044.47it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11226.63it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10993.90it/s]
+[DONE] evaluation__3975__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4035__clean__captum_kernelshap__r0 answered 51 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4035__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9878.93it/s]100%|██████████| 1000/1000 [00:00<00:00, 9743.14it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9666.29it/s]100%|██████████| 1000/1000 [00:00<00:00, 9353.20it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10397.64it/s]
+[DONE] evaluation__4035__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4042__clean__captum_kernelshap__r0 answered 59 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4042__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9652.68it/s]100%|██████████| 1000/1000 [00:00<00:00, 9678.75it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11429.31it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13748.26it/s]
+[DONE] evaluation__4042__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4047__clean__captum_kernelshap__r0 answered 70 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4047__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11809.82it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13377.25it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 971/1000 [00:00<00:00, 9708.39it/s]100%|██████████| 1000/1000 [00:00<00:00, 9671.72it/s]
+[DONE] evaluation__4047__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4083__clean__captum_kernelshap__r0 answered 58 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4083__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9990.82it/s]100%|██████████| 1000/1000 [00:00<00:00, 9980.26it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9868.20it/s]100%|██████████| 1000/1000 [00:00<00:00, 9902.48it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9925.16it/s]100%|██████████| 1000/1000 [00:00<00:00, 9915.96it/s]
+[DONE] evaluation__4083__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4086__clean__captum_kernelshap__r0 answered 105 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4086__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9947.64it/s]100%|██████████| 1000/1000 [00:00<00:00, 9936.99it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10081.42it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10105.20it/s]
+[DONE] evaluation__4086__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4126__clean__captum_kernelshap__r0 answered 87 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4126__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9882.20it/s]100%|██████████| 1000/1000 [00:00<00:00, 9921.43it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9788.06it/s]100%|██████████| 1000/1000 [00:00<00:00, 9671.60it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10099.29it/s]
+[DONE] evaluation__4126__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4127__clean__captum_kernelshap__r0 answered 54 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4127__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10903.33it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10167.69it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11903.53it/s]
+[DONE] evaluation__4127__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4155__clean__captum_kernelshap__r0 answered 88 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4155__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10139.74it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10305.64it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10822.75it/s]
+[DONE] evaluation__4155__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4173__clean__captum_kernelshap__r0 answered 79 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4173__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9873.48it/s]100%|██████████| 1000/1000 [00:00<00:00, 9871.76it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10731.87it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11932.72it/s]
+[DONE] evaluation__4173__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4186__clean__captum_kernelshap__r0 answered 57 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4186__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12485.91it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10387.31it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9614.07it/s]100%|██████████| 1000/1000 [00:00<00:00, 9422.29it/s]
+[DONE] evaluation__4186__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4246__clean__captum_kernelshap__r0 answered 57 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4246__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 94%|█████████▍| 940/1000 [00:00<00:00, 9380.06it/s]100%|██████████| 1000/1000 [00:00<00:00, 9519.68it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9958.22it/s]100%|██████████| 1000/1000 [00:00<00:00, 9948.16it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 991/1000 [00:00<00:00, 9908.69it/s]100%|██████████| 1000/1000 [00:00<00:00, 9942.12it/s]
+[DONE] evaluation__4246__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4254__clean__captum_kernelshap__r0 answered 92 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4254__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10179.44it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9837.92it/s]100%|██████████| 1000/1000 [00:00<00:00, 9665.81it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10245.63it/s]
+[DONE] evaluation__4254__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__425__clean__captum_kernelshap__r0 answered 77 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__425__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10112.56it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 95%|█████████▌| 950/1000 [00:00<00:00, 9476.33it/s]100%|██████████| 1000/1000 [00:00<00:00, 9365.59it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9881.68it/s]100%|██████████| 1000/1000 [00:00<00:00, 9900.33it/s]
+[DONE] evaluation__425__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4291__clean__captum_kernelshap__r0 answered 90 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4291__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10678.29it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10886.89it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 15872.90it/s]
+[DONE] evaluation__4291__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4362__clean__captum_kernelshap__r0 answered 55 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4362__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 96%|█████████▋| 964/1000 [00:00<00:00, 9638.29it/s]100%|██████████| 1000/1000 [00:00<00:00, 9788.73it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 15338.13it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 975/1000 [00:00<00:00, 9748.61it/s]100%|██████████| 1000/1000 [00:00<00:00, 9425.13it/s]
+[DONE] evaluation__4362__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4465__clean__captum_kernelshap__r0 answered 59 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4465__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12216.64it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10315.76it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10579.68it/s]
+[DONE] evaluation__4465__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4539__clean__captum_kernelshap__r0 answered 76 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4539__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10203.65it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9705.29it/s]100%|██████████| 1000/1000 [00:00<00:00, 9605.23it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|█████████▉| 995/1000 [00:00<00:00, 9948.16it/s]100%|██████████| 1000/1000 [00:00<00:00, 9944.01it/s]
+[DONE] evaluation__4539__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4600__clean__captum_kernelshap__r0 answered 78 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4600__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9627.13it/s]100%|██████████| 1000/1000 [00:00<00:00, 9507.57it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 94%|█████████▍| 940/1000 [00:00<00:00, 9394.66it/s]100%|██████████| 1000/1000 [00:00<00:00, 9290.68it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9591.98it/s]100%|██████████| 1000/1000 [00:00<00:00, 9695.88it/s]
+[DONE] evaluation__4600__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4622__clean__captum_kernelshap__r0 answered 65 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4622__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10704.59it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10035.97it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12049.03it/s]
+[DONE] evaluation__4622__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__463__clean__captum_kernelshap__r0 answered 32 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__463__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12436.74it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13250.93it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10100.11it/s]
+[DONE] evaluation__463__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4746__clean__captum_kernelshap__r0 answered 28 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4746__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10260.19it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9882.48it/s]100%|██████████| 1000/1000 [00:00<00:00, 9921.88it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10980.97it/s]
+[DONE] evaluation__4746__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4785__clean__captum_kernelshap__r0 answered 86 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4785__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|█████████▉| 997/1000 [00:00<00:00, 9969.75it/s]100%|██████████| 1000/1000 [00:00<00:00, 9945.71it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9897.48it/s]100%|██████████| 1000/1000 [00:00<00:00, 9759.62it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10198.69it/s]
+[DONE] evaluation__4785__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4788__clean__captum_kernelshap__r0 answered 68 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4788__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|█████████▉| 998/1000 [00:00<00:00, 9977.92it/s]100%|██████████| 1000/1000 [00:00<00:00, 9948.82it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9751.38it/s]100%|██████████| 1000/1000 [00:00<00:00, 9591.10it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9969.54it/s]100%|██████████| 1000/1000 [00:00<00:00, 9959.36it/s]
+[DONE] evaluation__4788__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4860__clean__captum_kernelshap__r0 answered 85 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4860__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 96%|█████████▌| 960/1000 [00:00<00:00, 9596.37it/s]100%|██████████| 1000/1000 [00:00<00:00, 9696.38it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9676.02it/s]100%|██████████| 1000/1000 [00:00<00:00, 9791.86it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 96%|█████████▌| 961/1000 [00:00<00:00, 9607.95it/s]100%|██████████| 1000/1000 [00:00<00:00, 9539.77it/s]
+[DONE] evaluation__4860__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__4989__clean__captum_kernelshap__r0 answered 59 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__4989__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10006.95it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12078.80it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 15490.80it/s]
+[DONE] evaluation__4989__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5051__clean__captum_kernelshap__r0 answered 72 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5051__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11242.25it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 15339.03it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9857.63it/s]100%|██████████| 1000/1000 [00:00<00:00, 9847.80it/s]
+[DONE] evaluation__5051__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5153__clean__captum_kernelshap__r0 answered 88 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5153__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11705.89it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 92%|█████████▏| 920/1000 [00:00<00:00, 9136.29it/s]100%|██████████| 1000/1000 [00:00<00:00, 9297.16it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 95%|█████████▌| 950/1000 [00:00<00:00, 9489.85it/s]100%|██████████| 1000/1000 [00:00<00:00, 9337.98it/s]
+[DONE] evaluation__5153__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5245__clean__captum_kernelshap__r0 answered 87 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5245__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10763.46it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9790.51it/s]100%|██████████| 1000/1000 [00:00<00:00, 9871.90it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10981.15it/s]
+[DONE] evaluation__5245__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5246__clean__captum_kernelshap__r0 answered 75 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5246__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9998.60it/s]100%|██████████| 1000/1000 [00:00<00:00, 9989.82it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10123.17it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10034.41it/s]
+[DONE] evaluation__5246__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5315__clean__captum_kernelshap__r0 answered 82 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5315__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9704.11it/s]100%|██████████| 1000/1000 [00:00<00:00, 9683.19it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 96%|█████████▌| 960/1000 [00:00<00:00, 9418.24it/s]100%|██████████| 1000/1000 [00:00<00:00, 9366.57it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13309.67it/s]
+[DONE] evaluation__5315__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5383__clean__captum_kernelshap__r0 answered 75 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5383__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10521.01it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12440.76it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11371.12it/s]
+[DONE] evaluation__5383__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5397__clean__captum_kernelshap__r0 answered 61 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5397__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13696.98it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10874.61it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9864.77it/s]100%|██████████| 1000/1000 [00:00<00:00, 9854.81it/s]
+[DONE] evaluation__5397__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__539__clean__captum_kernelshap__r0 answered 83 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__539__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 994/1000 [00:00<00:00, 9939.61it/s]100%|██████████| 1000/1000 [00:00<00:00, 9937.51it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18663.25it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 14302.49it/s]
+[DONE] evaluation__539__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5413__clean__captum_kernelshap__r0 answered 64 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5413__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10192.05it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9656.89it/s]100%|██████████| 1000/1000 [00:00<00:00, 9584.13it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10335.18it/s]
+[DONE] evaluation__5413__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5606__clean__captum_kernelshap__r0 answered 87 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5606__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9851.83it/s]100%|██████████| 1000/1000 [00:00<00:00, 9728.31it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9682.51it/s]100%|██████████| 1000/1000 [00:00<00:00, 9445.08it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10167.74it/s]
+[DONE] evaluation__5606__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5615__clean__captum_kernelshap__r0 answered 60 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5615__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9719.58it/s]100%|██████████| 1000/1000 [00:00<00:00, 9558.32it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10844.30it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11545.33it/s]
+[DONE] evaluation__5615__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5655__clean__captum_kernelshap__r0 answered 64 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5655__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12390.34it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11510.92it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10041.19it/s]
+[DONE] evaluation__5655__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5668__clean__captum_kernelshap__r0 answered 78 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5668__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10900.58it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10159.02it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9485.02it/s]100%|██████████| 1000/1000 [00:00<00:00, 9385.54it/s]
+[DONE] evaluation__5668__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5675__clean__captum_kernelshap__r0 answered 74 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5675__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 95%|█████████▍| 946/1000 [00:00<00:00, 9459.74it/s]100%|██████████| 1000/1000 [00:00<00:00, 9672.34it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 95%|█████████▌| 950/1000 [00:00<00:00, 9379.19it/s]100%|██████████| 1000/1000 [00:00<00:00, 9544.70it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 989/1000 [00:00<00:00, 9888.05it/s]100%|██████████| 1000/1000 [00:00<00:00, 9595.49it/s]
+[DONE] evaluation__5675__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__56__clean__captum_kernelshap__r0 answered 96 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__56__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9839.57it/s]100%|██████████| 1000/1000 [00:00<00:00, 9830.12it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10181.93it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10919.11it/s]
+[DONE] evaluation__56__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5732__clean__captum_kernelshap__r0 answered 85 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5732__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9995.36it/s]100%|██████████| 1000/1000 [00:00<00:00, 9985.23it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 92%|█████████▏| 920/1000 [00:00<00:00, 9189.27it/s]100%|██████████| 1000/1000 [00:00<00:00, 9243.14it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12257.06it/s]
+[DONE] evaluation__5732__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__582__clean__captum_kernelshap__r0 answered 86 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__582__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13881.99it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10331.03it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9996.86it/s]100%|██████████| 1000/1000 [00:00<00:00, 9985.32it/s]
+[DONE] evaluation__582__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5857__clean__captum_kernelshap__r0 answered 47 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5857__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9684.82it/s]100%|██████████| 1000/1000 [00:00<00:00, 9495.82it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9783.22it/s]100%|██████████| 1000/1000 [00:00<00:00, 9548.68it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|█████████▉| 999/1000 [00:00<00:00, 9988.37it/s]100%|██████████| 1000/1000 [00:00<00:00, 9907.63it/s]
+[DONE] evaluation__5857__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5947__clean__captum_kernelshap__r0 answered 90 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5947__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9768.19it/s]100%|██████████| 1000/1000 [00:00<00:00, 9648.24it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9791.19it/s]100%|██████████| 1000/1000 [00:00<00:00, 9878.62it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9881.61it/s]100%|██████████| 1000/1000 [00:00<00:00, 9916.15it/s]
+[DONE] evaluation__5947__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5966__clean__captum_kernelshap__r0 answered 65 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5966__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10169.19it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10352.91it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10312.36it/s]
+[DONE] evaluation__5966__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__5998__clean__captum_kernelshap__r0 answered 47 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__5998__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10742.42it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10253.19it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13749.88it/s]
+[DONE] evaluation__5998__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6003__clean__captum_kernelshap__r0 answered 77 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6003__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10426.36it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 16872.85it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11119.37it/s]
+[DONE] evaluation__6003__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6005__clean__captum_kernelshap__r0 answered 75 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6005__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 14902.75it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10255.92it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9886.15it/s]100%|██████████| 1000/1000 [00:00<00:00, 9690.19it/s]
+[DONE] evaluation__6005__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__604__clean__captum_kernelshap__r0 answered 91 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__604__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 96%|█████████▌| 960/1000 [00:00<00:00, 9585.27it/s]100%|██████████| 1000/1000 [00:00<00:00, 9724.19it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 94%|█████████▍| 940/1000 [00:00<00:00, 9334.53it/s]100%|██████████| 1000/1000 [00:00<00:00, 9387.58it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 96%|█████████▌| 960/1000 [00:00<00:00, 9568.50it/s]100%|██████████| 1000/1000 [00:00<00:00, 9675.40it/s]
+[DONE] evaluation__604__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6079__clean__captum_kernelshap__r0 answered 95 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6079__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9777.72it/s]100%|██████████| 1000/1000 [00:00<00:00, 9855.62it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9747.42it/s]100%|██████████| 1000/1000 [00:00<00:00, 9623.56it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10057.99it/s]
+[DONE] evaluation__6079__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6092__clean__captum_kernelshap__r0 answered 79 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6092__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9837.42it/s]100%|██████████| 1000/1000 [00:00<00:00, 9826.22it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10466.71it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13406.84it/s]
+[DONE] evaluation__6092__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__609__clean__captum_kernelshap__r0 answered 92 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__609__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11285.42it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10240.20it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10000.18it/s]
+[DONE] evaluation__609__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6120__clean__captum_kernelshap__r0 answered 95 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6120__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9928.45it/s]100%|██████████| 1000/1000 [00:00<00:00, 9916.71it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9886.46it/s]100%|██████████| 1000/1000 [00:00<00:00, 9915.64it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|█████████▉| 999/1000 [00:00<00:00, 9989.46it/s]100%|██████████| 1000/1000 [00:00<00:00, 9790.35it/s]
+[DONE] evaluation__6120__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6167__clean__captum_kernelshap__r0 answered 97 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6167__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10739.43it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9692.18it/s]100%|██████████| 1000/1000 [00:00<00:00, 9578.88it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 993/1000 [00:00<00:00, 9927.29it/s]100%|██████████| 1000/1000 [00:00<00:00, 9942.53it/s]
+[DONE] evaluation__6167__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6192__clean__captum_kernelshap__r0 answered 74 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6192__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9688.02it/s]100%|██████████| 1000/1000 [00:00<00:00, 9825.83it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 982/1000 [00:00<00:00, 9818.11it/s]100%|██████████| 1000/1000 [00:00<00:00, 9883.09it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9973.33it/s]100%|██████████| 1000/1000 [00:00<00:00, 9961.37it/s]
+[DONE] evaluation__6192__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6234__clean__captum_kernelshap__r0 answered 104 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6234__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 95%|█████████▌| 950/1000 [00:00<00:00, 9294.48it/s]100%|██████████| 1000/1000 [00:00<00:00, 9383.52it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10420.32it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13808.04it/s]
+[DONE] evaluation__6234__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6237__clean__captum_kernelshap__r0 answered 56 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6237__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10966.10it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13234.58it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9968.33it/s]100%|██████████| 1000/1000 [00:00<00:00, 9959.59it/s]
+[DONE] evaluation__6237__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6241__clean__captum_kernelshap__r0 answered 78 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6241__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10880.17it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 96%|█████████▌| 960/1000 [00:00<00:00, 9484.73it/s]100%|██████████| 1000/1000 [00:00<00:00, 9563.57it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 981/1000 [00:00<00:00, 9808.07it/s]100%|██████████| 1000/1000 [00:00<00:00, 9829.93it/s]
+[DONE] evaluation__6241__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6340__clean__captum_kernelshap__r0 answered 75 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6340__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10301.29it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10151.67it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10491.32it/s]
+[DONE] evaluation__6340__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6395__clean__captum_kernelshap__r0 answered 64 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6395__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10230.93it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9994.79it/s]100%|██████████| 1000/1000 [00:00<00:00, 9985.06it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 981/1000 [00:00<00:00, 9809.26it/s]100%|██████████| 1000/1000 [00:00<00:00, 9721.75it/s]
+[DONE] evaluation__6395__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6494__clean__captum_kernelshap__r0 answered 49 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6494__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10823.45it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10009.22it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10506.93it/s]
+[DONE] evaluation__6494__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6515__clean__captum_kernelshap__r0 answered 64 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6515__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9982.68it/s]100%|██████████| 1000/1000 [00:00<00:00, 9973.88it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 14631.07it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17965.68it/s]
+[DONE] evaluation__6515__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6718__clean__captum_kernelshap__r0 answered 73 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6718__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9795.11it/s]100%|██████████| 1000/1000 [00:00<00:00, 9680.15it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10091.19it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 14613.38it/s]
+[DONE] evaluation__6718__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6724__clean__captum_kernelshap__r0 answered 93 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6724__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10162.00it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 15685.80it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10083.53it/s]
+[DONE] evaluation__6724__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6749__clean__captum_kernelshap__r0 answered 81 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6749__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 14129.51it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9586.98it/s]100%|██████████| 1000/1000 [00:00<00:00, 9462.27it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9871.77it/s]100%|██████████| 1000/1000 [00:00<00:00, 9904.89it/s]
+[DONE] evaluation__6749__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6786__clean__captum_kernelshap__r0 answered 53 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6786__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9889.54it/s]100%|██████████| 1000/1000 [00:00<00:00, 9926.31it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9666.45it/s]100%|██████████| 1000/1000 [00:00<00:00, 9749.96it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10198.15it/s]
+[DONE] evaluation__6786__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6789__clean__captum_kernelshap__r0 answered 94 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6789__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9897.06it/s]100%|██████████| 1000/1000 [00:00<00:00, 9743.82it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 972/1000 [00:00<00:00, 9719.89it/s]100%|██████████| 1000/1000 [00:00<00:00, 9835.76it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10676.28it/s]
+[DONE] evaluation__6789__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6835__clean__captum_kernelshap__r0 answered 74 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6835__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11321.67it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10642.20it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10742.67it/s]
+[DONE] evaluation__6835__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6894__clean__captum_kernelshap__r0 answered 45 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6894__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12108.79it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9688.01it/s]100%|██████████| 1000/1000 [00:00<00:00, 9715.92it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9993.22it/s]100%|██████████| 1000/1000 [00:00<00:00, 9982.94it/s]
+[DONE] evaluation__6894__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6981__clean__captum_kernelshap__r0 answered 58 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6981__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10582.11it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11403.82it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11346.75it/s]
+[DONE] evaluation__6981__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6984__clean__captum_kernelshap__r0 answered 85 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6984__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 96%|█████████▌| 960/1000 [00:00<00:00, 9512.13it/s]100%|██████████| 1000/1000 [00:00<00:00, 9677.23it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9565.94it/s]100%|██████████| 1000/1000 [00:00<00:00, 9416.85it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10140.04it/s]
+[DONE] evaluation__6984__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__6__clean__captum_kernelshap__r0 answered 98 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__6__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9987.20it/s]100%|██████████| 1000/1000 [00:00<00:00, 9976.98it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9764.63it/s]100%|██████████| 1000/1000 [00:00<00:00, 9639.60it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10194.78it/s]
+[DONE] evaluation__6__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7115__clean__captum_kernelshap__r0 answered 65 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7115__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10186.65it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9624.17it/s]100%|██████████| 1000/1000 [00:00<00:00, 9702.05it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 15577.85it/s]
+[DONE] evaluation__7115__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7206__clean__captum_kernelshap__r0 answered 95 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7206__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10516.05it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 16518.15it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10124.66it/s]
+[DONE] evaluation__7206__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7215__clean__captum_kernelshap__r0 answered 73 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7215__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13443.11it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10476.78it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9691.27it/s]100%|██████████| 1000/1000 [00:00<00:00, 9737.17it/s]
+[DONE] evaluation__7215__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7261__clean__captum_kernelshap__r0 answered 68 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7261__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10317.74it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10131.76it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10625.65it/s]
+[DONE] evaluation__7261__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7337__clean__captum_kernelshap__r0 answered 73 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7337__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9747.65it/s]100%|██████████| 1000/1000 [00:00<00:00, 9772.60it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9968.07it/s]100%|██████████| 1000/1000 [00:00<00:00, 9957.49it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10121.68it/s]
+[DONE] evaluation__7337__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7340__clean__captum_kernelshap__r0 answered 44 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7340__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9779.56it/s]100%|██████████| 1000/1000 [00:00<00:00, 9702.16it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 982/1000 [00:00<00:00, 9818.82it/s]100%|██████████| 1000/1000 [00:00<00:00, 9884.86it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9791.51it/s]100%|██████████| 1000/1000 [00:00<00:00, 9778.16it/s]
+[DONE] evaluation__7340__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7378__clean__captum_kernelshap__r0 answered 97 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7378__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10003.44it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11482.91it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 14687.74it/s]
+[DONE] evaluation__7378__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7450__clean__captum_kernelshap__r0 answered 79 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7450__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10180.52it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13964.35it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9883.61it/s]100%|██████████| 1000/1000 [00:00<00:00, 9918.75it/s]
+[DONE] evaluation__7450__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7518__clean__captum_kernelshap__r0 answered 67 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7518__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 14038.62it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 41%|████      | 410/1000 [00:00<00:00, 3640.36it/s] 78%|███████▊  | 775/1000 [00:00<00:00, 1355.15it/s]100%|██████████| 1000/1000 [00:00<00:00, 1858.29it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11311.41it/s]
+[DONE] evaluation__7518__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7535__clean__captum_kernelshap__r0 answered 67 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7535__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11254.56it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10765.09it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 90%|█████████ | 900/1000 [00:00<00:00, 8986.00it/s]100%|██████████| 1000/1000 [00:00<00:00, 9069.22it/s]
+[DONE] evaluation__7535__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7580__clean__captum_kernelshap__r0 answered 74 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7580__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10209.84it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9786.13it/s]100%|██████████| 1000/1000 [00:00<00:00, 9455.43it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10616.99it/s]
+[DONE] evaluation__7580__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7642__clean__captum_kernelshap__r0 answered 61 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7642__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10348.13it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12227.40it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10985.37it/s]
+[DONE] evaluation__7642__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7720__clean__captum_kernelshap__r0 answered 29 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7720__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13794.51it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 90%|█████████ | 900/1000 [00:00<00:00, 8970.37it/s]100%|██████████| 1000/1000 [00:00<00:00, 8998.95it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9663.54it/s]100%|██████████| 1000/1000 [00:00<00:00, 9804.06it/s]
+[DONE] evaluation__7720__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7748__clean__captum_kernelshap__r0 answered 72 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7748__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10154.99it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9801.01it/s]100%|██████████| 1000/1000 [00:00<00:00, 9791.38it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10170.62it/s]
+[DONE] evaluation__7748__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7762__clean__captum_kernelshap__r0 answered 70 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7762__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10935.57it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10241.95it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10392.51it/s]
+[DONE] evaluation__7762__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7777__clean__captum_kernelshap__r0 answered 67 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7777__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13427.83it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10589.89it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10504.64it/s]
+[DONE] evaluation__7777__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7855__clean__captum_kernelshap__r0 answered 60 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7855__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10139.74it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9932.71it/s]100%|██████████| 1000/1000 [00:00<00:00, 9922.88it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10192.17it/s]
+[DONE] evaluation__7855__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7902__clean__captum_kernelshap__r0 answered 67 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7902__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9987.63it/s]100%|██████████| 1000/1000 [00:00<00:00, 9964.54it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 9767.22it/s]100%|██████████| 1000/1000 [00:00<00:00, 9844.26it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12337.89it/s]
+[DONE] evaluation__7902__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__7916__clean__captum_kernelshap__r0 answered 68 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__7916__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9705.79it/s]100%|██████████| 1000/1000 [00:00<00:00, 9578.90it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13742.62it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9694.60it/s]100%|██████████| 1000/1000 [00:00<00:00, 9722.18it/s]
+[DONE] evaluation__7916__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__791__clean__captum_kernelshap__r0 answered 113 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__791__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 14019.43it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10005.78it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10150.37it/s]
+[DONE] evaluation__791__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8031__clean__captum_kernelshap__r0 answered 82 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8031__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10333.78it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9815.74it/s]100%|██████████| 1000/1000 [00:00<00:00, 9805.46it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10201.89it/s]
+[DONE] evaluation__8031__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__808__clean__captum_kernelshap__r0 answered 108 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__808__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9951.28it/s]100%|██████████| 1000/1000 [00:00<00:00, 9941.21it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10218.12it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10903.56it/s]
+[DONE] evaluation__808__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8113__clean__captum_kernelshap__r0 answered 70 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8113__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10286.41it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 97%|█████████▋| 970/1000 [00:00<00:00, 9680.16it/s]100%|██████████| 1000/1000 [00:00<00:00, 9815.90it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10222.98it/s]
+[DONE] evaluation__8113__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8123__clean__captum_kernelshap__r0 answered 73 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8123__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 99%|█████████▉| 990/1000 [00:00<00:00, 9745.38it/s]100%|██████████| 1000/1000 [00:00<00:00, 9622.99it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10192.84it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 15427.04it/s]
+[DONE] evaluation__8123__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8184__clean__captum_kernelshap__r0 answered 61 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8184__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9975.63it/s]100%|██████████| 1000/1000 [00:00<00:00, 9963.81it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 15151.35it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10165.00it/s]
+[DONE] evaluation__8184__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8196__clean__captum_kernelshap__r0 answered 81 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8196__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 16466.07it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 98%|█████████▊| 979/1000 [00:00<00:00, 9787.75it/s]100%|██████████| 1000/1000 [00:00<00:00, 9749.03it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10040.47it/s]
+[DONE] evaluation__8196__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__81__clean__captum_kernelshap__r0 answered 78 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__81__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11224.92it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11067.14it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10444.32it/s]
+[DONE] evaluation__81__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8312__clean__captum_kernelshap__r0 answered 63 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8312__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10255.15it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 9969.23it/s]100%|██████████| 1000/1000 [00:00<00:00, 9958.91it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10220.16it/s]
+[DONE] evaluation__8312__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8327__clean__captum_kernelshap__r0 answered 79 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8327__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10045.54it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12042.98it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13147.79it/s]
+[DONE] evaluation__8327__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8354__clean__captum_kernelshap__r0 answered 70 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8354__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 11236.89it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 12069.59it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 10578.69it/s]
+[DONE] evaluation__8354__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8355__clean__captum_kernelshap__r0 answered 67 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8355__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18530.50it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18073.75it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18491.77it/s]
+[DONE] evaluation__8355__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8363__clean__captum_kernelshap__r0 answered 73 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8363__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 19802.20it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 19794.72it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 20290.57it/s]
+[DONE] evaluation__8363__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8366__clean__captum_kernelshap__r0 answered 84 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8366__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18085.52it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 16800.13it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17361.25it/s]
+[DONE] evaluation__8366__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8466__clean__captum_kernelshap__r0 answered 77 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8466__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17981.16it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17004.81it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17316.74it/s]
+[DONE] evaluation__8466__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8500__clean__captum_kernelshap__r0 answered 60 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8500__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17484.35it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17097.49it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18062.94it/s]
+[DONE] evaluation__8500__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8503__clean__captum_kernelshap__r0 answered 109 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8503__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18412.63it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18950.37it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 19145.60it/s]
+[DONE] evaluation__8503__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8534__clean__captum_kernelshap__r0 answered 57 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8534__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18422.01it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17962.22it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18433.10it/s]
+[DONE] evaluation__8534__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8540__clean__captum_kernelshap__r0 answered 38 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8540__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17669.30it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17675.86it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18602.91it/s]
+[DONE] evaluation__8540__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8560__clean__captum_kernelshap__r0 answered 65 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8560__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 19098.53it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17903.18it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17698.38it/s]
+[DONE] evaluation__8560__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8652__clean__captum_kernelshap__r0 answered 64 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8652__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18664.00it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18353.09it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18900.50it/s]
+[DONE] evaluation__8652__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8739__clean__captum_kernelshap__r0 answered 84 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8739__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18756.47it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18528.70it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17933.11it/s]
+[DONE] evaluation__8739__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8789__clean__captum_kernelshap__r0 answered 86 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8789__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17988.95it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17172.39it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 19293.03it/s]
+[DONE] evaluation__8789__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8884__clean__captum_kernelshap__r0 answered 64 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8884__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18076.33it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17999.37it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18373.67it/s]
+[DONE] evaluation__8884__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8894__clean__captum_kernelshap__r0 answered 102 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8894__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18237.93it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18107.31it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18579.01it/s]
+[DONE] evaluation__8894__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__8995__clean__captum_kernelshap__r0 answered 58 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__8995__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18148.13it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18196.63it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18595.07it/s]
+[DONE] evaluation__8995__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9045__clean__captum_kernelshap__r0 answered 112 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9045__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 16387.97it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 16698.80it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 16942.51it/s]
+[DONE] evaluation__9045__clean__lime_package__r0 answered 3 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9046__clean__captum_kernelshap__r0 answered 61 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9046__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18174.08it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18318.22it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18754.63it/s]
+[DONE] evaluation__9046__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9060__clean__captum_kernelshap__r0 answered 80 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9060__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18021.65it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17233.28it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17714.30it/s]
+[DONE] evaluation__9060__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__920__clean__captum_kernelshap__r0 answered 80 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__920__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 20178.12it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18351.08it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18222.79it/s]
+[DONE] evaluation__920__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9247__clean__captum_kernelshap__r0 answered 91 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9247__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17963.07it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18654.87it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18813.18it/s]
+[DONE] evaluation__9247__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9261__clean__captum_kernelshap__r0 answered 88 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9261__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17687.63it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17836.94it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17887.99it/s]
+[DONE] evaluation__9261__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9267__clean__captum_kernelshap__r0 answered 65 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9267__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17501.42it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17553.72it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18599.44it/s]
+[DONE] evaluation__9267__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9362__clean__captum_kernelshap__r0 answered 56 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9362__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18173.68it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17775.56it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18168.41it/s]
+[DONE] evaluation__9362__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9393__clean__captum_kernelshap__r0 answered 61 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9393__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18495.03it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18028.77it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18507.85it/s]
+[DONE] evaluation__9393__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__939__clean__captum_kernelshap__r0 answered 75 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__939__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18133.22it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17515.09it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18200.97it/s]
+[DONE] evaluation__939__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9410__clean__captum_kernelshap__r0 answered 73 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9410__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18965.28it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18160.70it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18689.78it/s]
+[DONE] evaluation__9410__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9455__clean__captum_kernelshap__r0 answered 77 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9455__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18485.50it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18127.81it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18466.78it/s]
+[DONE] evaluation__9455__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9540__clean__captum_kernelshap__r0 answered 79 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9540__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17135.90it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17959.60it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18727.00it/s]
+[DONE] evaluation__9540__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9715__clean__captum_kernelshap__r0 answered 60 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9715__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 18757.48it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 19757.61it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 16543.82it/s]
+[DONE] evaluation__9715__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9759__clean__captum_kernelshap__r0 answered 63 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9759__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17656.88it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17565.93it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 17906.01it/s]
+[DONE] evaluation__9759__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9762__clean__captum_kernelshap__r0 answered 19 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9762__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 16834.86it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 13990.71it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s]100%|██████████| 1000/1000 [00:00<00:00, 16545.58it/s]
+[DONE] evaluation__9762__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9805__clean__captum_kernelshap__r0 answered 3 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9805__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 28%|██▊       | 280/1000 [00:00<00:00, 2303.60it/s] 51%|█████     | 511/1000 [00:00<00:00, 1721.53it/s] 71%|███████   | 710/1000 [00:00<00:00, 1708.71it/s]100%|██████████| 1000/1000 [00:00<00:00, 1971.16it/s]100%|██████████| 1000/1000 [00:00<00:00, 1914.48it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 31%|███       | 310/1000 [00:00<00:00, 2569.23it/s] 57%|█████▋    | 567/1000 [00:00<00:00, 2308.12it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 2205.08it/s]100%|██████████| 1000/1000 [00:00<00:00, 2288.20it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 16%|█▌        | 160/1000 [00:00<00:00, 1362.24it/s] 31%|███       | 310/1000 [00:00<00:00, 1357.26it/s] 60%|██████    | 600/1000 [00:00<00:00, 2001.40it/s] 90%|█████████ | 900/1000 [00:00<00:00, 2355.61it/s]100%|██████████| 1000/1000 [00:00<00:00, 2084.19it/s]
+[DONE] evaluation__9805__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9839__clean__captum_kernelshap__r0 answered 66 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9839__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 17%|█▋        | 170/1000 [00:00<00:00, 1679.60it/s] 36%|███▌      | 360/1000 [00:00<00:00, 1621.37it/s] 68%|██████▊   | 680/1000 [00:00<00:00, 2294.05it/s] 91%|█████████▏| 914/1000 [00:00<00:00, 2149.38it/s]100%|██████████| 1000/1000 [00:00<00:00, 2236.59it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 16%|█▌        | 160/1000 [00:00<00:00, 1508.85it/s] 31%|███       | 311/1000 [00:00<00:00, 1384.08it/s] 51%|█████     | 510/1000 [00:00<00:00, 1527.18it/s] 81%|████████  | 810/1000 [00:00<00:00, 1930.85it/s]100%|██████████| 1000/1000 [00:00<00:00, 1786.79it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 15%|█▌        | 150/1000 [00:00<00:00, 1356.84it/s] 46%|████▌     | 457/1000 [00:00<00:00, 2322.59it/s] 69%|██████▉   | 694/1000 [00:00<00:00, 1843.60it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 2173.03it/s]100%|██████████| 1000/1000 [00:00<00:00, 2110.18it/s]
+[DONE] evaluation__9839__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__988__clean__captum_kernelshap__r0 answered 59 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__988__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 15%|█▌        | 150/1000 [00:00<00:00, 1403.85it/s] 44%|████▍     | 440/1000 [00:00<00:00, 2230.64it/s] 71%|███████   | 710/1000 [00:00<00:00, 2423.90it/s] 95%|█████████▌| 954/1000 [00:00<00:00, 2083.98it/s]100%|██████████| 1000/1000 [00:00<00:00, 2094.00it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 15%|█▌        | 150/1000 [00:00<00:00, 1422.77it/s] 40%|████      | 400/1000 [00:00<00:00, 2041.32it/s] 61%|██████    | 606/1000 [00:00<00:00, 1882.15it/s] 90%|█████████ | 900/1000 [00:00<00:00, 2253.14it/s]100%|██████████| 1000/1000 [00:00<00:00, 2011.41it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 17%|█▋        | 170/1000 [00:00<00:00, 1569.88it/s] 33%|███▎      | 327/1000 [00:00<00:00, 1496.24it/s] 64%|██████▍   | 640/1000 [00:00<00:00, 2184.54it/s] 90%|█████████ | 900/1000 [00:00<00:00, 2342.54it/s]100%|██████████| 1000/1000 [00:00<00:00, 2352.19it/s]
+[DONE] evaluation__988__clean__lime_package__r0 answered 4 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9955__clean__captum_kernelshap__r0 answered 68 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9955__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 30%|███       | 300/1000 [00:00<00:00, 2927.68it/s] 59%|█████▉    | 594/1000 [00:00<00:00, 2934.79it/s] 89%|████████▉ | 888/1000 [00:00<00:00, 2480.13it/s]100%|██████████| 1000/1000 [00:00<00:00, 2308.00it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 15%|█▌        | 150/1000 [00:00<00:00, 1336.16it/s] 46%|████▌     | 460/1000 [00:00<00:00, 2235.12it/s] 69%|██████▊   | 686/1000 [00:00<00:00, 2146.23it/s] 90%|█████████ | 902/1000 [00:00<00:00, 1869.63it/s]100%|██████████| 1000/1000 [00:00<00:00, 1779.44it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 17%|█▋        | 170/1000 [00:00<00:00, 1572.46it/s] 54%|█████▍    | 540/1000 [00:00<00:00, 2539.90it/s] 79%|███████▉  | 792/1000 [00:00<00:00, 2339.07it/s]100%|██████████| 1000/1000 [00:00<00:00, 2265.37it/s]
+[DONE] evaluation__9955__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9973__clean__captum_kernelshap__r0 answered 41 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9973__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 31%|███       | 310/1000 [00:00<00:00, 2888.43it/s] 60%|█████▉    | 599/1000 [00:00<00:00, 2302.02it/s] 86%|████████▌ | 860/1000 [00:00<00:00, 2419.76it/s]100%|██████████| 1000/1000 [00:00<00:00, 2241.09it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 18%|█▊        | 180/1000 [00:00<00:00, 1504.46it/s] 51%|█████     | 510/1000 [00:00<00:00, 2463.54it/s] 76%|███████▋  | 764/1000 [00:00<00:00, 1954.46it/s] 97%|█████████▋| 973/1000 [00:00<00:00, 1863.70it/s]100%|██████████| 1000/1000 [00:00<00:00, 1894.13it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 16%|█▌        | 160/1000 [00:00<00:00, 1426.59it/s] 34%|███▍      | 340/1000 [00:00<00:00, 1527.88it/s] 55%|█████▌    | 550/1000 [00:00<00:00, 1599.16it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 1879.28it/s]100%|██████████| 1000/1000 [00:00<00:00, 1778.07it/s]
+[DONE] evaluation__9973__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}
+[DONE] evaluation__9991__clean__captum_kernelshap__r0 answered 94 of 1000 {'replay': True, 'h1': True}
+[DONE] evaluation__9991__clean__captum_occlusion__r0 answered 1 of 226 {'replay': True, 'h1': True}
+  0%|          | 0/1000 [00:00<?, ?it/s] 16%|█▌        | 160/1000 [00:00<00:00, 1443.86it/s] 50%|█████     | 500/1000 [00:00<00:00, 2296.63it/s] 73%|███████▎  | 728/1000 [00:00<00:00, 1901.77it/s]100%|██████████| 1000/1000 [00:00<00:00, 2291.79it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 13%|█▎        | 130/1000 [00:00<00:00, 1263.52it/s] 29%|██▉       | 290/1000 [00:00<00:00, 1330.93it/s] 53%|█████▎    | 530/1000 [00:00<00:00, 1647.34it/s] 69%|██████▉   | 694/1000 [00:00<00:00, 1555.71it/s] 89%|████████▉ | 890/1000 [00:00<00:00, 1590.29it/s]100%|██████████| 1000/1000 [00:00<00:00, 1549.80it/s]
+  0%|          | 0/1000 [00:00<?, ?it/s] 33%|███▎      | 330/1000 [00:00<00:00, 2884.89it/s] 62%|██████▏   | 619/1000 [00:00<00:00, 2535.28it/s] 87%|████████▋ | 874/1000 [00:00<00:00, 2148.58it/s]100%|██████████| 1000/1000 [00:00<00:00, 2305.02it/s]
+[DONE] evaluation__9991__clean__lime_package__r0 answered 2 of 1000 {'replay': True, 'h1': True, 'h2': True}

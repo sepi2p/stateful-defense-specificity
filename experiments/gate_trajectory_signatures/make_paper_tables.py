@@ -85,7 +85,7 @@ def interval(text):
 def wrap(name, body, caption, label, spec, size="\\footnotesize", colsep="4pt", sideways=False):
     inner = f"\\begin{{tabular}}{{{spec}}}\n\\toprule\n{body}\n\\bottomrule\n\\end{{tabular}}"
     env, place, width = ("sidewaystable", "[p]", "\\textheight") if sideways else ("table", "[!tbp]", "\\textwidth")
-    text = (f"\\begin{{{env}}}{place}\n\\centering{size}\\setlength{{\\tabcolsep}}{{{colsep}}}\n\\caption{{{caption}}}\n\\label{{{label}}}\n"
+    text = (f"\\begin{{{env}}}{place}\n\\centering{size}\\setlength{{\\tabcolsep}}{{{colsep}}}\n\\caption{{{caption}}}\n\\label{{{label}}}\n\\vspace{{3pt}}\n"
             f"\\begin{{adjustbox}}{{max width={width}}}\n{inner}\n\\end{{adjustbox}}\n\\end{{{env}}}\n")
     (OUT / f"{name}.tex").write_text(text)
     print(f"wrote tables/{name}.tex")
@@ -246,7 +246,7 @@ def table_released():
          "Sessions: sessions in which Blacklight raises an alarm. First alarm: median query index of its first alarm. "
          "Queries: share of queries that it flags, which it would reject. Attack succeeds before alarm: successful attack "
          "sessions whose first misclassified query precedes the first alarm of the detector, or that raise no alarm, as a share "
-         "of the successful attack sessions. Tier B as in Table~\\ref{tab:matched}. Ranges are over the two starts and the "
+         "of the successful attack sessions. Tier B as in Table~\\ref{tab:main-matched}. Ranges are over the two starts and the "
          "clients of the tier.",
          "tab:released", "lcccccccc", colsep="4pt")
 
@@ -279,7 +279,7 @@ EXPLANATION_NOTE = ("sessions with an alarm (\\%), with the median query index o
                     "queries that Blacklight flags (\\%). Lee et al.: test at every update of a group, within the first 50 queries "
                     "and over the whole session (one test after 50 queries: Tables~\\ref{tab:lfcother} and~\\ref{tab:lfcall}). "
                     "Deletion: median reduction of the deletion area relative to spatially smooth random orderings, with its bootstrap "
-                    "95\\% interval; a descriptive quantity, see Section~\\ref{sec:res-expl}.")
+                    "95\\% interval under the first rule, which an empty explanation also meets (Section~\\ref{app:workloads}).")
 
 
 def table_explanations():
@@ -334,7 +334,7 @@ def table_lfc():
          "Every update: the test is applied whenever a group of at least 15 queries gains a member, and alarms up to "
          "query 50 are counted. Whole session: the same without a limit on the number of queries. "
          "Restor.: restoration; Conf.: confidence raising. Dashes: workload not valid. Last three rows: the variants of "
-         "Section~\\ref{sec:res-nes} (CIFAR-10, ResNet-18); $^{\\ast}$invalid workload. The objective-free random walk "
+         "Section~\\ref{sec:res-accept} (CIFAR-10, ResNet-18); $^{\\ast}$invalid workload. The objective-free random walk "
          "is flagged in 98.8--100\\% of the sessions under every schedule.",
          "tab:lfc", "lccccccccc", colsep="3pt")
 

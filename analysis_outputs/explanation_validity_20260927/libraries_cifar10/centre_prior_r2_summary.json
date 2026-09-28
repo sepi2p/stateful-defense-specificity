@@ -1,0 +1,9 @@
+{
+  "images": 200,
+  "distinct_values_median": 109.0,
+  "d_median": -0.05149476346154004,
+  "d_lo": -0.07849238921013954,
+  "d_hi": -0.0169301909160906,
+  "informative": false,
+  "d_positive_share": 0.37
+}

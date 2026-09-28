@@ -1,0 +1,24 @@
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Matched AUROC, attack against Tier-B clients: logistic models on the session statistics of each detector (fitted on the fit split, evaluation split shown, whole session). Optimizer: NES; tiled NES on ImageNet; SimBA in the last row. A cell is one benign client (restoration or confidence raising; on ImageNet confidence raising) on one start. AUROC: range over the cells. Intervals: smallest lower and largest upper limit of the bootstrap 95\% intervals of the cells. Incl.\ 0.5: cells whose interval contains 0.5. The values of GWAD agree with those of GWAD+ to within 0.01. Every cell with its interval: Table~\ref{tab:full}.}
+\label{tab:main-matched}
+\vspace{3pt}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lcccccc}
+\toprule
+& \multicolumn{3}{c}{GWAD+} & \multicolumn{3}{c}{Blacklight} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Corpus & AUROC & intervals & incl.\ 0.5 & AUROC & intervals & incl.\ 0.5 \\
+\midrule
+CIFAR-10, ResNet-18, seed 0 & 0.45--0.52 & 0.40--0.58 & 4/4 & 0.46--0.51 & 0.40--0.57 & 4/4 \\
+CIFAR-10, ResNet-18, seed 1 & 0.48--0.53 & 0.42--0.59 & 4/4 & 0.50--0.52 & 0.45--0.56 & 4/4 \\
+CIFAR-10, ResNet-18, seed 2 & 0.45--0.52 & 0.39--0.58 & 4/4 & 0.47--0.54 & 0.41--0.59 & 4/4 \\
+CIFAR-10, VGG19-BN & 0.43--0.53 & 0.38--0.58 & 3/4 & 0.46--0.51 & 0.40--0.55 & 4/4 \\
+CIFAR-10, robust ResNet-50 & 0.49--0.51 & 0.43--0.57 & 4/4 & 0.47--0.50 & 0.43--0.55 & 4/4 \\
+GTSRB, ResNet-18 & 0.48--0.49 & 0.43--0.55 & 4/4 & 0.45--0.49 & 0.40--0.55 & 4/4 \\
+ImageNet, ResNet-50 & 0.60--0.62 & 0.56--0.68 & 0/2 & 0.46--0.51 & 0.40--0.56 & 2/2 \\
+CIFAR-10, ResNet-18, SimBA & 0.74--0.97 & 0.70--0.99 & 0/4 & 0.48--0.54 & 0.44--0.58 & 4/4 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

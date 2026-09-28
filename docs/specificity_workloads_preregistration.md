@@ -480,3 +480,50 @@ No prediction is made for H2, for the Captum clients at 32 px, or for our own cl
 are reported. If the stream of a session cannot be regenerated bit for bit, the session is
 excluded from the enforcement analysis and counted; if more than 10% of the sessions of a
 client are excluded, P18b and P18c are declared not evaluable for that client.
+
+### Outcome of X15 (2026-09-28, 00:01 +0330)
+
+Run: predictions committed 2026-09-27 23:29:25 (63da8b5); replay launched 23:33:04, finished
+23:43:05; analysis of the library clients at 224 px finished 23:53:13. Between the commit and
+the launch the code was tried on three sessions of one image at 32 px (outputs in the scratch
+directory), which showed the number of answered queries and the values of d of these three
+sessions. All 900 regenerated streams have the digest of the recorded streams, in every mode.
+
+- P18a held: 100% of the explanations of each client have ten or more distinct values; medians
+  of d 0.219 (lime package), 0.197 (Captum KernelSHAP), 0.134 (Captum occlusion), intervals
+  [0.195, 0.255], [0.175, 0.232], [0.107, 0.160].
+- P18b held: median Spearman correlation 0.24 (lime package), 0.18 (KernelSHAP), 0 (occlusion,
+  whose map under rejection is constant in all 100 sessions).
+- P18c FAILED for the lime package: median d under rejection 0.086 [0.048, 0.108], which is 39%
+  of the median without rejection (bound: 25%). It held for KernelSHAP (0.019, 9%) and for
+  occlusion (0).
+- P18d held: the lime package at 32 px has a median d of 0 (interval 0 to 0).
+- Not predicted: with H2 the lime package keeps a median d of 0.137 [0.111, 0.155] (62%) and a
+  correlation of 0.43. Our own implementations are informative by R2 at both resolutions.
+- Deviation from the text above: a constant map has d = 0 up to 2e-5, not exactly, because the
+  graphics card evaluates the same image with slightly different results in batches of
+  different size.
+
+### Addition to X15 after its results (2026-09-28, 00:30 +0330; exploratory, no prediction)
+
+An independent review of the code of X15 confirmed the replay and the reported numbers and
+found that rule R2 is met by maps that use no answer of the model: a Gaussian around the centre
+of the image has d = 0.18 at 224 px on the 40 images of the review and d = 0.07 [0.05, 0.13] on
+the 100 images of the library clients (`analyze_centre_prior_r2.py`), because the objects are
+centred; at 32 px it has d = -0.05. R2 shows that
+an explanation is not empty; it does not show that its information comes from the model.
+Added analysis (`analyze_explanation_prior.py`): deletion area of every explanation against
+(a) a Gaussian around the centre, standard deviation a quarter of the side, and (b) the
+explanation's own regions ranked by the distance of their centroid from the centre.
+
+Result at 224 px, gain over the centre prior (median, 95% interval): every query answered:
+lime package 0.064 [0.033, 0.105], Captum KernelSHAP 0.087 [0.059, 0.116], Captum occlusion
+0.076 [0.050, 0.102]. Flagged queries rejected: lime package -0.030 [-0.070, -0.002] (H1) and
+0.012 [-0.018, 0.041] (H2), KernelSHAP -0.085 [-0.131, -0.050], occlusion -0.163.
+
+Further deviations found by the review, none of which changes a verdict: the branch of the
+randomization follows the number of distinct values (Captum occlusion at 32 px is randomized by
+permutation); identity permutations are not excluded; the tie field has a pixel-wise component
+of 1e-3; the exclusion rule for streams that cannot be regenerated is not implemented (no
+stream needed it); the summary files of the library clients were written again at 23:55 with
+one added column (the values agree with the first files to 1e-16).

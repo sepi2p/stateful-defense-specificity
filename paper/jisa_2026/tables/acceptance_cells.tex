@@ -1,0 +1,58 @@
+\begin{footnotesize}
+\setlength{\tabcolsep}{5pt}
+\begin{longtable}{llccc}
+\caption{The acceptance experiments in every cell (CIFAR-10, ResNet-18, 200 evaluation images, whole session): matched AUROC of the acceptance rate alone and of the logistic models on the session statistics of GWAD+ and Blacklight, with bootstrap 95\% intervals. $^{\ast}$Invalid workload. The comparisons of the throttled attack with clients other than restoration were not planned.}\label{tab:accept-cells}\\
+\toprule
+& & \multicolumn{3}{c}{Matched AUROC} \\
+\cmidrule(lr){3-5}
+Benign client & Start & acceptance & GWAD+ & Blacklight \\
+\midrule
+\endfirsthead
+\multicolumn{5}{l}{\emph{Table~\thetable\ (continued)}}\\
+\toprule
+& & \multicolumn{3}{c}{Matched AUROC} \\
+\cmidrule(lr){3-5}
+Benign client & Start & acceptance & GWAD+ & Blacklight \\
+\midrule
+\endhead
+\multicolumn{5}{l}{\emph{NES, step 0.25/255, moves if better}} \\
+Restoration & noisy & 0.81 & 0.49 {[}0.43, 0.55{]} & 0.51 {[}0.46, 0.57{]} \\
+Restoration & blurred & 0.83 & 0.48 {[}0.42, 0.53{]} & 0.51 {[}0.48, 0.54{]} \\
+Confidence raising & noisy & 0.57 & 0.45 {[}0.40, 0.51{]} & 0.50 {[}0.44, 0.55{]} \\
+Confidence raising & blurred & 0.78 & 0.52 {[}0.46, 0.58{]} & 0.46 {[}0.40, 0.51{]} \\
+\multicolumn{5}{l}{\emph{NES, step 1/255, moves if better}} \\
+Restoration & noisy & 0.99 & 0.92 {[}0.89, 0.95{]} & 0.66 {[}0.61, 0.71{]} \\
+Restoration & blurred & 0.99 & 0.97 {[}0.95, 0.98{]} & 0.62 {[}0.57, 0.67{]} \\
+Confidence raising & noisy & 0.76 & 0.59 {[}0.53, 0.64{]} & 0.51 {[}0.46, 0.56{]} \\
+Confidence raising & blurred & 0.93 & 0.81 {[}0.77, 0.85{]} & 0.53 {[}0.47, 0.58{]} \\
+\multicolumn{5}{l}{\emph{NES, step 2/255, moves if better}} \\
+Restoration$^{\ast}$ & noisy & 1.00 & 0.99 {[}0.98, 1.00{]} & 0.86 {[}0.82, 0.89{]} \\
+Restoration$^{\ast}$ & blurred & 1.00 & 0.99 {[}0.98, 1.00{]} & 0.91 {[}0.88, 0.94{]} \\
+Confidence raising & noisy & 0.65 & 0.58 {[}0.52, 0.64{]} & 0.48 {[}0.43, 0.52{]} \\
+Confidence raising & blurred & 0.85 & 0.72 {[}0.66, 0.77{]} & 0.48 {[}0.43, 0.53{]} \\
+\multicolumn{5}{l}{\emph{NES, step 2/255, always moves}} \\
+Restoration & noisy & 0.50 & 0.53 {[}0.47, 0.58{]} & 0.57 {[}0.53, 0.61{]} \\
+Restoration & blurred & 0.50 & 0.59 {[}0.53, 0.64{]} & 0.52 {[}0.47, 0.57{]} \\
+Confidence raising & noisy & 0.50 & 0.51 {[}0.45, 0.56{]} & 0.55 {[}0.49, 0.60{]} \\
+Confidence raising & blurred & 0.50 & 0.46 {[}0.41, 0.52{]} & 0.51 {[}0.46, 0.57{]} \\
+\multicolumn{5}{l}{\emph{SimBA, step 8/255, moves if better}} \\
+Restoration & noisy & 1.00 & 0.97 {[}0.95, 0.99{]} & 0.50 {[}0.46, 0.55{]} \\
+Restoration & blurred & 0.96 & 0.92 {[}0.89, 0.95{]} & 0.48 {[}0.43, 0.52{]} \\
+Confidence raising & noisy & 0.85 & 0.74 {[}0.70, 0.78{]} & 0.49 {[}0.45, 0.54{]} \\
+Confidence raising & blurred & 0.91 & 0.87 {[}0.84, 0.90{]} & 0.54 {[}0.49, 0.58{]} \\
+Boundary probing & noisy & 0.94 & 0.91 {[}0.87, 0.94{]} & 0.63 {[}0.58, 0.67{]} \\
+Boundary probing & blurred & 0.88 & 0.83 {[}0.79, 0.87{]} & 0.56 {[}0.51, 0.60{]} \\
+Counterfactual search & noisy & 0.77 & 0.66 {[}0.62, 0.70{]} & 0.51 {[}0.46, 0.56{]} \\
+Counterfactual search & blurred & 0.62 & 0.59 {[}0.56, 0.63{]} & 0.51 {[}0.46, 0.55{]} \\
+\multicolumn{5}{l}{\emph{SimBA, step 8/255, acceptance rate throttled}} \\
+Restoration & noisy & 0.50 & 0.54 {[}0.50, 0.58{]} & 0.48 {[}0.43, 0.53{]} \\
+Restoration & blurred & 0.49 & 0.49 {[}0.44, 0.54{]} & 0.47 {[}0.43, 0.52{]} \\
+Confidence raising & noisy & 0.84 & 0.83 {[}0.78, 0.87{]} & 0.49 {[}0.45, 0.54{]} \\
+Confidence raising & blurred & 0.58 & 0.52 {[}0.47, 0.57{]} & 0.52 {[}0.48, 0.57{]} \\
+Boundary probing & noisy & 0.78 & 0.71 {[}0.65, 0.77{]} & 0.62 {[}0.56, 0.67{]} \\
+Boundary probing & blurred & 0.50 & 0.61 {[}0.55, 0.67{]} & 0.56 {[}0.51, 0.60{]} \\
+Counterfactual search & noisy & 0.94 & 0.92 {[}0.90, 0.95{]} & 0.49 {[}0.44, 0.54{]} \\
+Counterfactual search & blurred & 0.93 & 0.92 {[}0.89, 0.95{]} & 0.50 {[}0.45, 0.54{]} \\
+\bottomrule
+\end{longtable}
+\end{footnotesize}

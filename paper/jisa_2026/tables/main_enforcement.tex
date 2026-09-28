@@ -1,0 +1,28 @@
+\begin{table}[!tbp]
+\centering\small\setlength{\tabcolsep}{6pt}
+\caption{Library explanation clients at $224\times224$ pixels when Blacklight rejects the flagged queries (100 images). $d$: median gain in deletion area over randomizations of the explanation that keep its spatial structure; an empty explanation has $d=0$. Gain over centre prior: median difference in deletion area to a Gaussian around the centre of the image, an ordering that uses no answer of the model (not planned in advance). Rejected answers: the client puts the uniform distribution in their place, or, for the \texttt{lime} package, drops the rejected samples from the fit of its surrogate model. Rank correlation (Spearman) and overlap of the most important fifth of the image (0.2 by chance) compare the explanation under rejection with the one computed from all answers; medians. Dashes: the explanation is constant over the image. KernelSHAP and occlusion: Captum.}
+\label{tab:main-enforce}
+\vspace{3pt}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lcccc}
+\toprule
+& \multicolumn{2}{c}{LIME (\texttt{lime})} & KernelSHAP & Occlusion \\
+\cmidrule(lr){2-3}
+Rejected answers are & uniform & dropped & uniform & uniform \\
+\midrule
+Queries answered (median) & 15 of 1{,}000 & 15 of 1{,}000 & 15 of 1{,}000 & 1 of 785 \\
+$d$, all answered & 0.22 & 0.22 & 0.20 & 0.13 \\
+\quad 95\% interval & {[}0.19, 0.26{]} & {[}0.19, 0.26{]} & {[}0.17, 0.23{]} & {[}0.11, 0.16{]} \\
+$d$, rejected & 0.09 & 0.14 & 0.02 & 0.00 \\
+\quad 95\% interval & {[}0.05, 0.11{]} & {[}0.11, 0.16{]} & {[}0.00, 0.04{]} & {[}0.00, 0.00{]} \\
+Share of $d$ retained (\%) & 39 & 62 & 9 & 0 \\
+Gain over centre prior, all answered & 0.06 & 0.06 & 0.09 & 0.08 \\
+\quad 95\% interval & {[}0.03, 0.11{]} & {[}0.03, 0.11{]} & {[}0.06, 0.12{]} & {[}0.05, 0.10{]} \\
+Gain over centre prior, rejected & $-$0.03 & 0.01 & $-$0.08 & $-$0.16 \\
+\quad 95\% interval & {[}$-$0.07, 0.00{]} & {[}$-$0.02, 0.04{]} & {[}$-$0.13, $-$0.05{]} & {[}$-$0.21, $-$0.13{]} \\
+Rank correlation & 0.24 & 0.43 & 0.18 & -- \\
+Overlap of the top fifth & 0.35 & 0.48 & 0.29 & -- \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

@@ -1,0 +1,48 @@
+\begin{sidewaystable}[p]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{The classifier's outputs before a label change: AUROC of the logistic model on the statistics of the model's outputs for separating the attack from the Tier-C clients, with bootstrap 95\% intervals (evaluation split). Optimizer: NES; tiled NES on ImageNet; SimBA in the last row. Truncated: both sessions of a pair end before the attack's first label change (the definition written down first). The symmetric prefix ends before the first label change of either session and omits the indicator of a label change; pairs with fewer than 17 queries are left out.}
+\label{tab:prefix}
+\vspace{3pt}
+\begin{adjustbox}{max width=\textheight}
+\begin{tabular}{lllcrrc}
+\toprule
+& & & Truncated at the attack's & \multicolumn{3}{c}{Before the first label change of either session} \\
+\cmidrule(lr){5-7}
+Corpus & Start & Benign client & first label change & pairs & median length & AUROC \\
+\midrule
+CIFAR-10, ResNet-18, seed 0 & noisy & Boundary probing & 0.79 {[}0.75, 0.83{]} & 180 & 548 & 0.60 {[}0.56, 0.64{]} \\
+ & noisy & Counterfactual search & 0.78 {[}0.74, 0.82{]} & 182 & 521 & 0.62 {[}0.59, 0.66{]} \\
+ & blurred & Boundary probing & 0.82 {[}0.78, 0.86{]} & 197 & 795 & 0.59 {[}0.56, 0.63{]} \\
+ & blurred & Counterfactual search & 0.78 {[}0.74, 0.82{]} & 196 & 800.5 & 0.60 {[}0.57, 0.64{]} \\[2pt]
+CIFAR-10, ResNet-18, seed 1 & noisy & Boundary probing & 0.81 {[}0.77, 0.85{]} & 177 & 517 & 0.59 {[}0.56, 0.62{]} \\
+ & noisy & Counterfactual search & 0.83 {[}0.79, 0.86{]} & 175 & 530 & 0.56 {[}0.52, 0.60{]} \\
+ & blurred & Boundary probing & 0.80 {[}0.76, 0.84{]} & 192 & 829.5 & 0.54 {[}0.51, 0.57{]} \\
+ & blurred & Counterfactual search & 0.78 {[}0.74, 0.82{]} & 192 & 812 & 0.53 {[}0.50, 0.57{]} \\[2pt]
+CIFAR-10, ResNet-18, seed 2 & noisy & Boundary probing & 0.76 {[}0.72, 0.81{]} & 178 & 608 & 0.57 {[}0.54, 0.60{]} \\
+ & noisy & Counterfactual search & 0.75 {[}0.71, 0.79{]} & 178 & 631 & 0.54 {[}0.50, 0.58{]} \\
+ & blurred & Boundary probing & 0.75 {[}0.71, 0.79{]} & 197 & 975 & 0.58 {[}0.55, 0.62{]} \\
+ & blurred & Counterfactual search & 0.77 {[}0.73, 0.81{]} & 197 & 955 & 0.59 {[}0.55, 0.63{]} \\[2pt]
+CIFAR-10, VGG19-BN & noisy & Boundary probing & 0.83 {[}0.79, 0.88{]} & 169 & 558 & 0.56 {[}0.53, 0.60{]} \\
+ & noisy & Counterfactual search & 0.81 {[}0.77, 0.85{]} & 165 & 567 & 0.55 {[}0.52, 0.58{]} \\
+ & blurred & Boundary probing & 0.76 {[}0.72, 0.80{]} & 197 & 1021 & 0.61 {[}0.57, 0.65{]} \\
+ & blurred & Counterfactual search & 0.72 {[}0.67, 0.76{]} & 197 & 1021 & 0.55 {[}0.50, 0.59{]} \\[2pt]
+CIFAR-10, robust ResNet-50 & noisy & Boundary probing & 0.63 {[}0.61, 0.66{]} & 200 & 1021 & 0.62 {[}0.60, 0.65{]} \\
+ & noisy & Counterfactual search & 0.67 {[}0.64, 0.71{]} & 200 & 1021 & 0.67 {[}0.64, 0.71{]} \\
+ & blurred & Boundary probing & 0.62 {[}0.59, 0.64{]} & 199 & 1021 & 0.59 {[}0.57, 0.61{]} \\
+ & blurred & Counterfactual search & 0.67 {[}0.63, 0.70{]} & 198 & 1021 & 0.66 {[}0.63, 0.69{]} \\[2pt]
+GTSRB, ResNet-18 & noisy & Boundary probing & 0.78 {[}0.75, 0.82{]} & 201 & 1021 & 0.68 {[}0.65, 0.71{]} \\
+ & noisy & Counterfactual search & 0.76 {[}0.73, 0.80{]} & 201 & 1021 & 0.67 {[}0.64, 0.71{]} \\
+ & blurred & Boundary probing & 0.74 {[}0.71, 0.78{]} & 208 & 1021 & 0.71 {[}0.67, 0.75{]} \\
+ & blurred & Counterfactual search & 0.72 {[}0.69, 0.76{]} & 208 & 1021 & 0.69 {[}0.66, 0.73{]} \\[2pt]
+ImageNet, ResNet-50 & noisy & Boundary probing & 0.84 {[}0.81, 0.88{]} & 186 & 255 & 0.64 {[}0.60, 0.68{]} \\
+ & noisy & Counterfactual search & 0.86 {[}0.83, 0.89{]} & 184 & 255 & 0.70 {[}0.66, 0.74{]} \\
+ & blurred & Boundary probing & 0.86 {[}0.82, 0.89{]} & 186 & 323 & 0.62 {[}0.59, 0.65{]} \\
+ & blurred & Counterfactual search & 0.80 {[}0.77, 0.83{]} & 187 & 308 & 0.67 {[}0.63, 0.71{]} \\[2pt]
+CIFAR-10, ResNet-18, SimBA & noisy & Boundary probing & 0.90 {[}0.87, 0.93{]} & 195 & 392 & 0.58 {[}0.54, 0.61{]} \\
+ & noisy & Counterfactual search & 0.90 {[}0.87, 0.93{]} & 195 & 394 & 0.58 {[}0.53, 0.62{]} \\
+ & blurred & Boundary probing & 0.90 {[}0.87, 0.93{]} & 199 & 608 & 0.63 {[}0.59, 0.67{]} \\
+ & blurred & Counterfactual search & 0.91 {[}0.89, 0.94{]} & 199 & 597 & 0.60 {[}0.55, 0.64{]} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{sidewaystable}

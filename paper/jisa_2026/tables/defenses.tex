@@ -1,31 +1,23 @@
 \begin{table}[!tbp]
 \centering\footnotesize\setlength{\tabcolsep}{3pt}
-\caption{Stateful defenses, the benign traffic on which their false-positive rates were measured, and the response that
-their authors describe, as reported in the respective papers. Rates are per query or per image, except those of Lee et
-al., which are given as fractions per sequence or per flagged query. None of the evaluations includes a benign client
+\caption{Stateful defenses, the benign traffic on which their false-positive rates were measured, and the response
+that their authors describe, as reported in the respective papers. None of the evaluations includes a benign client
 that optimizes or explains.}
 \label{tab:defenses}
-\begin{tabular}{L{1.6cm}L{2.8cm}L{3.8cm}L{2.4cm}L{1.8cm}}
+\begin{tabular}{L{1.6cm}L{3.1cm}L{4.3cm}L{1.7cm}L{1.8cm}}
 \toprule
 Defense & Detection signal & Benign traffic in its evaluation & Reported false positives & Response \\
 \midrule
-Chen et al. \cite{chen2020stateful} & Distance of a query to its nearest earlier queries in a learned similarity embedding &
-The training set, streamed in random order & 0.1\% (the threshold is set at this rate) & The account is cancelled \\[3pt]
+Chen et al. \cite{chen2020stateful} & Distance to earlier queries in a learned embedding &
+Training set in random order & 0.1\% (set by design) & Account cancelled \\[2pt]
 Blacklight \cite{li2022blacklight} & Hashes of quantized pixel windows shared between queries &
-Images of four tasks; one million ImageNet training images; Flickr images of 20 ImageNet labels; frames of
-YouTube Faces videos &
-below 0.1\%; 0.37\%; 0.37\% on average; 1.74\% & Flagged queries are rejected \\[3pt]
-QPA \cite{li2025qpa} & Anomaly detection on a graph that links each query to similar earlier ones &
-Dataset images mixed with attack queries; frames of YouTube Faces videos &
-0.04\% on average; 0.23\% & Flagged queries are rejected \\[3pt]
-GWAD \cite{park2025gwad} & Histogram of similarities between successive query updates, classified by a network &
-Shuffled CIFAR-10, Tiny-ImageNet and ImageNet images; driving and aerial image sequences; movie frames at three levels of
-similarity &
-0--0.03\%; 0\% and 1.29\%; 0\%, 0\% and 17.99\% & Not specified \\[3pt]
+Dataset images of four tasks; Flickr images; video frames & below 0.1\% to 1.74\% & Flagged queries rejected \\[2pt]
+QPA \cite{li2025qpa} & Anomalies in a graph that links similar queries &
+Dataset images; video frames & 0.04\%; 0.23\% & Flagged queries rejected \\[2pt]
+GWAD, GWAD+ \cite{park2025gwad} & Histogram of similarities between successive query updates &
+Shuffled dataset images; driving and aerial sequences; movie frames & 0\% to 1.29\%; 17.99\% on highly similar frames & Not specified \\[2pt]
 Lee et al. \cite{lee2026softlabel} & Groups of similar queries, then a test for serial correlation of the soft labels &
-Streams of dataset images and camera stills with inserted attack sequences; sequences of 50 random images, of noise copies
-of one image, and of camera stills &
-0.00 (CIFAR-10) and 0.06 on average (ImageNet); 0.00 & Follow-up actions such as banning the account \\
+Dataset images and camera stills; sequences of random images, noise copies and stills & 0.00 to 0.06 (fraction) & Follow-up actions such as a ban \\
 \bottomrule
 \end{tabular}
 \end{table}

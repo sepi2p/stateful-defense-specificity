@@ -1,0 +1,41 @@
+10/300 sessions
+20/300 sessions
+30/300 sessions
+40/300 sessions
+50/300 sessions
+60/300 sessions
+70/300 sessions
+80/300 sessions
+90/300 sessions
+100/300 sessions
+110/300 sessions
+120/300 sessions
+130/300 sessions
+140/300 sessions
+150/300 sessions
+160/300 sessions
+170/300 sessions
+180/300 sessions
+190/300 sessions
+200/300 sessions
+210/300 sessions
+220/300 sessions
+230/300 sessions
+240/300 sessions
+250/300 sessions
+260/300 sessions
+270/300 sessions
+280/300 sessions
+290/300 sessions
+300/300 sessions
+              client   variant  images  distinct_ge_10  distinct_median  area_median  reference_area_median      d_median          d_lo      d_hi  informative  d_positive_share  spearman_median  spearman_lo  spearman_hi  top_fifth_median  top_fifth_lo  top_fifth_hi  answered_share  answered_median  first_query_answered  stream_identical
+0  captum_kernelshap  constant     100            0.00              1.0     0.451786               0.451784  4.870538e-07 -6.137121e-07  0.000001        False              0.55              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN
+1  captum_kernelshap        h1     100            1.00             48.0     0.334727               0.329872  1.851928e-02  9.546975e-04  0.038314         True              0.60         0.175322     0.093168     0.253478          0.288640      0.229547      0.321774        0.016280             15.0                   1.0               1.0
+2  captum_kernelshap  recorded     100            1.00             48.0     0.089333               0.323533  1.974853e-01  1.746120e-01  0.232056         True              0.98              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN
+3   captum_occlusion  constant     100            0.00              1.0     0.451786               0.451784  4.870538e-07 -6.137121e-07  0.000001        False              0.55              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN
+4   captum_occlusion        h1     100            0.00              1.0     0.451786               0.451784  4.870538e-07 -6.137121e-07  0.000001        False              0.55         0.000000     0.000000     0.000000          0.146786      0.129048      0.173991        0.001274              1.0                   1.0               1.0
+5   captum_occlusion  recorded     100            1.00           3021.5     0.101765               0.274738  1.341776e-01  1.068765e-01  0.159909         True              0.92              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN
+6       lime_package  constant     100            0.00              1.0     0.451786               0.451784  4.870538e-07 -6.137121e-07  0.000001        False              0.55              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN
+7       lime_package        h1     100            1.00             36.0     0.263250               0.385594  8.607984e-02  4.777036e-02  0.108064         True              0.82         0.244264     0.184527     0.301645          0.351769      0.274908      0.412157        0.016710             15.0                   1.0               1.0
+8       lime_package        h2     100            0.96             36.0     0.196785               0.379833  1.370027e-01  1.106336e-01  0.155462         True              0.90         0.432763     0.387215     0.471929          0.482212      0.440354      0.515695        0.016710             15.0                   1.0               1.0
+9       lime_package  recorded     100            1.00             36.0     0.120541               0.388602  2.194841e-01  1.946166e-01  0.255490         True              0.99              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN

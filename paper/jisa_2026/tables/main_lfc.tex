@@ -1,0 +1,32 @@
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{5pt}
+\caption{Our reconstruction of the detector of Lee et al.: evaluation sessions flagged (\%), both starts pooled; ranges over the corpora of a row; $32\times32$ pixels except ImageNet. One test: the first 50 queries are grouped and every group of at least 15 queries is tested once. Every update: the test is applied whenever such a group gains a member. Invalid workloads are left out. Last two blocks: streams without an objective (50 sequences each, from calibration images); the soft labels of the noise copies are independent, so that their alarms are false alarms of the test. Every corpus: Table~\ref{tab:lfc}.}
+\label{tab:main-lfc}
+\vspace{3pt}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llccc}
+\toprule
+Traffic & Test applied & Attack & Restoration & Conf.\ raising \\
+\midrule
+NES, step 0.25/255 (6 corpora) & first 50, one test & 5.0--22.0 & 9.5--24.8 & 6.8--20.8 \\
+ & first 50, every update & 11.0--27.5 & 13.5--28.5 & 12.0--28.0 \\
+ & whole session & 99.8--100.0 & 98.3--100.0 & 100.0 \\[2pt]
+NES, larger steps (3 variants) & first 50, one test & 38.5--49.8 & 10.8--25.5 & 32.0--44.3 \\
+ & first 50, every update & 43.5--51.8 & 15.8--30.3 & 35.5--46.0 \\
+ & whole session & 90.8--97.8 & 89.3--97.5 & 91.0--98.5 \\[2pt]
+Tiled NES, ImageNet & first 50, one test & 69.0 & -- & 57.8 \\
+ & first 50, every update & 77.3 & -- & 65.3 \\
+ & whole session & 99.8 & -- & 99.3 \\[2pt]
+SimBA & first 50, one test & 99.8 & 80.0 & 99.8 \\
+ & first 50, every update & 99.8 & 86.8 & 99.8 \\
+ & whole session & 100.0 & 100.0 & 100.0 \\[2pt]
+Unrelated test images & first 50, one test & \multicolumn{3}{c}{0.0} \\
+ & first 50, every update & \multicolumn{3}{c}{0.0} \\
+ & whole session & \multicolumn{3}{c}{0.0} \\[2pt]
+Near-duplicate noise copies & first 50, one test & \multicolumn{3}{c}{4.0} \\
+ & first 50, every update & \multicolumn{3}{c}{18.0} \\
+ & whole session & \multicolumn{3}{c}{36.0} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

@@ -1,7 +1,7 @@
 \begin{footnotesize}
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{L{0.9cm}L{1.9cm}L{5.0cm}L{3.4cm}L{1.1cm}}
-\caption{Predictions that were written down in advance, and their outcomes. Evaluation split, except P5 (all splits of the control streams). ``Main'' is the CIFAR-10 ResNet-18 NES corpus. P8--P11 were written for each later corpus; P12 applies them to ImageNet, where restoration is excluded as an invalid workload. Outcomes are those of the corrected analysis (Blacklight's published rule); where the first analysis gave a different outcome or verdict, it is given in brackets. P16 and P17 were run after the correction. The rule of P6c, P13b and P17d does not establish that an explanation is informative (Section~\ref{sec:res-expl}).}\label{tab:prereg}\\
+\caption{Predictions that were written down in advance, and their outcomes. Evaluation split, except P5 (all splits of the control streams). ``Main'' is the CIFAR-10 ResNet-18 NES corpus. P8--P11 were written for each later corpus; P12 applies them to ImageNet, where restoration is excluded as an invalid workload. Outcomes are those of the corrected analysis (Blacklight's published rule); where the first analysis gave a different outcome or verdict, it is given in brackets. P16, P17 and P18 were run after the correction. The rule of P6c, P13b and P17d does not establish that an explanation is informative; P18 uses the rule that replaced it (Section~\ref{app:validity}).}\label{tab:prereg}\\
 \toprule
 ID & Corpus & Prediction & Outcome & Verdict \\
 \midrule
@@ -78,6 +78,10 @@ P17a & libraries, 224\,px & Blacklight raises an alarm in $\ge90\%$ of the sessi
 P17b & libraries, 224\,px & Blacklight flags $\ge90\%$ of the queries of each library client & 98.3\%--99.9\% & held \\
 P17c & libraries, 224\,px & GWAD+ raises an alarm in $\ge90\%$ of the Captum occlusion sessions & 49.0\% & \textbf{failed} \\
 P17d & libraries, 224\,px & Every library client beats spatially smooth random orderings & medians 0.256--0.270; smallest lower bound 0.220 & held \\
+P18a & libraries, 224\,px & Without rejection $\ge95\%$ of the explanations of each library client have ten or more distinct values, and the client is informative by rule R2 & 100\%; medians of $d$ 0.134--0.219, smallest lower bound 0.107 & held \\
+P18b & libraries, 224\,px & With rejection (uniform substitution): median rank correlation with the explanation without rejection $<0.3$ for each client & LIME 0.24, KernelSHAP 0.18, occlusion 0.00 & held \\
+P18c & libraries, 224\,px & With rejection (uniform substitution): median of $d$ below one quarter of the median without rejection, for each client & share retained: LIME 0.39, KernelSHAP 0.09, occlusion 0.00 & \textbf{failed} \\
+P18d & libraries, 32\,px & The \texttt{lime} package is not informative by rule R2 & median of $d$ 0.000, interval 0.000 to 0.000 & held \\
 \bottomrule
 \end{longtable}
 \end{footnotesize}

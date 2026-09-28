@@ -1,0 +1,38 @@
+\begin{sidewaystable}[p]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Explanations against orderings that use no answer of the model (evaluation images; not planned in advance). Area: median deletion area of the explanation. Centre prior: a Gaussian around the centre of the image with a standard deviation of a quarter of its side (median area 0.23 at $224\times224$ and 0.31 at $32\times32$ pixels). Ranked regions: the regions of the explanation computed from all answers, ranked by the distance of their centroid from the centre; for maps with at most 256 distinct values and at least two. Gain: median of the area of the prior minus the area of the explanation, with its bootstrap 95\% interval. Better: share of the images on which the explanation has the smaller area.}
+\label{tab:priors}
+\vspace{3pt}
+\begin{adjustbox}{max width=\textheight}
+\begin{tabular}{rllccccc}
+\toprule
+& & & & \multicolumn{2}{c}{Over the centre prior} & \multicolumn{2}{c}{Over ranked regions} \\
+\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Pixels & Client & Queries & Area & gain & better (\%) & gain & better (\%) \\
+\midrule
+224 & LIME (\texttt{lime}) & all answered & 0.12 & 0.06 {[}0.03, 0.11{]} & 76 & 0.15 {[}0.11, 0.18{]} & 93 \\
+ &  & rejected, uniform & 0.26 & $-$0.03 {[}$-$0.07, 0.00{]} & 39 & 0.02 {[}0.00, 0.07{]} & 60 \\
+ &  & rejected, dropped & 0.20 & 0.01 {[}$-$0.02, 0.04{]} & 53 & 0.06 {[}0.04, 0.08{]} & 72 \\
+224 & KernelSHAP (Captum) & all answered & 0.09 & 0.09 {[}0.06, 0.12{]} & 82 & 0.14 {[}0.11, 0.20{]} & 95 \\
+ &  & rejected, uniform & 0.33 & $-$0.08 {[}$-$0.13, $-$0.05{]} & 27 & $-$0.03 {[}$-$0.07, 0.01{]} & 43 \\
+224 & Occlusion (Captum) & all answered & 0.10 & 0.08 {[}0.05, 0.10{]} & 73 & -- & -- \\
+ &  & rejected, uniform & 0.45 & $-$0.16 {[}$-$0.21, $-$0.13{]} & 19 & -- & -- \\[2pt]
+224 & LIME (ours) & all answered & 0.14 & 0.06 {[}0.04, 0.07{]} & 74 & 0.13 {[}0.10, 0.16{]} & 93 \\
+224 & KernelSHAP (ours) & all answered & 0.21 & 0.01 {[}$-$0.01, 0.03{]} & 55 & 0.07 {[}0.04, 0.09{]} & 67 \\
+224 & Occlusion (ours) & all answered & 0.12 & 0.07 {[}0.04, 0.08{]} & 71 & -- & -- \\
+224 & RISE (ours) & all answered & 0.14 & 0.04 {[}0.03, 0.06{]} & 73 & -- & -- \\[2pt]
+32 & LIME (\texttt{lime}) & all answered & 0.48 & $-$0.16 {[}$-$0.18, $-$0.12{]} & 20 & 0.00 {[}0.00, 0.00{]} & 21 \\
+ &  & rejected, uniform & 0.49 & $-$0.16 {[}$-$0.19, $-$0.13{]} & 20 & 0.00 {[}0.00, 0.00{]} & 25 \\
+ &  & rejected, dropped & 0.49 & $-$0.16 {[}$-$0.19, $-$0.13{]} & 19 & 0.00 {[}0.00, 0.00{]} & 27 \\
+32 & KernelSHAP (Captum) & all answered & 0.18 & 0.10 {[}0.07, 0.13{]} & 75 & 0.14 {[}0.11, 0.17{]} & 83 \\
+ &  & rejected, uniform & 0.36 & $-$0.06 {[}$-$0.11, $-$0.03{]} & 37 & $-$0.02 {[}$-$0.03, 0.02{]} & 47 \\
+32 & Occlusion (Captum) & all answered & 0.27 & 0.03 {[}$-$0.01, 0.05{]} & 56 & 0.07 {[}0.04, 0.09{]} & 67 \\
+ &  & rejected, uniform & 0.51 & $-$0.19 {[}$-$0.22, $-$0.14{]} & 20 & $-$0.14 {[}$-$0.18, $-$0.09{]} & 30 \\[2pt]
+32 & LIME (ours) & all answered & 0.24 & 0.03 {[}0.00, 0.05{]} & 57 & 0.07 {[}0.05, 0.11{]} & 68 \\
+32 & KernelSHAP (ours) & all answered & 0.33 & 0.00 {[}$-$0.04, 0.03{]} & 51 & 0.02 {[}0.01, 0.06{]} & 60 \\
+32 & Occlusion (ours) & all answered & 0.20 & 0.07 {[}0.03, 0.10{]} & 66 & -- & -- \\
+32 & RISE (ours) & all answered & 0.31 & 0.00 {[}$-$0.02, 0.02{]} & 50 & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{sidewaystable}

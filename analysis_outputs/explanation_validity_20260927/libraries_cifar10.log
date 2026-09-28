@@ -1,0 +1,71 @@
+10/600 sessions
+20/600 sessions
+30/600 sessions
+40/600 sessions
+50/600 sessions
+60/600 sessions
+70/600 sessions
+80/600 sessions
+90/600 sessions
+100/600 sessions
+110/600 sessions
+120/600 sessions
+130/600 sessions
+140/600 sessions
+150/600 sessions
+160/600 sessions
+170/600 sessions
+180/600 sessions
+190/600 sessions
+200/600 sessions
+210/600 sessions
+220/600 sessions
+230/600 sessions
+240/600 sessions
+250/600 sessions
+260/600 sessions
+270/600 sessions
+280/600 sessions
+290/600 sessions
+300/600 sessions
+310/600 sessions
+320/600 sessions
+330/600 sessions
+340/600 sessions
+350/600 sessions
+360/600 sessions
+370/600 sessions
+380/600 sessions
+390/600 sessions
+400/600 sessions
+410/600 sessions
+420/600 sessions
+430/600 sessions
+440/600 sessions
+450/600 sessions
+460/600 sessions
+470/600 sessions
+480/600 sessions
+490/600 sessions
+500/600 sessions
+510/600 sessions
+520/600 sessions
+530/600 sessions
+540/600 sessions
+550/600 sessions
+560/600 sessions
+570/600 sessions
+580/600 sessions
+590/600 sessions
+600/600 sessions
+              client   variant  images  distinct_ge_10  distinct_median  area_median  reference_area_median  d_median      d_lo      d_hi  informative  d_positive_share  spearman_median  spearman_lo  spearman_hi  top_fifth_median  top_fifth_lo  top_fifth_hi  answered_share  answered_median  first_query_answered  stream_identical
+0  captum_kernelshap  constant     200             0.0              1.0     0.505842               0.505842  0.000000  0.000000  0.000000        False             0.000              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN
+1  captum_kernelshap        h1     200             1.0             36.0     0.355026               0.435636  0.058185  0.026871  0.076131         True             0.700         0.268266     0.219272     0.318741          0.334146      0.302439      0.380488        0.071280             73.0                   1.0               1.0
+2  captum_kernelshap  recorded     200             1.0             36.0     0.175549               0.437502  0.231466  0.203020  0.255299         True             0.985              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN
+3   captum_occlusion  constant     200             0.0              1.0     0.505842               0.505842  0.000000  0.000000  0.000000        False             0.000              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN
+4   captum_occlusion        h1     200             0.0              1.0     0.505842               0.505842  0.000000  0.000000  0.000000        False             0.000         0.000000     0.000000     0.000000          0.165854      0.146341      0.187805        0.004425              1.0                   1.0               1.0
+5   captum_occlusion  recorded     200             1.0            254.0     0.272763               0.398604  0.113644  0.092878  0.141459         True             0.705              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN
+6       lime_package  constant     200             0.0              1.0     0.505842               0.505842  0.000000  0.000000  0.000000        False             0.000              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN
+7       lime_package        h1     200             0.0              1.0     0.488474               0.537511  0.000000  0.000000  0.000000        False             0.330         0.000000     0.000000     0.000000          1.000000      1.000000      1.000000        0.002450              2.0                   1.0               1.0
+8       lime_package        h2     200             0.0              1.0     0.488474               0.539996  0.000000  0.000000  0.000000        False             0.310         0.000000     0.000000     0.000000          1.000000      1.000000      1.000000        0.002450              2.0                   1.0               1.0
+9       lime_package  recorded     200             0.0              1.0     0.484094               0.536689  0.000000  0.000000  0.000000        False             0.365              NaN          NaN          NaN               NaN           NaN           NaN             NaN              NaN                   NaN               NaN

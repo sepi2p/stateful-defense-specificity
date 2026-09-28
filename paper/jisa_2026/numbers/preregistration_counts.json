@@ -1,7 +1,7 @@
 {
-  "checks": 67,
-  "held": 58,
-  "failed": 8,
+  "checks": 71,
+  "held": 61,
+  "failed": 9,
   "evaluable_in_part": 1,
   "checks_P1_P15": 55,
   "failed_P1_P15": 6,
@@ -43,6 +43,10 @@
     ],
     [
       "P17c",
+      "libraries, 224\\,px"
+    ],
+    [
+      "P18c",
       "libraries, 224\\,px"
     ]
   ]

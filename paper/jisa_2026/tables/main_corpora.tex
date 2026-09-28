@@ -1,0 +1,22 @@
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Corpora. Optimizer: NES; tiled NES on ImageNet; SimBA in the last row. ImageNet at $224\times224$ pixels, the others at $32\times32$. Each source image contributes two starts and one session per client and start. Acc.: clean test accuracy. Images: source images in the fit, calibration and evaluation splits. Success: evaluation sessions of the attack in which a query is misclassified within the budget. Queries: median index of the first such query. Ranges are over the two starts.}
+\label{tab:corpora}
+\vspace{3pt}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lrcrcc}
+\toprule
+Corpus & Acc.\ (\%) & Images & Sessions & Success (\%) & Queries \\
+\midrule
+CIFAR-10, ResNet-18, seed 0 & 91.8 & 100/100/200 & 4{,}800 & 64.0--78.5 & 383--592 \\
+CIFAR-10, ResNet-18, seed 1 & 92.2 & 100/100/200 & 4{,}800 & 64.0--75.5 & 323--581 \\
+CIFAR-10, ResNet-18, seed 2 & 91.7 & 100/100/200 & 4{,}800 & 50.0--69.5 & 357--657 \\
+CIFAR-10, VGG19-BN & 93.3 & 100/100/200 & 4{,}800 & 39.5--76.5 & 293--569 \\
+CIFAR-10, robust ResNet-50 & 87.0 & 100/100/200 & 4{,}800 & 4.5--7.0 & 217.5--541 \\
+GTSRB, ResNet-18 & 91.4 & 84/84/210 & 4{,}536 & 20.5--35.7 & 424--482 \\
+ImageNet, ResNet-50 & 76.1 & 100/0/200 & 3{,}600 & 80.0--83.5 & 199--214.5 \\
+CIFAR-10, ResNet-18, SimBA & 91.8 & 100/100/200 & 4{,}000 & 85.0--89.5 & 360--544 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

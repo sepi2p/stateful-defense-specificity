@@ -1,0 +1,36 @@
+\begin{sidewaystable}[p]
+\centering\footnotesize\setlength{\tabcolsep}{3pt}
+\caption{Rule R2 for every explanation client (evaluation images). Clients with a source are library clients, the others our implementations. Queries: every query answered, or the queries flagged by Blacklight rejected, with the uniform distribution in the place of a rejected answer or, for the \texttt{lime} package, with the rejected samples dropped from the fit. Regions: median number of distinct attribution values. Answered: median number of answered queries. $d$: median gain in deletion area over 20 randomizations of the explanation that keep its spatial structure, with its bootstrap 95\% interval. $d>0$: share of the images. Rank correlation and overlap of the most important fifth (0.2 by chance) are relative to the explanation without rejection; dashes where an explanation is constant over the image.}
+\label{tab:validity}
+\vspace{3pt}
+\begin{adjustbox}{max width=\textheight}
+\begin{tabular}{rllrrrcccc}
+\toprule
+Pixels & Client & Queries & Images & Regions & Answered & $d$ & $d>0$ (\%) & Rank correlation & Overlap \\
+\midrule
+224 & LIME (\texttt{lime} package) & every query answered & 100 & 36 & -- & 0.219 {[}0.195, 0.255{]} & 99 & -- & -- \\
+ &  & rejected, uniform & 100 & 36 & 15 & 0.086 {[}0.048, 0.108{]} & 82 & 0.24 {[}0.18, 0.30{]} & 0.35 {[}0.27, 0.41{]} \\
+ &  & rejected, dropped & 100 & 36 & 15 & 0.137 {[}0.111, 0.155{]} & 90 & 0.43 {[}0.39, 0.47{]} & 0.48 {[}0.44, 0.52{]} \\
+224 & KernelSHAP (Captum) & every query answered & 100 & 48 & -- & 0.197 {[}0.175, 0.232{]} & 98 & -- & -- \\
+ &  & rejected, uniform & 100 & 48 & 15 & 0.019 {[}0.001, 0.038{]} & 60 & 0.18 {[}0.09, 0.25{]} & 0.29 {[}0.23, 0.32{]} \\
+224 & Occlusion (Captum) & every query answered & 100 & 3{,}022 & -- & 0.134 {[}0.107, 0.160{]} & 92 & -- & -- \\
+ &  & rejected, uniform & 100 & 1 & 1 & 0.000 {[}0.000, 0.000{]} & -- & -- & -- \\[2pt]
+224 & LIME & every query answered & 200 & 33 & -- & 0.222 {[}0.206, 0.243{]} & 98 & -- & -- \\
+224 & KernelSHAP & every query answered & 200 & 64 & -- & 0.059 {[}0.042, 0.069{]} & 72 & -- & -- \\
+224 & Occlusion & every query answered & 200 & 784 & -- & 0.184 {[}0.162, 0.207{]} & 91 & -- & -- \\
+224 & RISE & every query answered & 200 & 49{,}405 & -- & 0.177 {[}0.158, 0.197{]} & 96 & -- & -- \\[2pt]
+32 & LIME (\texttt{lime} package) & every query answered & 200 & 1 & -- & 0.000 {[}0.000, 0.000{]} & -- & -- & -- \\
+ &  & rejected, uniform & 200 & 1 & 2 & 0.000 {[}0.000, 0.000{]} & -- & -- & -- \\
+ &  & rejected, dropped & 200 & 1 & 2 & 0.000 {[}0.000, 0.000{]} & -- & -- & -- \\
+32 & KernelSHAP (Captum) & every query answered & 200 & 36 & -- & 0.231 {[}0.203, 0.255{]} & 99 & -- & -- \\
+ &  & rejected, uniform & 200 & 36 & 73 & 0.058 {[}0.027, 0.076{]} & 70 & 0.27 {[}0.22, 0.32{]} & 0.33 {[}0.30, 0.38{]} \\
+32 & Occlusion (Captum) & every query answered & 200 & 254 & -- & 0.114 {[}0.093, 0.141{]} & 71 & -- & -- \\
+ &  & rejected, uniform & 200 & 1 & 1 & 0.000 {[}0.000, 0.000{]} & -- & -- & -- \\[2pt]
+32 & LIME & every query answered & 200 & 28 & -- & 0.206 {[}0.184, 0.232{]} & 86 & -- & -- \\
+32 & KernelSHAP & every query answered & 200 & 16 & -- & 0.140 {[}0.115, 0.177{]} & 89 & -- & -- \\
+32 & Occlusion & every query answered & 200 & 1{,}014 & -- & 0.222 {[}0.200, 0.237{]} & 91 & -- & -- \\
+32 & RISE & every query answered & 200 & 1{,}024 & -- & 0.129 {[}0.100, 0.152{]} & 82 & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{sidewaystable}

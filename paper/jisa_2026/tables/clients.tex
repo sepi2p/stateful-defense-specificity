@@ -1,27 +1,25 @@
 \begin{table}[!tbp]
 \centering\footnotesize\setlength{\tabcolsep}{4pt}
-\caption{Clients. All optimizing clients of a corpus share the optimizer, the start image, the perturbation ball
-($\epsilon=8/255$) and the query budget. $y$ is the source label, $z$ the degraded start image, $p_y$ the model's
-probability of $y$, and $m_y$ the margin of $y$ over the strongest other class. The acceptance rule applies to the
-optimizers that test a step before taking it (Section~\ref{sec:setup-optimizers}).}
+\caption{Clients. All optimizing clients of a corpus share the optimizer, the start image $z$, the perturbation ball
+($\epsilon=8/255$) and the query budget. $y$ is the source label, $p_y$ its probability and $m_y$ its margin over
+the strongest other class.}
 \label{tab:clients}
-\begin{tabular}{L{2.0cm}L{2.6cm}L{5.3cm}L{2.6cm}}
+\begin{tabular}{L{2.3cm}L{2.7cm}L{5.0cm}L{2.5cm}}
 \toprule
 Group & Client & What it does & A step is accepted \\
 \midrule
-Adversarial & Attack & Maximizes the cross-entropy of $y$ & if the objective improves \\[3pt]
-Tier A: explanation & LIME, KernelSHAP, occlusion, RISE & Queries masked copies of the clean image following a fixed or random design; fits or averages the
-responses & (no optimization) \\[3pt]
-Tier B: matched benign & Restoration & Minimizes the squared distance to a classical restoration of $z$ (smoothing for the noisy start,
-unsharp masking for the blurred start); the objective does not depend on the model's output & if the objective improves and the label stays $y$ \\
- & Confidence raising & Maximizes $\log p_y$ & if the objective improves \\[3pt]
+Adversarial & Attack & Maximizes the cross-entropy of $y$ & if the objective improves \\[2pt]
+Tier A: explanation & LIME, KernelSHAP, occlusion, RISE & Queries masked copies of the clean image in a fixed or
+random design & (no optimization) \\[2pt]
+Tier B: matched benign & Restoration & Minimizes the distance to a classical restoration of $z$; the objective does
+not depend on the model's output & if the objective improves and the label stays $y$ \\
+ & Confidence raising & Maximizes $\log p_y$ & if the objective improves \\[2pt]
 Tier C: attack-equivalent & Boundary probing & Minimizes $m_y$ & if the objective improves and the label stays $y$ \\
- & Counterfactual search & Minimizes the cross-entropy of the runner-up class of $z$ plus a penalty on the distance to $z$ &
-if the objective improves \\[3pt]
-Controls & Random walk & Random sign steps inside the perturbation ball, one query per step & always \\
- & Shuffled images & 1{,}024 distinct test images & (no optimization) \\
- & Gaussian noise & Independent noise ($\sigma=0.1$) added to one clean image & (no optimization) \\
- & Sweep & One clean image at 32 JPEG qualities and 32 brightness levels & (no optimization) \\
+ & Counterfactual search & Minimizes the cross-entropy of the runner-up class plus a distance penalty &
+if the objective improves \\[2pt]
+Controls & Random walk & Random sign steps, one query per step & always \\
+ & Shuffled images, Gaussian noise, sweep & Unrelated test images; noise ($\sigma=0.1$) around one image; one image at
+32 JPEG qualities and 32 brightness levels & (no optimization) \\
 \bottomrule
 \end{tabular}
 \end{table}

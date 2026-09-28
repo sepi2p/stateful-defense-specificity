@@ -1,0 +1,21 @@
+50/800
+100/800
+150/800
+200/800
+250/800
+300/800
+350/800
+400/800
+450/800
+500/800
+550/800
+600/800
+650/800
+700/800
+750/800
+800/800
+       client   variant  images  area_median  prior_centre_images  prior_centre_area_median  gain_over_prior_centre  gain_over_prior_centre_lo  gain_over_prior_centre_hi  better_than_prior_centre  prior_regions_images  prior_regions_area_median  gain_over_prior_regions  gain_over_prior_regions_lo  gain_over_prior_regions_hi  better_than_prior_regions
+0  kernelshap  recorded     200        0.214                  200                     0.239                   0.011                     -0.005                      0.033                     0.545                 200.0                      0.289                    0.066                       0.036                       0.088                      0.665
+1        lime  recorded     200        0.143                  200                     0.239                   0.055                      0.038                      0.075                     0.735                 200.0                      0.313                    0.128                       0.104                       0.162                      0.930
+2   occlusion  recorded     200        0.122                  200                     0.239                   0.066                      0.038                      0.085                     0.705                   NaN                        NaN                      NaN                         NaN                         NaN                        NaN
+3        rise  recorded     200        0.137                  200                     0.239                   0.044                      0.029                      0.058                     0.725                   NaN                        NaN                      NaN                         NaN                         NaN                        NaN
