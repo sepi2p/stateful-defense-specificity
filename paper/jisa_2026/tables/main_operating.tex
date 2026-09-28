@@ -1,0 +1,28 @@
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{2.5pt}
+\caption{Released operating points (evaluation split). Optimizer: NES; tiled NES on ImageNet; SimBA in the last row. Success: attack sessions with a misclassified query within the budget (\%). Alarms, first alarm, flagged: Blacklight's sessions with an alarm, median index of its first alarm and share of flagged queries, for the attack and the Tier-B clients (on ImageNet confidence raising only); GWAD and GWAD+ raise an alarm in every such session, GWAD+ at query 259. Before alarm: share (\%) of the successful attacks whose first misclassified query precedes the detector's first alarm, or that raise none. Ranges: over the two starts and, in the benign columns, the clients.}
+\label{tab:operating-main}
+\vspace{3pt}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lccccccccc}
+\toprule
+& & \multicolumn{2}{c}{Alarms (\%)} & \multicolumn{2}{c}{First alarm} & \multicolumn{2}{c}{Flagged (\%)} & \multicolumn{2}{c}{Before alarm} \\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}
+Model & Success & attack & benign & attack & benign & attack & benign & Blackl. & GWAD+ \\
+\midrule
+\multicolumn{10}{l}{\emph{CIFAR-10}} \\
+ResNet-18, seed 0 & 64--79 & 100 & 100 & 6 & 5--6 & 39--41 & 39--43 & 2.8 & 27.4 \\
+ResNet-18, seed 1 & 64--76 & 100 & 100 & 5--6 & 5--6 & 40--43 & 40--43 & 5.7 & 32.3 \\
+ResNet-18, seed 2 & 50--70 & 100 & 100 & 5--6 & 5--6 & 39--42 & 39--43 & 5.0 & 27.6 \\
+VGG19-BN & 40--77 & 100 & 100 & 5 & 5--7 & 41--42 & 40--42 & 8.2 & 35.3 \\
+robust ResNet-50 & 5--7 & 100 & 100 & 6--7 & 6--7 & 39--41 & 39--42 & 4.3 & 39.1 \\
+\multicolumn{10}{l}{\emph{GTSRB}} \\
+ResNet-18 & 20--36 & 100 & 100 & 4--5 & 4.5--6 & 43--44 & 43--46 & 3.4 & 31.4 \\
+\multicolumn{10}{l}{\emph{ImageNet}} \\
+ResNet-50 & 80--84 & 13--15 & 18 & 715--732 & 664--766 & 0.0 & 0.0 & 97.6 & 60.9 \\
+\multicolumn{10}{l}{\emph{CIFAR-10, SimBA}} \\
+ResNet-18 & 85--90 & 100 & 100 & 2 & 2 & 99.9 & 99.9 & 0.0 & 23.2 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

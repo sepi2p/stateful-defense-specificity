@@ -527,3 +527,118 @@ permutation); identity permutations are not excluded; the tie field has a pixel-
 of 1e-3; the exclusion rule for streams that cannot be regenerated is not implemented (no
 stream needed it); the summary files of the library clients were written again at 23:55 with
 one added column (the values agree with the first files to 1e-16).
+
+## X16 (2026-09-28, written before any X16 session is generated): operating procedure under benign-alarm constraints, and a replication of the practical result on fresh images and a second model
+
+Reason. An editorial review asked for (a) a reusable procedure that selects a detector
+configuration under a declared benign-alarm budget on calibration data and evaluates it once on
+held-out data, and (b) evidence beyond one set of images and one classifier for the practical
+result of X14/X15. The ImageNet corpus has no calibration sessions, and its evaluation images have
+been inspected, so a confirmatory demonstration needs new sessions.
+
+### Material
+
+- Images. The 100 calibration images of the ImageNet manifest (one per class; never run before)
+  and 100 fresh images, one per class, added as split `confirmation`: for each class, the first
+  image after the last of the five manifest images in the seeded order of the manifest that
+  ResNet-50 classifies correctly in its clean form and from both starts, judged on the graphics
+  card (`extend_imagenet_manifest.py`).
+- Sessions on both splits, ResNet-50 (torchvision IMAGENET1K_V1), 224 px, detectors Blacklight
+  (window 50), GWAD, GWAD+ and the Lee et al. observer as in X9/X14:
+  attack and confidence raising under tiled NES (tile 8, step 1/255, both starts, budget 1,024);
+  the three library clients of X14; unrelated-image streams (1,024 distinct validation images
+  outside the manifest, one stream per image). About 1,200 sessions.
+- Second model. The three library clients on the confirmation images with ConvNeXt-T
+  (torchvision IMAGENET1K_V1), outputs only. Their queries do not depend on the answers, so the
+  streams are those of the ResNet-50 run (checked by SHA-256) and so are the flagged queries.
+
+### Procedure (operating_profile.py; tested on synthetic sessions by test_operating_profile.py)
+
+- Setting: one isolated session per client, detector state reset per session; an alarm at query
+  t is an alarm for the session; the attack succeeds at the first query classified differently
+  from the source label.
+- Candidates, in order of decreasing sensitivity. Blacklight: flag if more than T hashes match,
+  T = 25 (released), 26, ..., 49. GWAD, GWAD+: the released arg-max decision, then score
+  s = -log10(1 - p_attack) > c for c = 0, 0.25, ..., 12 (c = 12 never alarms).
+- Profiles. `explanation`: G = {unrelated images, LIME (lime), KernelSHAP (Captum),
+  Occlusion (Captum)}. `diagnostic`: G plus confidence raising.
+- Budgets alpha = 1% (primary) and 5%.
+- Feasible: every workload of G has at most floor(alpha * n) sessions with an alarm on the
+  calibration split. Selection: largest calibration timely rate R; ties to the smaller largest
+  per-workload rate, then to the less sensitive candidate.
+- Held-out evaluation once on the confirmation split: per-workload alarm rates with
+  Clopper-Pearson intervals, R (first alarm strictly before success) with its interval, attack
+  success rate, R over all attack sessions; status "no feasible candidate in the declared set",
+  "within budget on held-out split" or "held-out constraint violated".
+- Released configurations are also reported on the confirmation split.
+
+### Prior knowledge
+
+Computed on 2026-09-28, before this section was written, on the evaluation split of X9/X14 (already
+inspected), with operating_profile.py: at 224 px Blacklight flags every KernelSHAP and occlusion
+session at every T up to 49, and raises alarms in 13 to 15% of attack sessions at T = 25; GWAD+
+occlusion sessions reach the largest score in 2 of 100 sessions; confidence raising alarms at
+every c below about 6.75; the released GWAD+ gives a timely alarm in 128 of 327 successful
+attacks. The same procedure applied retrospectively to CIFAR-10 (profile with our own explanation
+clients) found no feasible Blacklight candidate and, for GWAD and GWAD+, only the candidate that
+never alarms.
+
+### Predictions (confirmation split unless stated)
+
+- P19a. Blacklight: no feasible candidate in the explanation profile at alpha = 1% or 5%.
+- P19b. GWAD+, explanation profile, alpha = 5%: a feasible candidate exists on calibration, and the
+  held-out timely rate R of the selected candidate is at most 0.50.
+- P19c. GWAD+, explanation profile, alpha = 1%: held-out R at most 0.10 (or no feasible candidate).
+- P19d. GWAD+, diagnostic profile, alpha = 1%: held-out R at most 0.05 (or no feasible candidate).
+- P19e. Released GWAD+: alarm in 30 to 70% of the Captum occlusion sessions; R between 0.25 and 0.55.
+- P19f. Released Blacklight: alarm in at least 90% of the sessions of each library client and at
+  least 90% of their queries flagged; alarm in at most 1% of the unrelated-image sessions.
+- P19g. Released GWAD+: alarm in at most 1% of the unrelated-image sessions.
+- P20a. Every query answered: each library client is better than the centre prior of X15 (median
+  gain in deletion area > 0 with a bootstrap interval that excludes 0), for ResNet-50 and for
+  ConvNeXt-T (6 checks).
+- P20b. Flagged queries rejected (uniform substitution): the Captum occlusion explanation is
+  constant over the image in at least 95% of the sessions, for both models.
+- P20c. Flagged queries rejected (uniform substitution, and dropped samples for LIME): no client has
+  a gain over the centre prior whose interval lies above zero, for either model.
+
+Checks that are not predictions: the confirmation images are new; the ConvNeXt-T streams have the
+digests of the ResNet-50 streams; session counts are complete. If a stage fails, the sessions
+that exist are analysed and the failure is reported.
+
+### Outcome of X16 (2026-09-29, 01:30 +0330)
+
+Run: predictions committed 2026-09-28 13:50:10 (660437a); launched 13:52; all sessions complete
+2026-09-29 00:34 after three shards were run again (attack shard 7 failed at start: another process
+held the graphics card; library shards 0 of ResNet-50 and ConvNeXt-T stopped by the kernel for lack of
+memory). The first pass of the explanation-quality analysis ran before all replays existed (the
+resumable analysis kept rows without replays) and was repeated from scratch; the results below are
+from the repetition. Sessions: 800 attack and confidence raising, 600 library (ResNet-50), 300
+library (ConvNeXt-T), 200 unrelated-image streams.
+
+- P19a held: Blacklight has no feasible candidate in either profile at 1% or 5%.
+- P19b held: GWAD+, explanation profile, 5%: c = 5, held-out R = 70/163 = 0.43.
+- P19c FAILED: GWAD+, explanation profile, 1%: c = 5 is feasible on calibration (max 1 alarm per
+  workload) and within budget on the held-out images (KernelSHAP 1/100, occlusion 0/100); R = 0.43,
+  predicted at most 0.10. At the released decision occlusion alarms in 44/100.
+- P19d held: GWAD+, diagnostic profile, 1%: c = 11.75, R = 0/163.
+- P19e held: released GWAD+ alarms in 44% of Captum occlusion sessions; R = 0.43.
+- P19f FAILED: released Blacklight alarms in 100% of the sessions of each library client and flags
+  98.3-99.9% of their queries, but also alarms in 19/100 unrelated-image streams (1 to 3 of 1,024
+  queries flagged; 48 of 204,800 queries over both splits, 28 of 102,400 on the held-out split; two
+  held-out streams contain a duplicated image — corrected in a later check, first written as one).
+- P19g held: released GWAD+ alarms in 0/100 unrelated-image streams.
+- P20a held: every library client beats the centre prior with all answers, both models.
+- P20b held: rejected Captum occlusion is constant in 100% of sessions, both models.
+- P20c FAILED: on ConvNeXt-T every rejected explanation beats the centre prior, because the centre
+  prior is weaker than a smooth random ordering on that model (a constant map beats it by 0.09
+  [0.06, 0.13]); on ResNet-50 the prediction holds for every client.
+
+### Addition to X16 after its results (2026-09-29, after an external reading of the revision)
+
+The declared Blacklight grid stopped at T = 49, whereas the GWAD/GWAD+ grid included c = 12, which never
+alarms. For comparability T = 50 (never alarms: no fingerprint shares more than 50 of 50 hashes) was added
+after the run. With it, the only feasible Blacklight candidate in every profile and budget is T = 50
+(R = 0). P19a is evaluated on the declared grid (held). Intervals for the timely-alarm rate are now
+computed by resampling source images (both starts of an image together); for GWAD+ at c = 5 the
+interval is [34.5%, 51.6%] instead of the session-level [35.2%, 50.9%].

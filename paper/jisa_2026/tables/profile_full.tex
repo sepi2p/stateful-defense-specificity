@@ -1,0 +1,67 @@
+\begin{footnotesize}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{1.6cm}p{2.6cm}p{2.8cm}p{4.6cm}}
+\caption{Selection under benign-alarm budgets, every detector, profile and budget: selected configuration, timely alarms among successful attacks with a 95\% interval from resampling source images (exact Clopper--Pearson over source images when no or every successful attack is timely), and, on the held-out split, the alarms of every workload, constrained or not, with exact Clopper--Pearson 95\% intervals over sessions (one session per image for the explanation clients and controls; the two starts of the optimizing clients are not independent).}\label{tab:profile-full}\\
+\toprule
+Detector & Profile, $\alpha$ & Selected & Timely / successful (\%) \\
+\multicolumn{4}{p{12.8cm}}{\quad Held-out alarms per workload: alarms/sessions [95\% interval, \%]} \\
+\midrule
+\endfirsthead
+\toprule
+Detector & Profile, $\alpha$ & Selected & Timely / successful (\%) \\
+\multicolumn{4}{p{12.8cm}}{\quad Held-out alarms per workload: alarms/sessions [95\% interval, \%]} \\
+\midrule
+\endhead
+\multicolumn{4}{l}{\emph{CIFAR-10, retrospective (calibration / evaluation split)}} \\
+Blacklight & explanation, 1\% & $T=50$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+Blacklight & explanation, 5\% & $T=50$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+Blacklight & diagnostic, 1\% & $T=50$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+Blacklight & diagnostic, 5\% & $T=50$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+GWAD+ & explanation, 1\% & $c=12$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+GWAD+ & explanation, 5\% & $c=12$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+GWAD+ & diagnostic, 1\% & $c=12$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+GWAD+ & diagnostic, 5\% & $c=12$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+GWAD & explanation, 1\% & $c=12$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+GWAD & explanation, 5\% & $c=12$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+GWAD & diagnostic, 1\% & $c=12$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+GWAD & diagnostic, 5\% & $c=12$\textsuperscript{n} & 0/285 [0.0, 2.0] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/2000 [0.0, 0.2]; LIME (ours) 0/200 [0.0, 1.8]; KernelSHAP (ours) 0/200 [0.0, 1.8]; Occlusion (ours) 0/200 [0.0, 1.8]; RISE (ours) 0/200 [0.0, 1.8]; restoration 0/400 [0.0, 0.9]; confidence raising 0/400 [0.0, 0.9]; KernelSHAP (Captum) 0/200 [0.0, 1.8]; Occlusion (Captum) 0/200 [0.0, 1.8]; noise copies 0/200 [0.0, 1.8]; JPEG/brightness sweep 0/200 [0.0, 1.8]; boundary probing 0/400 [0.0, 0.9]; counterfactual search 0/400 [0.0, 0.9]} \\[4pt]
+\multicolumn{4}{l}{\emph{ImageNet, confirmatory (calibration / confirmation split)}} \\
+Blacklight & explanation, 1\% & $T=50$\textsuperscript{n} & 0/163 [0.0, 4.2] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 0/100 [0.0, 3.6]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 0/200 [0.0, 1.8]} \\[4pt]
+Blacklight & explanation, 5\% & $T=50$\textsuperscript{n} & 0/163 [0.0, 4.2] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 0/100 [0.0, 3.6]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 0/200 [0.0, 1.8]} \\[4pt]
+Blacklight & diagnostic, 1\% & $T=50$\textsuperscript{n} & 0/163 [0.0, 4.2] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 0/100 [0.0, 3.6]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 0/200 [0.0, 1.8]} \\[4pt]
+Blacklight & diagnostic, 5\% & $T=50$\textsuperscript{n} & 0/163 [0.0, 4.2] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 0/100 [0.0, 3.6]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 0/200 [0.0, 1.8]} \\[4pt]
+GWAD+ & explanation, 1\% & $c=5$ & 70/163 [34.5, 51.6] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 1/100 [0.0, 5.5]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 200/200 [98.2, 100.0]} \\[4pt]
+GWAD+ & explanation, 5\% & $c=5$ & 70/163 [34.5, 51.6] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 1/100 [0.0, 5.5]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 200/200 [98.2, 100.0]} \\[4pt]
+GWAD+ & diagnostic, 1\% & $c=11.75$ & 0/163 [0.0, 4.2] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 0/100 [0.0, 3.6]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 0/200 [0.0, 1.8]} \\[4pt]
+GWAD+ & diagnostic, 5\% & $c=11.75$ & 0/163 [0.0, 4.2] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 0/100 [0.0, 3.6]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 0/200 [0.0, 1.8]} \\[4pt]
+GWAD & explanation, 1\% & $c=12$\textsuperscript{n} & 0/163 [0.0, 4.2] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 0/100 [0.0, 3.6]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 0/200 [0.0, 1.8]} \\[4pt]
+GWAD & explanation, 5\% & $c=5.5$ & 66/163 [31.7, 49.4] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 2/100 [0.2, 7.0]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 200/200 [98.2, 100.0]} \\[4pt]
+GWAD & diagnostic, 1\% & $c=12$\textsuperscript{n} & 0/163 [0.0, 4.2] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 0/100 [0.0, 3.6]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 0/200 [0.0, 1.8]} \\[4pt]
+GWAD & diagnostic, 5\% & $c=11.75$ & 0/163 [0.0, 4.2] \\
+\multicolumn{4}{p{12.8cm}}{\raggedright\quad unrelated images 0/100 [0.0, 3.6]; LIME (lime) 0/100 [0.0, 3.6]; KernelSHAP (Captum) 0/100 [0.0, 3.6]; Occlusion (Captum) 0/100 [0.0, 3.6]; confidence raising 0/200 [0.0, 1.8]} \\[4pt]
+\bottomrule
+\end{longtable}
+\end{footnotesize}

@@ -1,7 +1,7 @@
 {
-  "checks": 71,
-  "held": 61,
-  "failed": 9,
+  "checks": 81,
+  "held": 68,
+  "failed": 12,
   "evaluable_in_part": 1,
   "checks_P1_P15": 55,
   "failed_P1_P15": 6,
@@ -48,6 +48,18 @@
     [
       "P18c",
       "libraries, 224\\,px"
+    ],
+    [
+      "P19c",
+      "ImageNet, fresh"
+    ],
+    [
+      "P19f",
+      "ImageNet, fresh"
+    ],
+    [
+      "P20c",
+      "ImageNet, fresh"
     ]
   ]
 }

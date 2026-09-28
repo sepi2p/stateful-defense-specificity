@@ -1,6 +1,6 @@
 \begin{sidewaystable}[p]
 \centering\footnotesize\setlength{\tabcolsep}{3pt}
-\caption{Explanations against orderings that use no answer of the model (evaluation images; not planned in advance). Area: median deletion area of the explanation. Centre prior: a Gaussian around the centre of the image with a standard deviation of a quarter of its side (median area 0.23 at $224\times224$ and 0.31 at $32\times32$ pixels). Ranked regions: the regions of the explanation computed from all answers, ranked by the distance of their centroid from the centre; for maps with at most 256 distinct values and at least two. Gain: median of the area of the prior minus the area of the explanation, with its bootstrap 95\% interval. Better: share of the images on which the explanation has the smaller area.}
+\caption{Explanations against orderings that use no answer of the model (evaluation images; 224* and 224\textsuperscript{c} as in Table~\ref{tab:validity}; not planned in advance). On ConvNeXt-T the centre prior is weaker than a smooth random ordering. Area: median deletion area of the explanation. Centre prior: a Gaussian around the centre of the image with a standard deviation of a quarter of its side (median area 0.23 at $224\times224$ and 0.31 at $32\times32$ pixels). Ranked regions: the regions of the explanation computed from all answers, ranked by the distance of their centroid from the centre; for maps with at most 256 distinct values and at least two. Gain: median of the area of the prior minus the area of the explanation, with its bootstrap 95\% interval. Better: share of the images on which the explanation has the smaller area.}
 \label{tab:priors}
 \vspace{3pt}
 \begin{adjustbox}{max width=\textheight}
@@ -17,6 +17,20 @@ Pixels & Client & Queries & Area & gain & better (\%) & gain & better (\%) \\
  &  & rejected, uniform & 0.33 & $-$0.08 {[}$-$0.13, $-$0.05{]} & 27 & $-$0.03 {[}$-$0.07, 0.01{]} & 43 \\
 224 & Occlusion (Captum) & all answered & 0.10 & 0.08 {[}0.05, 0.10{]} & 73 & -- & -- \\
  &  & rejected, uniform & 0.45 & $-$0.16 {[}$-$0.21, $-$0.13{]} & 19 & -- & -- \\[2pt]
+224* & LIME (\texttt{lime}) & all answered & 0.15 & 0.07 {[}0.05, 0.09{]} & 72 & 0.12 {[}0.11, 0.15{]} & 90 \\
+ &  & rejected, uniform & 0.29 & $-$0.05 {[}$-$0.08, $-$0.04{]} & 31 & 0.00 {[}$-$0.03, 0.01{]} & 49 \\
+ &  & rejected, dropped & 0.22 & 0.01 {[}$-$0.02, 0.03{]} & 53 & 0.05 {[}0.03, 0.07{]} & 67 \\
+224* & KernelSHAP (Captum) & all answered & 0.11 & 0.12 {[}0.10, 0.14{]} & 84 & 0.15 {[}0.13, 0.18{]} & 95 \\
+ &  & rejected, uniform & 0.32 & $-$0.05 {[}$-$0.09, $-$0.04{]} & 30 & $-$0.03 {[}$-$0.04, $-$0.01{]} & 38 \\
+224* & Occlusion (Captum) & all answered & 0.13 & 0.08 {[}0.05, 0.10{]} & 78 & -- & -- \\
+ &  & rejected, uniform & 0.41 & $-$0.13 {[}$-$0.17, $-$0.10{]} & 21 & -- & -- \\[2pt]
+224\textsuperscript{c} & LIME (\texttt{lime}) & all answered & 0.20 & 0.21 {[}0.17, 0.24{]} & 95 & 0.16 {[}0.14, 0.22{]} & 93 \\
+ &  & rejected, uniform & 0.36 & 0.09 {[}0.05, 0.13{]} & 75 & 0.05 {[}0.02, 0.08{]} & 64 \\
+ &  & rejected, dropped & 0.30 & 0.15 {[}0.11, 0.18{]} & 88 & 0.11 {[}0.08, 0.15{]} & 83 \\
+224\textsuperscript{c} & KernelSHAP (Captum) & all answered & 0.17 & 0.28 {[}0.24, 0.32{]} & 96 & 0.24 {[}0.21, 0.29{]} & 100 \\
+ &  & rejected, uniform & 0.40 & 0.08 {[}0.05, 0.10{]} & 70 & 0.06 {[}0.01, 0.08{]} & 64 \\
+224\textsuperscript{c} & Occlusion (Captum) & all answered & 0.25 & 0.21 {[}0.18, 0.26{]} & 91 & -- & -- \\
+ &  & rejected, uniform & 0.39 & 0.09 {[}0.06, 0.13{]} & 72 & -- & -- \\[2pt]
 224 & LIME (ours) & all answered & 0.14 & 0.06 {[}0.04, 0.07{]} & 74 & 0.13 {[}0.10, 0.16{]} & 93 \\
 224 & KernelSHAP (ours) & all answered & 0.21 & 0.01 {[}$-$0.01, 0.03{]} & 55 & 0.07 {[}0.04, 0.09{]} & 67 \\
 224 & Occlusion (ours) & all answered & 0.12 & 0.07 {[}0.04, 0.08{]} & 71 & -- & -- \\

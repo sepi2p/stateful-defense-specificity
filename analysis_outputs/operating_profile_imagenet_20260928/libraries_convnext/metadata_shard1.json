@@ -1,0 +1,22 @@
+{
+  "args": {
+    "checkpoint": "checkpoints/cifar10_resnet18_seed_study/resnet18_seed0.pt",
+    "clients": "lime_package,captum_kernelshap,captum_occlusion",
+    "dataset": "imagenet",
+    "imagenet_model": "convnext_tiny",
+    "imagenet_root": "/home/sepi/Study/coding/data/imagenet/val",
+    "lfc_seed": "20260926",
+    "manifest": "analysis_outputs/operating_profile_imagenet_20260928/manifest.csv",
+    "max_images": "0",
+    "no_detectors": "True",
+    "num_shards": "2",
+    "one_image_per_class": "False",
+    "output_dir": "analysis_outputs/operating_profile_imagenet_20260928/libraries_convnext",
+    "seed": "20260927",
+    "shard": "1",
+    "splits": "confirmation"
+  },
+  "captum": "0.9.0",
+  "lime": "0.2.0.1",
+  "torch": "2.5.1+cu121"
+}

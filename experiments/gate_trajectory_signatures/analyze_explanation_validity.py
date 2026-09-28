@@ -91,15 +91,17 @@ def main():
     parser.add_argument("--imagenet-root", default="/home/sepi/Study/coding/data/imagenet/val")
     parser.add_argument("--checkpoint", type=Path, default=Path("checkpoints/cifar10_resnet18_seed_study/resnet18_seed0.pt"))
     parser.add_argument("--seed", type=int, default=20260928)
+    parser.add_argument("--imagenet-model", choices=["resnet50", "convnext_tiny"], default="resnet50")
     parser.add_argument("--max-sessions", type=int, default=0)
     parser.add_argument("--no-constant", action="store_true", help="skip the constant map (its d is 0 by construction)")
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda")
     if args.dataset == "imagenet":
-        from torchvision.models import ResNet50_Weights, resnet50
+        from torchvision.models import ConvNeXt_Tiny_Weights, ResNet50_Weights, convnext_tiny, resnet50
 
-        net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
+        net = (convnext_tiny(weights=ConvNeXt_Tiny_Weights.IMAGENET1K_V1) if args.imagenet_model == "convnext_tiny"
+               else resnet50(weights=ResNet50_Weights.IMAGENET1K_V1))
         model = torch.nn.Sequential(transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)), net).to(device).eval()
         dataset = datasets.ImageFolder(args.imagenet_root, transform=transforms.Compose(
             [transforms.Resize(256), transforms.CenterCrop(224), transforms.ToTensor()]))

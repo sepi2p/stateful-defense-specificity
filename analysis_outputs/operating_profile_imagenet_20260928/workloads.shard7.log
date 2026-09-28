@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "/home/sepi/projects/MCG-Blackbox/experiments/gate_trajectory_signatures/run_specificity_workloads.py", line 468, in <module>
+    main()
+  File "/home/sepi/projects/MCG-Blackbox/experiments/gate_trajectory_signatures/run_specificity_workloads.py", line 443, in main
+    result, arrays = run_session(model, clean, start, label, workload, objective, lam, seed,
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/projects/MCG-Blackbox/experiments/gate_trajectory_signatures/run_specificity_workloads.py", line 273, in run_session
+    proposal_logits = recorder.submit_batch(proposals)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/projects/MCG-Blackbox/experiments/gate_trajectory_signatures/run_stateful_specificity_sessions.py", line 265, in submit_batch
+    output = self.model(images)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 285, in forward
+    return self._forward_impl(x)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 273, in _forward_impl
+    x = self.layer1(x)
+        ^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 158, in forward
+    identity = self.downsample(x)
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/batchnorm.py", line 193, in forward
+    return F.batch_norm(
+           ^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/functional.py", line 2812, in batch_norm
+    return torch.batch_norm(
+           ^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 50.00 MiB. GPU 0 has a total capacity of 7.65 GiB of which 12.00 MiB is free. Process 2799987 has 3.38 GiB memory in use. Process 2801387 has 536.00 MiB memory in use. Process 2801835 has 536.00 MiB memory in use. Process 2802220 has 536.00 MiB memory in use. Process 2803275 has 536.00 MiB memory in use. Process 2804322 has 536.00 MiB memory in use. Process 2804742 has 536.00 MiB memory in use. Process 2805170 has 536.00 MiB memory in use. Including non-PyTorch memory, this process has 484.00 MiB memory in use. Of the allocated memory 243.57 MiB is allocated by PyTorch, and 70.43 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

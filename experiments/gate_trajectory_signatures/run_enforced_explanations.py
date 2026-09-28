@@ -94,6 +94,9 @@ def main():
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--dataset", choices=["cifar10", "imagenet"], required=True)
     parser.add_argument("--imagenet-root", default="/home/sepi/Study/coding/data/imagenet/val")
+    parser.add_argument("--mask-dir", type=Path, default=None,
+                        help="take the flagged queries from the run in this directory (same session ids, identical query "
+                             "streams); needed for runs recorded without detectors")
     parser.add_argument("--max-sessions", type=int, default=0)
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--num-shards", type=int, default=1)
@@ -107,6 +110,7 @@ def main():
     else:
         dataset = datasets.CIFAR10("/home/sepi/data/cifar10", train=False, download=False, transform=transforms.ToTensor())
     rows = sorted(blacklight_rule.load_sessions(args.source_dir), key=lambda r: r["session_id"])
+    masks = {r["session_id"]: r for r in blacklight_rule.load_sessions(args.mask_dir)} if args.mask_dir else {}
     rows = rows[args.shard :: args.num_shards]
     if args.max_sessions > 0:
         rows = rows[: args.max_sessions]
@@ -119,7 +123,14 @@ def main():
             continue
         client = row["objective"]
         trace = np.load(args.source_dir / row["trace"])
-        logits, counts = trace["logits"], trace["blacklight_counts"]
+        logits = trace["logits"]
+        if args.mask_dir is not None:
+            other = masks[row["session_id"]]
+            if other["query_sha256"] != row["query_sha256"]:
+                raise RuntimeError(f"{row['session_id']}: the query streams of the two runs differ")
+            counts = np.load(args.mask_dir / other["trace"])["blacklight_counts"]
+        else:
+            counts = trace["blacklight_counts"]
         rejected = blacklight_rule.flagged(counts)
         x = dataset[int(row["dataset_index"])][0][None]
         label, seed = int(row["source_label"]), int(row["session_seed"])

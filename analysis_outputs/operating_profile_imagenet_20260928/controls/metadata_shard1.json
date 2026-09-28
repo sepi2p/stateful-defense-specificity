@@ -1,0 +1,29 @@
+{
+  "args": {
+    "checkpoint": "checkpoints/cifar10_resnet18_seed_study/resnet18_seed0.pt",
+    "controls": "shuffled",
+    "dataset": "imagenet",
+    "dataset_root": "/home/sepi/data/cifar10",
+    "imagenet_root": "/home/sepi/Study/coding/data/imagenet/val",
+    "lfc_seed": "20260926",
+    "manifest": "analysis_outputs/operating_profile_imagenet_20260928/manifest.csv",
+    "max_images": "0",
+    "num_shards": "3",
+    "output_dir": "analysis_outputs/operating_profile_imagenet_20260928/controls",
+    "seed": "20260925",
+    "shard": "1",
+    "shuffled_per_image": "0",
+    "splits": "calibration,confirmation"
+  },
+  "blacklight": {
+    "num_hashes_keep": 50,
+    "round": 50,
+    "step_size": 1,
+    "threshold": 25,
+    "window_size": 50
+  },
+  "checkpoint_sha256": "torchvision ResNet50_Weights.IMAGENET1K_V1",
+  "delta_net_sha256": "1a9de325c3c7237d21404efb497bea95c8fd23ac170fe34afe72fa2f8289f61d",
+  "gwad_commit": "822b258eb28c4c51eefa8d2cc87072991f750b74",
+  "shuffled_per_image": 1
+}

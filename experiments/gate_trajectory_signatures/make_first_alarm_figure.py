@@ -78,8 +78,16 @@ def main():
 
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 7.5, "axes.edgecolor": INK2,
                          "axes.labelcolor": INK, "xtick.color": INK2, "ytick.color": INK2, "pdf.fonttype": 42})
-    fig, axes = plt.subplots(1, 3, figsize=(WIDTH, 3.0), sharey=True, constrained_layout=True)
-    for ax, (det, title) in zip(axes, DETECTORS):
+    for detectors, name in ((DETECTORS, "first_alarm_curves"), (DETECTORS[:2], "first_alarm_curves_main")):
+        draw(frame, grid, median_success, detectors, name)
+    write_table(frame, median_success, success)
+
+
+def draw(frame, grid, median_success, detectors, name):
+    """Three panels (all detectors; supplementary material) or two (the released detectors; article)."""
+    fig, axes = plt.subplots(1, len(detectors), figsize=(WIDTH if len(detectors) == 3 else WIDTH * 0.8, 3.0), sharey=True,
+                             constrained_layout=True)
+    for ax, (det, title) in zip(axes, detectors):
         for key, label, color, style, width in SERIES:
             first = frame.loc[frame.objective == key, det].to_numpy()
             curve = [(np.where(first > 0, first, np.inf) <= q).mean() for q in grid]
@@ -101,8 +109,11 @@ def main():
     fig.legend(handles, labels, loc="outside lower center", ncol=2, frameon=False, fontsize=7, handlelength=3.0,
                columnspacing=1.6)
     for ext in ("pdf", "png"):
-        fig.savefig(OUT / f"first_alarm_curves.{ext}", dpi=200)
+        fig.savefig(OUT / f"{name}.{ext}", dpi=200)
+    plt.close(fig)
 
+
+def write_table(frame, median_success, success):
     table = []
     for det, _ in DETECTORS:
         attack = frame.loc[(frame.objective == "attack") & (frame[det] > 0), det]

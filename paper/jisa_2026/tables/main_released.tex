@@ -1,12 +1,12 @@
 \begin{table}[!tbp]
 \centering\footnotesize\setlength{\tabcolsep}{3pt}
-\caption{Released operating points (evaluation split). Optimizer: NES; tiled NES on ImageNet; SimBA in the last row. Sessions, first alarm, queries: sessions in which Blacklight raises an alarm, median query index of its first alarm, and share of the queries that it flags, for the attack and for the Tier-B clients (restoration and confidence raising; on ImageNet confidence raising). GWAD and GWAD+ raise an alarm in every session of these clients in every corpus, GWAD+ at query 259. Success first: successful attacks whose first misclassified query precedes the first alarm of the detector, or that raise no alarm. Ranges are over the two starts and the clients.}
+\caption{Released operating points (evaluation split). Optimizer: NES; tiled NES on ImageNet; SimBA in the last row. Sessions, first alarm, queries: sessions in which Blacklight raises an alarm, median query index of its first alarm, and share of the queries that it flags, for the attack and for the Tier-B clients (restoration and confidence raising; on ImageNet confidence raising). GWAD and GWAD+ raise an alarm in every session of these clients in every corpus, GWAD+ at query 259. Before alarm: successful attacks whose first misclassified query precedes the first alarm of the detector, or that raise no alarm. Ranges are over the two starts and the clients.}
 \label{tab:released}
 \vspace{3pt}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lcccccccc}
 \toprule
-& \multicolumn{2}{c}{Sessions (\%)} & \multicolumn{2}{c}{First alarm} & \multicolumn{2}{c}{Queries (\%)} & \multicolumn{2}{c}{Success first (\%)} \\
+& \multicolumn{2}{c}{Sessions (\%)} & \multicolumn{2}{c}{First alarm} & \multicolumn{2}{c}{Queries (\%)} & \multicolumn{2}{c}{Before alarm (\%)} \\
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
 Corpus & attack & benign & attack & benign & attack & benign & Blackl. & GWAD+ \\
 \midrule

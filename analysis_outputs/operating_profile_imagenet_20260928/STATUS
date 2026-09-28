@@ -1,0 +1,41 @@
+queued (pid 2798491); waiting for an idle graphics card 2026-09-28T13:50:55+03:30
+graphics card idle; starting 2026-09-28T13:52:55+03:30
+manifest: 100 confirmation images 2026-09-28T13:53:01+03:30
+workloads shard 7 crashed at start (CUDA out of memory: another process took 3.4 GB); relaunched alone 2026-09-28T14:14:10+03:30
+workloads done, 1 shard(s) nonzero 2026-09-28T16:23:52+03:30
+libraries_resnet50 done, 1 shard(s) nonzero 2026-09-28T20:52:05+03:30
+libraries_resnet50 shard 0 was killed by the kernel (out of memory, RSS 10.4 GB) at 18:24 after 89 sessions; relaunched alone 2026-09-28T21:57+03:30
+controls done, 0 shard(s) nonzero 2026-09-28T22:26:50+03:30
+libraries_convnext done, 1 shard(s) nonzero 2026-09-28T22:46:40+03:30
+sessions in workloads: 800 2026-09-28T22:46:40+03:30
+sessions in libraries_resnet50: 523 2026-09-28T22:46:40+03:30
+sessions in controls: 200 2026-09-28T22:46:40+03:30
+sessions in libraries_convnext: 270 2026-09-28T22:46:40+03:30
+replay resnet50 exit=0 2026-09-28T23:07:59+03:30
+replay convnext exit=1 2026-09-28T23:09:54+03:30
+validity resnet50 exit=0 2026-09-28T23:25:32+03:30
+prior resnet50 exit=0 2026-09-28T23:26:33+03:30
+centre prior R2 resnet50 exit=0 2026-09-28T23:28:21+03:30
+validity convnext exit=0 2026-09-28T23:35:07+03:30
+prior convnext exit=0 2026-09-28T23:35:37+03:30
+centre prior R2 convnext exit=0 2026-09-28T23:36:44+03:30
+profile exit=0 2026-09-28T23:36:47+03:30
+FINISHED 2026-09-28T23:36:47+03:30
+finish_x16.sh stopped; ConvNeXt shard 0 stopped at 120 sessions without a log message (22:43); finish_x16b.sh completes it after ResNet-50 shard 0 2026-09-29T00:11:24+03:30
+watch: shard 0 complete (201 sessions) 2026-09-29T00:30:28+03:30
+finish: convnext shard 0 relaunch exit=0 2026-09-29T00:33:54+03:30
+finish: sessions libraries_resnet50 600, convnext 300, controls 200, workloads 800 2026-09-29T00:33:54+03:30
+finish: replay resnet50 exit=0 2026-09-29T00:36:58+03:30
+finish: replay convnext exit=0 2026-09-29T00:46:49+03:30
+finish: validity resnet50 exit=0 2026-09-29T00:48:34+03:30
+finish: prior resnet50 exit=0 2026-09-29T00:49:38+03:30
+finish: centre prior R2 resnet50 exit=0 2026-09-29T00:51:30+03:30
+finish: validity convnext exit=0 2026-09-29T00:52:38+03:30
+finish: prior convnext exit=0 2026-09-29T00:53:20+03:30
+finish: centre prior R2 convnext exit=0 2026-09-29T00:54:31+03:30
+finish: profile exit=0 2026-09-29T00:54:33+03:30
+COMPLETE 2026-09-29T00:54:33+03:30
+validity analyses rerun from scratch: the resumable analysis had kept the first-pass rows of sessions without replays 2026-09-29T01:00:46+03:30
+validity rerun resnet50 exit=0 2026-09-29T01:17:42+03:30
+validity rerun convnext exit=0 2026-09-29T01:28:33+03:30
+VALIDITY_RERUN_DONE

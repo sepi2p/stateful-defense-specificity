@@ -1,0 +1,30 @@
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Explanation clients at both resolutions (100 images for the library clients at $224\times224$ pixels, 200 otherwise). Code: the \texttt{lime} package, Captum, or our implementation of the query design. Sessions: sessions with an alarm (\%), with the median query index of the first alarm in parentheses. Queries: share of the queries that Blacklight flags (\%). n/a: the stream is shorter than the 259 queries that GWAD+ needs. Lee et al.: our reconstruction, test at every update of a group, within the first 50 queries and over the whole session. $^{\dagger}$The default segmentation of the package returns a median of one superpixel at this resolution, and the explanation is empty.}
+\label{tab:expl-all}
+\vspace{3pt}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{rllrccccc}
+\toprule
+& & & & \multicolumn{2}{c}{Blacklight} & & \multicolumn{2}{c}{Lee et al.} \\
+\cmidrule(lr){5-6}\cmidrule(lr){8-9}
+Pixels & Client & Code & Queries & sessions & queries & GWAD+ & first 50 & whole \\
+\midrule
+224 & LIME & \texttt{lime} & 1{,}000 & 100 (5) & 98.3 & 1 (259) & 19.0 & 33.0 \\
+ & KernelSHAP & Captum & 1{,}000 & 100 (3) & 98.4 & 5 (861) & 16.0 & 62.0 \\
+ & Occlusion & Captum & 785 & 100 (2) & 99.9 & 49 (259) & 96.0 & 100.0 \\[2pt]
+224 & LIME & ours & 1{,}000 & 100 (5) & 98.4 & 5 (260) & 12.0 & 30.5 \\
+ & KernelSHAP & ours & 500 & 100 (3) & 98.6 & 9 (284) & 13.0 & 32.0 \\
+ & Occlusion & ours & 626 & 100 (2) & 99.8 & 97.5 (259) & 97.0 & 99.5 \\
+ & RISE & ours & 1{,}000 & 3 (189) & 1.2 & 0 & 5.0 & 32.0 \\[2pt]
+32 & LIME$^{\dagger}$ & \texttt{lime} & 1{,}000 & 100 (3) & 99.8 & 100 (260) & 77.0 & 97.0 \\
+ & KernelSHAP & Captum & 1{,}000 & 100 (3) & 92.9 & 10 (763) & 2.0 & 86.0 \\
+ & Occlusion & Captum & 226 & 100 (2) & 99.6 & n/a & 95.0 & 99.5 \\[2pt]
+32 & LIME & ours & 1{,}000 & 100 (6) & 97.2 & 0 & 0.5 & 40.5 \\
+ & KernelSHAP & ours & 500 & 100 (3) & 99.2 & 30.5 (265) & 7.5 & 66.5 \\
+ & Occlusion & ours & 842 & 100 (2) & 99.9 & 100 (259) & 97.5 & 100.0 \\
+ & RISE & ours & 1{,}000 & 10.5 (768) & 0.5 & 0 & 0.0 & 0.0 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

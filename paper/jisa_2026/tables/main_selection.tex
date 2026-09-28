@@ -1,0 +1,34 @@
+\begin{table}[!tbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Operation under benign-alarm budgets (Section~\ref{sec:procedure}). Released: the published decision rule. The other rows select a configuration on the calibration split under the budget $\alpha$ for every workload of the profile, E (explanation: unrelated images and the explanation clients of the setting) or D (diagnostic: these and the Tier-B clients), and evaluate it once on the held-out split. Selected: Blacklight flags a query with more than $T$ of 50 matching hashes; GWAD+ alarms when its score exceeds $c$; \textsuperscript{n}never alarms. Feasible: number of feasible candidates. Held-out alarms: the largest rate among the workloads of the explanation profile, and that of the Tier-B clients, which the explanation profile does not constrain. Timely: first alarm before the first misclassified query; brackets: 95\% interval from resampling source images. Every workload with its interval: Table~\ref{tab:profile-full} of the supplementary material.}
+\label{tab:selection}
+\vspace{3pt}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{llllccc}
+\toprule
+& & & & \multicolumn{2}{c}{Held-out alarms (\%)} & Timely / \\
+\cmidrule(lr){5-6}
+Detector & Budget & Selected & Feasible & worst in $G$ & Tier B & successful \\
+\midrule
+\multicolumn{7}{l}{\emph{CIFAR-10, retrospective}} \\
+Blacklight & released & -- & -- & 100 (occlusion) & 100 & 275/285 \\
+ & E, 1\% & $T=50$\textsuperscript{n} & 1 & 0 (unrelated) & 0 & 0/285 \\
+ & E, 5\% & $T=50$\textsuperscript{n} & 1 & 0 (unrelated) & 0 & 0/285 \\
+ & D, 1\% & $T=50$\textsuperscript{n} & 1 & 0 (unrelated) & 0 & 0/285 \\
+GWAD+ & released & -- & -- & 100 (occlusion) & 100 & 207/285 \\
+ & E, 1\% & $c=12$\textsuperscript{n} & 1 & 0 (unrelated) & 0 & 0/285 \\
+ & E, 5\% & $c=12$\textsuperscript{n} & 1 & 0 (unrelated) & 0 & 0/285 \\
+ & D, 1\% & $c=12$\textsuperscript{n} & 1 & 0 (unrelated) & 0 & 0/285 \\
+\multicolumn{7}{l}{\emph{ImageNet, confirmatory}} \\
+Blacklight & released & -- & -- & 100 (occlusion) & 18 & 2/163 \\
+ & E, 1\% & $T=50$\textsuperscript{n} & 1 & 0 (unrelated) & 0 & 0/163 \\
+ & E, 5\% & $T=50$\textsuperscript{n} & 1 & 0 (unrelated) & 0 & 0/163 \\
+ & D, 1\% & $T=50$\textsuperscript{n} & 1 & 0 (unrelated) & 0 & 0/163 \\
+GWAD+ & released & -- & -- & 44 (occlusion) & 100 & 70/163 \\
+ & E, 1\% & $c=5$ & 29 & 1 (KernelSHAP) & 100 & 70/163 [35, 52] \\
+ & E, 5\% & $c=5$ & 41 & 1 (KernelSHAP) & 100 & 70/163 [35, 52] \\
+ & D, 1\% & $c=11.75$ & 20 & 0 (unrelated) & 0 & 0/163 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}

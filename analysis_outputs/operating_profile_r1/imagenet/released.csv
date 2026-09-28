@@ -1,0 +1,25 @@
+detector,workload,alarms,sessions,rate,ci_lo,ci_hi,ci_method,success_rate
+blacklight,unrelated images,19,100,0.19,0.1184431961325437,0.28069795797361247,,
+blacklight,LIME (lime),100,100,1.0,0.9637833073548235,1.0,,
+blacklight,KernelSHAP (Captum),100,100,1.0,0.9637833073548235,1.0,,
+blacklight,Occlusion (Captum),100,100,1.0,0.9637833073548235,1.0,,
+blacklight,confidence raising,36,200,0.18,0.12936892834839725,0.24038109688400738,,
+blacklight,noise copies,0,0,,,,,
+blacklight,JPEG/brightness sweep,0,0,,,,,
+blacklight,attack (timely),2,163,0.012269938650306749,0.0,0.03125,bootstrap over source images,0.815
+gwad_plus,unrelated images,0,100,0.0,0.0,0.03621669264517641,,
+gwad_plus,LIME (lime),0,100,0.0,0.0,0.03621669264517641,,
+gwad_plus,KernelSHAP (Captum),8,100,0.08,0.03517156251816281,0.15155763586442095,,
+gwad_plus,Occlusion (Captum),44,100,0.44,0.34083602372345834,0.5428125029366824,,
+gwad_plus,confidence raising,200,200,1.0,0.9817246596448638,1.0,,
+gwad_plus,noise copies,0,0,,,,,
+gwad_plus,JPEG/brightness sweep,0,0,,,,,
+gwad_plus,attack (timely),70,163,0.4294478527607362,0.34545454545454546,0.5155328333138013,bootstrap over source images,0.815
+gwad,unrelated images,0,100,0.0,0.0,0.03621669264517641,,
+gwad,LIME (lime),0,100,0.0,0.0,0.03621669264517641,,
+gwad,KernelSHAP (Captum),16,100,0.16,0.09431028997394623,0.24678759741086234,,
+gwad,Occlusion (Captum),44,100,0.44,0.34083602372345834,0.5428125029366824,,
+gwad,confidence raising,200,200,1.0,0.9817246596448638,1.0,,
+gwad,noise copies,0,0,,,,,
+gwad,JPEG/brightness sweep,0,0,,,,,
+gwad,attack (timely),71,163,0.43558282208588955,0.3493904612532972,0.5223309068850468,bootstrap over source images,0.815

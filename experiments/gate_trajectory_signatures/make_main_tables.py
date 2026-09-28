@@ -10,6 +10,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -71,15 +72,15 @@ def table_released():
                      pct(a.blacklight_flagged_queries.tolist(), 1), pct(b.blacklight_flagged_queries.tolist(), 1),
                      pct(s.blacklight_success_before_alarm_frac, 1), pct(s.gwad_plus_success_before_alarm_frac, 1)])
     head = ("& \\multicolumn{2}{c}{Sessions (\\%)} & \\multicolumn{2}{c}{First alarm} & \\multicolumn{2}{c}{Queries (\\%)} & "
-            "\\multicolumn{2}{c}{Success first (\\%)} \\\\\n"
+            "\\multicolumn{2}{c}{Before alarm (\\%)} \\\\\n"
             "\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}\\cmidrule(lr){6-7}\\cmidrule(lr){8-9}\n"
             "Corpus & attack & benign & attack & benign & attack & benign & Blackl. & GWAD+ \\\\\n\\midrule")
     wrap("main_released", head + "\n" + rows_tex(rows),
          "Released operating points (evaluation split). " + OPTIMIZER_NOTE + " Sessions, first alarm, queries: sessions in "
          "which Blacklight raises an alarm, median query index of its first alarm, and share of the queries that it flags, "
          "for the attack and for the Tier-B clients (restoration and confidence raising; on ImageNet confidence raising). "
-         "GWAD and GWAD+ raise an alarm in every session of these clients in every corpus, GWAD+ at query 259. Success "
-         "first: successful attacks whose first misclassified query precedes the first alarm of the detector, or that "
+         "GWAD and GWAD+ raise an alarm in every session of these clients in every corpus, GWAD+ at query 259. Before "
+         "alarm: successful attacks whose first misclassified query precedes the first alarm of the detector, or that "
          "raise no alarm. Ranges are over the two starts and the clients.",
          "tab:released", "lcccccccc", colsep="3pt")
 
@@ -89,16 +90,19 @@ NES_32 = ["cifar_nes_seed0", "cifar_nes_seed1", "cifar_nes_seed2", "cifar_nes_vg
 VALIDITY = A / "explanation_validity_20260927"
 
 
-def table_explanations():
+EXPLANATION_BLOCKS = [
+    ("224", A / "explanation_libraries_20260927/imagenet/explanation_summary_r2.csv", "imagenet_libraries",
+     ("lime_package", "captum_kernelshap", "captum_occlusion")),
+    ("224", A / "explanation_clients_imagenet_20260926/explanation_summary_r2.csv", "imagenet_explain",
+     ("lime", "kernelshap", "occlusion", "rise")),
+    ("32", A / "explanation_libraries_20260927/cifar10/explanation_summary_r2.csv", "cifar_libraries",
+     ("lime_package", "captum_kernelshap", "captum_occlusion")),
+    ("32", A / "explanation_clients_20260926/explanation_summary_r2.csv", "cifar_explain",
+     ("lime", "kernelshap", "occlusion", "rise"))]
+
+
+def _explanations(name, label, blocks, with_lee, caption, spec):
     sched = pd.read_csv(N / "lfc_schedules.csv").set_index(["corpus", "objective"])
-    blocks = [("224", A / "explanation_libraries_20260927/imagenet/explanation_summary_r2.csv", "imagenet_libraries",
-               ("lime_package", "captum_kernelshap", "captum_occlusion")),
-              ("224", A / "explanation_clients_imagenet_20260926/explanation_summary_r2.csv", "imagenet_explain",
-               ("lime", "kernelshap", "occlusion", "rise")),
-              ("32", A / "explanation_libraries_20260927/cifar10/explanation_summary_r2.csv", "cifar_libraries",
-               ("lime_package", "captum_kernelshap", "captum_occlusion")),
-              ("32", A / "explanation_clients_20260926/explanation_summary_r2.csv", "cifar_explain",
-               ("lime", "kernelshap", "occlusion", "rise"))]
     rows = []
     for k, (res, path, key, clients) in enumerate(blocks):
         summary = pd.read_csv(path).set_index("client")
@@ -108,78 +112,117 @@ def table_explanations():
             def cell(value, first):
                 rate = float(value.split(" ")[0])
                 return fmt(100 * rate, 1).rstrip("0").rstrip(".") + (f" ({fmt(first)})" if pd.notna(first) and rate > 0 else "")
-            s = sched.loc[(key, client)]
-            name, source = CLIENT[client]
-            name += "$^{\\dagger}$" if (res, client) == ("32", "lime_package") else ""
+            name_, source = CLIENT[client]
+            name_ += "$^{\\dagger}$" if (res, client) == ("32", "lime_package") else ""
             last = j == len(clients) - 1 and k < len(blocks) - 1
-            rows.append([res if j == 0 else "", name, source, f"{int(r.queries):,}".replace(",", "{,}"),
-                         cell(r.blacklight, r.blacklight_median_first), pct(r.blacklight_flagged_queries, 1),
-                         "n/a" if int(r.queries) < 259 else cell(r.gwad_plus, r.gwad_plus_median_first),
-                         pct(s.update50, 1), pct(s.online, 1) + (" \\\\[2pt]" if last else "")])
-    head = ("& & & & \\multicolumn{2}{c}{Blacklight} & & \\multicolumn{2}{c}{Lee et al.} \\\\\n"
-            "\\cmidrule(lr){5-6}\\cmidrule(lr){8-9}\n"
-            "Pixels & Client & Code & Queries & sessions & queries & GWAD+ & first 50 & whole \\\\\n\\midrule")
-    wrap("main_explanations", head + "\n" + rows_tex(rows),
-         "Explanation clients: one session per evaluation image and client (100 images for the library clients at "
-         "$224\\times224$ pixels, 200 otherwise). Code: the \\texttt{lime} package, Captum, or our implementation of "
-         "the query design. Sessions: sessions with an alarm (\\%), with the median query index of the first alarm in "
-         "parentheses. Queries: share of the queries that Blacklight flags (\\%). Lee et al.: our reconstruction, test "
-         "at every update of a group, within the first 50 queries and over the whole session. n/a: the stream is shorter "
-         "than the 259 queries that GWAD+ needs. $^{\\dagger}$The default segmentation of the package returns a median of "
-         "one superpixel at this resolution, and the explanation is empty.",
-         "tab:main-expl", "rllrccccc")
+            row = [res if j == 0 else "", name_, source, f"{int(r.queries):,}".replace(",", "{,}"),
+                   cell(r.blacklight, r.blacklight_median_first), pct(r.blacklight_flagged_queries, 1),
+                   "n/a" if int(r.queries) < 259 else cell(r.gwad_plus, r.gwad_plus_median_first)]
+            if with_lee:
+                s = sched.loc[(key, client)]
+                row += [pct(s.update50, 1), pct(s.online, 1)]
+            row[-1] += " \\\\[2pt]" if last else ""
+            rows.append(row)
+    if with_lee:
+        head = ("& & & & \\multicolumn{2}{c}{Blacklight} & & \\multicolumn{2}{c}{Lee et al.} \\\\\n"
+                "\\cmidrule(lr){5-6}\\cmidrule(lr){8-9}\n"
+                "Pixels & Client & Code & Queries & sessions & queries & GWAD+ & first 50 & whole \\\\\n\\midrule")
+    else:
+        head = ("& & & & \\multicolumn{2}{c}{Blacklight} & \\\\\n\\cmidrule(lr){5-6}\n"
+                "Pixels & Client & Code & Queries & sessions & queries flagged & GWAD+ sessions \\\\\n\\midrule")
+    wrap(name, head + "\n" + rows_tex(rows), caption, label, spec)
+
+
+def table_explanations():
+    common = ("Code: the \\texttt{lime} package, Captum, or our implementation of the query design. Sessions: sessions "
+              "with an alarm (\\%), with the median query index of the first alarm in parentheses. Queries: share of the "
+              "queries that Blacklight flags (\\%). n/a: the stream is shorter than the 259 queries that GWAD+ needs.")
+    _explanations("main_explanations", "tab:main-expl", EXPLANATION_BLOCKS[:2], False,
+                   "Explanation clients at $224\\times224$ pixels (ResNet-50): one session per image and client, 100 "
+                   "images for the library clients and 200 for ours. " + common + " Results at $32\\times32$ pixels: "
+                   "Table~\\ref{tab:expl-all} of the supplementary material.", "rllrccc")
+    _explanations("explanations_all", "tab:expl-all", EXPLANATION_BLOCKS, True,
+                   "Explanation clients at both resolutions (100 images for the library clients at $224\\times224$ "
+                   "pixels, 200 otherwise). " + common + " Lee et al.: our reconstruction, test at every update of a "
+                   "group, within the first 50 queries and over the whole session. $^{\\dagger}$The default segmentation "
+                   "of the package returns a median of one superpixel at this resolution, and the explanation is empty.",
+                   "rllrccccc")
+
+
+ENFORCEMENT_BLOCKS = [
+    # label, directory with sessions.csv and prior_sessions.csv, session-id prefix of the images used
+    ("Evaluation images of X14, ResNet-50", VALIDITY / "libraries_imagenet", "evaluation__"),
+    ("Fresh images (X16), ResNet-50", A / "operating_profile_imagenet_20260928/validity_resnet50", "confirmation__"),
+    ("Fresh images (X16), ConvNeXt-T", A / "operating_profile_imagenet_20260928/validity_convnext", "confirmation__"),
+]
+
+
+def _median_ci(values):
+    from experiments.gate_trajectory_signatures.analyze_explanation_validity import bootstrap_median
+    return bootstrap_median(np.asarray(values, dtype=float))
+
+
+def enforcement_stats(directory, prefix):
+    """Per (client, mode): median answered queries; d with and without rejection; the paired change of d per image;
+    gains over the centre prior. Intervals: bootstrap over images (2,000 resamples, seed 0)."""
+    vs = pd.read_csv(directory / "sessions.csv")
+    vs = vs[vs.session_id.str.startswith(prefix)]
+    ps = pd.read_csv(directory / "prior_sessions.csv")
+    ps = ps[ps.session_id.str.startswith(prefix)]
+    out = {}
+    for client in ("lime_package", "captum_kernelshap", "captum_occlusion"):
+        rec = vs[(vs.client == client) & (vs.variant == "recorded")].set_index("session_id")
+        x = ps[ps.client == client]
+        for mode in ("recorded", "h1", "h2"):
+            v = vs[(vs.client == client) & (vs.variant == mode)].set_index("session_id")
+            if len(v) == 0:
+                continue
+            both = rec.join(v, rsuffix="_m", how="inner")
+            out[(client, mode)] = {"images": len(v), "d": _median_ci(v.d), "queries": float(v.queries.median()),
+                                   "answered": float(v.answered.median()) if mode != "recorded" else float(v.queries.median()),
+                                   "change": _median_ci((both.d_m - both.d).to_numpy()),
+                                   "retained": float(v.d.median() / rec.d.median()) if rec.d.median() > 0 else float("nan"),
+                                   "gain": _median_ci((x.area_prior_centre - x[f"area_{mode}"]).to_numpy()),
+                                   "constant": float((v.distinct_values == 1).mean())}
+    return out
 
 
 def table_enforcement():
-    path = VALIDITY / "libraries_imagenet" / "summary.csv"
-    if not path.exists():
-        print("skipped main_enforcement: missing", path)
-        return
-    s = pd.read_csv(path).set_index(["client", "variant"])
-    entries = [("lime_package", "h1"), ("lime_package", "h2"), ("captum_kernelshap", "h1"), ("captum_occlusion", "h1")]
-    rec = [s.loc[(c, "recorded")] for c, _m in entries]
-    enf = [s.loc[(c, m)] for c, m in entries]
-    empty = [e.distinct_median == 1 for e in enf]
+    entries = [("lime_package", "h1", "LIME, uniform"), ("lime_package", "h2", "LIME, dropped"),
+               ("captum_kernelshap", "h1", "KernelSHAP, uniform"), ("captum_occlusion", "h1", "Occlusion, uniform")]
 
-    def d(r):
-        return fmt(r.d_median, 2)
-
-    def ci(r, name="d"):
-        return f"{{[}}{fmt(r[name + '_lo'], 2)}, {fmt(r[name + '_hi'], 2)}{{]}}".replace("-", "$-$")
-    prior = pd.read_csv(VALIDITY / "libraries_imagenet" / "prior_summary.csv").set_index(["client", "variant"])
-    prec = [prior.loc[(c, "recorded")] for c, _m in entries]
-    penf = [prior.loc[(c, m)] for c, m in entries]
-
-    def gain(r):
-        return fmt(r.gain_over_prior_centre, 2).replace("-", "$-$")
-
-    def gain_ci(r):
-        return f"{{[}}{fmt(r.gain_over_prior_centre_lo, 2)}, {fmt(r.gain_over_prior_centre_hi, 2)}{{]}}".replace("-", "$-$")
-    rows = [["Queries answered (median)"] + [f"{fmt(e.answered_median)} of {int(r.queries_median):,}".replace(",", "{,}") for r, e in zip(rec, enf)],
-            ["$d$, all answered"] + [d(r) for r in rec],
-            ["\\quad 95\\% interval"] + [ci(r) for r in rec],
-            ["$d$, rejected"] + [d(e) for e in enf],
-            ["\\quad 95\\% interval"] + [ci(e) for e in enf],
-            ["Share of $d$ retained (\\%)"] + [pct(e.d_median / r.d_median) for r, e in zip(rec, enf)],
-            ["Gain over centre prior, all answered"] + [gain(r) for r in prec],
-            ["\\quad 95\\% interval"] + [gain_ci(r) for r in prec],
-            ["Gain over centre prior, rejected"] + [gain(r) for r in penf],
-            ["\\quad 95\\% interval"] + [gain_ci(r) for r in penf],
-            ["Rank correlation"] + ["--" if x else fmt(e.spearman_median, 2) for e, x in zip(enf, empty)],
-            ["Overlap of the top fifth"] + ["--" if x else fmt(e.top_fifth_median, 2) for e, x in zip(enf, empty)]]
-    head = ("& \\multicolumn{2}{c}{LIME (\\texttt{lime})} & KernelSHAP & Occlusion \\\\\n"
-            "\\cmidrule(lr){2-3}\n"
-            "Rejected answers are & uniform & dropped & uniform & uniform \\\\\n\\midrule")
+    def ci(v, digits=2):
+        # estimate over its interval, so that the table keeps the body font at the text width
+        s = f"\\begin{{tabular}}[t]{{@{{}}c@{{}}}}{fmt(v[0], digits)}\\\\ {{\\scriptsize[{fmt(v[1], digits)}, {fmt(v[2], digits)}]}}\\end{{tabular}}"
+        return s.replace("-", "$-$")
+    rows = []
+    blocks = [(label, d, pre) for label, d, pre in ENFORCEMENT_BLOCKS if (d / "sessions.csv").exists() and (d / "prior_sessions.csv").exists()]
+    for k, (label, d, pre) in enumerate(blocks):
+        s = enforcement_stats(d, pre)
+        rows.append([f"\\multicolumn{{6}}{{l}}{{\\emph{{{label} ({s[('lime_package', 'recorded')]['images']} images)}}}}"])
+        for n, (client, mode, name) in enumerate(entries):
+            r, e = s[(client, "recorded")], s[(client, mode)]
+            row = [f"\\quad {name}", f"{fmt(e['answered'])}", fmt(r["d"][0], 2), fmt(e["d"][0], 2), ci(e["change"]),
+                   ci(e["gain"])]
+            if n == len(entries) - 1 and k < len(blocks) - 1:
+                row[-1] += " \\\\[4pt]"
+            rows.append(row)
+    head = ("& & \\multicolumn{3}{c}{$d$} & Gain over centre \\\\\n\\cmidrule(lr){3-5}\n"
+            "Client, withheld & Answered & all & rejected & change & prior, rejected \\\\\n\\midrule")
     wrap("main_enforcement", head + "\n" + rows_tex(rows),
-         "Library explanation clients at $224\\times224$ pixels when Blacklight rejects the flagged queries (100 images). "
-         "$d$: median gain in deletion area over randomizations of the explanation that keep its spatial structure; an "
-         "empty explanation has $d=0$. Gain over centre prior: median difference in deletion area to a Gaussian around the "
-         "centre of the image, an ordering that uses no answer of the model (not planned in advance). Rejected answers: the client puts the uniform distribution in their place, or, for "
-         "the \\texttt{lime} package, drops the rejected samples from the fit of its surrogate model. Rank correlation "
-         "(Spearman) and overlap of the most important fifth of the image (0.2 by chance) compare the explanation under "
-         "rejection with the one computed from all answers; medians. Dashes: the explanation is constant over the image. "
-         "KernelSHAP and occlusion: Captum.",
-         "tab:main-enforce", "lcccc", size="\\small", colsep="6pt")
+         "Library explanation clients at $224\\times224$ pixels when Blacklight's flagged queries are rejected in a replay "
+         "(medians over images; below the paired change and the gain: bootstrap 95\\% interval over images). LIME: the \\texttt{lime} package; "
+         "KernelSHAP, occlusion: Captum. Answered: queries answered of 1{,}000 "
+         "(occlusion: 785). $d$: gain in deletion area over randomizations of the explanation that keep its spatial "
+         "structure, with every query answered, with the flagged queries rejected, and the paired change per image "
+         "(rejected minus all answered); an explanation that is constant over the image has $d=0$, and a positive $d$ does "
+         "not show that the information comes from the model. Gain over centre prior: deletion area of a Gaussian around "
+         "the centre of the image minus that of the rejected explanation (with every query answered: Table~\\ref{tab:priors} of "
+         "the supplementary material; added after the first results were known); on ConvNeXt-T "
+         "the centre prior is weaker than an explanation that is constant over the image. Withheld answers: the client "
+         "substitutes the uniform distribution, or the \\texttt{lime} package drops the samples from its fit. Further measures: "
+         "Tables~\\ref{tab:validity} and~\\ref{tab:priors} of the supplementary material.",
+         "tab:main-enforce", "lccccc", size="\\footnotesize", colsep="4pt")
 
 
 def table_matched():
@@ -217,7 +260,9 @@ def table_acceptance():
         for j, objective in enumerate(("restore", "confidence_boost")):
             g = c[(c.variant == variant) & (c.benign == objective)]
             star = "" if bool(g.valid.all()) else "$^{\\ast}$"
-            rows.append([label if j == 0 else "", short[objective] + star,
+            if j == 0:
+                rows.append([f"\\multicolumn{{6}}{{l}}{{\\emph{{{label}}}}}"])
+            rows.append([f"\\quad {short[objective]}{star}",
                          rng(g.attack_acceptance_median.tolist()), rng(g.benign_acceptance_median.tolist()),
                          rng(g.acceptance_only_auroc.tolist()), rng(g.gwad_plus_auroc.tolist()),
                          rng(g.blacklight_auroc.tolist()) + (" \\\\[2pt]" if j == 1 else "")])
@@ -225,16 +270,18 @@ def table_acceptance():
         for j, objective in enumerate(("restore", "confidence_boost")):
             g = thr[(thr.positive == positive) & (thr.negative == objective)]
             last = j == 1 and positive == "unthrottled attack"
-            rows.append([label if j == 0 else "", short[objective],
+            if j == 0:
+                rows.append([f"\\multicolumn{{6}}{{l}}{{\\emph{{{label}}}}}"])
+            rows.append([f"\\quad {short[objective]}",
                          rng(g.accept_pos_median.tolist()), rng(g.accept_neg_median.tolist()),
                          rng(g.acceptance_only_auroc.tolist()), rng(g.gwad_plus_auroc.tolist()),
                          rng(g.blacklight_auroc.tolist()) + (" \\\\[2pt]" if last else "")])
-    head = ("& & \\multicolumn{2}{c}{Acceptance} & \\multicolumn{3}{c}{Matched AUROC} \\\\\n"
-            "\\cmidrule(lr){3-4}\\cmidrule(lr){5-7}\n"
-            "Optimizer, step, move & Benign client & attack & benign & accept. & GWAD+ & Blackl. \\\\\n\\midrule")
+    head = ("& \\multicolumn{2}{c}{Acceptance} & \\multicolumn{3}{c}{Matched AUROC} \\\\\n"
+            "\\cmidrule(lr){2-3}\\cmidrule(lr){4-6}\n"
+            "Benign client & attack & benign & acceptance & GWAD+ & Blacklight \\\\\n\\midrule")
     wrap("main_acceptance", head + "\n" + rows_tex(rows),
          "Acceptance behaviour and matched AUROC (CIFAR-10, ResNet-18, 200 evaluation images, whole session; ranges over "
-         "the two starts). Move: the client moves to the evaluated point if its objective improves, or always, as NES "
+         "the two starts). Panels: optimizer, step size and move rule of the attack. Move: the client moves to the evaluated point if its objective improves, or always, as NES "
          "does in its published form. Acceptance: median fraction of iterations in which the current image moves. "
          "Matched AUROC: of the acceptance rate alone, and of logistic models on the session statistics of GWAD+ and "
          "Blacklight. At the released operating points both detectors raise an alarm in every session of every row. "
@@ -242,7 +289,7 @@ def table_acceptance():
          "step only while its running acceptance rate is at most a cap drawn from restoration sessions of the fit split; "
          "the comparison with confidence raising was not planned. Every cell with its interval: "
          "Table~\\ref{tab:accept-cells}.",
-         "tab:main-accept", "llccccc", colsep="4pt")
+         "tab:main-accept", "lccccc", colsep="4pt")
 
 
 def table_lfc():
@@ -283,6 +330,8 @@ def table_lfc():
 def table_validity():
     """Supplement: rule R2 for every explanation client, without and with rejection."""
     blocks = [("224", "libraries_imagenet", ("lime_package", "captum_kernelshap", "captum_occlusion")),
+              ("224*", "../operating_profile_imagenet_20260928/validity_resnet50", ("lime_package", "captum_kernelshap", "captum_occlusion")),
+              ("224\\textsuperscript{c}", "../operating_profile_imagenet_20260928/validity_convnext", ("lime_package", "captum_kernelshap", "captum_occlusion")),
               ("224", "own_imagenet", ("lime", "kernelshap", "occlusion", "rise")),
               ("32", "libraries_cifar10", ("lime_package", "captum_kernelshap", "captum_occlusion")),
               ("32", "own_cifar10", ("lime", "kernelshap", "occlusion", "rise"))]
@@ -314,8 +363,9 @@ def table_validity():
     rows[-1][-1] = rows[-1][-1].replace(" \\\\[2pt]", "")
     head = ("Pixels & Client & Queries & Images & Regions & Answered & $d$ & $d>0$ (\\%) & Rank correlation & Overlap \\\\\n\\midrule")
     wrap("validity", head + "\n" + rows_tex(rows),
-         "Rule R2 for every explanation client (evaluation images). Clients with a source are library clients, the others "
-         "our implementations. Queries: every query answered, or the queries flagged by Blacklight rejected, with the "
+         "Rule R2 for every explanation client (evaluation images; 224*: the 200 fresh calibration and confirmation images "
+         "of X16 with ResNet-50; 224\\textsuperscript{c}: the 100 fresh confirmation images with ConvNeXt-T). Clients with a "
+         "source are library clients, the others our implementations. Queries: every query answered, or the queries flagged by Blacklight rejected, with the "
          "uniform distribution in the place of a rejected answer or, for the \\texttt{lime} package, with the rejected "
          "samples dropped from the fit. Regions: median number of distinct attribution values. Answered: median number of "
          "answered queries. $d$: median gain in deletion area over 20 randomizations of the explanation that keep its "
@@ -323,6 +373,145 @@ def table_validity():
          "of the most important fifth (0.2 by chance) are relative to the explanation without rejection; dashes where an "
          "explanation is constant over the image.",
          "tab:validity", "rllrrrcccc", colsep="3pt", sideways=True)
+
+
+PROFILE = A / "operating_profile_r1"
+
+
+SHORTW = {"Occlusion (ours)": "occlusion", "Occlusion (Captum)": "occlusion", "KernelSHAP (Captum)": "KernelSHAP",
+          "KernelSHAP (ours)": "KernelSHAP", "unrelated images": "unrelated", "LIME (lime)": "LIME", "LIME (ours)": "LIME"}
+
+
+def _theta_text(det, theta):
+    if det == "blacklight":
+        return f"$T={int(float(theta))}$" + ("\\textsuperscript{n}" if int(float(theta)) == 50 else "")
+    if str(theta) == "native":
+        return "released"
+    return f"$c={float(theta):g}$" + ("\\textsuperscript{n}" if float(theta) >= 12 else "")
+
+
+def share(values):
+    """Whole percentages, with one decimal where rounding would show 0 or 100 for a value that is not."""
+    whole = [round(100 * v) for v in values]
+    exact = all(v in (0.0, 1.0) for v in values)
+    return pct(values, 0 if exact or not any(w in (0, 100) for w in whole) else 1)
+
+
+def table_operating():
+    """Main text: released operating points (Table 4) and selection under benign-alarm budgets (Table 5)."""
+    util = pd.read_csv(N / "workload_utility_all.csv")
+    before = pd.read_csv(N / "success_before_alarm.csv")
+    before = before[before.start == "pooled"].set_index("corpus")
+    a_rows, panel = [], None
+    for c in CORPORA:
+        key, _data, _d, _model, _acc, _opt, invalid = c
+        tier_b = [o for o in ("restore", "confidence_boost") if o not in invalid]
+        a = util[(util.corpus == key) & (util.objective == "attack")]
+        b = util[(util.corpus == key) & util.objective.isin(tier_b)]
+        s = before.loc[key]
+        # rows grouped by dataset, so that the first column carries only the model
+        dataset, model = corpus_label(c).split(", ", 1)
+        if model.endswith(", SimBA"):
+            dataset, model = f"{dataset}, SimBA", model[:-len(", SimBA")]
+        if dataset != panel:
+            a_rows.append([f"\\multicolumn{{10}}{{l}}{{\\emph{{{dataset}}}}}"])
+            panel = dataset
+        a_rows.append([model, pct(a.flipped_frac.tolist()), pct(a.blacklight_alarm.tolist()), pct(b.blacklight_alarm.tolist()),
+                       med(a.blacklight_first_median.tolist()), med(b.blacklight_first_median.tolist()),
+                       share(a.blacklight_flagged_queries.tolist()), share(b.blacklight_flagged_queries.tolist()),
+                       pct(s.blacklight_success_before_alarm_frac, 1), pct(s.gwad_plus_success_before_alarm_frac, 1)])
+    head_a = ("& & \\multicolumn{2}{c}{Alarms (\\%)} & \\multicolumn{2}{c}{First alarm} & \\multicolumn{2}{c}{Flagged (\\%)} & "
+              "\\multicolumn{2}{c}{Before alarm} \\\\\n"
+              "\\cmidrule(lr){3-4}\\cmidrule(lr){5-6}\\cmidrule(lr){7-8}\\cmidrule(lr){9-10}\n"
+              "Model & Success & attack & benign & attack & benign & attack & benign & Blackl. & GWAD+ \\\\\n\\midrule")
+    wrap("main_operating", head_a + "\n" + rows_tex(a_rows),
+         "Released operating points (evaluation split). " + OPTIMIZER_NOTE + " Success: attack sessions with a misclassified "
+         "query within the budget (\\%). Alarms, first alarm, flagged: Blacklight's sessions with an alarm, median index of "
+         "its first alarm and share of flagged queries, for the attack and the Tier-B clients (on ImageNet confidence "
+         "raising only); GWAD and GWAD+ raise an alarm in every such session, GWAD+ at query 259. Before alarm: share (\\%) of the successful "
+         "attacks whose first misclassified query precedes the detector's first alarm, or that raise none. Ranges: over the "
+         "two starts and, in the benign columns, the clients.",
+         "tab:operating-main", "lccccccccc", colsep="2.5pt")
+    names = {"blacklight": "Blacklight", "gwad_plus": "GWAD+", "gwad": "GWAD"}
+    rows = []
+    for setting, label in (("cifar10", "CIFAR-10, retrospective"), ("imagenet", "ImageNet, confirmatory")):
+        path = PROFILE / setting / "profile.csv"
+        if not path.exists():
+            continue
+        prof = pd.read_csv(path)
+        rel = pd.read_csv(PROFILE / setting / "released.csv")
+        rows.append([f"\\multicolumn{{7}}{{l}}{{\\emph{{{label}}}}}"])
+        for det in ("blacklight", "gwad_plus"):
+            rr = rel[(rel.detector == det) & (rel.workload == "attack (timely)")].iloc[0]
+            ben = rel[(rel.detector == det) & (rel.workload != "attack (timely)") & (rel.sessions > 0)]
+            prof_workloads = ([g for g in ben.workload if g in ("unrelated images", "LIME (ours)", "KernelSHAP (ours)", "Occlusion (ours)", "RISE (ours)")]
+                              if setting == "cifar10" else [g for g in ben.workload if g != "confidence raising"])
+            worst = ben[ben.workload.isin(prof_workloads)].sort_values("rate").iloc[-1]
+            tb = [g for g in ("confidence raising", "restoration") if g in set(ben.workload)]
+            rows.append([names[det], "released", "--", "--", f"{pct(worst.rate)} ({SHORTW.get(worst.workload, worst.workload)})",
+                         pct(ben[ben.workload.isin(tb)].rate.max()), f"{int(rr.alarms)}/{int(rr.sessions)}"])
+            for profile, alpha in (("explanation", 0.01), ("explanation", 0.05), ("diagnostic", 0.01)):
+                r = prof[(prof.detector == det) & (prof.profile == profile) & np.isclose(prof.alpha, alpha)].iloc[0]
+                fcols = {c[2:-1]: r[c] for c in prof.columns if c.startswith("F[") and isinstance(r[c], str) and not r[c].endswith("/0")}
+                g_in = [g for g in fcols if g in set(prof_workloads)]
+                worst_g = max(g_in, key=lambda g: int(fcols[g].split("/")[0]) / int(fcols[g].split("/")[1]))
+                k, n = map(int, fcols[worst_g].split("/"))
+                tb_rates = [int(fcols[g].split("/")[0]) / int(fcols[g].split("/")[1]) for g in tb if g in fcols]
+                R = f"{int(r.timely)}/{int(r.successful)}"
+                if 0 < r.timely < r.successful:
+                    R += f" [{pct(r.R_lo)}, {pct(r.R_hi)}]"
+                rows.append(["", f"{profile[0].upper()}, {int(alpha * 100)}\\%", _theta_text(det, r.theta), str(int(r.feasible_candidates)),
+                             f"{pct(k / n)} ({SHORTW.get(worst_g, worst_g)})", pct(max(tb_rates)) if tb_rates else "--", R])
+    head = ("& & & & \\multicolumn{2}{c}{Held-out alarms (\\%)} & Timely / \\\\\n\\cmidrule(lr){5-6}\n"
+            "Detector & Budget & Selected & Feasible & worst in $G$ & Tier B & successful \\\\\n\\midrule")
+    wrap("main_selection", head + "\n" + rows_tex(rows),
+         "Operation under benign-alarm budgets (Section~\\ref{sec:procedure}). Released: the published decision rule. The "
+         "other rows select a configuration on the calibration split under the budget $\\alpha$ for every workload of the "
+         "profile, E (explanation: unrelated images and the explanation clients of the setting) or D (diagnostic: these and "
+         "the Tier-B clients), and evaluate it once on the held-out split. Selected: Blacklight flags a query with more "
+         "than $T$ of 50 matching hashes; GWAD+ alarms when its score exceeds $c$; \\textsuperscript{n}never alarms. "
+         "Feasible: number of feasible candidates. Held-out alarms: the largest rate among the workloads of the explanation "
+         "profile, and that of the Tier-B clients, which the explanation profile does not constrain. Timely: first alarm "
+         "before the first misclassified query; brackets: 95\\% interval from resampling source images. Every workload "
+         "with its interval: Table~\\ref{tab:profile-full} of the supplementary material.",
+         "tab:selection", "llllccc", colsep="4pt")
+
+
+def table_profile_full():
+    """Supplement: every selection with its per-workload held-out rates and intervals."""
+    names = {"blacklight": "Blacklight", "gwad_plus": "GWAD+", "gwad": "GWAD"}
+    lines = []
+    for setting, label in (("cifar10", "CIFAR-10, retrospective (calibration / evaluation split)"),
+                           ("imagenet", "ImageNet, confirmatory (calibration / confirmation split)")):
+        path = PROFILE / setting / "profile.csv"
+        if not path.exists():
+            continue
+        prof = pd.read_csv(path)
+        lines.append(f"\\multicolumn{{4}}{{l}}{{\\emph{{{label}}}}} \\\\")
+        for _, r in prof.iterrows():
+            cells = []
+            for col in prof.columns:
+                if not col.startswith("F[") or not isinstance(r[col], str) or r[col].endswith("/0"):
+                    continue
+                g = col[2:-1]
+                k, n = map(int, r[col].split("/"))
+                lo, hi = (float(v) for v in r[f"Fci[{g}]"].split("-"))
+                cells.append(f"{g} {k}/{n} [{pct(lo, 1)}, {pct(hi, 1)}]")
+            R = f"{int(r.timely)}/{int(r.successful)} [{pct(r.R_lo, 1)}, {pct(r.R_hi, 1)}]"
+            lines.append(f"{names[r.detector]} & {r.profile}, {int(r.alpha * 100)}\\% & {_theta_text(r.detector, r.theta)} & {R} \\\\")
+            lines.append(f"\\multicolumn{{4}}{{p{{12.8cm}}}}{{\\raggedright\\quad {'; '.join(cells)}}} \\\\[4pt]")
+    head = ("Detector & Profile, $\\alpha$ & Selected & Timely / successful (\\%) \\\\\n"
+            "\\multicolumn{4}{p{12.8cm}}{\\quad Held-out alarms per workload: alarms/sessions [95\\% interval, \\%]} \\\\\n\\midrule")
+    body = ("\\begin{footnotesize}\n\\setlength{\\tabcolsep}{3pt}\n\\begin{longtable}{p{1.6cm}p{2.6cm}p{2.8cm}p{4.6cm}}\n"
+            "\\caption{Selection under benign-alarm budgets, every detector, profile and budget: selected configuration, "
+            "timely alarms among successful attacks with a 95\\% interval from resampling source images (exact Clopper--Pearson "
+            "over source images when no or every successful attack is timely), and, on the held-out split, the alarms of every "
+            "workload, constrained or not, with exact Clopper--Pearson 95\\% intervals over sessions (one session per image "
+            "for the explanation clients and controls; the two starts of the optimizing clients are not independent).}\\label{tab:profile-full}\\\\\n"
+            "\\toprule\n" + head + "\n\\endfirsthead\n\\toprule\n" + head + "\n\\endhead\n" + "\n".join(lines)
+            + "\n\\bottomrule\n\\end{longtable}\n\\end{footnotesize}\n")
+    (ROOT / "paper/jisa_2026/tables/profile_full.tex").write_text(body)
+    print("wrote tables/profile_full.tex")
 
 
 START = {"denoise": "noisy", "deblur": "blurred"}
@@ -415,6 +604,8 @@ def table_acceptance_cells():
 def table_priors():
     """Supplement: explanations against orderings that use no answer of the model."""
     blocks = [("224", "libraries_imagenet", ("lime_package", "captum_kernelshap", "captum_occlusion")),
+              ("224*", "../operating_profile_imagenet_20260928/validity_resnet50", ("lime_package", "captum_kernelshap", "captum_occlusion")),
+              ("224\\textsuperscript{c}", "../operating_profile_imagenet_20260928/validity_convnext", ("lime_package", "captum_kernelshap", "captum_occlusion")),
               ("224", "own_imagenet", ("lime", "kernelshap", "occlusion", "rise")),
               ("32", "libraries_cifar10", ("lime_package", "captum_kernelshap", "captum_occlusion")),
               ("32", "own_cifar10", ("lime", "kernelshap", "occlusion", "rise"))]
@@ -442,7 +633,9 @@ def table_priors():
             "\\cmidrule(lr){5-6}\\cmidrule(lr){7-8}\n"
             "Pixels & Client & Queries & Area & gain & better (\\%) & gain & better (\\%) \\\\\n\\midrule")
     wrap("priors", head + "\n" + rows_tex(rows),
-         "Explanations against orderings that use no answer of the model (evaluation images; not planned in advance). "
+         "Explanations against orderings that use no answer of the model (evaluation images; 224* and "
+         "224\\textsuperscript{c} as in Table~\\ref{tab:validity}; not planned in advance). On ConvNeXt-T the centre prior is "
+         "weaker than a smooth random ordering. "
          "Area: median deletion area of the explanation. Centre prior: a Gaussian around the centre of the image with a "
          "standard deviation of a quarter of its side (median area 0.23 at $224\\times224$ and 0.31 at $32\\times32$ "
          "pixels). Ranked regions: the regions of the explanation computed from all answers, ranked by the distance of "
@@ -454,5 +647,6 @@ def table_priors():
 
 if __name__ == "__main__":
     for table in (table_corpora, table_released, table_explanations, table_enforcement, table_matched, table_acceptance,
-                  table_lfc, table_validity, table_prefix, table_acceptance_cells, table_priors):
+                  table_lfc, table_validity, table_prefix, table_acceptance_cells, table_priors, table_operating,
+                  table_profile_full):
         table()

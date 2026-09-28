@@ -1,27 +1,30 @@
 \begin{table}[!tbp]
-\centering\small\setlength{\tabcolsep}{6pt}
-\caption{Library explanation clients at $224\times224$ pixels when Blacklight rejects the flagged queries (100 images). $d$: median gain in deletion area over randomizations of the explanation that keep its spatial structure; an empty explanation has $d=0$. Gain over centre prior: median difference in deletion area to a Gaussian around the centre of the image, an ordering that uses no answer of the model (not planned in advance). Rejected answers: the client puts the uniform distribution in their place, or, for the \texttt{lime} package, drops the rejected samples from the fit of its surrogate model. Rank correlation (Spearman) and overlap of the most important fifth of the image (0.2 by chance) compare the explanation under rejection with the one computed from all answers; medians. Dashes: the explanation is constant over the image. KernelSHAP and occlusion: Captum.}
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Library explanation clients at $224\times224$ pixels when Blacklight's flagged queries are rejected in a replay (medians over images; below the paired change and the gain: bootstrap 95\% interval over images). LIME: the \texttt{lime} package; KernelSHAP, occlusion: Captum. Answered: queries answered of 1{,}000 (occlusion: 785). $d$: gain in deletion area over randomizations of the explanation that keep its spatial structure, with every query answered, with the flagged queries rejected, and the paired change per image (rejected minus all answered); an explanation that is constant over the image has $d=0$, and a positive $d$ does not show that the information comes from the model. Gain over centre prior: deletion area of a Gaussian around the centre of the image minus that of the rejected explanation (with every query answered: Table~\ref{tab:priors} of the supplementary material; added after the first results were known); on ConvNeXt-T the centre prior is weaker than an explanation that is constant over the image. Withheld answers: the client substitutes the uniform distribution, or the \texttt{lime} package drops the samples from its fit. Further measures: Tables~\ref{tab:validity} and~\ref{tab:priors} of the supplementary material.}
 \label{tab:main-enforce}
 \vspace{3pt}
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{lcccc}
+\begin{tabular}{lccccc}
 \toprule
-& \multicolumn{2}{c}{LIME (\texttt{lime})} & KernelSHAP & Occlusion \\
-\cmidrule(lr){2-3}
-Rejected answers are & uniform & dropped & uniform & uniform \\
+& & \multicolumn{3}{c}{$d$} & Gain over centre \\
+\cmidrule(lr){3-5}
+Client, withheld & Answered & all & rejected & change & prior, rejected \\
 \midrule
-Queries answered (median) & 15 of 1{,}000 & 15 of 1{,}000 & 15 of 1{,}000 & 1 of 785 \\
-$d$, all answered & 0.22 & 0.22 & 0.20 & 0.13 \\
-\quad 95\% interval & {[}0.19, 0.26{]} & {[}0.19, 0.26{]} & {[}0.17, 0.23{]} & {[}0.11, 0.16{]} \\
-$d$, rejected & 0.09 & 0.14 & 0.02 & 0.00 \\
-\quad 95\% interval & {[}0.05, 0.11{]} & {[}0.11, 0.16{]} & {[}0.00, 0.04{]} & {[}0.00, 0.00{]} \\
-Share of $d$ retained (\%) & 39 & 62 & 9 & 0 \\
-Gain over centre prior, all answered & 0.06 & 0.06 & 0.09 & 0.08 \\
-\quad 95\% interval & {[}0.03, 0.11{]} & {[}0.03, 0.11{]} & {[}0.06, 0.12{]} & {[}0.05, 0.10{]} \\
-Gain over centre prior, rejected & $-$0.03 & 0.01 & $-$0.08 & $-$0.16 \\
-\quad 95\% interval & {[}$-$0.07, 0.00{]} & {[}$-$0.02, 0.04{]} & {[}$-$0.13, $-$0.05{]} & {[}$-$0.21, $-$0.13{]} \\
-Rank correlation & 0.24 & 0.43 & 0.18 & -- \\
-Overlap of the top fifth & 0.35 & 0.48 & 0.29 & -- \\
+\multicolumn{6}{l}{\emph{Evaluation images of X14, ResNet-50 (100 images)}} \\
+\quad LIME, uniform & 15 & 0.22 & 0.09 & \begin{tabular}[t]{@{}c@{}}$-$0.12\\ {\scriptsize[$-$0.17, $-$0.09]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.03\\ {\scriptsize[$-$0.07, 0.00]}\end{tabular} \\
+\quad LIME, dropped & 15 & 0.22 & 0.14 & \begin{tabular}[t]{@{}c@{}}$-$0.08\\ {\scriptsize[$-$0.10, $-$0.06]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.01\\ {\scriptsize[$-$0.02, 0.04]}\end{tabular} \\
+\quad KernelSHAP, uniform & 15 & 0.20 & 0.02 & \begin{tabular}[t]{@{}c@{}}$-$0.20\\ {\scriptsize[$-$0.23, $-$0.15]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.08\\ {\scriptsize[$-$0.13, $-$0.05]}\end{tabular} \\
+\quad Occlusion, uniform & 1 & 0.13 & 0.00 & \begin{tabular}[t]{@{}c@{}}$-$0.13\\ {\scriptsize[$-$0.16, $-$0.11]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.16\\ {\scriptsize[$-$0.21, $-$0.13]}\end{tabular} \\[4pt]
+\multicolumn{6}{l}{\emph{Fresh images (X16), ResNet-50 (100 images)}} \\
+\quad LIME, uniform & 14 & 0.22 & 0.05 & \begin{tabular}[t]{@{}c@{}}$-$0.12\\ {\scriptsize[$-$0.15, $-$0.08]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.04\\ {\scriptsize[$-$0.08, $-$0.01]}\end{tabular} \\
+\quad LIME, dropped & 14 & 0.22 & 0.12 & \begin{tabular}[t]{@{}c@{}}$-$0.07\\ {\scriptsize[$-$0.09, $-$0.05]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.02\\ {\scriptsize[$-$0.02, 0.04]}\end{tabular} \\
+\quad KernelSHAP, uniform & 14 & 0.20 & 0.01 & \begin{tabular}[t]{@{}c@{}}$-$0.20\\ {\scriptsize[$-$0.22, $-$0.16]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.05\\ {\scriptsize[$-$0.09, $-$0.03]}\end{tabular} \\
+\quad Occlusion, uniform & 1 & 0.11 & 0.00 & \begin{tabular}[t]{@{}c@{}}$-$0.11\\ {\scriptsize[$-$0.14, $-$0.08]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.12\\ {\scriptsize[$-$0.16, $-$0.07]}\end{tabular} \\[4pt]
+\multicolumn{6}{l}{\emph{Fresh images (X16), ConvNeXt-T (100 images)}} \\
+\quad LIME, uniform & 14 & 0.16 & 0.03 & \begin{tabular}[t]{@{}c@{}}$-$0.13\\ {\scriptsize[$-$0.15, $-$0.10]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.09\\ {\scriptsize[0.05, 0.13]}\end{tabular} \\
+\quad LIME, dropped & 14 & 0.16 & 0.10 & \begin{tabular}[t]{@{}c@{}}$-$0.07\\ {\scriptsize[$-$0.08, $-$0.04]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.15\\ {\scriptsize[0.11, 0.18]}\end{tabular} \\
+\quad KernelSHAP, uniform & 14 & 0.21 & 0.00 & \begin{tabular}[t]{@{}c@{}}$-$0.20\\ {\scriptsize[$-$0.22, $-$0.17]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.08\\ {\scriptsize[0.05, 0.10]}\end{tabular} \\
+\quad Occlusion, uniform & 1 & 0.10 & 0.00 & \begin{tabular}[t]{@{}c@{}}$-$0.10\\ {\scriptsize[$-$0.12, $-$0.08]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.09\\ {\scriptsize[0.06, 0.13]}\end{tabular} \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}

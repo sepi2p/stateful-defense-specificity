@@ -1,25 +1,23 @@
 \begin{table}[!tbp]
 \centering\footnotesize\setlength{\tabcolsep}{4pt}
 \caption{Clients. All optimizing clients of a corpus share the optimizer, the start image $z$, the perturbation ball
-($\epsilon=8/255$) and the query budget. $y$ is the source label, $p_y$ its probability and $m_y$ its margin over
-the strongest other class.}
+($\epsilon=8/255$) and the query budget. $y$: source label; $p_y$: its probability; $m_y$: its margin over the
+strongest other class.}
 \label{tab:clients}
-\begin{tabular}{L{2.3cm}L{2.7cm}L{5.0cm}L{2.5cm}}
+\vspace{3pt}
+\begin{tabular}{L{1.5cm}L{2.8cm}L{3.8cm}L{2.2cm}L{1.9cm}}
 \toprule
-Group & Client & What it does & A step is accepted \\
+Role & Client & Objective or design & Step accepted if & Used for \\
 \midrule
-Adversarial & Attack & Maximizes the cross-entropy of $y$ & if the objective improves \\[2pt]
-Tier A: explanation & LIME, KernelSHAP, occlusion, RISE & Queries masked copies of the clean image in a fixed or
-random design & (no optimization) \\[2pt]
-Tier B: matched benign & Restoration & Minimizes the distance to a classical restoration of $z$; the objective does
-not depend on the model's output & if the objective improves and the label stays $y$ \\
- & Confidence raising & Maximizes $\log p_y$ & if the objective improves \\[2pt]
-Tier C: attack-equivalent & Boundary probing & Minimizes $m_y$ & if the objective improves and the label stays $y$ \\
- & Counterfactual search & Minimizes the cross-entropy of the runner-up class plus a distance penalty &
-if the objective improves \\[2pt]
-Controls & Random walk & Random sign steps, one query per step & always \\
- & Shuffled images, Gaussian noise, sweep & Unrelated test images; noise ($\sigma=0.1$) around one image; one image at
-32 JPEG qualities and 32 brightness levels & (no optimization) \\
+Attack & Attack & Maximize the cross-entropy of $y$ & objective improves & detection \\[2pt]
+Tier A & LIME, KernelSHAP, occlusion, RISE & Masked copies of the clean image, fixed or random design & (no optimization)
+& false positives, utility \\[2pt]
+Tier B & Restoration & Approach a denoised or sharpened version of $z$; independent of the model's output &
+improves, label stays $y$ & diagnostics \\
+ & Confidence raising & Maximize $\log p_y$ & objective improves & diagnostics \\[2pt]
+Tier C & Boundary probing & Minimize $m_y$ & improves, label stays $y$ & limits only \\
+ & Counterfactual search & Runner-up class plus a distance penalty & objective improves & limits only \\[2pt]
+Controls & Unrelated images, noise copies, JPEG/brightness sweep, random walk & No objective & (walk: always) & reference \\
 \bottomrule
 \end{tabular}
 \end{table}

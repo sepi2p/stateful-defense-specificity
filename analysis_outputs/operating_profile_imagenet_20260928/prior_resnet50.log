@@ -1,0 +1,20 @@
+50/600
+100/600
+150/600
+200/600
+250/600
+300/600
+350/600
+400/600
+450/600
+500/600
+550/600
+600/600
+              client   variant  images  area_median  prior_centre_images  prior_centre_area_median  gain_over_prior_centre  gain_over_prior_centre_lo  gain_over_prior_centre_hi  better_than_prior_centre  prior_regions_images  prior_regions_area_median  gain_over_prior_regions  gain_over_prior_regions_lo  gain_over_prior_regions_hi  better_than_prior_regions
+0  captum_kernelshap  recorded     200        0.109                  200                     0.244                   0.117                      0.097                      0.143                     0.835                 200.0                      0.282                    0.152                       0.134                       0.177                      0.945
+1  captum_kernelshap        h1     200        0.316                  200                     0.244                  -0.052                     -0.087                     -0.036                     0.300                 200.0                      0.282                   -0.026                      -0.044                      -0.011                      0.380
+2   captum_occlusion  recorded     200        0.127                  200                     0.244                   0.075                      0.051                      0.098                     0.775                   NaN                        NaN                      NaN                         NaN                         NaN                        NaN
+3   captum_occlusion        h1     200        0.411                  200                     0.244                  -0.131                     -0.170                     -0.098                     0.210                   NaN                        NaN                      NaN                         NaN                         NaN                        NaN
+4       lime_package  recorded     200        0.146                  200                     0.244                   0.072                      0.052                      0.089                     0.715                 200.0                      0.330                    0.124                       0.109                       0.151                      0.900
+5       lime_package        h1     200        0.287                  200                     0.244                  -0.052                     -0.080                     -0.038                     0.310                 200.0                      0.330                   -0.002                      -0.027                       0.009                      0.485
+6       lime_package        h2     200        0.224                  200                     0.244                   0.013                     -0.021                      0.035                     0.525                 200.0                      0.330                    0.049                       0.031                       0.075                      0.670

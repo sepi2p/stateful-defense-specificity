@@ -207,7 +207,7 @@ def later_experiments() -> list[dict]:
         held = all(v > 0 for v in lows.values()) and all(v > 0 for v in meds.values())
         note = ""
         if directory == "cifar10":  # the package returns one superpixel for most images: its explanations are empty
-            note = "; not evaluable for the \\texttt{lime} package, whose explanations are empty (Table~\\ref{tab:libraries})"
+            note = "; not evaluable for the \\texttt{lime} package, whose explanations are empty (Table~\\ref{tab:expl-all})"
             held = None
         rows.append({"id": "P17d", "corpus": label, "prediction": "Every library client beats spatially smooth random orderings",
                      "outcome": f"medians {fmt(min(meds.values()), 3)}--{fmt(max(meds.values()), 3)}; smallest lower bound {fmt(min(lows.values()), 3)}" + note,
@@ -238,6 +238,111 @@ def later_experiments() -> list[dict]:
                      "prediction": "The \\texttt{lime} package is not informative by rule R2",
                      "outcome": f"median of $d$ {fmt(r.d_median, 3)}, interval {fmt(r.d_lo, 3)} to {fmt(r.d_hi, 3)}",
                      "held": not bool(r.informative)})
+    rows += x16_checks()
+    return rows
+
+
+def x16_checks() -> list[dict]:
+    """P19 (selection under benign-alarm budgets) and P20 (utility on fresh images, two models); X16."""
+    import numpy as np
+
+    rows = []
+    prof_path = A / "operating_profile_r1/imagenet/profile.csv"
+    rel_path = A / "operating_profile_r1/imagenet/released.csv"
+    if not prof_path.exists() or not rel_path.exists():
+        return rows
+    prof = pd.read_csv(prof_path)
+    rel = pd.read_csv(rel_path)
+    label = "ImageNet, fresh"
+
+    def sel(det, profile, alpha):
+        return prof[(prof.detector == det) & (prof.profile == profile) & np.isclose(prof.alpha, alpha)].iloc[0]
+
+    def outcome(r):
+        if r.status.startswith("no feasible"):
+            return "no feasible candidate"
+        return f"selected {r.theta}; R {int(r.timely)}/{int(r.successful)}"
+    a1, a5 = sel("blacklight", "explanation", 0.01), sel("blacklight", "explanation", 0.05)
+
+    def none_in_declared(r):  # the declared grid stopped at T = 49; T = 50 (never alarms) was added after the run
+        return r.status.startswith("no feasible") or (float(r.theta) == 50 and int(r.feasible_candidates) == 1)
+    rows.append({"id": "P19a", "corpus": label, "prediction": "Blacklight: no feasible candidate in the explanation profile at 1\\% and 5\\% (declared grid $T\\le49$)",
+                 "outcome": "none with $T\\le49$ at 1\\% or 5\\%; with $T=50$ added after the run, only $T=50$, which never alarms",
+                 "held": none_in_declared(a1) and none_in_declared(a5)})
+    r = sel("gwad_plus", "explanation", 0.05)
+    ok = not r.status.startswith("no feasible")
+    rows.append({"id": "P19b", "corpus": label, "prediction": "GWAD+, explanation profile, 5\\%: a feasible candidate, held-out $R\\le0.50$",
+                 "outcome": outcome(r), "held": bool(ok and r.R <= 0.50)})
+    for pid, profile, bound in (("P19c", "explanation", 0.10), ("P19d", "diagnostic", 0.05)):
+        r = sel("gwad_plus", profile, 0.01)
+        rows.append({"id": pid, "corpus": label, "prediction": f"GWAD+, {profile} profile, 1\\%: held-out $R\\le{bound:.2f}$ or no feasible candidate",
+                     "outcome": outcome(r), "held": bool(r.status.startswith("no feasible") or r.R <= bound)})
+    g = rel[rel.detector == "gwad_plus"].set_index("workload")
+    occ, att = g.loc["Occlusion (Captum)"], g.loc["attack (timely)"]
+    rows.append({"id": "P19e", "corpus": label, "prediction": "Released GWAD+: alarm in 30--70\\% of Captum occlusion sessions; $R$ between 0.25 and 0.55",
+                 "outcome": f"occlusion {pc(occ.rate, 1)}; R {fmt(att.rate, 3)}",
+                 "held": bool(0.30 <= occ.rate <= 0.70 and 0.25 <= att.rate <= 0.55)})
+    import sys
+    root = str(Path(__file__).resolve().parents[2])
+    if root not in sys.path:
+        sys.path.insert(0, root)
+    from experiments.gate_trajectory_signatures import blacklight_rule
+    lib = [r for r in blacklight_rule.load_sessions(A / "operating_profile_imagenet_20260928/libraries_resnet50") if r["split"] == "confirmation"]
+    frame = pd.DataFrame([{"client": r["objective"], "alarm": r["detectors"]["blacklight"]["first_alarm"] > 0,
+                           "flagged": r["detectors"]["blacklight"]["flagged_fraction"]} for r in lib])
+    per = frame.groupby("client").agg(alarm=("alarm", "mean"), flagged=("flagged", "mean"))
+    b = rel[rel.detector == "blacklight"].set_index("workload")
+    unrel = b.loc["unrelated images"].rate
+    rows.append({"id": "P19f", "corpus": label, "prediction": "Released Blacklight: alarm in $\\ge90\\%$ of the sessions and $\\ge90\\%$ of the queries flagged for each library client; alarm in $\\le1\\%$ of unrelated-image sessions",
+                 "outcome": f"sessions {pc(per.alarm.min(), 1)}--{pc(per.alarm.max(), 1)}; queries {pc(per.flagged.min(), 1)}--{pc(per.flagged.max(), 1)}; unrelated {pc(unrel, 1)}",
+                 "held": bool(per.alarm.min() >= 0.90 and per.flagged.min() >= 0.90 and unrel <= 0.01)})
+    gu = g.loc["unrelated images"].rate
+    rows.append({"id": "P19g", "corpus": label, "prediction": "Released GWAD+: alarm in $\\le1\\%$ of unrelated-image sessions",
+                 "outcome": pc(gu, 1), "held": bool(gu <= 0.01)})
+    # P20: utility on the confirmation images, both models
+    rng = np.random.default_rng(0)
+
+    def gain_ci(values):
+        draws = [np.median(rng.choice(values, len(values))) for _ in range(2000)]
+        return float(np.median(values)), float(np.percentile(draws, 2.5)), float(np.percentile(draws, 97.5))
+    res = {}
+    for model in ("resnet50", "convnext"):
+        d = A / f"operating_profile_imagenet_20260928/validity_{model}"
+        if not (d / "prior_sessions.csv").exists():
+            return rows
+        ps = pd.read_csv(d / "prior_sessions.csv")
+        ps = ps[ps.session_id.str.startswith("confirmation__")]
+        vs = pd.read_csv(d / "sessions.csv")
+        vs = vs[vs.session_id.str.startswith("confirmation__")]
+        res[model] = (ps, vs)
+    names = {"resnet50": "ResNet-50", "convnext": "ConvNeXt-T"}
+    clients = ("lime_package", "captum_kernelshap", "captum_occlusion")
+    held, parts = True, []
+    for model, (ps, vs) in res.items():
+        for c in clients:
+            x = ps[ps.client == c]
+            m, lo, hi = gain_ci((x.area_prior_centre - x.area_recorded).to_numpy())
+            held &= m > 0 and lo > 0
+            parts.append(f"{names[model]} {c.split('_')[-1]} {fmt(m, 3)} [{fmt(lo, 3)}, {fmt(hi, 3)}]")
+    rows.append({"id": "P20a", "corpus": label, "prediction": "All queries answered: every library client better than the centre prior, both models",
+                 "outcome": "; ".join(parts).replace("-", "$-$"), "held": bool(held)})
+    held, parts = True, []
+    for model, (ps, vs) in res.items():
+        x = vs[(vs.client == "captum_occlusion") & (vs.variant == "h1")]
+        share = float((x.distinct_values == 1).mean())
+        held &= share >= 0.95
+        parts.append(f"{names[model]} {pc(share, 1)}")
+    rows.append({"id": "P20b", "corpus": label, "prediction": "Rejected (uniform): Captum occlusion explanation constant in $\\ge95\\%$ of sessions, both models",
+                 "outcome": "; ".join(parts), "held": bool(held)})
+    held, parts = True, []
+    for model, (ps, vs) in res.items():
+        for c, mode in (("lime_package", "h1"), ("lime_package", "h2"), ("captum_kernelshap", "h1"), ("captum_occlusion", "h1")):
+            x = ps[ps.client == c]
+            m, lo, hi = gain_ci((x.area_prior_centre - x[f"area_{mode}"]).to_numpy())
+            held &= lo <= 0
+            parts.append(f"{names[model]} {c.split('_')[-1]}/{mode} {fmt(m, 3)} [{fmt(lo, 3)}, {fmt(hi, 3)}]")
+    rows.append({"id": "P20c", "corpus": label, "prediction": "Rejected: no client has a gain over the centre prior whose interval lies above zero, both models",
+                 "outcome": "; ".join(parts).replace("-", "$-$"), "held": bool(held)})
     return rows
 
 
@@ -272,7 +377,7 @@ def main():
             "control streams). ``Main'' is the CIFAR-10 ResNet-18 NES corpus. P8--P11 were written for each later corpus; P12 applies "
             "them to ImageNet, where restoration is excluded as an invalid workload. Outcomes are those of the corrected analysis "
             "(Blacklight's published rule); where the first analysis gave a different outcome or verdict, it is given in brackets. "
-            "P16, P17 and P18 were run after the correction. The rule of P6c, P13b and P17d does not establish that an explanation is informative; P18 uses the rule that replaced it (Section~\\ref{app:validity}).}\\label{tab:prereg}\\\\\n\\toprule\n" + head + "\n\\endfirsthead\n"
+            "P16 to P20 were run after the correction. The rule of P6c, P13b and P17d does not establish that an explanation is informative; P18 uses the rule that replaced it (Section~\\ref{app:validity}).}\\label{tab:prereg}\\\\\n\\toprule\n" + head + "\n\\endfirsthead\n"
             + "\\multicolumn{5}{l}{\\emph{Table~\\thetable\\ (continued)}}\\\\\n\\toprule\n" + head + "\n\\endhead\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{longtable}\n\\end{footnotesize}\n")
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "prereg.tex").write_text(text)

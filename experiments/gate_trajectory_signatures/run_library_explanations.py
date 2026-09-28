@@ -134,16 +134,21 @@ def main():
     parser.add_argument("--splits", default="evaluation")
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--num-shards", type=int, default=1)
+    parser.add_argument("--imagenet-model", choices=["resnet50", "convnext_tiny"], default="resnet50")
+    parser.add_argument("--no-detectors", action="store_true",
+                        help="record the model's outputs only; the queries do not depend on the answers, so the detector "
+                             "results are those of the run with the same images and seed")
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     blacklight_params, lfc_params, salt_shape = None, None, (32, 32, 3)
     if args.dataset == "imagenet":
-        from torchvision.models import ResNet50_Weights, resnet50
+        from torchvision.models import ConvNeXt_Tiny_Weights, ResNet50_Weights, convnext_tiny, resnet50
 
         from experiments.gate_trajectory_signatures.lfc_detector import LFC_IMAGENET
         from experiments.gate_trajectory_signatures.run_specificity_workloads import BLACKLIGHT_IMAGENET
-        net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
+        net = (convnext_tiny(weights=ConvNeXt_Tiny_Weights.IMAGENET1K_V1) if args.imagenet_model == "convnext_tiny"
+               else resnet50(weights=ResNet50_Weights.IMAGENET1K_V1))
         model = torch.nn.Sequential(transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)), net).to(device).eval()
         dataset = datasets.ImageFolder(args.imagenet_root, transform=transforms.Compose(
             [transforms.Resize(256), transforms.CenterCrop(224), transforms.ToTensor()]))
@@ -186,7 +191,8 @@ def main():
             queries = capture.stream()
             result, arrays = run_stream(model, device, delta_net, salt, queries, label, lfc_seed=args.lfc_seed,
                                         batch=16 if args.dataset == "imagenet" else 64,
-                                        blacklight_params=blacklight_params, lfc_params=lfc_params)
+                                        blacklight_params=blacklight_params, lfc_params=lfc_params,
+                                        observe_detectors=not args.no_detectors)
             auc = deletion_auc(model, device, x, sal, label, rng, fill="mean")
             auc_random = float(np.mean([deletion_auc(model, device, x, smooth_random_saliency(rng, h=sal.shape[0]), label, rng, fill="mean")
                                         for _ in range(10)]))
@@ -207,8 +213,10 @@ def main():
                 handle.flush()
                 os.fsync(handle.fileno())
             d = result["detectors"]
-            print(f"[DONE] {sid} q={result['calls']} bl={d['blacklight']['first_alarm_published_rule']} gwad+={d['gwad_plus']['first_alarm']} "
-                  f"del {auc:.3f}/{auc_random:.3f} t={record['elapsed_seconds']:.1f}s {info}", flush=True)
+            alarms = (f"bl={d['blacklight']['first_alarm_published_rule']} gwad+={d['gwad_plus']['first_alarm']} "
+                      if d else "detectors off ")
+            print(f"[DONE] {sid} q={result['calls']} {alarms}del {auc:.3f}/{auc_random:.3f} t={record['elapsed_seconds']:.1f}s {info}",
+                  flush=True)
 
 
 if __name__ == "__main__":

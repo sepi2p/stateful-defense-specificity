@@ -77,6 +77,8 @@ def load_sessions(root: Path) -> list[dict]:
     """Session records of a corpus with Blacklight's decisions under the published rule."""
     root = Path(root)
     rows = [json.loads(line) for p in sorted(root.glob("sessions_shard*.jsonl")) for line in p.read_text().splitlines() if line.strip()]
+    if rows and all(not r.get("detectors") for r in rows):
+        return rows  # outputs of a second model only, recorded without detectors
     return apply(rows, root)
 
 

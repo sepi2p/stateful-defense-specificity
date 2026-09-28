@@ -75,7 +75,17 @@ def build_stream(control: str, dataset, clean: torch.Tensor, pool: np.ndarray, s
 
 
 def run_stream(model, device, delta_net, salt, stream: torch.Tensor, label: int, batch: int = 64, lfc_seed: int = -1,
-               blacklight_params=None, lfc_params=None):
+               blacklight_params=None, lfc_params=None, observe_detectors: bool = True):
+    """observe_detectors=False records the model's outputs only (the queries of the clients that use it do not
+    depend on the answers, so their detector results are those of a run with another model)."""
+    if not observe_detectors:
+        recorder = Recorder.create(model, label, device, delta_net, observe_detectors=False)
+        for i in range(0, len(stream), batch):
+            recorder.submit_batch(stream[i : i + batch].to(device))
+        arrays = {"logits": np.asarray(recorder.logits, dtype=np.float32),
+                  "predictions": np.asarray(recorder.predictions, dtype=np.int16)}
+        return {"calls": recorder.calls, "first_success": recorder.first_success,
+                "query_sha256": recorder.digest.hexdigest(), "detectors": {}}, arrays
     recorder = Recorder.create(model, label, device, delta_net)
     blacklight = BlacklightTracker(salt, blacklight_params)
     recorder.detectors["blacklight"] = blacklight
@@ -116,29 +126,49 @@ def main():
     parser.add_argument("--seed", type=int, default=20260925)
     parser.add_argument("--max-images", type=int, default=0)
     parser.add_argument("--lfc-seed", type=int, default=-1, help="add the Lee-Fang-Chang Phase-1 observer with this detector seed")
+    parser.add_argument("--dataset", choices=["cifar10", "imagenet"], default="cifar10")
+    parser.add_argument("--imagenet-root", default="/home/sepi/Study/coding/data/imagenet/val")
+    parser.add_argument("--splits", default="", help="comma-separated manifest splits (default: all non-development)")
+    parser.add_argument("--shuffled-per-image", type=int, default=0, help="default: 10 on CIFAR-10, 1 on ImageNet")
     parser.add_argument("--shard", type=int, default=0)
     parser.add_argument("--num-shards", type=int, default=1)
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = load_cifar_model("resnet18_seed0", args.checkpoint, device).eval()
-    dataset = datasets.CIFAR10(args.dataset_root, train=False, download=False, transform=transforms.ToTensor())
+    blacklight_params, lfc_params, batch = None, None, 64
+    if args.dataset == "imagenet":
+        from torchvision.models import ResNet50_Weights, resnet50
+
+        from experiments.gate_trajectory_signatures.lfc_detector import LFC_IMAGENET
+        from experiments.gate_trajectory_signatures.run_specificity_workloads import BLACKLIGHT_IMAGENET
+        net = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
+        model = torch.nn.Sequential(transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225)), net).to(device).eval()
+        dataset = datasets.ImageFolder(args.imagenet_root, transform=transforms.Compose(
+            [transforms.Resize(256), transforms.CenterCrop(224), transforms.ToTensor()]))
+        blacklight_params, lfc_params, batch = BLACKLIGHT_IMAGENET, LFC_IMAGENET, 16
+        per_image = args.shuffled_per_image or 1
+    else:
+        model = load_cifar_model("resnet18_seed0", args.checkpoint, device).eval()
+        dataset = datasets.CIFAR10(args.dataset_root, train=False, download=False, transform=transforms.ToTensor())
+        per_image = args.shuffled_per_image or SHUFFLED_PER_IMAGE
     manifest = pd.read_csv(args.manifest)
     pool = np.array(sorted(set(range(len(dataset))) - set(manifest.dataset_index.astype(int))))
     subset = manifest[manifest.split != "development"]
+    if args.splits:
+        subset = subset[subset.split.isin([s.strip() for s in args.splits.split(",")])]
     if args.max_images > 0:
         subset = subset.head(args.max_images)
     subset = subset.iloc[args.shard :: args.num_shards]
     _, _, delta_net = load_official_components(torch.device("cpu"))
-    salt = blacklight_salt()
+    salt = blacklight_salt((224, 224, 3)) if args.dataset == "imagenet" else blacklight_salt()
     controls = [c.strip() for c in args.controls.split(",") if c.strip()]
     atomic_json(args.output_dir / f"metadata_shard{args.shard}.json", {
         "args": {k: str(v) for k, v in vars(args).items()},
         "gwad_commit": __import__("subprocess").check_output(["git", "-C", str(GWAD_ROOT), "rev-parse", "HEAD"], text=True).strip(),
         "delta_net_sha256": sha256(GWAD_ROOT / "model/delta/delta_ann.pt"),
-        "checkpoint_sha256": sha256(args.checkpoint),
-        "blacklight": BLACKLIGHT,
-        "shuffled_per_image": SHUFFLED_PER_IMAGE,
+        "checkpoint_sha256": sha256(args.checkpoint) if args.dataset == "cifar10" else "torchvision ResNet50_Weights.IMAGENET1K_V1",
+        "blacklight": blacklight_params or BLACKLIGHT,
+        "shuffled_per_image": per_image,
     })
     summary_path = args.output_dir / f"sessions_shard{args.shard}.jsonl"
     completed = set()
@@ -147,7 +177,7 @@ def main():
     for row in subset.itertuples(index=False):
         clean = dataset[int(row.dataset_index)][0]
         for control in controls:
-            for replicate in range(SHUFFLED_PER_IMAGE if control == "shuffled" else 1):
+            for replicate in range(per_image if control == "shuffled" else 1):
                 sid = f"{row.split}__{row.dataset_index}__clean__{control}__r{replicate}"
                 if sid in completed:
                     continue
@@ -155,7 +185,8 @@ def main():
                 started = time.time()
                 stream, first_label = build_stream(control, dataset, clean, pool, seed)
                 label = first_label if first_label is not None else int(row.source_label)
-                result, arrays = run_stream(model, device, delta_net, salt, stream, label, lfc_seed=args.lfc_seed)
+                result, arrays = run_stream(model, device, delta_net, salt, stream, label, batch=batch, lfc_seed=args.lfc_seed,
+                                            blacklight_params=blacklight_params, lfc_params=lfc_params)
                 trace = args.output_dir / "traces" / f"{sid}.npz"
                 trace.parent.mkdir(parents=True, exist_ok=True)
                 np.savez_compressed(trace, **arrays)

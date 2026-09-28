@@ -1,6 +1,6 @@
 \begin{sidewaystable}[p]
 \centering\footnotesize\setlength{\tabcolsep}{3pt}
-\caption{Rule R2 for every explanation client (evaluation images). Clients with a source are library clients, the others our implementations. Queries: every query answered, or the queries flagged by Blacklight rejected, with the uniform distribution in the place of a rejected answer or, for the \texttt{lime} package, with the rejected samples dropped from the fit. Regions: median number of distinct attribution values. Answered: median number of answered queries. $d$: median gain in deletion area over 20 randomizations of the explanation that keep its spatial structure, with its bootstrap 95\% interval. $d>0$: share of the images. Rank correlation and overlap of the most important fifth (0.2 by chance) are relative to the explanation without rejection; dashes where an explanation is constant over the image.}
+\caption{Rule R2 for every explanation client (evaluation images; 224*: the 200 fresh calibration and confirmation images of X16 with ResNet-50; 224\textsuperscript{c}: the 100 fresh confirmation images with ConvNeXt-T). Clients with a source are library clients, the others our implementations. Queries: every query answered, or the queries flagged by Blacklight rejected, with the uniform distribution in the place of a rejected answer or, for the \texttt{lime} package, with the rejected samples dropped from the fit. Regions: median number of distinct attribution values. Answered: median number of answered queries. $d$: median gain in deletion area over 20 randomizations of the explanation that keep its spatial structure, with its bootstrap 95\% interval. $d>0$: share of the images. Rank correlation and overlap of the most important fifth (0.2 by chance) are relative to the explanation without rejection; dashes where an explanation is constant over the image.}
 \label{tab:validity}
 \vspace{3pt}
 \begin{adjustbox}{max width=\textheight}
@@ -14,6 +14,20 @@ Pixels & Client & Queries & Images & Regions & Answered & $d$ & $d>0$ (\%) & Ran
 224 & KernelSHAP (Captum) & every query answered & 100 & 48 & -- & 0.197 {[}0.175, 0.232{]} & 98 & -- & -- \\
  &  & rejected, uniform & 100 & 48 & 15 & 0.019 {[}0.001, 0.038{]} & 60 & 0.18 {[}0.09, 0.25{]} & 0.29 {[}0.23, 0.32{]} \\
 224 & Occlusion (Captum) & every query answered & 100 & 3{,}022 & -- & 0.134 {[}0.107, 0.160{]} & 92 & -- & -- \\
+ &  & rejected, uniform & 100 & 1 & 1 & 0.000 {[}0.000, 0.000{]} & -- & -- & -- \\[2pt]
+224* & LIME (\texttt{lime} package) & every query answered & 200 & 37 & -- & 0.218 {[}0.196, 0.233{]} & 100 & -- & -- \\
+ &  & rejected, uniform & 200 & 37 & 14 & 0.058 {[}0.037, 0.072{]} & 77 & 0.17 {[}0.13, 0.21{]} & 0.31 {[}0.29, 0.36{]} \\
+ &  & rejected, dropped & 200 & 36 & 14 & 0.122 {[}0.101, 0.156{]} & 92 & 0.40 {[}0.36, 0.43{]} & 0.49 {[}0.44, 0.53{]} \\
+224* & KernelSHAP (Captum) & every query answered & 200 & 49 & -- & 0.199 {[}0.174, 0.213{]} & 100 & -- & -- \\
+ &  & rejected, uniform & 200 & 49 & 15 & 0.012 {[}$-$0.002, 0.023{]} & 57 & 0.18 {[}0.12, 0.27{]} & 0.27 {[}0.24, 0.30{]} \\
+224* & Occlusion (Captum) & every query answered & 200 & 3{,}020 & -- & 0.122 {[}0.103, 0.142{]} & 87 & -- & -- \\
+ &  & rejected, uniform & 200 & 1 & 1 & 0.000 {[}0.000, 0.000{]} & -- & -- & -- \\[2pt]
+224\textsuperscript{c} & LIME (\texttt{lime} package) & every query answered & 100 & 37 & -- & 0.157 {[}0.133, 0.187{]} & 99 & -- & -- \\
+ &  & rejected, uniform & 100 & 37 & 14 & 0.034 {[}0.024, 0.059{]} & 75 & 0.06 {[}0.01, 0.13{]} & 0.24 {[}0.19, 0.27{]} \\
+ &  & rejected, dropped & 100 & 36 & 14 & 0.099 {[}0.071, 0.126{]} & 93 & 0.42 {[}0.40, 0.44{]} & 0.47 {[}0.43, 0.50{]} \\
+224\textsuperscript{c} & KernelSHAP (Captum) & every query answered & 100 & 48 & -- & 0.211 {[}0.186, 0.248{]} & 100 & -- & -- \\
+ &  & rejected, uniform & 100 & 48 & 14 & 0.005 {[}$-$0.008, 0.019{]} & 52 & -0.09 {[}-0.22, -0.01{]} & 0.14 {[}0.11, 0.18{]} \\
+224\textsuperscript{c} & Occlusion (Captum) & every query answered & 100 & 3{,}019 & -- & 0.102 {[}0.082, 0.119{]} & 94 & -- & -- \\
  &  & rejected, uniform & 100 & 1 & 1 & 0.000 {[}0.000, 0.000{]} & -- & -- & -- \\[2pt]
 224 & LIME & every query answered & 200 & 33 & -- & 0.222 {[}0.206, 0.243{]} & 98 & -- & -- \\
 224 & KernelSHAP & every query answered & 200 & 64 & -- & 0.059 {[}0.042, 0.069{]} & 72 & -- & -- \\
