@@ -1,0 +1,409 @@
+Traceback (most recent call last):
+  File "/home/sepi/projects/MCG-Blackbox/experiments/gate_trajectory_signatures/run_specificity_workloads.py", line 439, in <module>
+    main()
+  File "/home/sepi/projects/MCG-Blackbox/experiments/gate_trajectory_signatures/run_specificity_workloads.py", line 416, in main
+    result, arrays = run_session(model, clean, start, label, workload, objective, lam, seed,
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/projects/MCG-Blackbox/experiments/gate_trajectory_signatures/run_specificity_workloads.py", line 260, in run_session
+    proposal_logits = recorder.submit_batch(proposals)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/projects/MCG-Blackbox/experiments/gate_trajectory_signatures/run_stateful_specificity_sessions.py", line 265, in submit_batch
+    output = self.model(images)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 285, in forward
+    return self._forward_impl(x)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torchvision/models/resnet.py", line 269, in _forward_impl
+    x = self.bn1(x)
+        ^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/modules/batchnorm.py", line 193, in forward
+    return F.batch_norm(
+           ^^^^^^^^^^^^^
+  File "/home/sepi/jupyterenv/lib/python3.12/site-packages/torch/nn/functional.py", line 2812, in batch_norm
+    return torch.batch_norm(
+           ^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 50.00 MiB. GPU 0 has a total capacity of 7.65 GiB of which 26.25 MiB is free. Process 3270008 has 538.00 MiB memory in use. Process 3270000 has 536.00 MiB memory in use. Process 3270010 has 538.00 MiB memory in use. Process 3270004 has 536.00 MiB memory in use. Process 3270012 has 536.00 MiB memory in use. Process 3270014 has 536.00 MiB memory in use. Process 3270016 has 536.00 MiB memory in use. Process 3270006 has 536.00 MiB memory in use. Process 3270002 has 536.00 MiB memory in use. Process 3278687 has 482.00 MiB memory in use. Including non-PyTorch memory, this process has 378.00 MiB memory in use. Process 3278690 has 164.00 MiB memory in use. Process 3278694 has 282.00 MiB memory in use. Process 3278696 has 250.00 MiB memory in use. Process 3278692 has 230.00 MiB memory in use. Process 3278688 has 250.00 MiB memory in use. Process 3278691 has 250.00 MiB memory in use. Process 3278689 has 250.00 MiB memory in use. Process 3278693 has 250.00 MiB memory in use. Of the allocated memory 180.68 MiB is allocated by PyTorch, and 29.32 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+[DONE] evaluation__1980__denoise__attack__nes__l0.5 calls=1021 margin 4.73->-9.75 t=94.0s
+[DONE] evaluation__1980__denoise__restore__nes__l0.5 calls=1021 margin 4.73->4.73 t=95.3s
+[DONE] evaluation__1980__denoise__random_walk__random_walk__l0.5 calls=1024 margin 4.73->4.04 t=94.8s
+[DONE] evaluation__1980__denoise__confidence_boost__nes__l0.5 calls=1021 margin 4.73->10.12 t=90.5s
+[DONE] evaluation__1980__denoise__boundary_probe__nes__l0.5 calls=1021 margin 4.73->0.01 t=90.9s
+[DONE] evaluation__1980__denoise__counterfactual__nes__l0.5 calls=1021 margin 4.73->-1.29 t=91.2s
+[DONE] evaluation__1980__deblur__attack__nes__l1 calls=1021 margin 4.03->-9.74 t=91.9s
+[DONE] evaluation__1980__deblur__restore__nes__l1 calls=1021 margin 4.03->4.03 t=91.1s
+[DONE] evaluation__1980__deblur__random_walk__random_walk__l1 calls=1024 margin 4.03->3.40 t=94.7s
+[DONE] evaluation__1980__deblur__confidence_boost__nes__l1 calls=1021 margin 4.03->10.01 t=90.5s
+[DONE] evaluation__1980__deblur__boundary_probe__nes__l1 calls=1021 margin 4.03->0.01 t=89.9s
+[DONE] evaluation__1980__deblur__counterfactual__nes__l1 calls=1021 margin 4.03->-2.57 t=90.3s
+[DONE] evaluation__4088__denoise__attack__nes__l0.5 calls=1021 margin 6.55->0.34 t=90.4s
+[DONE] evaluation__4088__denoise__restore__nes__l0.5 calls=1021 margin 6.55->6.55 t=89.8s
+[DONE] evaluation__4088__denoise__random_walk__random_walk__l0.5 calls=1024 margin 6.55->5.99 t=93.7s
+[DONE] evaluation__4088__denoise__confidence_boost__nes__l0.5 calls=1021 margin 6.55->11.37 t=90.2s
+[DONE] evaluation__4088__denoise__boundary_probe__nes__l0.5 calls=1021 margin 6.55->1.18 t=90.5s
+[DONE] evaluation__4088__denoise__counterfactual__nes__l0.5 calls=1021 margin 6.55->1.78 t=90.3s
+[DONE] evaluation__4088__deblur__attack__nes__l1 calls=1021 margin 8.16->1.51 t=89.9s
+[DONE] evaluation__4088__deblur__restore__nes__l1 calls=1021 margin 8.16->8.16 t=89.7s
+[DONE] evaluation__4088__deblur__random_walk__random_walk__l1 calls=1024 margin 8.16->8.39 t=96.1s
+[DONE] evaluation__4088__deblur__confidence_boost__nes__l1 calls=1021 margin 8.16->8.16 t=88.8s
+[DONE] evaluation__4088__deblur__boundary_probe__nes__l1 calls=1021 margin 8.16->2.55 t=89.0s
+[DONE] evaluation__4088__deblur__counterfactual__nes__l1 calls=1021 margin 8.16->2.65 t=89.5s
+[DONE] evaluation__5979__denoise__attack__nes__l0.5 calls=1021 margin 1.85->-6.91 t=89.1s
+[DONE] evaluation__5979__denoise__restore__nes__l0.5 calls=1021 margin 1.85->1.85 t=89.3s
+[DONE] evaluation__5979__denoise__random_walk__random_walk__l0.5 calls=1024 margin 1.85->1.92 t=92.3s
+[DONE] evaluation__5979__denoise__confidence_boost__nes__l0.5 calls=1021 margin 1.85->6.07 t=90.1s
+[DONE] evaluation__5979__denoise__boundary_probe__nes__l0.5 calls=1021 margin 1.85->0.03 t=89.2s
+[DONE] evaluation__5979__denoise__counterfactual__nes__l0.5 calls=1021 margin 1.85->-4.47 t=89.8s
+[DONE] evaluation__5979__deblur__attack__nes__l1 calls=1021 margin 1.38->-5.35 t=89.0s
+[DONE] evaluation__5979__deblur__restore__nes__l1 calls=1021 margin 1.38->1.38 t=88.4s
+[DONE] evaluation__5979__deblur__random_walk__random_walk__l1 calls=1024 margin 1.38->1.70 t=92.5s
+[DONE] evaluation__5979__deblur__confidence_boost__nes__l1 calls=1021 margin 1.38->5.12 t=89.6s
+[DONE] evaluation__5979__deblur__boundary_probe__nes__l1 calls=1021 margin 1.38->0.01 t=89.2s
+[DONE] evaluation__5979__deblur__counterfactual__nes__l1 calls=1021 margin 1.38->-1.82 t=88.6s
+[DONE] evaluation__7593__denoise__attack__nes__l0.5 calls=1021 margin 0.57->-10.38 t=89.5s
+[DONE] evaluation__7593__denoise__restore__nes__l0.5 calls=1021 margin 0.57->0.57 t=89.2s
+[DONE] evaluation__7593__denoise__random_walk__random_walk__l0.5 calls=1024 margin 0.57->0.66 t=92.1s
+[DONE] evaluation__7593__denoise__confidence_boost__nes__l0.5 calls=1021 margin 0.57->6.50 t=89.6s
+[DONE] evaluation__7593__denoise__boundary_probe__nes__l0.5 calls=1021 margin 0.57->0.00 t=89.5s
+[DONE] evaluation__7593__denoise__counterfactual__nes__l0.5 calls=1021 margin 0.57->-5.62 t=89.2s
+[DONE] evaluation__7593__deblur__attack__nes__l1 calls=1021 margin 3.74->-4.51 t=89.1s
+[DONE] evaluation__7593__deblur__restore__nes__l1 calls=1021 margin 3.74->3.74 t=88.7s
+[DONE] evaluation__7593__deblur__random_walk__random_walk__l1 calls=1024 margin 3.74->1.13 t=92.9s
+[DONE] evaluation__7593__deblur__confidence_boost__nes__l1 calls=1021 margin 3.74->10.36 t=89.4s
+[DONE] evaluation__7593__deblur__boundary_probe__nes__l1 calls=1021 margin 3.74->0.00 t=88.5s
+[DONE] evaluation__7593__deblur__counterfactual__nes__l1 calls=1021 margin 3.74->-0.33 t=88.7s
+[DONE] evaluation__10591__denoise__attack__nes__l0.5 calls=1021 margin 3.83->-4.76 t=90.0s
+[DONE] evaluation__10591__denoise__restore__nes__l0.5 calls=1021 margin 3.83->3.83 t=88.9s
+[DONE] evaluation__10591__denoise__random_walk__random_walk__l0.5 calls=1024 margin 3.83->4.29 t=92.9s
+[DONE] evaluation__10591__denoise__confidence_boost__nes__l0.5 calls=1021 margin 3.83->10.39 t=89.3s
+[DONE] evaluation__10591__denoise__boundary_probe__nes__l0.5 calls=1021 margin 3.83->0.01 t=89.6s
+[DONE] evaluation__10591__denoise__counterfactual__nes__l0.5 calls=1021 margin 3.83->-4.71 t=89.8s
+[DONE] evaluation__10591__deblur__attack__nes__l1 calls=1021 margin 5.58->-4.58 t=89.4s
+[DONE] evaluation__10591__deblur__restore__nes__l1 calls=1021 margin 5.58->5.58 t=89.2s
+[DONE] evaluation__10591__deblur__random_walk__random_walk__l1 calls=1024 margin 5.58->3.47 t=93.0s
+[DONE] evaluation__10591__deblur__confidence_boost__nes__l1 calls=1021 margin 5.58->12.24 t=88.2s
+[DONE] evaluation__10591__deblur__boundary_probe__nes__l1 calls=1021 margin 5.58->0.02 t=88.4s
+[DONE] evaluation__10591__deblur__counterfactual__nes__l1 calls=1021 margin 5.58->-4.96 t=88.9s
+[DONE] evaluation__12430__denoise__attack__nes__l0.5 calls=1021 margin 0.26->-4.28 t=88.7s
+[DONE] evaluation__12430__denoise__restore__nes__l0.5 calls=1021 margin 0.26->0.26 t=88.9s
+[DONE] evaluation__12430__denoise__random_walk__random_walk__l0.5 calls=1024 margin 0.26->0.48 t=92.2s
+[DONE] evaluation__12430__denoise__confidence_boost__nes__l0.5 calls=1021 margin 0.26->1.69 t=88.8s
+[DONE] evaluation__12430__denoise__boundary_probe__nes__l0.5 calls=1021 margin 0.26->0.00 t=88.6s
+[DONE] evaluation__12430__denoise__counterfactual__nes__l0.5 calls=1021 margin 0.26->-1.42 t=88.9s
+[DONE] evaluation__12430__deblur__attack__nes__l1 calls=1021 margin 0.17->-1.61 t=88.5s
+[DONE] evaluation__12430__deblur__restore__nes__l1 calls=1021 margin 0.17->0.17 t=88.3s
+[DONE] evaluation__12430__deblur__random_walk__random_walk__l1 calls=1024 margin 0.17->-0.10 t=96.9s
+[DONE] evaluation__12430__deblur__confidence_boost__nes__l1 calls=1021 margin 0.17->1.22 t=91.5s
+[DONE] evaluation__12430__deblur__boundary_probe__nes__l1 calls=1021 margin 0.17->0.00 t=89.2s
+[DONE] evaluation__12430__deblur__counterfactual__nes__l1 calls=1021 margin 0.17->-1.69 t=93.1s
+[DONE] evaluation__13648__denoise__attack__nes__l0.5 calls=1021 margin 4.31->-4.08 t=89.1s
+[DONE] evaluation__13648__denoise__restore__nes__l0.5 calls=1021 margin 4.31->4.31 t=88.0s
+[DONE] evaluation__13648__denoise__random_walk__random_walk__l0.5 calls=1024 margin 4.31->4.40 t=92.1s
+[DONE] evaluation__13648__denoise__confidence_boost__nes__l0.5 calls=1021 margin 4.31->9.54 t=89.4s
+[DONE] evaluation__13648__denoise__boundary_probe__nes__l0.5 calls=1021 margin 4.31->0.00 t=88.5s
+[DONE] evaluation__13648__denoise__counterfactual__nes__l0.5 calls=1021 margin 4.31->-4.36 t=88.7s
+[DONE] evaluation__13648__deblur__attack__nes__l1 calls=1021 margin 1.90->-3.30 t=88.8s
+[DONE] evaluation__13648__deblur__restore__nes__l1 calls=1021 margin 1.90->1.90 t=89.0s
+[DONE] evaluation__13648__deblur__random_walk__random_walk__l1 calls=1024 margin 1.90->3.12 t=92.0s
+[DONE] evaluation__13648__deblur__confidence_boost__nes__l1 calls=1021 margin 1.90->7.21 t=88.6s
+[DONE] evaluation__13648__deblur__boundary_probe__nes__l1 calls=1021 margin 1.90->0.01 t=88.7s
+[DONE] evaluation__13648__deblur__counterfactual__nes__l1 calls=1021 margin 1.90->-2.97 t=88.7s
+[DONE] evaluation__16042__denoise__attack__nes__l0.5 calls=1021 margin 0.68->-3.31 t=89.4s
+[DONE] evaluation__16042__denoise__restore__nes__l0.5 calls=1021 margin 0.68->0.68 t=88.3s
+[DONE] evaluation__16042__denoise__random_walk__random_walk__l0.5 calls=1024 margin 0.68->0.75 t=92.2s
+[DONE] evaluation__16042__denoise__confidence_boost__nes__l0.5 calls=1021 margin 0.68->4.21 t=88.7s
+[DONE] evaluation__16042__denoise__boundary_probe__nes__l0.5 calls=1021 margin 0.68->0.00 t=88.3s
+[DONE] evaluation__16042__denoise__counterfactual__nes__l0.5 calls=1021 margin 0.68->-3.10 t=88.7s
+[DONE] evaluation__16042__deblur__attack__nes__l1 calls=1021 margin 2.55->-0.94 t=88.4s
+[DONE] evaluation__16042__deblur__restore__nes__l1 calls=1021 margin 2.55->2.55 t=88.1s
+[DONE] evaluation__16042__deblur__random_walk__random_walk__l1 calls=1024 margin 2.55->2.15 t=92.0s
+[DONE] evaluation__16042__deblur__confidence_boost__nes__l1 calls=1021 margin 2.55->5.01 t=88.7s
+[DONE] evaluation__16042__deblur__boundary_probe__nes__l1 calls=1021 margin 2.55->0.01 t=88.7s
+[DONE] evaluation__16042__deblur__counterfactual__nes__l1 calls=1021 margin 2.55->-0.70 t=88.7s
+[DONE] evaluation__20046__denoise__attack__nes__l0.5 calls=1021 margin 0.02->-3.11 t=88.5s
+[DONE] evaluation__20046__denoise__restore__nes__l0.5 calls=1021 margin 0.02->0.02 t=88.2s
+[DONE] evaluation__20046__denoise__random_walk__random_walk__l0.5 calls=1024 margin 0.02->-0.01 t=92.3s
+[DONE] evaluation__20046__denoise__confidence_boost__nes__l0.5 calls=1021 margin 0.02->3.25 t=89.0s
+[DONE] evaluation__20046__denoise__boundary_probe__nes__l0.5 calls=1021 margin 0.02->0.02 t=88.7s
+[DONE] evaluation__20046__denoise__counterfactual__nes__l0.5 calls=1021 margin 0.02->-3.25 t=88.8s
+[DONE] evaluation__20046__deblur__attack__nes__l1 calls=1021 margin 1.27->-5.16 t=88.8s
+[DONE] evaluation__20046__deblur__restore__nes__l1 calls=1021 margin 1.27->1.27 t=88.1s
+[DONE] evaluation__20046__deblur__random_walk__random_walk__l1 calls=1024 margin 1.27->1.11 t=91.8s
+[DONE] evaluation__20046__deblur__confidence_boost__nes__l1 calls=1021 margin 1.27->3.66 t=88.4s
+[DONE] evaluation__20046__deblur__boundary_probe__nes__l1 calls=1021 margin 1.27->0.00 t=88.6s
+[DONE] evaluation__20046__deblur__counterfactual__nes__l1 calls=1021 margin 1.27->-1.74 t=89.1s
+[DONE] evaluation__23449__denoise__attack__nes__l0.5 calls=1021 margin 5.12->-1.26 t=89.0s
+[DONE] evaluation__23449__denoise__restore__nes__l0.5 calls=1021 margin 5.12->5.12 t=88.6s
+[DONE] evaluation__23449__denoise__random_walk__random_walk__l0.5 calls=1024 margin 5.12->4.62 t=92.7s
+[DONE] evaluation__23449__denoise__confidence_boost__nes__l0.5 calls=1021 margin 5.12->9.86 t=88.7s
+[DONE] evaluation__23449__denoise__boundary_probe__nes__l0.5 calls=1021 margin 5.12->0.01 t=88.8s
+[DONE] evaluation__23449__denoise__counterfactual__nes__l0.5 calls=1021 margin 5.12->-1.68 t=88.3s
+[DONE] evaluation__23449__deblur__attack__nes__l1 calls=1021 margin 4.92->-0.25 t=88.4s
+[DONE] evaluation__23449__deblur__restore__nes__l1 calls=1021 margin 4.92->4.92 t=88.8s
+[DONE] evaluation__23449__deblur__random_walk__random_walk__l1 calls=1024 margin 4.92->5.68 t=92.5s
+[DONE] evaluation__23449__deblur__confidence_boost__nes__l1 calls=1021 margin 4.92->8.32 t=89.9s
+[DONE] evaluation__23449__deblur__boundary_probe__nes__l1 calls=1021 margin 4.92->0.00 t=88.4s
+[DONE] evaluation__23449__deblur__counterfactual__nes__l1 calls=1021 margin 4.92->-0.90 t=88.3s
+[DONE] evaluation__25717__denoise__attack__nes__l0.5 calls=1021 margin 16.61->10.12 t=88.2s
+[DONE] evaluation__25717__denoise__restore__nes__l0.5 calls=1021 margin 16.61->16.45 t=88.1s
+[DONE] evaluation__25717__denoise__random_walk__random_walk__l0.5 calls=1024 margin 16.61->16.31 t=90.8s
+[DONE] evaluation__25717__denoise__confidence_boost__nes__l0.5 calls=1021 margin 16.61->17.04 t=87.8s
+[DONE] evaluation__25717__denoise__boundary_probe__nes__l0.5 calls=1021 margin 16.61->9.16 t=88.5s
+[DONE] evaluation__25717__denoise__counterfactual__nes__l0.5 calls=1021 margin 16.61->8.10 t=88.0s
+[DONE] evaluation__25717__deblur__attack__nes__l1 calls=1021 margin 15.96->6.56 t=87.8s
+[DONE] evaluation__25717__deblur__restore__nes__l1 calls=1021 margin 15.96->15.96 t=87.4s
+[DONE] evaluation__25717__deblur__random_walk__random_walk__l1 calls=1024 margin 15.96->15.40 t=91.4s
+[DONE] evaluation__25717__deblur__confidence_boost__nes__l1 calls=1021 margin 15.96->17.42 t=87.7s
+[DONE] evaluation__25717__deblur__boundary_probe__nes__l1 calls=1021 margin 15.96->7.57 t=88.2s
+[DONE] evaluation__25717__deblur__counterfactual__nes__l1 calls=1021 margin 15.96->8.87 t=87.5s
+[DONE] evaluation__27188__denoise__attack__nes__l0.5 calls=1021 margin 1.85->-0.74 t=88.4s
+[DONE] evaluation__27188__denoise__restore__nes__l0.5 calls=1021 margin 1.85->1.85 t=87.7s
+[DONE] evaluation__27188__denoise__random_walk__random_walk__l0.5 calls=1024 margin 1.85->1.78 t=91.0s
+[DONE] evaluation__27188__denoise__confidence_boost__nes__l0.5 calls=1021 margin 1.85->3.17 t=88.3s
+[DONE] evaluation__27188__denoise__boundary_probe__nes__l0.5 calls=1021 margin 1.85->0.01 t=88.1s
+[DONE] evaluation__27188__denoise__counterfactual__nes__l0.5 calls=1021 margin 1.85->-0.74 t=87.8s
+[DONE] evaluation__27188__deblur__attack__nes__l1 calls=1021 margin 1.16->-3.61 t=87.9s
+[DONE] evaluation__27188__deblur__restore__nes__l1 calls=1021 margin 1.16->1.16 t=88.2s
+[DONE] evaluation__27188__deblur__random_walk__random_walk__l1 calls=1024 margin 1.16->1.52 t=90.6s
+[DONE] evaluation__27188__deblur__confidence_boost__nes__l1 calls=1021 margin 1.16->1.16 t=87.6s
+[DONE] evaluation__27188__deblur__boundary_probe__nes__l1 calls=1021 margin 1.16->0.01 t=88.0s
+[DONE] evaluation__27188__deblur__counterfactual__nes__l1 calls=1021 margin 1.16->-2.15 t=88.1s
+[DONE] evaluation__29377__denoise__attack__nes__l0.5 calls=1021 margin 1.16->-6.67 t=88.1s
+[DONE] evaluation__29377__denoise__restore__nes__l0.5 calls=1021 margin 1.16->1.16 t=87.6s
+[DONE] evaluation__29377__denoise__random_walk__random_walk__l0.5 calls=1024 margin 1.16->1.30 t=91.5s
+[DONE] evaluation__29377__denoise__confidence_boost__nes__l0.5 calls=1021 margin 1.16->7.67 t=88.6s
+[DONE] evaluation__29377__denoise__boundary_probe__nes__l0.5 calls=1021 margin 1.16->0.06 t=87.9s
+[DONE] evaluation__29377__denoise__counterfactual__nes__l0.5 calls=1021 margin 1.16->-3.52 t=87.9s
+[DONE] evaluation__29377__deblur__attack__nes__l1 calls=1021 margin 0.03->-5.29 t=88.1s
+[DONE] evaluation__29377__deblur__restore__nes__l1 calls=1021 margin 0.03->0.03 t=87.4s
+[DONE] evaluation__29377__deblur__random_walk__random_walk__l1 calls=1024 margin 0.03->0.23 t=90.8s
+[DONE] evaluation__29377__deblur__confidence_boost__nes__l1 calls=1021 margin 0.03->4.80 t=87.6s
+[DONE] evaluation__29377__deblur__boundary_probe__nes__l1 calls=1021 margin 0.03->0.03 t=87.7s
+[DONE] evaluation__29377__deblur__counterfactual__nes__l1 calls=1021 margin 0.03->-4.67 t=87.5s
+[DONE] evaluation__31289__denoise__attack__nes__l0.5 calls=1021 margin 5.70->-3.43 t=88.4s
+[DONE] evaluation__31289__denoise__restore__nes__l0.5 calls=1021 margin 5.70->5.70 t=87.9s
+[DONE] evaluation__31289__denoise__random_walk__random_walk__l0.5 calls=1024 margin 5.70->5.57 t=91.8s
+[DONE] evaluation__31289__denoise__confidence_boost__nes__l0.5 calls=1021 margin 5.70->12.98 t=88.6s
+[DONE] evaluation__31289__denoise__boundary_probe__nes__l0.5 calls=1021 margin 5.70->0.00 t=88.6s
+[DONE] evaluation__31289__denoise__counterfactual__nes__l0.5 calls=1021 margin 5.70->-1.08 t=88.5s
+[DONE] evaluation__31289__deblur__attack__nes__l1 calls=1021 margin 4.14->-2.53 t=88.1s
+[DONE] evaluation__31289__deblur__restore__nes__l1 calls=1021 margin 4.14->4.14 t=88.4s
+[DONE] evaluation__31289__deblur__random_walk__random_walk__l1 calls=1024 margin 4.14->1.85 t=91.5s
+[DONE] evaluation__31289__deblur__confidence_boost__nes__l1 calls=1021 margin 4.14->13.46 t=88.1s
+[DONE] evaluation__31289__deblur__boundary_probe__nes__l1 calls=1021 margin 4.14->0.02 t=88.0s
+[DONE] evaluation__31289__deblur__counterfactual__nes__l1 calls=1021 margin 4.14->-2.14 t=88.2s
+[DONE] evaluation__34445__denoise__attack__nes__l0.5 calls=1021 margin 6.69->-2.85 t=88.4s
+[DONE] evaluation__34445__denoise__restore__nes__l0.5 calls=1021 margin 6.69->6.69 t=88.0s
+[DONE] evaluation__34445__denoise__random_walk__random_walk__l0.5 calls=1024 margin 6.69->7.52 t=91.8s
+[DONE] evaluation__34445__denoise__confidence_boost__nes__l0.5 calls=1021 margin 6.69->12.91 t=88.8s
+[DONE] evaluation__34445__denoise__boundary_probe__nes__l0.5 calls=1021 margin 6.69->0.01 t=88.4s
+[DONE] evaluation__34445__denoise__counterfactual__nes__l0.5 calls=1021 margin 6.69->-2.56 t=88.5s
+[DONE] evaluation__34445__deblur__attack__nes__l1 calls=1021 margin 11.53->0.07 t=88.0s
+[DONE] evaluation__34445__deblur__restore__nes__l1 calls=1021 margin 11.53->11.53 t=88.2s
+[DONE] evaluation__34445__deblur__random_walk__random_walk__l1 calls=1024 margin 11.53->10.29 t=91.8s
+[DONE] evaluation__34445__deblur__confidence_boost__nes__l1 calls=1021 margin 11.53->14.32 t=87.7s
+[DONE] evaluation__34445__deblur__boundary_probe__nes__l1 calls=1021 margin 11.53->0.07 t=88.1s
+[DONE] evaluation__34445__deblur__counterfactual__nes__l1 calls=1021 margin 11.53->0.47 t=88.1s
+[DONE] evaluation__38429__denoise__attack__nes__l0.5 calls=1021 margin 4.28->-5.75 t=88.4s
+[DONE] evaluation__38429__denoise__restore__nes__l0.5 calls=1021 margin 4.28->4.28 t=88.0s
+[DONE] evaluation__38429__denoise__random_walk__random_walk__l0.5 calls=1024 margin 4.28->4.11 t=96.4s
+[DONE] evaluation__38429__denoise__confidence_boost__nes__l0.5 calls=1021 margin 4.28->10.46 t=88.7s
+[DONE] evaluation__38429__denoise__boundary_probe__nes__l0.5 calls=1021 margin 4.28->0.00 t=88.6s
+[DONE] evaluation__38429__denoise__counterfactual__nes__l0.5 calls=1021 margin 4.28->-2.97 t=87.8s
+[DONE] evaluation__38429__deblur__attack__nes__l1 calls=1021 margin 8.34->4.48 t=87.1s
+[DONE] evaluation__38429__deblur__restore__nes__l1 calls=1021 margin 8.34->8.34 t=90.9s
+[DONE] evaluation__38429__deblur__random_walk__random_walk__l1 calls=1024 margin 8.34->7.22 t=90.8s
+[DONE] evaluation__38429__deblur__confidence_boost__nes__l1 calls=1021 margin 8.34->13.87 t=88.0s
+[DONE] evaluation__38429__deblur__boundary_probe__nes__l1 calls=1021 margin 8.34->3.97 t=88.1s
+[DONE] evaluation__38429__deblur__counterfactual__nes__l1 calls=1021 margin 8.34->3.84 t=87.7s
+[DONE] evaluation__42220__denoise__attack__nes__l0.5 calls=1021 margin 7.92->-4.73 t=87.7s
+[DONE] evaluation__42220__denoise__restore__nes__l0.5 calls=1021 margin 7.92->7.92 t=88.1s
+[DONE] evaluation__42220__denoise__random_walk__random_walk__l0.5 calls=1024 margin 7.92->7.80 t=91.4s
+[DONE] evaluation__42220__denoise__confidence_boost__nes__l0.5 calls=1021 margin 7.92->15.45 t=88.3s
+[DONE] evaluation__42220__denoise__boundary_probe__nes__l0.5 calls=1021 margin 7.92->0.00 t=87.7s
+[DONE] evaluation__42220__denoise__counterfactual__nes__l0.5 calls=1021 margin 7.92->-5.45 t=87.9s
+[DONE] evaluation__42220__deblur__attack__nes__l1 calls=1021 margin 4.02->3.58 t=87.5s
+[DONE] evaluation__42220__deblur__restore__nes__l1 calls=1021 margin 4.02->4.02 t=87.6s
+[DONE] evaluation__42220__deblur__random_walk__random_walk__l1 calls=1024 margin 4.02->7.09 t=91.0s
+[DONE] evaluation__42220__deblur__confidence_boost__nes__l1 calls=1021 margin 4.02->16.32 t=87.7s
+[DONE] evaluation__42220__deblur__boundary_probe__nes__l1 calls=1021 margin 4.02->4.02 t=87.7s
+[DONE] evaluation__42220__deblur__counterfactual__nes__l1 calls=1021 margin 4.02->4.02 t=87.3s
+[DONE] evaluation__43112__denoise__attack__nes__l0.5 calls=1021 margin 8.86->-3.13 t=87.4s
+[DONE] evaluation__43112__denoise__restore__nes__l0.5 calls=1021 margin 8.86->9.18 t=86.8s
+[DONE] evaluation__43112__denoise__random_walk__random_walk__l0.5 calls=1024 margin 8.86->10.49 t=90.9s
+[DONE] evaluation__43112__denoise__confidence_boost__nes__l0.5 calls=1021 margin 8.86->16.72 t=87.8s
+[DONE] evaluation__43112__denoise__boundary_probe__nes__l0.5 calls=1021 margin 8.86->0.02 t=87.8s
+[DONE] evaluation__43112__denoise__counterfactual__nes__l0.5 calls=1021 margin 8.86->-3.21 t=87.1s
+[DONE] evaluation__43112__deblur__attack__nes__l1 calls=1021 margin 9.66->-0.30 t=87.2s
+[DONE] evaluation__43112__deblur__restore__nes__l1 calls=1021 margin 9.66->9.66 t=87.1s
+[DONE] evaluation__43112__deblur__random_walk__random_walk__l1 calls=1024 margin 9.66->7.59 t=90.9s
+[DONE] evaluation__43112__deblur__confidence_boost__nes__l1 calls=1021 margin 9.66->15.70 t=87.6s
+[DONE] evaluation__43112__deblur__boundary_probe__nes__l1 calls=1021 margin 9.66->0.10 t=88.0s
+[DONE] evaluation__43112__deblur__counterfactual__nes__l1 calls=1021 margin 9.66->0.10 t=87.4s
+[DONE] evaluation__48349__denoise__attack__nes__l0.5 calls=1021 margin 6.02->-3.69 t=87.4s
+[DONE] evaluation__48349__denoise__restore__nes__l0.5 calls=1021 margin 6.02->6.04 t=87.5s
+[DONE] evaluation__48349__denoise__random_walk__random_walk__l0.5 calls=1024 margin 6.02->6.08 t=90.4s
+[DONE] evaluation__48349__denoise__confidence_boost__nes__l0.5 calls=1021 margin 6.02->9.26 t=88.0s
+[DONE] evaluation__48349__denoise__boundary_probe__nes__l0.5 calls=1021 margin 6.02->0.77 t=88.1s
+[DONE] evaluation__48349__denoise__counterfactual__nes__l0.5 calls=1021 margin 6.02->0.98 t=87.8s
+[DONE] evaluation__48349__deblur__attack__nes__l1 calls=1021 margin 4.20->-4.58 t=87.6s
+[DONE] evaluation__48349__deblur__restore__nes__l1 calls=1021 margin 4.20->4.20 t=87.5s
+[DONE] evaluation__48349__deblur__random_walk__random_walk__l1 calls=1024 margin 4.20->5.44 t=90.4s
+[DONE] evaluation__48349__deblur__confidence_boost__nes__l1 calls=1021 margin 4.20->6.98 t=88.1s
+[DONE] evaluation__48349__deblur__boundary_probe__nes__l1 calls=1021 margin 4.20->0.01 t=88.5s
+[DONE] evaluation__48349__deblur__counterfactual__nes__l1 calls=1021 margin 4.20->0.52 t=88.1s
+[DONE] evaluation__49628__denoise__attack__nes__l0.5 calls=1021 margin 2.23->-1.61 t=87.5s
+[DONE] evaluation__49628__denoise__restore__nes__l0.5 calls=1021 margin 2.23->2.23 t=87.9s
+[DONE] evaluation__49628__denoise__random_walk__random_walk__l0.5 calls=1024 margin 2.23->2.18 t=91.0s
+[DONE] evaluation__49628__denoise__confidence_boost__nes__l0.5 calls=1021 margin 2.23->5.51 t=87.7s
+[DONE] evaluation__49628__denoise__boundary_probe__nes__l0.5 calls=1021 margin 2.23->0.01 t=87.9s
+[DONE] evaluation__49628__denoise__counterfactual__nes__l0.5 calls=1021 margin 2.23->-1.50 t=88.1s
+[DONE] evaluation__49628__deblur__attack__nes__l1 calls=1021 margin 2.56->-0.67 t=88.5s
+[DONE] evaluation__49628__deblur__restore__nes__l1 calls=1021 margin 2.56->2.56 t=89.6s
+[DONE] evaluation__49628__deblur__random_walk__random_walk__l1 calls=1024 margin 2.56->2.54 t=91.5s
+[DONE] evaluation__49628__deblur__confidence_boost__nes__l1 calls=1021 margin 2.56->4.74 t=88.4s
+[DONE] evaluation__49628__deblur__boundary_probe__nes__l1 calls=1021 margin 2.56->0.00 t=87.5s
+[DONE] evaluation__49628__deblur__counterfactual__nes__l1 calls=1021 margin 2.56->-0.29 t=87.7s
+[DONE] fit__4089__denoise__attack__nes__l0.5 calls=1021 margin 6.01->-1.74 t=87.5s
+[DONE] fit__4089__denoise__restore__nes__l0.5 calls=1021 margin 6.01->6.01 t=88.1s
+[DONE] fit__4089__denoise__random_walk__random_walk__l0.5 calls=1024 margin 6.01->6.26 t=90.9s
+[DONE] fit__4089__denoise__confidence_boost__nes__l0.5 calls=1021 margin 6.01->11.56 t=87.6s
+[DONE] fit__4089__denoise__boundary_probe__nes__l0.5 calls=1021 margin 6.01->0.00 t=87.8s
+[DONE] fit__4089__denoise__counterfactual__nes__l0.5 calls=1021 margin 6.01->-3.10 t=88.1s
+[DONE] fit__4089__deblur__attack__nes__l1 calls=1021 margin 5.12->0.27 t=87.4s
+[DONE] fit__4089__deblur__restore__nes__l1 calls=1021 margin 5.12->5.12 t=88.5s
+[DONE] fit__4089__deblur__random_walk__random_walk__l1 calls=1024 margin 5.12->4.73 t=90.9s
+[DONE] fit__4089__deblur__confidence_boost__nes__l1 calls=1021 margin 5.12->11.89 t=87.7s
+[DONE] fit__4089__deblur__boundary_probe__nes__l1 calls=1021 margin 5.12->0.00 t=87.9s
+[DONE] fit__4089__deblur__counterfactual__nes__l1 calls=1021 margin 5.12->-1.10 t=87.8s
+[DONE] fit__7575__denoise__attack__nes__l0.5 calls=1021 margin 5.68->-1.84 t=87.9s
+[DONE] fit__7575__denoise__restore__nes__l0.5 calls=1021 margin 5.68->5.68 t=87.7s
+[DONE] fit__7575__denoise__random_walk__random_walk__l0.5 calls=1024 margin 5.68->5.58 t=91.1s
+[DONE] fit__7575__denoise__confidence_boost__nes__l0.5 calls=1021 margin 5.68->10.08 t=88.9s
+[DONE] fit__7575__denoise__boundary_probe__nes__l0.5 calls=1021 margin 5.68->0.30 t=87.7s
+[DONE] fit__7575__denoise__counterfactual__nes__l0.5 calls=1021 margin 5.68->0.43 t=87.8s
+[DONE] fit__7575__deblur__attack__nes__l1 calls=1021 margin 3.65->-1.95 t=87.6s
+[DONE] fit__7575__deblur__restore__nes__l1 calls=1021 margin 3.65->3.65 t=87.7s
+[DONE] fit__7575__deblur__random_walk__random_walk__l1 calls=1024 margin 3.65->6.00 t=90.6s
+[DONE] fit__7575__deblur__confidence_boost__nes__l1 calls=1021 margin 3.65->10.18 t=87.5s
+[DONE] fit__7575__deblur__boundary_probe__nes__l1 calls=1021 margin 3.65->0.00 t=87.5s
+[DONE] fit__7575__deblur__counterfactual__nes__l1 calls=1021 margin 3.65->-1.22 t=88.1s
+[DONE] fit__12411__denoise__attack__nes__l0.5 calls=1021 margin 0.87->-3.94 t=87.7s
+[DONE] fit__12411__denoise__restore__nes__l0.5 calls=1021 margin 0.87->0.87 t=87.7s
+[DONE] fit__12411__denoise__random_walk__random_walk__l0.5 calls=1024 margin 0.87->1.10 t=92.2s
+[DONE] fit__12411__denoise__confidence_boost__nes__l0.5 calls=1021 margin 0.87->2.53 t=88.2s
+[DONE] fit__12411__denoise__boundary_probe__nes__l0.5 calls=1021 margin 0.87->0.01 t=87.7s
+[DONE] fit__12411__denoise__counterfactual__nes__l0.5 calls=1021 margin 0.87->-3.24 t=88.8s
+[DONE] fit__12411__deblur__attack__nes__l1 calls=1021 margin 0.97->-0.84 t=90.0s
+[DONE] fit__12411__deblur__restore__nes__l1 calls=1021 margin 0.97->0.97 t=89.0s
+[DONE] fit__12411__deblur__random_walk__random_walk__l1 calls=1024 margin 0.97->0.67 t=97.4s
+[DONE] fit__12411__deblur__confidence_boost__nes__l1 calls=1021 margin 0.97->2.32 t=89.5s
+[DONE] fit__12411__deblur__boundary_probe__nes__l1 calls=1021 margin 0.97->0.00 t=89.6s
+[DONE] fit__12411__deblur__counterfactual__nes__l1 calls=1021 margin 0.97->-0.99 t=89.4s
+[DONE] fit__16008__denoise__attack__nes__l0.5 calls=1021 margin 4.41->2.39 t=90.2s
+[DONE] fit__16008__denoise__restore__nes__l0.5 calls=1021 margin 4.41->4.41 t=89.0s
+[DONE] fit__16008__denoise__random_walk__random_walk__l0.5 calls=1024 margin 4.41->4.58 t=91.1s
+[DONE] fit__16008__denoise__confidence_boost__nes__l0.5 calls=1021 margin 4.41->6.50 t=87.8s
+[DONE] fit__16008__denoise__boundary_probe__nes__l0.5 calls=1021 margin 4.41->2.56 t=87.9s
+[DONE] fit__16008__denoise__counterfactual__nes__l0.5 calls=1021 margin 4.41->2.50 t=87.5s
+[DONE] fit__16008__deblur__attack__nes__l1 calls=1021 margin 4.93->2.82 t=87.3s
+[DONE] fit__16008__deblur__restore__nes__l1 calls=1021 margin 4.93->4.93 t=87.5s
+[DONE] fit__16008__deblur__random_walk__random_walk__l1 calls=1024 margin 4.93->4.12 t=90.8s
+[DONE] fit__16008__deblur__confidence_boost__nes__l1 calls=1021 margin 4.93->6.72 t=87.5s
+[DONE] fit__16008__deblur__boundary_probe__nes__l1 calls=1021 margin 4.93->2.83 t=87.6s
+[DONE] fit__16008__deblur__counterfactual__nes__l1 calls=1021 margin 4.93->3.27 t=87.5s
+[DONE] fit__23426__denoise__attack__nes__l0.5 calls=1021 margin 2.72->-2.62 t=87.6s
+[DONE] fit__23426__denoise__restore__nes__l0.5 calls=1021 margin 2.72->2.72 t=87.9s
+[DONE] fit__23426__denoise__random_walk__random_walk__l0.5 calls=1024 margin 2.72->2.75 t=92.0s
+[DONE] fit__23426__denoise__confidence_boost__nes__l0.5 calls=1021 margin 2.72->8.36 t=88.0s
+[DONE] fit__23426__denoise__boundary_probe__nes__l0.5 calls=1021 margin 2.72->0.01 t=88.2s
+[DONE] fit__23426__denoise__counterfactual__nes__l0.5 calls=1021 margin 2.72->-2.96 t=88.4s
+[DONE] fit__23426__deblur__attack__nes__l1 calls=1021 margin 4.96->-4.19 t=87.7s
+[DONE] fit__23426__deblur__restore__nes__l1 calls=1021 margin 4.96->4.96 t=87.8s
+[DONE] fit__23426__deblur__random_walk__random_walk__l1 calls=1024 margin 4.96->4.01 t=91.0s
+[DONE] fit__23426__deblur__confidence_boost__nes__l1 calls=1021 margin 4.96->9.12 t=87.9s
+[DONE] fit__23426__deblur__boundary_probe__nes__l1 calls=1021 margin 4.96->0.00 t=87.7s
+[DONE] fit__23426__deblur__counterfactual__nes__l1 calls=1021 margin 4.96->-3.79 t=87.6s
+[DONE] fit__27184__denoise__attack__nes__l0.5 calls=1021 margin 0.47->-2.55 t=87.8s
+[DONE] fit__27184__denoise__restore__nes__l0.5 calls=1021 margin 0.47->0.47 t=88.2s
+[DONE] fit__27184__denoise__random_walk__random_walk__l0.5 calls=1024 margin 0.47->0.47 t=91.6s
+[DONE] fit__27184__denoise__confidence_boost__nes__l0.5 calls=1021 margin 0.47->2.43 t=88.7s
+[DONE] fit__27184__denoise__boundary_probe__nes__l0.5 calls=1021 margin 0.47->0.01 t=88.2s
+[DONE] fit__27184__denoise__counterfactual__nes__l0.5 calls=1021 margin 0.47->-2.42 t=88.0s
+[DONE] fit__27184__deblur__attack__nes__l1 calls=1021 margin 0.91->-2.01 t=87.6s
+[DONE] fit__27184__deblur__restore__nes__l1 calls=1021 margin 0.91->0.91 t=87.8s
+[DONE] fit__27184__deblur__random_walk__random_walk__l1 calls=1024 margin 0.91->1.35 t=91.5s
+[DONE] fit__27184__deblur__confidence_boost__nes__l1 calls=1021 margin 0.91->2.59 t=88.2s
+[DONE] fit__27184__deblur__boundary_probe__nes__l1 calls=1021 margin 0.91->0.01 t=87.9s
+[DONE] fit__27184__deblur__counterfactual__nes__l1 calls=1021 margin 0.91->-2.06 t=88.4s
+[DONE] fit__31265__denoise__attack__nes__l0.5 calls=1021 margin 7.00->0.40 t=87.9s
+[DONE] fit__31265__denoise__restore__nes__l0.5 calls=1021 margin 7.00->7.00 t=87.8s
+[DONE] fit__31265__denoise__random_walk__random_walk__l0.5 calls=1024 margin 7.00->6.81 t=90.6s
+[DONE] fit__31265__denoise__confidence_boost__nes__l0.5 calls=1021 margin 7.00->11.36 t=88.6s
+[DONE] fit__31265__denoise__boundary_probe__nes__l0.5 calls=1021 margin 7.00->1.24 t=87.7s
+[DONE] fit__31265__denoise__counterfactual__nes__l0.5 calls=1021 margin 7.00->1.53 t=87.5s
+[DONE] fit__31265__deblur__attack__nes__l1 calls=1021 margin 6.31->1.46 t=88.1s
+[DONE] fit__31265__deblur__restore__nes__l1 calls=1021 margin 6.31->6.31 t=88.2s
+[DONE] fit__31265__deblur__random_walk__random_walk__l1 calls=1024 margin 6.31->6.57 t=91.8s
+[DONE] fit__31265__deblur__confidence_boost__nes__l1 calls=1021 margin 6.31->12.07 t=88.2s
+[DONE] fit__31265__deblur__boundary_probe__nes__l1 calls=1021 margin 6.31->2.40 t=88.3s
+[DONE] fit__31265__deblur__counterfactual__nes__l1 calls=1021 margin 6.31->1.66 t=87.8s
+[DONE] fit__38415__denoise__attack__nes__l0.5 calls=1021 margin 4.63->-3.13 t=88.2s
+[DONE] fit__38415__denoise__restore__nes__l0.5 calls=1021 margin 4.63->4.63 t=87.5s
+[DONE] fit__38415__denoise__random_walk__random_walk__l0.5 calls=1024 margin 4.63->4.10 t=91.1s
+[DONE] fit__38415__denoise__confidence_boost__nes__l0.5 calls=1021 margin 4.63->10.63 t=87.7s
+[DONE] fit__38415__denoise__boundary_probe__nes__l0.5 calls=1021 margin 4.63->0.01 t=88.1s
+[DONE] fit__38415__denoise__counterfactual__nes__l0.5 calls=1021 margin 4.63->-2.80 t=87.8s
+[DONE] fit__38415__deblur__attack__nes__l1 calls=1021 margin 10.48->2.65 t=87.5s
+[DONE] fit__38415__deblur__restore__nes__l1 calls=1021 margin 10.48->10.48 t=87.1s
+[DONE] fit__38415__deblur__random_walk__random_walk__l1 calls=1024 margin 10.48->8.10 t=90.9s
+[DONE] fit__38415__deblur__confidence_boost__nes__l1 calls=1021 margin 10.48->14.23 t=88.2s
+[DONE] fit__38415__deblur__boundary_probe__nes__l1 calls=1021 margin 10.48->3.34 t=87.5s
+[DONE] fit__38415__deblur__counterfactual__nes__l1 calls=1021 margin 10.48->3.82 t=87.4s
+[DONE] fit__43125__denoise__attack__nes__l0.5 calls=1021 margin 0.85->-10.65 t=87.8s
+[DONE] fit__43125__denoise__restore__nes__l0.5 calls=1021 margin 0.85->1.01 t=87.5s
+[DONE] fit__43125__denoise__random_walk__random_walk__l0.5 calls=1024 margin 0.85->0.84 t=91.5s
+[DONE] fit__43125__denoise__confidence_boost__nes__l0.5 calls=1021 margin 0.85->10.19 t=88.2s
+[DONE] fit__43125__denoise__boundary_probe__nes__l0.5 calls=1021 margin 0.85->0.01 t=88.0s
+[DONE] fit__43125__denoise__counterfactual__nes__l0.5 calls=1021 margin 0.85->-8.36 t=88.2s
+[DONE] fit__43125__deblur__attack__nes__l1 calls=1021 margin 6.94->-5.43 t=87.5s
+[DONE] fit__43125__deblur__restore__nes__l1 calls=1021 margin 6.94->6.94 t=87.7s
+[DONE] fit__43125__deblur__random_walk__random_walk__l1 calls=1024 margin 6.94->5.85 t=91.1s
+[DONE] fit__43125__deblur__confidence_boost__nes__l1 calls=1021 margin 6.94->12.67 t=88.4s
+[DONE] fit__43125__deblur__boundary_probe__nes__l1 calls=1021 margin 6.94->0.04 t=87.4s
+[DONE] fit__43125__deblur__counterfactual__nes__l1 calls=1021 margin 6.94->-6.47 t=87.2s
+[DONE] fit__49613__denoise__attack__nes__l0.5 calls=1021 margin 2.53->0.59 t=87.8s
+[DONE] fit__49613__denoise__restore__nes__l0.5 calls=1021 margin 2.53->2.53 t=87.8s
+[DONE] fit__49613__denoise__random_walk__random_walk__l0.5 calls=1024 margin 2.53->2.58 t=91.5s
+[DONE] fit__49613__denoise__confidence_boost__nes__l0.5 calls=1021 margin 2.53->4.20 t=88.6s
+[DONE] fit__49613__denoise__boundary_probe__nes__l0.5 calls=1021 margin 2.53->0.65 t=88.3s
+[DONE] fit__49613__denoise__counterfactual__nes__l0.5 calls=1021 margin 2.53->0.54 t=88.1s
+[DONE] fit__49613__deblur__attack__nes__l1 calls=1021 margin 2.01->0.54 t=86.8s
+[DONE] fit__49613__deblur__restore__nes__l1 calls=1021 margin 2.01->2.01 t=86.8s
+[DONE] fit__49613__deblur__random_walk__random_walk__l1 calls=1024 margin 2.01->2.11 t=90.5s
+[DONE] fit__49613__deblur__confidence_boost__nes__l1 calls=1021 margin 2.01->3.17 t=86.9s
+[DONE] fit__49613__deblur__boundary_probe__nes__l1 calls=1021 margin 2.01->0.25 t=84.4s
+[DONE] fit__49613__deblur__counterfactual__nes__l1 calls=1021 margin 2.01->0.39 t=82.9s

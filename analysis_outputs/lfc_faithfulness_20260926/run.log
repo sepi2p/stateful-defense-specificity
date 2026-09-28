@@ -1,0 +1,69 @@
+[1/50] image 868 done
+[2/50] image 1617 done
+[3/50] image 1735 done
+[4/50] image 1819 done
+[5/50] image 3302 done
+[6/50] image 231 done
+[7/50] image 738 done
+[8/50] image 2009 done
+[9/50] image 2712 done
+[10/50] image 3028 done
+[11/50] image 603 done
+[12/50] image 1451 done
+[13/50] image 2073 done
+[14/50] image 2985 done
+[15/50] image 3758 done
+[16/50] image 256 done
+[17/50] image 896 done
+[18/50] image 3234 done
+[19/50] image 4407 done
+[20/50] image 6587 done
+[21/50] image 328 done
+[22/50] image 807 done
+[23/50] image 1003 done
+[24/50] image 1609 done
+[25/50] image 2208 done
+[26/50] image 327 done
+[27/50] image 834 done
+[28/50] image 1561 done
+[29/50] image 1908 done
+[30/50] image 2885 done
+[31/50] image 304 done
+[32/50] image 901 done
+[33/50] image 3455 done
+[34/50] image 3936 done
+[35/50] image 5423 done
+[36/50] image 13 done
+[37/50] image 99 done
+[38/50] image 288 done
+[39/50] image 803 done
+[40/50] image 2004 done
+[41/50] image 519 done
+[42/50] image 880 done
+[43/50] image 2503 done
+[44/50] image 3803 done
+[45/50] image 4296 done
+[46/50] image 76 done
+[47/50] image 2140 done
+[48/50] image 3213 done
+[49/50] image 5400 done
+[50/50] image 5494 done
+stream                   noise  shuffled  simba  square  sweep
+bern_scale lags  retest                                       
+0.000      20    every     0.0       0.0    1.0    1.00   0.60
+                 once      0.0       0.0    0.0    0.00   0.00
+           min10 every     0.0       0.0    1.0    1.00   0.60
+                 once      0.0       0.0    0.4    0.40   0.26
+0.002      20    every     0.0       0.0    1.0    1.00   0.52
+                 once      0.0       0.0    0.0    0.00   0.00
+           min10 every     0.0       0.0    1.0    1.00   0.54
+                 once      0.0       0.0    0.4    0.38   0.36
+0.010      20    every     0.0       0.0    1.0    1.00   0.28
+                 once      0.0       0.0    0.0    0.00   0.00
+           min10 every     0.0       0.0    1.0    1.00   0.30
+                 once      0.0       0.0    0.4    0.38   0.16
+stream      noise  shuffled   simba  square  sweep
+bern_scale                                        
+0.000         1.0       1.0  1023.0  1024.0  101.0
+0.002         1.0       1.0  1023.0  1024.0   80.0
+0.010         1.0       1.0  1023.0  1024.0    2.0

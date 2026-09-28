@@ -1,0 +1,197 @@
+{
+  "all_metrics": [
+    {
+      "decision": "calibrated_alarm",
+      "lower": 0.285,
+      "objective": "attack",
+      "source_images": 200,
+      "threshold": 0.99999918938272,
+      "upper": 0.42,
+      "value": 0.35,
+      "workload": "denoise"
+    },
+    {
+      "decision": "native_alarm",
+      "lower": 1.0,
+      "objective": "attack",
+      "source_images": 200,
+      "threshold": 0.99999918938272,
+      "upper": 1.0,
+      "value": 1.0,
+      "workload": "denoise"
+    },
+    {
+      "decision": "calibrated_alarm",
+      "lower": 0.005,
+      "objective": "random_walk",
+      "source_images": 200,
+      "threshold": 0.99999918938272,
+      "upper": 0.05,
+      "value": 0.025,
+      "workload": "denoise"
+    },
+    {
+      "decision": "native_alarm",
+      "lower": 1.0,
+      "objective": "random_walk",
+      "source_images": 200,
+      "threshold": 0.99999918938272,
+      "upper": 1.0,
+      "value": 1.0,
+      "workload": "denoise"
+    },
+    {
+      "decision": "calibrated_alarm",
+      "lower": 0.275,
+      "objective": "restore",
+      "source_images": 200,
+      "threshold": 0.99999918938272,
+      "upper": 0.405,
+      "value": 0.34,
+      "workload": "denoise"
+    },
+    {
+      "decision": "native_alarm",
+      "lower": 1.0,
+      "objective": "restore",
+      "source_images": 200,
+      "threshold": 0.99999918938272,
+      "upper": 1.0,
+      "value": 1.0,
+      "workload": "denoise"
+    },
+    {
+      "decision": "calibrated_alarm",
+      "lower": 0.485,
+      "objective": "attack",
+      "source_images": 200,
+      "threshold": 0.9999986498760336,
+      "upper": 0.62,
+      "value": 0.555,
+      "workload": "deblur"
+    },
+    {
+      "decision": "native_alarm",
+      "lower": 1.0,
+      "objective": "attack",
+      "source_images": 200,
+      "threshold": 0.9999986498760336,
+      "upper": 1.0,
+      "value": 1.0,
+      "workload": "deblur"
+    },
+    {
+      "decision": "calibrated_alarm",
+      "lower": 0.05,
+      "objective": "random_walk",
+      "source_images": 200,
+      "threshold": 0.9999986498760336,
+      "upper": 0.13,
+      "value": 0.09,
+      "workload": "deblur"
+    },
+    {
+      "decision": "native_alarm",
+      "lower": 1.0,
+      "objective": "random_walk",
+      "source_images": 200,
+      "threshold": 0.9999986498760336,
+      "upper": 1.0,
+      "value": 1.0,
+      "workload": "deblur"
+    },
+    {
+      "decision": "calibrated_alarm",
+      "lower": 0.45,
+      "objective": "restore",
+      "source_images": 200,
+      "threshold": 0.9999986498760336,
+      "upper": 0.59,
+      "value": 0.52,
+      "workload": "deblur"
+    },
+    {
+      "decision": "native_alarm",
+      "lower": 1.0,
+      "objective": "restore",
+      "source_images": 200,
+      "threshold": 0.9999986498760336,
+      "upper": 1.0,
+      "value": 1.0,
+      "workload": "deblur"
+    }
+  ],
+  "decision_rule": "both workloads: restoration FPR>=20% (lower CI>10%), random-walk FPR<=10%, attack detection>=70%",
+  "gates": [
+    {
+      "attack_detection": {
+        "decision": "calibrated_alarm",
+        "lower": 0.285,
+        "objective": "attack",
+        "source_images": 200,
+        "threshold": 0.99999918938272,
+        "upper": 0.42,
+        "value": 0.35,
+        "workload": "denoise"
+      },
+      "pass": false,
+      "random_walk_fpr": {
+        "decision": "calibrated_alarm",
+        "lower": 0.005,
+        "objective": "random_walk",
+        "source_images": 200,
+        "threshold": 0.99999918938272,
+        "upper": 0.05,
+        "value": 0.025,
+        "workload": "denoise"
+      },
+      "restore_fpr": {
+        "decision": "calibrated_alarm",
+        "lower": 0.275,
+        "objective": "restore",
+        "source_images": 200,
+        "threshold": 0.99999918938272,
+        "upper": 0.405,
+        "value": 0.34,
+        "workload": "denoise"
+      },
+      "workload": "denoise"
+    },
+    {
+      "attack_detection": {
+        "decision": "calibrated_alarm",
+        "lower": 0.485,
+        "objective": "attack",
+        "source_images": 200,
+        "threshold": 0.9999986498760336,
+        "upper": 0.62,
+        "value": 0.555,
+        "workload": "deblur"
+      },
+      "pass": false,
+      "random_walk_fpr": {
+        "decision": "calibrated_alarm",
+        "lower": 0.05,
+        "objective": "random_walk",
+        "source_images": 200,
+        "threshold": 0.9999986498760336,
+        "upper": 0.13,
+        "value": 0.09,
+        "workload": "deblur"
+      },
+      "restore_fpr": {
+        "decision": "calibrated_alarm",
+        "lower": 0.45,
+        "objective": "restore",
+        "source_images": 200,
+        "threshold": 0.9999986498760336,
+        "upper": 0.59,
+        "value": 0.52,
+        "workload": "deblur"
+      },
+      "workload": "deblur"
+    }
+  ],
+  "stage": "experiment1",
+  "status": "NO_GO"
+}

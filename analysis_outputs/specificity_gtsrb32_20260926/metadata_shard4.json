@@ -1,0 +1,37 @@
+{
+  "args": {
+    "budget": "1024",
+    "checkpoint": "analysis_outputs/eaai_gtsrb/checkpoints_32px/resnet18/best.pt",
+    "dataset": "gtsrb32",
+    "dataset_root": "/home/sepi/data/cifar10",
+    "deblur_lambda": "1.0",
+    "denoise_lambda": "0.5",
+    "gtsrb_root": "data/gtsrb",
+    "lfc_seed": "20260926",
+    "manifest": "analysis_outputs/specificity_gtsrb32_20260926/manifest.csv",
+    "max_images": "0",
+    "model_name": "gtsrb32",
+    "num_shards": "6",
+    "objectives": "attack,restore,random_walk,confidence_boost,boundary_probe,counterfactual",
+    "optimizer": "nes",
+    "output_dir": "analysis_outputs/specificity_gtsrb32_20260926",
+    "seed": "20260924",
+    "shard": "4",
+    "stage": "main"
+  },
+  "blacklight": {
+    "num_hashes_keep": 50,
+    "round": 50,
+    "step_size": 1,
+    "threshold": 25,
+    "window_size": 20
+  },
+  "checkpoint_sha256": "7a6a7a07e0ba7db411b66da5f3a29d65b1811e1532499000dce20093e99caf74",
+  "counterfactual_l2": 100.0,
+  "dataset": "gtsrb32",
+  "delta_net_sha256": "1a9de325c3c7237d21404efb497bea95c8fd23ac170fe34afe72fa2f8289f61d",
+  "gwad_commit": "822b258eb28c4c51eefa8d2cc87072991f750b74",
+  "model_name": "gtsrb32",
+  "optimizer": "nes",
+  "stage": "main"
+}

@@ -1,0 +1,6 @@
+waiting for X9 2026-09-27T10:21:13+03:30 pid 297200
+smoke ok 2026-09-27T10:21:15+03:30
+shards finished 2026-09-27T12:57:45+03:30: 800 sessions, 1 nonzero
+summary exit=0 2026-09-27T12:58:20+03:30
+DONE
+shard3 relaunch complete; summary rerun over all shards exit=0 2026-09-27T12:59:44+03:30: 800 sessions

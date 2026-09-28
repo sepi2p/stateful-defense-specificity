@@ -1,0 +1,147 @@
+Traceback (most recent call last):
+  File "/home/sepi/projects/MCG-Blackbox/experiments/gate_trajectory_signatures/run_explanation_clients.py", line 255, in <module>
+    main()
+  File "/home/sepi/projects/MCG-Blackbox/experiments/gate_trajectory_signatures/run_explanation_clients.py", line 227, in main
+    result, arrays = run_stream(model, device, delta_net, salt, queries, label, lfc_seed=args.lfc_seed,
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sepi/projects/MCG-Blackbox/experiments/gate_trajectory_signatures/run_specificity_controls.py", line 85, in run_stream
+    recorder.submit_batch(stream[i : i + batch].to(device))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: out of memory
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[relaunch 2026-09-27T10:24:32+03:30] shard 3 restarted by Claude session after CUDA OOM at launch (a concurrent GPU experiment from that session held ~5.9 GB); same command as launcher
+[DONE] evaluation__892__clean__lime__r0 q=1000 bl=8 gwad+=-1 del 0.102/0.487 t=95.1s
+[DONE] evaluation__892__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.165/0.536 t=46.5s
+[DONE] evaluation__892__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.196/0.497 t=60.2s
+[DONE] evaluation__892__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.099/0.497 t=93.9s
+[DONE] evaluation__1980__clean__lime__r0 q=1000 bl=8 gwad+=-1 del 0.174/0.357 t=93.8s
+[DONE] evaluation__1980__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.079/0.403 t=47.3s
+[DONE] evaluation__1980__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.084/0.350 t=57.9s
+[DONE] evaluation__1980__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.090/0.378 t=93.3s
+[DONE] evaluation__3043__clean__lime__r0 q=1000 bl=5 gwad+=-1 del 0.072/0.372 t=86.6s
+[DONE] evaluation__3043__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.168/0.346 t=44.3s
+[DONE] evaluation__3043__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.102/0.410 t=54.6s
+[DONE] evaluation__3043__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.142/0.411 t=88.7s
+[DONE] evaluation__5037__clean__lime__r0 q=1000 bl=6 gwad+=-1 del 0.265/0.757 t=89.4s
+[DONE] evaluation__5037__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.636/0.701 t=43.5s
+[DONE] evaluation__5037__clean__occlusion__r0 q=626 bl=2 gwad+=269 del 0.824/0.700 t=54.5s
+[DONE] evaluation__5037__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.282/0.674 t=88.4s
+[DONE] evaluation__5905__clean__lime__r0 q=1000 bl=5 gwad+=-1 del 0.203/0.589 t=87.7s
+[DONE] evaluation__5905__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.639/0.540 t=43.5s
+[DONE] evaluation__5905__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.152/0.524 t=54.1s
+[DONE] evaluation__5905__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.221/0.595 t=86.6s
+[DONE] evaluation__6964__clean__lime__r0 q=1000 bl=3 gwad+=-1 del 0.170/0.689 t=87.0s
+[DONE] evaluation__6964__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.759/0.662 t=43.4s
+[DONE] evaluation__6964__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.103/0.673 t=54.5s
+[DONE] evaluation__6964__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.327/0.602 t=91.1s
+[DONE] evaluation__7593__clean__lime__r0 q=1000 bl=6 gwad+=-1 del 0.050/0.402 t=88.0s
+[DONE] evaluation__7593__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.172/0.340 t=43.7s
+[DONE] evaluation__7593__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.059/0.376 t=54.1s
+[DONE] evaluation__7593__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.045/0.284 t=89.0s
+[DONE] evaluation__8298__clean__lime__r0 q=1000 bl=4 gwad+=-1 del 0.011/0.217 t=88.5s
+[DONE] evaluation__8298__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.240/0.206 t=43.5s
+[DONE] evaluation__8298__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.010/0.154 t=54.8s
+[DONE] evaluation__8298__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.030/0.113 t=86.6s
+[DONE] evaluation__10668__clean__lime__r0 q=1000 bl=3 gwad+=-1 del 0.205/0.540 t=87.5s
+[DONE] evaluation__10668__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.242/0.466 t=44.4s
+[DONE] evaluation__10668__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.110/0.500 t=58.5s
+[DONE] evaluation__10668__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.236/0.552 t=93.3s
+[DONE] evaluation__12197__clean__lime__r0 q=1000 bl=4 gwad+=-1 del 0.310/0.579 t=100.8s
+[DONE] evaluation__12197__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.315/0.548 t=53.1s
+[DONE] evaluation__12197__clean__occlusion__r0 q=626 bl=2 gwad+=292 del 0.166/0.636 t=65.8s
+[DONE] evaluation__12197__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.216/0.627 t=91.8s
+[DONE] evaluation__13191__clean__lime__r0 q=1000 bl=6 gwad+=-1 del 0.143/0.556 t=88.8s
+[DONE] evaluation__13191__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.596/0.705 t=43.2s
+[DONE] evaluation__13191__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.298/0.621 t=54.4s
+[DONE] evaluation__13191__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.428/0.655 t=86.6s
+[DONE] evaluation__13648__clean__lime__r0 q=1000 bl=5 gwad+=-1 del 0.031/0.486 t=88.4s
+[DONE] evaluation__13648__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.142/0.376 t=43.8s
+[DONE] evaluation__13648__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.032/0.573 t=54.5s
+[DONE] evaluation__13648__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.033/0.377 t=86.6s
+[DONE] evaluation__15368__clean__lime__r0 q=1000 bl=5 gwad+=-1 del 0.043/0.444 t=86.9s
+[DONE] evaluation__15368__clean__kernelshap__r0 q=500 bl=3 gwad+=461 del 0.258/0.354 t=43.4s
+[DONE] evaluation__15368__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.038/0.389 t=54.3s
+[DONE] evaluation__15368__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.061/0.283 t=86.4s
+[DONE] evaluation__16748__clean__lime__r0 q=1000 bl=4 gwad+=-1 del 0.457/0.633 t=86.4s
+[DONE] evaluation__16748__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.536/0.597 t=43.7s
+[DONE] evaluation__16748__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.468/0.678 t=54.5s
+[DONE] evaluation__16748__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.442/0.685 t=86.6s
+[DONE] evaluation__19274__clean__lime__r0 q=1000 bl=3 gwad+=-1 del 0.203/0.407 t=88.1s
+[DONE] evaluation__19274__clean__kernelshap__r0 q=500 bl=3 gwad+=278 del 0.321/0.398 t=45.4s
+[DONE] evaluation__19274__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.182/0.386 t=55.7s
+[DONE] evaluation__19274__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.089/0.374 t=88.6s
+[DONE] evaluation__20996__clean__lime__r0 q=1000 bl=3 gwad+=-1 del 0.166/0.669 t=86.6s
+[DONE] evaluation__20996__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.696/0.685 t=43.9s
+[DONE] evaluation__20996__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.661/0.659 t=54.0s
+[DONE] evaluation__20996__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.110/0.599 t=87.7s
+[DONE] evaluation__23449__clean__lime__r0 q=1000 bl=3 gwad+=-1 del 0.132/0.407 t=88.3s
+[DONE] evaluation__23449__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.178/0.356 t=43.1s
+[DONE] evaluation__23449__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.080/0.314 t=57.0s
+[DONE] evaluation__23449__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.092/0.348 t=91.4s
+[DONE] evaluation__25590__clean__lime__r0 q=1000 bl=3 gwad+=-1 del 0.214/0.320 t=88.2s
+[DONE] evaluation__25590__clean__kernelshap__r0 q=500 bl=3 gwad+=314 del 0.229/0.331 t=43.4s
+[DONE] evaluation__25590__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.148/0.356 t=55.3s
+[DONE] evaluation__25590__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.078/0.368 t=89.0s
+[DONE] evaluation__26538__clean__lime__r0 q=1000 bl=3 gwad+=260 del 0.048/0.437 t=89.5s
+[DONE] evaluation__26538__clean__kernelshap__r0 q=500 bl=3 gwad+=327 del 0.082/0.410 t=44.8s
+[DONE] evaluation__26538__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.041/0.328 t=54.9s
+[DONE] evaluation__26538__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.035/0.451 t=85.2s
+[DONE] evaluation__27079__clean__lime__r0 q=1000 bl=3 gwad+=925 del 0.097/0.386 t=86.8s
+[DONE] evaluation__27079__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.101/0.376 t=43.5s
+[DONE] evaluation__27079__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.040/0.300 t=54.0s
+[DONE] evaluation__27079__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.050/0.265 t=87.3s
+[DONE] evaluation__27931__clean__lime__r0 q=1000 bl=6 gwad+=-1 del 0.020/0.026 t=86.8s
+[DONE] evaluation__27931__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.005/0.035 t=43.5s
+[DONE] evaluation__27931__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.006/0.030 t=54.3s
+[DONE] evaluation__27931__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.006/0.013 t=86.3s
+[DONE] evaluation__29377__clean__lime__r0 q=1000 bl=2 gwad+=-1 del 0.013/0.105 t=86.9s
+[DONE] evaluation__29377__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.042/0.094 t=44.1s
+[DONE] evaluation__29377__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.021/0.094 t=55.6s
+[DONE] evaluation__29377__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.017/0.089 t=87.0s
+[DONE] evaluation__30085__clean__lime__r0 q=1000 bl=9 gwad+=-1 del 0.215/0.373 t=86.9s
+[DONE] evaluation__30085__clean__kernelshap__r0 q=500 bl=4 gwad+=-1 del 0.237/0.314 t=43.5s
+[DONE] evaluation__30085__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.078/0.311 t=54.8s
+[DONE] evaluation__30085__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.105/0.309 t=86.2s
+[DONE] evaluation__31860__clean__lime__r0 q=1000 bl=2 gwad+=-1 del 0.309/0.615 t=86.9s
+[DONE] evaluation__31860__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.482/0.562 t=45.1s
+[DONE] evaluation__31860__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.479/0.572 t=57.1s
+[DONE] evaluation__31860__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.454/0.563 t=86.6s
+[DONE] evaluation__33040__clean__lime__r0 q=1000 bl=3 gwad+=-1 del 0.091/0.114 t=90.6s
+[DONE] evaluation__33040__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.063/0.188 t=44.8s
+[DONE] evaluation__33040__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.019/0.124 t=56.1s
+[DONE] evaluation__33040__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.021/0.146 t=89.8s
+[DONE] evaluation__36085__clean__lime__r0 q=1000 bl=5 gwad+=-1 del 0.099/0.251 t=91.4s
+[DONE] evaluation__36085__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.443/0.275 t=44.7s
+[DONE] evaluation__36085__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.055/0.390 t=54.6s
+[DONE] evaluation__36085__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.233/0.255 t=87.7s
+[DONE] evaluation__38429__clean__lime__r0 q=1000 bl=2 gwad+=-1 del 0.213/0.587 t=88.7s
+[DONE] evaluation__38429__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.321/0.502 t=44.1s
+[DONE] evaluation__38429__clean__occlusion__r0 q=626 bl=2 gwad+=290 del 0.228/0.650 t=54.4s
+[DONE] evaluation__38429__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.433/0.576 t=86.5s
+[DONE] evaluation__39178__clean__lime__r0 q=1000 bl=9 gwad+=-1 del 0.213/0.618 t=86.7s
+[DONE] evaluation__39178__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.349/0.629 t=43.6s
+[DONE] evaluation__39178__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.207/0.641 t=54.6s
+[DONE] evaluation__39178__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.625/0.608 t=86.8s
+[DONE] evaluation__42492__clean__lime__r0 q=1000 bl=9 gwad+=-1 del 0.048/0.314 t=86.9s
+[DONE] evaluation__42492__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.041/0.256 t=43.3s
+[DONE] evaluation__42492__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.041/0.252 t=54.0s
+[DONE] evaluation__42492__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.038/0.230 t=86.3s
+[DONE] evaluation__43041__clean__lime__r0 q=1000 bl=2 gwad+=-1 del 0.552/0.497 t=86.5s
+[DONE] evaluation__43041__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.421/0.415 t=43.6s
+[DONE] evaluation__43041__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.345/0.388 t=54.4s
+[DONE] evaluation__43041__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.250/0.406 t=90.2s
+[DONE] evaluation__44169__clean__lime__r0 q=1000 bl=5 gwad+=-1 del 0.264/0.376 t=88.3s
+[DONE] evaluation__44169__clean__kernelshap__r0 q=500 bl=4 gwad+=-1 del 0.308/0.442 t=43.7s
+[DONE] evaluation__44169__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.086/0.389 t=55.3s
+[DONE] evaluation__44169__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.069/0.365 t=86.6s
+[DONE] evaluation__48349__clean__lime__r0 q=1000 bl=2 gwad+=-1 del 0.066/0.425 t=86.7s
+[DONE] evaluation__48349__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.148/0.390 t=44.3s
+[DONE] evaluation__48349__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.094/0.420 t=54.1s
+[DONE] evaluation__48349__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.154/0.353 t=87.6s
+[DONE] evaluation__48717__clean__lime__r0 q=1000 bl=6 gwad+=-1 del 0.166/0.352 t=86.4s
+[DONE] evaluation__48717__clean__kernelshap__r0 q=500 bl=3 gwad+=-1 del 0.238/0.350 t=42.9s
+[DONE] evaluation__48717__clean__occlusion__r0 q=626 bl=2 gwad+=259 del 0.429/0.391 t=52.0s
+[DONE] evaluation__48717__clean__rise__r0 q=1000 bl=-1 gwad+=-1 del 0.308/0.313 t=82.1s

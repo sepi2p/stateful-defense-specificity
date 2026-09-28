@@ -1,0 +1,20 @@
+===== specificity_imagenet_20260926
+                             lfc  blacklight_native  gwad_plus_native  flipped
+workload objective                                                            
+deblur   attack            0.995              0.300               1.0    0.800
+         boundary_probe    0.995              0.430               1.0    0.780
+         confidence_boost  0.985              0.375               1.0    0.075
+         counterfactual    0.995              0.360               1.0    0.720
+         random_walk       1.000              0.975               1.0    0.125
+         restore           0.910              0.635               1.0    0.105
+denoise  attack            1.000              0.375               1.0    0.835
+         boundary_probe    1.000              0.550               1.0    0.820
+         confidence_boost  1.000              0.370               1.0    0.075
+         counterfactual    1.000              0.425               1.0    0.795
+         random_walk       1.000              0.960               1.0    0.135
+         restore           1.000              0.740               1.0    0.140
+P8_query_only_vs_tierB_le_0.62: FAILED  restore|logreg:gwad_plus=0.999, restore|logreg:blacklight=0.814, restore|logreg:query_only_all=0.999, confidence_boost|logreg:gwad_plus=0.621, confidence_boost|logreg:blacklight=0.544, confidence_boost|logreg:query_only_all=0.621
+P8_query_only_vs_random_walk_ge_0.90: HELD  logreg:gwad_plus=1.0, logreg:blacklight=1.0, logreg:query_only_all=1.0
+P9_output_pre_flip_vs_tierC_le_0.70: HELD  boundary_probe=0.636, counterfactual=0.697
+P10_output_vs_tierB_ge_0.90: HELD  restore=0.996, confidence_boost=1.0
+P11_lfc_tierB_ge_90pct: HELD  restore=0.91, confidence_boost=0.985

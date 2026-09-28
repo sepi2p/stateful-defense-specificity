@@ -1,0 +1,25 @@
+{
+  "args": {
+    "checkpoint": "checkpoints/cifar10_resnet18_seed_study/resnet18_seed0.pt",
+    "controls": "shuffled,noise,sweep",
+    "dataset_root": "/home/sepi/data/cifar10",
+    "lfc_seed": "20260926",
+    "manifest": "analysis_outputs/stateful_specificity_paper_gate_20260924/manifest.csv",
+    "max_images": "0",
+    "num_shards": "6",
+    "output_dir": "analysis_outputs/lfc_controls_20260926",
+    "seed": "20260925",
+    "shard": "5"
+  },
+  "blacklight": {
+    "num_hashes_keep": 50,
+    "round": 50,
+    "step_size": 1,
+    "threshold": 25,
+    "window_size": 20
+  },
+  "checkpoint_sha256": "743121a9b163dca7aaa5f23c83152490e48cd85e713c3ee1436e31986f370430",
+  "delta_net_sha256": "1a9de325c3c7237d21404efb497bea95c8fd23ac170fe34afe72fa2f8289f61d",
+  "gwad_commit": "822b258eb28c4c51eefa8d2cc87072991f750b74",
+  "shuffled_per_image": 10
+}

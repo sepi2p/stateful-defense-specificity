@@ -1,0 +1,35 @@
+[STAGE] official_gwad_parity
+{
+  "status": "PASS",
+  "decision_parity": true,
+  "original_class_counts": [
+    0,
+    342,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "observer_class_counts": [
+    0,
+    342,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "correlated_stream": {
+    "eligible_windows": 342,
+    "max_score": 0.9999901034279901,
+    "first_alarm": 259
+  },
+  "independent_benign_stream": {
+    "eligible_windows": 0,
+    "max_score": NaN,
+    "first_alarm": -1
+  },
+  "queries_per_stream": 600,
+  "scope": "adapter parity and release-format smoke, not full published-table reproduction"
+}

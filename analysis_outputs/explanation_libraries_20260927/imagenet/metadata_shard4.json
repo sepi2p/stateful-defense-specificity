@@ -1,0 +1,20 @@
+{
+  "args": {
+    "checkpoint": "checkpoints/cifar10_resnet18_seed_study/resnet18_seed0.pt",
+    "clients": "lime_package,captum_kernelshap,captum_occlusion",
+    "dataset": "imagenet",
+    "imagenet_root": "/home/sepi/Study/coding/data/imagenet/val",
+    "lfc_seed": "20260926",
+    "manifest": "analysis_outputs/specificity_imagenet_20260926/manifest.csv",
+    "max_images": "0",
+    "num_shards": "6",
+    "one_image_per_class": "True",
+    "output_dir": "analysis_outputs/explanation_libraries_20260927/imagenet",
+    "seed": "20260927",
+    "shard": "4",
+    "splits": "evaluation"
+  },
+  "captum": "0.9.0",
+  "lime": "0.2.0.1",
+  "torch": "2.5.1+cu121"
+}

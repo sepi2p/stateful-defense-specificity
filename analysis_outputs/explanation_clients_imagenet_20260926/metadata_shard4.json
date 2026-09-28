@@ -1,0 +1,16 @@
+{
+  "args": {
+    "checkpoint": "checkpoints/cifar10_resnet18_seed_study/resnet18_seed0.pt",
+    "clients": "lime,kernelshap,occlusion,rise",
+    "dataset": "imagenet",
+    "imagenet_root": "/home/sepi/Study/coding/data/imagenet/val",
+    "lfc_seed": "20260926",
+    "manifest": "analysis_outputs/specificity_imagenet_20260926/manifest.csv",
+    "max_images": "0",
+    "num_shards": "6",
+    "output_dir": "analysis_outputs/explanation_clients_imagenet_20260926",
+    "seed": "20260926",
+    "shard": "4",
+    "splits": "evaluation"
+  }
+}

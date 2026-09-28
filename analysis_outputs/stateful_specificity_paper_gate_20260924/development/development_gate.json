@@ -1,0 +1,55 @@
+{
+  "checks": [
+    {
+      "label_preservation": 1.0,
+      "mean_psnr_gain": 0.36045317975474467,
+      "median_psnr_gain": 0.3678574711599225,
+      "n": 20,
+      "optimizer": "nes",
+      "pass": true,
+      "positive": 20,
+      "strength": 1.0,
+      "workload": "deblur"
+    },
+    {
+      "label_preservation": 1.0,
+      "mean_psnr_gain": 0.16057455761866085,
+      "median_psnr_gain": 0.15259491577838702,
+      "n": 20,
+      "optimizer": "simba",
+      "pass": true,
+      "positive": 20,
+      "strength": 1.0,
+      "workload": "deblur"
+    },
+    {
+      "label_preservation": 1.0,
+      "mean_psnr_gain": 0.17389206115716416,
+      "median_psnr_gain": 0.1683027202865226,
+      "n": 20,
+      "optimizer": "nes",
+      "pass": true,
+      "positive": 20,
+      "strength": 0.5,
+      "workload": "denoise"
+    },
+    {
+      "label_preservation": 1.0,
+      "mean_psnr_gain": 0.05174622376048017,
+      "median_psnr_gain": 0.05213143713864632,
+      "n": 20,
+      "optimizer": "simba",
+      "pass": true,
+      "positive": 20,
+      "strength": 0.5,
+      "workload": "denoise"
+    }
+  ],
+  "chosen_strengths": {
+    "deblur": 1.0,
+    "denoise": 0.5
+  },
+  "decision_rule": ">=14/20 PSNR gains and median gain >=0.02 dB in every workload/optimizer cell",
+  "stage": "development",
+  "status": "PASS"
+}

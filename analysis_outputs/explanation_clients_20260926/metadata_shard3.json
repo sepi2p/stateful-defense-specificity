@@ -1,0 +1,13 @@
+{
+  "args": {
+    "checkpoint": "checkpoints/cifar10_resnet18_seed_study/resnet18_seed0.pt",
+    "clients": "lime,kernelshap,occlusion,rise",
+    "lfc_seed": "20260926",
+    "manifest": "analysis_outputs/stateful_specificity_paper_gate_20260924/manifest.csv",
+    "max_images": "0",
+    "num_shards": "6",
+    "output_dir": "analysis_outputs/explanation_clients_20260926",
+    "seed": "20260926",
+    "shard": "3"
+  }
+}

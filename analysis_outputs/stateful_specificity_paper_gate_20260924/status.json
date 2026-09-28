@@ -1,0 +1,14 @@
+{
+  "completed_stages": [
+    "official_gwad_parity",
+    "development_utility",
+    "development_gate",
+    "experiment1_nes"
+  ],
+  "detail": "Predeclared gate did not pass; downstream experiments were not launched.",
+  "output_root": "/home/sepi/projects/MCG-Blackbox/analysis_outputs/stateful_specificity_paper_gate_20260924",
+  "pid": 3715898,
+  "stage": "experiment1_gate",
+  "state": "NO_GO",
+  "updated_unix": 1790262515.6987288
+}

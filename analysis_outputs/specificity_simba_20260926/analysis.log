@@ -1,0 +1,79 @@
+[denoise boundary_probe 128] done
+[denoise boundary_probe 256] done
+[denoise boundary_probe 512] done
+[denoise boundary_probe 1024] done
+[denoise boundary_probe attack_truncated] done
+[denoise boundary_probe pre_either_flip] done
+[denoise confidence_boost 128] done
+[denoise confidence_boost 256] done
+[denoise confidence_boost 512] done
+[denoise confidence_boost 1024] done
+[denoise confidence_boost attack_truncated] done
+[denoise confidence_boost pre_either_flip] done
+[denoise counterfactual 128] done
+[denoise counterfactual 256] done
+[denoise counterfactual 512] done
+[denoise counterfactual 1024] done
+[denoise counterfactual attack_truncated] done
+[denoise counterfactual pre_either_flip] done
+[denoise restore 128] done
+[denoise restore 256] done
+[denoise restore 512] done
+[denoise restore 1024] done
+[denoise restore attack_truncated] done
+[denoise restore pre_either_flip] done
+[deblur boundary_probe 128] done
+[deblur boundary_probe 256] done
+[deblur boundary_probe 512] done
+[deblur boundary_probe 1024] done
+[deblur boundary_probe attack_truncated] done
+[deblur boundary_probe pre_either_flip] done
+[deblur confidence_boost 128] done
+[deblur confidence_boost 256] done
+[deblur confidence_boost 512] done
+[deblur confidence_boost 1024] done
+[deblur confidence_boost attack_truncated] done
+[deblur confidence_boost pre_either_flip] done
+[deblur counterfactual 128] done
+[deblur counterfactual 256] done
+[deblur counterfactual 512] done
+[deblur counterfactual 1024] done
+[deblur counterfactual attack_truncated] done
+[deblur counterfactual pre_either_flip] done
+[deblur restore 128] done
+[deblur restore 256] done
+[deblur restore 512] done
+[deblur restore 1024] done
+[deblur restore attack_truncated] done
+[deblur restore pre_either_flip] done
+                             n  label_preserved  reached_target  start_p  final_p  final_margin  psnr_gain  blacklight_alarm  gwad_plus_native_alarm
+workload objective                                                                                                                                  
+deblur   attack            400            0.135           0.670    0.999    0.007        -4.979     -0.708               1.0                     1.0
+         boundary_probe    400            1.000           0.000    0.999    0.494         0.000     -0.446               1.0                     1.0
+         confidence_boost  400            1.000           0.000    0.999    1.000        13.296     -0.335               1.0                     1.0
+         counterfactual    400            0.148           0.852    0.999    0.015        -4.197     -0.659               1.0                     1.0
+         restore           400            1.000           0.000    0.999    0.999         7.888      0.508               1.0                     1.0
+denoise  attack            400            0.108           0.710    0.971    0.004        -5.499     -0.181               1.0                     1.0
+         boundary_probe    400            1.000           0.000    0.971    0.478         0.000     -0.076               1.0                     1.0
+         confidence_boost  400            1.000           0.000    0.971    1.000        10.662     -0.102               1.0                     1.0
+         counterfactual    400            0.102           0.898    0.971    0.006        -5.119     -0.155               1.0                     1.0
+         restore           400            1.000           0.000    0.971    0.975         4.056      0.266               1.0                     1.0
+workload                                  deblur                                                    denoise                                                   
+prefix                                      1024   128   256   512 attack_truncated pre_either_flip    1024   128   256   512 attack_truncated pre_either_flip
+negative         detector                                                                                                                                     
+boundary_probe   logreg:blacklight          0.56  0.49  0.50  0.52             0.49            0.49    0.63  0.52  0.49  0.55             0.50            0.48
+                 logreg:gwad_plus           0.83   NaN   NaN  0.60              NaN             NaN    0.91   NaN   NaN  0.73              NaN             NaN
+                 logreg:output_trajectory   0.98  0.53  0.58  0.76             0.90            0.63    0.99  0.65  0.72  0.91             0.90            0.58
+                 logreg:query_only_all      0.83  0.49  0.50  0.60             0.49            0.49    0.91  0.52  0.49  0.74             0.50            0.48
+confidence_boost logreg:blacklight          0.53  0.50  0.48  0.51             0.49            0.49    0.49  0.47  0.51  0.51             0.52            0.52
+                 logreg:gwad_plus           0.87   NaN   NaN  0.70              NaN             NaN    0.74   NaN   NaN  0.59              NaN             NaN
+                 logreg:output_trajectory   1.00  1.00  1.00  1.00             1.00            1.00    1.00  1.00  1.00  1.00             1.00            1.00
+                 logreg:query_only_all      0.87  0.50  0.48  0.69             0.49            0.49    0.74  0.47  0.51  0.59             0.52            0.52
+counterfactual   logreg:blacklight          0.51  0.47  0.50  0.53             0.51            0.49    0.51  0.50  0.49  0.53             0.48            0.48
+                 logreg:gwad_plus           0.59   NaN   NaN  0.51              NaN             NaN    0.66   NaN   NaN  0.48              NaN             NaN
+                 logreg:output_trajectory   0.66  0.55  0.58  0.53             0.91            0.60    0.76  0.62  0.62  0.66             0.90            0.58
+                 logreg:query_only_all      0.59  0.47  0.50  0.51             0.51            0.49    0.66  0.50  0.49  0.52             0.48            0.48
+restore          logreg:blacklight          0.48  0.52  0.47  0.49             0.48            0.48    0.50  0.52  0.51  0.52             0.49            0.49
+                 logreg:gwad_plus           0.92   NaN   NaN  0.91              NaN             NaN    0.97   NaN   NaN  0.96              NaN             NaN
+                 logreg:output_trajectory   1.00  1.00  1.00  1.00             1.00            1.00    1.00  1.00  1.00  1.00             1.00            1.00
+                 logreg:query_only_all      0.92  0.52  0.47  0.91             0.48            0.48    0.97  0.52  0.51  0.96             0.49            0.49

@@ -1,0 +1,100 @@
+  0%|          | 0/1000 [00:00<?, ?it/s]  1%|          | 10/1000 [00:00<00:10, 95.61it/s] 28%|██▊       | 280/1000 [00:00<00:00, 1588.15it/s] 55%|█████▌    | 550/1000 [00:00<00:00, 2079.68it/s] 80%|████████  | 800/1000 [00:00<00:00, 2238.03it/s]100%|██████████| 1000/1000 [00:00<00:00, 2146.45it/s]
+[DONE] evaluation__3568__clean__lime_package__r0 q=1000 bl=4 gwad+=262 del 0.606/0.851 t=4.0s {'segments': 2, 'label_explained': True}
+[DONE] evaluation__3568__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.550/0.885 t=2.7s {'segments': 36}
+[DONE] evaluation__3568__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.971/0.865 t=0.6s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 25%|██▌       | 250/1000 [00:00<00:00, 2437.51it/s] 49%|████▉     | 494/1000 [00:00<00:00, 2357.25it/s] 80%|████████  | 800/1000 [00:00<00:00, 2659.28it/s]100%|██████████| 1000/1000 [00:00<00:00, 2513.81it/s]
+[DONE] evaluation__7748__clean__lime_package__r0 q=1000 bl=3 gwad+=261 del 0.918/0.923 t=3.7s {'segments': 2, 'label_explained': True}
+[DONE] evaluation__7748__clean__captum_kernelshap__r0 q=1000 bl=4 gwad+=-1 del 0.934/0.953 t=2.8s {'segments': 36}
+[DONE] evaluation__7748__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.984/0.918 t=0.6s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 24%|██▍       | 240/1000 [00:00<00:00, 2384.09it/s] 50%|█████     | 500/1000 [00:00<00:00, 2473.12it/s] 75%|███████▍  | 749/1000 [00:00<00:00, 2480.69it/s]100%|██████████| 1000/1000 [00:00<00:00, 2475.10it/s]100%|██████████| 1000/1000 [00:00<00:00, 2468.44it/s]
+[DONE] evaluation__6__clean__lime_package__r0 q=1000 bl=2 gwad+=262 del 0.106/0.343 t=3.5s {'segments': 2, 'label_explained': True}
+[DONE] evaluation__6__clean__captum_kernelshap__r0 q=1000 bl=4 gwad+=994 del 0.049/0.292 t=3.7s {'segments': 36}
+[DONE] evaluation__6__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.041/0.287 t=0.6s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 24%|██▍       | 240/1000 [00:00<00:00, 2336.83it/s] 47%|████▋     | 474/1000 [00:00<00:00, 2037.64it/s] 68%|██████▊   | 680/1000 [00:00<00:00, 1859.70it/s] 87%|████████▋ | 868/1000 [00:00<00:00, 1729.73it/s]100%|██████████| 1000/1000 [00:00<00:00, 1798.67it/s]
+[DONE] evaluation__3020__clean__lime_package__r0 q=1000 bl=3 gwad+=260 del 0.186/0.450 t=3.6s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__3020__clean__captum_kernelshap__r0 q=1000 bl=4 gwad+=-1 del 0.165/0.363 t=4.4s {'segments': 36}
+[DONE] evaluation__3020__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.102/0.389 t=0.7s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 25%|██▌       | 250/1000 [00:00<00:00, 2464.63it/s] 50%|████▉     | 497/1000 [00:00<00:00, 2148.48it/s] 72%|███████▏  | 715/1000 [00:00<00:00, 1877.41it/s] 91%|█████████ | 907/1000 [00:00<00:00, 1765.53it/s]100%|██████████| 1000/1000 [00:00<00:00, 1812.59it/s]
+[DONE] evaluation__8123__clean__lime_package__r0 q=1000 bl=3 gwad+=260 del 0.193/0.227 t=3.8s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__8123__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.066/0.204 t=4.7s {'segments': 36}
+[DONE] evaluation__8123__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.033/0.206 t=0.6s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 19%|█▉        | 190/1000 [00:00<00:00, 1846.50it/s] 38%|███▊      | 380/1000 [00:00<00:00, 1855.15it/s] 57%|█████▋    | 566/1000 [00:00<00:00, 1459.56it/s] 72%|███████▏  | 720/1000 [00:00<00:00, 1320.33it/s] 86%|████████▌ | 858/1000 [00:00<00:00, 1182.15it/s] 98%|█████████▊| 981/1000 [00:00<00:00, 1069.27it/s]100%|██████████| 1000/1000 [00:00<00:00, 1232.31it/s]
+[DONE] evaluation__2170__clean__lime_package__r0 q=1000 bl=4 gwad+=262 del 0.952/0.838 t=4.4s {'segments': 2, 'label_explained': True}
+[DONE] evaluation__2170__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=723 del 0.317/0.850 t=5.8s {'segments': 36}
+[DONE] evaluation__2170__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.856/0.805 t=0.8s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 12%|█▏        | 120/1000 [00:00<00:00, 1168.30it/s] 24%|██▎       | 237/1000 [00:00<00:00, 1131.93it/s] 35%|███▌      | 351/1000 [00:00<00:00, 1127.23it/s] 47%|████▋     | 470/1000 [00:00<00:00, 1134.17it/s] 58%|█████▊    | 584/1000 [00:00<00:00, 1114.07it/s] 70%|███████   | 700/1000 [00:00<00:00, 1122.97it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 1133.07it/s] 93%|█████████▎| 934/1000 [00:00<00:00, 1115.96it/s]100%|██████████| 1000/1000 [00:00<00:00, 1133.58it/s]
+[DONE] evaluation__6981__clean__lime_package__r0 q=1000 bl=2 gwad+=260 del 0.187/0.705 t=4.0s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__6981__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=866 del 0.175/0.689 t=5.5s {'segments': 36}
+[DONE] evaluation__6981__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.325/0.710 t=0.8s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 10%|█         | 100/1000 [00:00<00:00, 984.67it/s] 21%|██        | 210/1000 [00:00<00:00, 1004.91it/s] 34%|███▍      | 340/1000 [00:00<00:00, 1112.07it/s] 45%|████▌     | 452/1000 [00:00<00:00, 1084.96it/s] 56%|█████▌    | 561/1000 [00:00<00:00, 1060.07it/s] 68%|██████▊   | 680/1000 [00:00<00:00, 1097.55it/s] 79%|███████▉  | 790/1000 [00:00<00:00, 1073.77it/s] 90%|█████████ | 900/1000 [00:00<00:00, 1058.43it/s]100%|██████████| 1000/1000 [00:00<00:00, 1076.19it/s]
+[DONE] evaluation__294__clean__lime_package__r0 q=1000 bl=2 gwad+=260 del 0.326/0.635 t=4.7s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__294__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.277/0.632 t=5.9s {'segments': 36}
+[DONE] evaluation__294__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.485/0.687 t=0.8s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 11%|█         | 110/1000 [00:00<00:00, 1068.75it/s] 23%|██▎       | 230/1000 [00:00<00:00, 1139.04it/s] 34%|███▍      | 344/1000 [00:00<00:00, 1108.28it/s] 46%|████▌     | 455/1000 [00:00<00:00, 1104.34it/s] 57%|█████▋    | 570/1000 [00:00<00:00, 1097.14it/s] 68%|██████▊   | 680/1000 [00:00<00:00, 1071.51it/s] 82%|████████▏ | 820/1000 [00:00<00:00, 1162.13it/s] 98%|█████████▊| 980/1000 [00:00<00:00, 1277.84it/s]100%|██████████| 1000/1000 [00:00<00:00, 1183.15it/s]
+[DONE] evaluation__5413__clean__lime_package__r0 q=1000 bl=2 gwad+=260 del 0.429/0.569 t=4.3s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__5413__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.244/0.660 t=6.3s {'segments': 36}
+[DONE] evaluation__5413__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.309/0.530 t=0.8s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 12%|█▏        | 120/1000 [00:00<00:00, 1092.34it/s] 23%|██▎       | 230/1000 [00:00<00:00, 1087.39it/s] 34%|███▍      | 340/1000 [00:00<00:00, 1075.41it/s] 45%|████▌     | 450/1000 [00:00<00:00, 1083.76it/s] 56%|█████▌    | 560/1000 [00:00<00:00, 1075.63it/s] 67%|██████▋   | 670/1000 [00:00<00:00, 1078.57it/s] 78%|███████▊  | 780/1000 [00:00<00:00, 1076.80it/s] 92%|█████████▏| 920/1000 [00:00<00:00, 1148.71it/s]100%|██████████| 1000/1000 [00:00<00:00, 1107.53it/s]
+[DONE] evaluation__7518__clean__lime_package__r0 q=1000 bl=2 gwad+=260 del 0.317/0.359 t=4.5s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__7518__clean__captum_kernelshap__r0 q=1000 bl=5 gwad+=-1 del 0.186/0.529 t=5.8s {'segments': 36}
+[DONE] evaluation__7518__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.244/0.417 t=0.7s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 21%|██        | 210/1000 [00:00<00:00, 2024.55it/s] 41%|████▏     | 413/1000 [00:00<00:00, 1872.25it/s] 60%|██████    | 601/1000 [00:00<00:00, 1227.18it/s] 74%|███████▍  | 742/1000 [00:00<00:00, 1096.13it/s] 86%|████████▋ | 863/1000 [00:00<00:00, 1026.74it/s] 97%|█████████▋| 972/1000 [00:00<00:00, 983.86it/s] 100%|██████████| 1000/1000 [00:00<00:00, 1118.96it/s]
+[DONE] evaluation__3671__clean__lime_package__r0 q=1000 bl=3 gwad+=263 del 0.512/0.606 t=5.0s {'segments': 3, 'label_explained': True}
+[DONE] evaluation__3671__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.191/0.526 t=5.7s {'segments': 36}
+[DONE] evaluation__3671__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.863/0.606 t=0.8s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s]  9%|▉         | 90/1000 [00:00<00:01, 831.25it/s] 18%|█▊        | 180/1000 [00:00<00:00, 827.73it/s] 27%|██▋       | 270/1000 [00:00<00:00, 829.59it/s] 36%|███▌      | 360/1000 [00:00<00:00, 847.89it/s] 45%|████▌     | 450/1000 [00:00<00:00, 854.30it/s] 54%|█████▍    | 540/1000 [00:00<00:00, 858.39it/s] 65%|██████▌   | 650/1000 [00:00<00:00, 924.82it/s] 77%|███████▋  | 770/1000 [00:00<00:00, 1004.36it/s] 87%|████████▋ | 871/1000 [00:00<00:00, 991.34it/s]  98%|█████████▊| 980/1000 [00:01<00:00, 1010.44it/s]100%|██████████| 1000/1000 [00:01<00:00, 938.03it/s]
+[DONE] evaluation__4600__clean__lime_package__r0 q=1000 bl=3 gwad+=263 del 0.124/0.327 t=4.7s {'segments': 3, 'label_explained': True}
+[DONE] evaluation__4600__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.105/0.347 t=5.6s {'segments': 36}
+[DONE] evaluation__4600__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.328/0.328 t=1.0s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s]  9%|▉         | 90/1000 [00:00<00:01, 832.28it/s] 19%|█▉        | 190/1000 [00:00<00:00, 881.13it/s] 29%|██▉       | 290/1000 [00:00<00:00, 900.30it/s] 38%|███▊      | 381/1000 [00:00<00:00, 888.71it/s] 47%|████▋     | 470/1000 [00:00<00:00, 875.44it/s] 56%|█████▌    | 560/1000 [00:00<00:00, 878.36it/s] 65%|██████▍   | 648/1000 [00:00<00:00, 854.98it/s] 73%|███████▎  | 734/1000 [00:00<00:00, 802.59it/s] 82%|████████▏ | 815/1000 [00:00<00:00, 796.32it/s] 90%|████████▉ | 895/1000 [00:01<00:00, 783.10it/s]100%|██████████| 1000/1000 [00:01<00:00, 847.74it/s]100%|██████████| 1000/1000 [00:01<00:00, 845.56it/s]
+[DONE] evaluation__1290__clean__lime_package__r0 q=1000 bl=3 gwad+=260 del 0.057/0.528 t=4.8s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__1290__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.043/0.475 t=4.7s {'segments': 36}
+[DONE] evaluation__1290__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.046/0.474 t=0.7s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 21%|██        | 210/1000 [00:00<00:00, 1979.89it/s] 41%|████      | 408/1000 [00:00<00:00, 952.79it/s]  53%|█████▎    | 530/1000 [00:00<00:00, 850.70it/s] 63%|██████▎   | 629/1000 [00:00<00:00, 824.05it/s] 72%|███████▏  | 719/1000 [00:00<00:00, 785.04it/s] 80%|████████  | 802/1000 [00:00<00:00, 741.81it/s] 88%|████████▊ | 880/1000 [00:01<00:00, 734.57it/s] 96%|█████████▌| 960/1000 [00:01<00:00, 730.06it/s]100%|██████████| 1000/1000 [00:01<00:00, 810.81it/s]
+[DONE] evaluation__4860__clean__lime_package__r0 q=1000 bl=4 gwad+=262 del 0.393/0.553 t=5.1s {'segments': 2, 'label_explained': True}
+[DONE] evaluation__4860__clean__captum_kernelshap__r0 q=1000 bl=5 gwad+=-1 del 0.086/0.451 t=4.6s {'segments': 36}
+[DONE] evaluation__4860__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.151/0.630 t=0.8s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s]  9%|▉         | 90/1000 [00:00<00:01, 774.34it/s] 17%|█▋        | 168/1000 [00:00<00:01, 683.48it/s] 24%|██▎       | 237/1000 [00:00<00:01, 618.43it/s] 30%|███       | 300/1000 [00:00<00:01, 565.30it/s] 37%|███▋      | 370/1000 [00:00<00:01, 573.24it/s] 44%|████▍     | 440/1000 [00:00<00:00, 594.38it/s] 51%|█████     | 510/1000 [00:00<00:00, 607.04it/s] 59%|█████▉    | 590/1000 [00:00<00:00, 633.61it/s] 67%|██████▋   | 670/1000 [00:01<00:00, 667.13it/s] 74%|███████▍  | 740/1000 [00:01<00:00, 657.81it/s] 81%|████████  | 810/1000 [00:01<00:00, 646.19it/s] 88%|████████▊ | 875/1000 [00:01<00:00, 629.88it/s] 94%|█████████▍| 939/1000 [00:01<00:00, 620.52it/s]100%|██████████| 1000/1000 [00:01<00:00, 615.60it/s]
+[DONE] evaluation__9261__clean__lime_package__r0 q=1000 bl=2 gwad+=261 del 0.550/0.593 t=5.6s {'segments': 2, 'label_explained': True}
+[DONE] evaluation__9261__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.161/0.555 t=5.1s {'segments': 36}
+[DONE] evaluation__9261__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.115/0.566 t=0.9s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s]  8%|▊         | 80/1000 [00:00<00:01, 787.94it/s] 16%|█▌        | 159/1000 [00:00<00:01, 776.13it/s] 24%|██▎       | 237/1000 [00:00<00:00, 769.06it/s] 31%|███▏      | 314/1000 [00:00<00:00, 762.13it/s] 39%|███▉      | 391/1000 [00:00<00:00, 757.98it/s] 47%|████▋     | 470/1000 [00:00<00:00, 743.12it/s] 55%|█████▌    | 550/1000 [00:00<00:00, 754.87it/s] 63%|██████▎   | 630/1000 [00:00<00:00, 762.65it/s] 71%|███████   | 710/1000 [00:00<00:00, 767.90it/s] 79%|███████▉  | 790/1000 [00:01<00:00, 758.45it/s] 89%|████████▉ | 890/1000 [00:01<00:00, 818.97it/s]100%|██████████| 1000/1000 [00:01<00:00, 812.38it/s]
+[DONE] evaluation__2105__clean__lime_package__r0 q=1000 bl=2 gwad+=260 del 0.910/0.378 t=3.9s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__2105__clean__captum_kernelshap__r0 q=1000 bl=4 gwad+=-1 del 0.158/0.405 t=4.1s {'segments': 36}
+[DONE] evaluation__2105__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.276/0.434 t=0.8s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 16%|█▌        | 160/1000 [00:00<00:00, 1517.80it/s] 33%|███▎      | 330/1000 [00:00<00:00, 1591.93it/s] 50%|█████     | 500/1000 [00:00<00:00, 1616.00it/s] 66%|██████▌   | 662/1000 [00:00<00:00, 1494.81it/s] 81%|████████▏ | 813/1000 [00:00<00:00, 1108.19it/s] 94%|█████████▎| 936/1000 [00:00<00:00, 1023.37it/s]100%|██████████| 1000/1000 [00:00<00:00, 1137.69it/s]
+[DONE] evaluation__6192__clean__lime_package__r0 q=1000 bl=3 gwad+=260 del 0.843/0.420 t=4.6s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__6192__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.220/0.465 t=4.9s {'segments': 36}
+[DONE] evaluation__6192__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.273/0.458 t=0.9s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s]  8%|▊         | 80/1000 [00:00<00:01, 734.99it/s] 17%|█▋        | 170/1000 [00:00<00:01, 778.90it/s] 25%|██▌       | 250/1000 [00:00<00:00, 771.41it/s] 33%|███▎      | 330/1000 [00:00<00:00, 774.09it/s] 41%|████      | 410/1000 [00:00<00:00, 769.78it/s] 49%|████▉     | 490/1000 [00:00<00:00, 772.64it/s] 57%|█████▋    | 570/1000 [00:00<00:00, 774.46it/s] 65%|██████▌   | 650/1000 [00:00<00:00, 770.45it/s] 73%|███████▎  | 730/1000 [00:00<00:00, 772.89it/s] 81%|████████  | 810/1000 [00:01<00:00, 769.59it/s] 89%|████████▉ | 890/1000 [00:01<00:00, 772.34it/s] 98%|█████████▊| 980/1000 [00:01<00:00, 800.87it/s]100%|██████████| 1000/1000 [00:01<00:00, 782.01it/s]
+[DONE] evaluation__56__clean__lime_package__r0 q=1000 bl=2 gwad+=260 del 0.038/0.437 t=4.5s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__56__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.402/0.494 t=4.2s {'segments': 36}
+[DONE] evaluation__56__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.277/0.402 t=0.6s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 27%|██▋       | 270/1000 [00:00<00:00, 2688.77it/s] 54%|█████▍    | 539/1000 [00:00<00:00, 2585.60it/s] 80%|███████▉  | 798/1000 [00:00<00:00, 2005.06it/s]100%|██████████| 1000/1000 [00:00<00:00, 1507.17it/s]
+[DONE] evaluation__4186__clean__lime_package__r0 q=1000 bl=3 gwad+=263 del 0.374/0.525 t=4.4s {'segments': 3, 'label_explained': True}
+[DONE] evaluation__4186__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.319/0.543 t=3.6s {'segments': 36}
+[DONE] evaluation__4186__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.487/0.520 t=0.5s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 27%|██▋       | 270/1000 [00:00<00:00, 2649.19it/s] 54%|█████▎    | 535/1000 [00:00<00:00, 2516.72it/s] 79%|███████▉  | 788/1000 [00:00<00:00, 2316.17it/s]100%|██████████| 1000/1000 [00:00<00:00, 1667.38it/s]
+[DONE] evaluation__7762__clean__lime_package__r0 q=1000 bl=3 gwad+=260 del 0.270/0.504 t=4.3s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__7762__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.167/0.432 t=2.6s {'segments': 36}
+[DONE] evaluation__7762__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.697/0.483 t=0.6s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 25%|██▌       | 250/1000 [00:00<00:00, 2463.25it/s] 55%|█████▌    | 550/1000 [00:00<00:00, 2673.47it/s] 84%|████████▍ | 840/1000 [00:00<00:00, 2754.90it/s]100%|██████████| 1000/1000 [00:00<00:00, 2637.03it/s]
+[DONE] evaluation__1866__clean__lime_package__r0 q=1000 bl=3 gwad+=260 del 0.199/0.643 t=3.8s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__1866__clean__captum_kernelshap__r0 q=1000 bl=4 gwad+=-1 del 0.323/0.685 t=2.9s {'segments': 36}
+[DONE] evaluation__1866__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.559/0.613 t=0.6s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 27%|██▋       | 270/1000 [00:00<00:00, 2621.32it/s] 54%|█████▍    | 540/1000 [00:00<00:00, 2621.32it/s] 80%|████████  | 803/1000 [00:00<00:00, 2554.87it/s]100%|██████████| 1000/1000 [00:00<00:00, 2550.24it/s]
+[DONE] evaluation__4254__clean__lime_package__r0 q=1000 bl=3 gwad+=260 del 0.130/0.529 t=3.5s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__4254__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.351/0.549 t=4.0s {'segments': 36}
+[DONE] evaluation__4254__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.411/0.543 t=0.6s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 27%|██▋       | 270/1000 [00:00<00:00, 2567.41it/s] 53%|█████▎    | 527/1000 [00:00<00:00, 2538.82it/s] 78%|███████▊  | 781/1000 [00:00<00:00, 2486.37it/s]100%|██████████| 1000/1000 [00:00<00:00, 2460.70it/s]
+[DONE] evaluation__425__clean__lime_package__r0 q=1000 bl=3 gwad+=261 del 0.476/0.382 t=3.4s {'segments': 2, 'label_explained': True}
+[DONE] evaluation__425__clean__captum_kernelshap__r0 q=1000 bl=4 gwad+=-1 del 0.522/0.371 t=3.0s {'segments': 36}
+[DONE] evaluation__425__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.497/0.376 t=0.5s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 24%|██▍       | 240/1000 [00:00<00:00, 2332.30it/s] 55%|█████▌    | 550/1000 [00:00<00:00, 2754.55it/s] 83%|████████▎ | 826/1000 [00:00<00:00, 2633.81it/s]100%|██████████| 1000/1000 [00:00<00:00, 2685.20it/s]
+[DONE] evaluation__5966__clean__lime_package__r0 q=1000 bl=2 gwad+=260 del 0.266/0.480 t=3.2s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__5966__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.358/0.409 t=2.7s {'segments': 36}
+[DONE] evaluation__5966__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.426/0.426 t=0.6s {'window': 4, 'stride': 2}
+  0%|          | 0/1000 [00:00<?, ?it/s] 30%|███       | 300/1000 [00:00<00:00, 2998.82it/s] 60%|██████    | 600/1000 [00:00<00:00, 2685.57it/s] 92%|█████████▏| 920/1000 [00:00<00:00, 2874.65it/s]100%|██████████| 1000/1000 [00:00<00:00, 2689.75it/s]
+[DONE] evaluation__8995__clean__lime_package__r0 q=1000 bl=3 gwad+=260 del 0.170/0.287 t=3.1s {'segments': 1, 'label_explained': True}
+[DONE] evaluation__8995__clean__captum_kernelshap__r0 q=1000 bl=3 gwad+=-1 del 0.224/0.378 t=3.1s {'segments': 36}
+[DONE] evaluation__8995__clean__captum_occlusion__r0 q=226 bl=2 gwad+=-1 del 0.274/0.400 t=0.7s {'window': 4, 'stride': 2}

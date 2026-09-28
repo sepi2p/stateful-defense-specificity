@@ -1,0 +1,28 @@
+private_commit	public_commit	date	subject
+5bba1db	47140e8	2026-09-26 10:07:13 +0330	research: add stateful-defense matched-objective specificity study
+3aa2b67	560e7fa	2026-09-26 10:07:34 +0330	research: add July-September experiment code, scripts and notes
+9ee9f10	2a4be07	2026-09-26 10:19:26 +0330	research: add operating-point table and Lee-Fang-Chang reimplementation
+6b323a4	a2afa39	2026-09-26 14:05:41 +0330	research: record Lee-Fang-Chang full-detector results on specificity corpora
+63bdfd7	5697a72	2026-09-26 14:31:21 +0330	research: add explanation-traffic tier (X2) and results
+5b8dccf	390529e	2026-09-26 14:57:24 +0330	research: X7 output diagnostic (negative) and robustness-corpus runner
+8718b89	5569f0a	2026-09-26 15:58:30 +0330	research: record SimBA robustness corpus (P8 failed for GWAD+ via acceptance-rate leak)
+786c60e	a9c580a	2026-09-26 16:37:14 +0330	research: add P8-P11 scorer; VGG19-BN corpus holds all predictions
+50b6796	44d53ba	2026-09-26 19:59:57 +0330	research: record X5-X6 robustness corpora against P8-P11
+76371cc	df083cf	2026-09-26 20:38:12 +0330	research: first-alarm curves figure and timing table
+3d2dd36	741d7d4	2026-09-26 21:04:21 +0330	research: ImageNet corpus support (X9) and frozen P12
+e1deb94	eeb576f	2026-09-26 22:52:22 +0330	research: ImageNet explanation tier (X10) chained after X9; restore invalid at 224 px
+a511823	f9b20f4	2026-09-27 10:21:46 +0330	research: record ImageNet corpus (X9); fix KernelSHAP weights for 64-cell grids
+4b9ff22	4fdd61a	2026-09-27 13:00:13 +0330	research: record ImageNet explanation tier (X10); all predictions held
+6558059	3d35cb3	2026-09-27 13:10:20 +0330	paper: manuscript skeleton (elsarticle) and first Results draft
+0522a9f	9ca01c4	2026-09-27 15:42:01 +0330	research: record X11 (throttled attack), X12 (detector sensitivity), decision-time and acceptance analyses
+54a64af	30f8e5f	2026-09-27 15:42:46 +0330	paper: complete first draft of the JISA manuscript (before verification)
+91cdf32	0daf24e	2026-09-27 15:53:01 +0330	research: correct the Blacklight rule (published: more than 25 matches); freeze X13 predictions
+b52ee9f	d2086e0	2026-09-27 15:54:42 +0330	research: X13 validity rule for workloads that accept no step (before any X13 result is analysed)
+edaeeb2	e31ee53	2026-09-27 16:18:44 +0330	research: freeze X14 predictions (explanation clients from libraries) before the run
+3116339	2aff9c5	2026-09-27 16:20:00 +0330	research: X14 amendment before the run (occlusion stream shorter than the GWAD+ warm-up at 32 px)
+fceeeac	94a79b2	2026-09-27 19:59:02 +0330	research: corrected analyses (r2), sequential decision rule, schedules of the Lee et al. detector, X13 analysis
+645518b	84822ba	2026-09-27 20:42:31 +0330	paper: revision after the independent checks; results of X13 and X14
+8ba6151	8a77f98	2026-09-27 21:32:27 +0330	paper: corrections after the second independent check; final draft for review
+63da8b5	1efc287	2026-09-27 23:29:25 +0330	research: freeze X15 predictions (validity of library explanations, enforcement with rejection) before any code for it is run
+08e36a5	ef7c3db	2026-09-27 23:30:07 +0330	research: correct the date in the heading of X15 (written 2026-09-27, not 09-28); text unchanged
+1562566	25187b1	2026-09-28 11:23:37 +0330	paper: revision after an external review; experiment X15 (explanations under rejection)
