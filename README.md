@@ -110,8 +110,10 @@ the files here.
 
 ## Use of AI tools
 
-The experiment and analysis code was written and run with the assistance of an AI system
-(Claude, Anthropic), as declared in the article. The commits name it as co-author.
+As declared in the article, Claude (Anthropic) assisted in writing and running the experiment
+and analysis code, including the independent implementation of the detector of Lee et al., whose
+source code was unavailable, and in drafting and editing the text of the article; ChatGPT
+(OpenAI) gave editorial feedback on the manuscript. The commits name Claude as co-author.
 
 ## Licences
 

@@ -139,7 +139,7 @@ def table_explanations():
               "queries that Blacklight flags (\\%). n/a: the stream is shorter than the 259 queries that GWAD+ needs.")
     _explanations("main_explanations", "tab:main-expl", EXPLANATION_BLOCKS[:2], False,
                    "Explanation clients at $224\\times224$ pixels (ResNet-50): one session per image and client, 100 "
-                   "images for the library clients and 200 for ours. " + common + " Results at $32\\times32$ pixels: "
+                   "images for the library clients and 200 for ours. " + common.split(" n/a:")[0] + " Results at $32\\times32$ pixels: "
                    "Table~\\ref{tab:expl-all} of the supplementary material.", "rllrccc")
     _explanations("explanations_all", "tab:expl-all", EXPLANATION_BLOCKS, True,
                    "Explanation clients at both resolutions (100 images for the library clients at $224\\times224$ "
@@ -151,9 +151,9 @@ def table_explanations():
 
 ENFORCEMENT_BLOCKS = [
     # label, directory with sessions.csv and prior_sessions.csv, session-id prefix of the images used
-    ("Evaluation images of X14, ResNet-50", VALIDITY / "libraries_imagenet", "evaluation__"),
-    ("Fresh images (X16), ResNet-50", A / "operating_profile_imagenet_20260928/validity_resnet50", "confirmation__"),
-    ("Fresh images (X16), ConvNeXt-T", A / "operating_profile_imagenet_20260928/validity_convnext", "confirmation__"),
+    ("Images of Section~\\ref{sec:res-expl}, ResNet-50", VALIDITY / "libraries_imagenet", "evaluation__"),
+    ("Fresh images of Section~\\ref{sec:res-profile}, ResNet-50", A / "operating_profile_imagenet_20260928/validity_resnet50", "confirmation__"),
+    ("Fresh images of Section~\\ref{sec:res-profile}, ConvNeXt-T", A / "operating_profile_imagenet_20260928/validity_convnext", "confirmation__"),
 ]
 
 
@@ -211,17 +211,15 @@ def table_enforcement():
             "Client, withheld & Answered & all & rejected & change & prior, rejected \\\\\n\\midrule")
     wrap("main_enforcement", head + "\n" + rows_tex(rows),
          "Library explanation clients at $224\\times224$ pixels when Blacklight's flagged queries are rejected in a replay "
-         "(medians over images; below the paired change and the gain: bootstrap 95\\% interval over images). LIME: the \\texttt{lime} package; "
-         "KernelSHAP, occlusion: Captum. Answered: queries answered of 1{,}000 "
-         "(occlusion: 785). $d$: gain in deletion area over randomizations of the explanation that keep its spatial "
-         "structure, with every query answered, with the flagged queries rejected, and the paired change per image "
-         "(rejected minus all answered); an explanation that is constant over the image has $d=0$, and a positive $d$ does "
-         "not show that the information comes from the model. Gain over centre prior: deletion area of a Gaussian around "
-         "the centre of the image minus that of the rejected explanation (with every query answered: Table~\\ref{tab:priors} of "
-         "the supplementary material; added after the first results were known); on ConvNeXt-T "
-         "the centre prior is weaker than an explanation that is constant over the image. Withheld answers: the client "
-         "substitutes the uniform distribution, or the \\texttt{lime} package drops the samples from its fit. Further measures: "
-         "Tables~\\ref{tab:validity} and~\\ref{tab:priors} of the supplementary material.",
+         "(medians over images; under the paired change and the gain: bootstrap 95\\% interval over images). Fresh images: "
+         "the 100 held-out images. LIME: the \\texttt{lime} package; KernelSHAP, occlusion: Captum. Answered: queries "
+         "answered of 1{,}000 (occlusion: 785). Withheld answers: replaced by the uniform distribution, or dropped from "
+         "the fit of the \\texttt{lime} package. $d$: gain in deletion area over randomizations of the explanation that "
+         "keep its spatial structure (a constant explanation has $d=0$; a positive $d$ does not show that the information "
+         "comes from the model), with every query answered, with the flagged queries rejected, and the paired change per "
+         "image. Gain over centre prior: deletion area of a Gaussian around the image centre minus that of the rejected "
+         "explanation (added after the first results were known); on ConvNeXt-T this prior is weaker than a constant "
+         "explanation. Further measures: Tables~\\ref{tab:validity} and~\\ref{tab:priors} of the supplementary material.",
          "tab:main-enforce", "lccccc", size="\\footnotesize", colsep="4pt")
 
 
@@ -288,7 +286,7 @@ def table_acceptance():
          "$^{\\ast}$Invalid workload: the client accepts almost no step. $^{\\ddagger}$The attack accepts an improving "
          "step only while its running acceptance rate is at most a cap drawn from restoration sessions of the fit split; "
          "the comparison with confidence raising was not planned. Every cell with its interval: "
-         "Table~\\ref{tab:accept-cells}.",
+         "Table~\\ref{tab:accept-cells} of the supplementary material.",
          "tab:main-accept", "lccccc", colsep="4pt")
 
 
@@ -429,7 +427,8 @@ def table_operating():
          "query within the budget (\\%). Alarms, first alarm, flagged: Blacklight's sessions with an alarm, median index of "
          "its first alarm and share of flagged queries, for the attack and the Tier-B clients (on ImageNet confidence "
          "raising only); GWAD and GWAD+ raise an alarm in every such session, GWAD+ at query 259. Before alarm: share (\\%) of the successful "
-         "attacks whose first misclassified query precedes the detector's first alarm, or that raise none. Ranges: over the "
+         "attacks whose first misclassified query precedes the detector's first alarm, or that raise none (the complement "
+         "of the timely rate of Table~\\ref{tab:selection}, except for an alarm on the misclassified query itself). Ranges: over the "
          "two starts and, in the benign columns, the clients.",
          "tab:operating-main", "lccccccccc", colsep="2.5pt")
     names = {"blacklight": "Blacklight", "gwad_plus": "GWAD+", "gwad": "GWAD"}
@@ -507,7 +506,8 @@ def table_profile_full():
             "timely alarms among successful attacks with a 95\\% interval from resampling source images (exact Clopper--Pearson "
             "over source images when no or every successful attack is timely), and, on the held-out split, the alarms of every "
             "workload, constrained or not, with exact Clopper--Pearson 95\\% intervals over sessions (one session per image "
-            "for the explanation clients and controls; the two starts of the optimizing clients are not independent).}\\label{tab:profile-full}\\\\\n"
+            "for the explanation clients and controls, except the CIFAR-10 streams of unrelated images, ten per image and "
+            "treated as independent; the two starts of the optimizing clients are not independent).}\\label{tab:profile-full}\\\\\n"
             "\\toprule\n" + head + "\n\\endfirsthead\n\\toprule\n" + head + "\n\\endhead\n" + "\n".join(lines)
             + "\n\\bottomrule\n\\end{longtable}\n\\end{footnotesize}\n")
     (ROOT / "paper/jisa_2026/tables/profile_full.tex").write_text(body)

@@ -1,6 +1,6 @@
 \begin{table}[!tbp]
 \centering\footnotesize\setlength{\tabcolsep}{4pt}
-\caption{Library explanation clients at $224\times224$ pixels when Blacklight's flagged queries are rejected in a replay (medians over images; below the paired change and the gain: bootstrap 95\% interval over images). LIME: the \texttt{lime} package; KernelSHAP, occlusion: Captum. Answered: queries answered of 1{,}000 (occlusion: 785). $d$: gain in deletion area over randomizations of the explanation that keep its spatial structure, with every query answered, with the flagged queries rejected, and the paired change per image (rejected minus all answered); an explanation that is constant over the image has $d=0$, and a positive $d$ does not show that the information comes from the model. Gain over centre prior: deletion area of a Gaussian around the centre of the image minus that of the rejected explanation (with every query answered: Table~\ref{tab:priors} of the supplementary material; added after the first results were known); on ConvNeXt-T the centre prior is weaker than an explanation that is constant over the image. Withheld answers: the client substitutes the uniform distribution, or the \texttt{lime} package drops the samples from its fit. Further measures: Tables~\ref{tab:validity} and~\ref{tab:priors} of the supplementary material.}
+\caption{Library explanation clients at $224\times224$ pixels when Blacklight's flagged queries are rejected in a replay (medians over images; under the paired change and the gain: bootstrap 95\% interval over images). Fresh images: the 100 held-out images. LIME: the \texttt{lime} package; KernelSHAP, occlusion: Captum. Answered: queries answered of 1{,}000 (occlusion: 785). Withheld answers: replaced by the uniform distribution, or dropped from the fit of the \texttt{lime} package. $d$: gain in deletion area over randomizations of the explanation that keep its spatial structure (a constant explanation has $d=0$; a positive $d$ does not show that the information comes from the model), with every query answered, with the flagged queries rejected, and the paired change per image. Gain over centre prior: deletion area of a Gaussian around the image centre minus that of the rejected explanation (added after the first results were known); on ConvNeXt-T this prior is weaker than a constant explanation. Further measures: Tables~\ref{tab:validity} and~\ref{tab:priors} of the supplementary material.}
 \label{tab:main-enforce}
 \vspace{3pt}
 \begin{adjustbox}{max width=\textwidth}
@@ -10,17 +10,17 @@
 \cmidrule(lr){3-5}
 Client, withheld & Answered & all & rejected & change & prior, rejected \\
 \midrule
-\multicolumn{6}{l}{\emph{Evaluation images of X14, ResNet-50 (100 images)}} \\
+\multicolumn{6}{l}{\emph{Images of Section~\ref{sec:res-expl}, ResNet-50 (100 images)}} \\
 \quad LIME, uniform & 15 & 0.22 & 0.09 & \begin{tabular}[t]{@{}c@{}}$-$0.12\\ {\scriptsize[$-$0.17, $-$0.09]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.03\\ {\scriptsize[$-$0.07, 0.00]}\end{tabular} \\
 \quad LIME, dropped & 15 & 0.22 & 0.14 & \begin{tabular}[t]{@{}c@{}}$-$0.08\\ {\scriptsize[$-$0.10, $-$0.06]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.01\\ {\scriptsize[$-$0.02, 0.04]}\end{tabular} \\
 \quad KernelSHAP, uniform & 15 & 0.20 & 0.02 & \begin{tabular}[t]{@{}c@{}}$-$0.20\\ {\scriptsize[$-$0.23, $-$0.15]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.08\\ {\scriptsize[$-$0.13, $-$0.05]}\end{tabular} \\
 \quad Occlusion, uniform & 1 & 0.13 & 0.00 & \begin{tabular}[t]{@{}c@{}}$-$0.13\\ {\scriptsize[$-$0.16, $-$0.11]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.16\\ {\scriptsize[$-$0.21, $-$0.13]}\end{tabular} \\[4pt]
-\multicolumn{6}{l}{\emph{Fresh images (X16), ResNet-50 (100 images)}} \\
+\multicolumn{6}{l}{\emph{Fresh images of Section~\ref{sec:res-profile}, ResNet-50 (100 images)}} \\
 \quad LIME, uniform & 14 & 0.22 & 0.05 & \begin{tabular}[t]{@{}c@{}}$-$0.12\\ {\scriptsize[$-$0.15, $-$0.08]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.04\\ {\scriptsize[$-$0.08, $-$0.01]}\end{tabular} \\
 \quad LIME, dropped & 14 & 0.22 & 0.12 & \begin{tabular}[t]{@{}c@{}}$-$0.07\\ {\scriptsize[$-$0.09, $-$0.05]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.02\\ {\scriptsize[$-$0.02, 0.04]}\end{tabular} \\
 \quad KernelSHAP, uniform & 14 & 0.20 & 0.01 & \begin{tabular}[t]{@{}c@{}}$-$0.20\\ {\scriptsize[$-$0.22, $-$0.16]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.05\\ {\scriptsize[$-$0.09, $-$0.03]}\end{tabular} \\
 \quad Occlusion, uniform & 1 & 0.11 & 0.00 & \begin{tabular}[t]{@{}c@{}}$-$0.11\\ {\scriptsize[$-$0.14, $-$0.08]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}$-$0.12\\ {\scriptsize[$-$0.16, $-$0.07]}\end{tabular} \\[4pt]
-\multicolumn{6}{l}{\emph{Fresh images (X16), ConvNeXt-T (100 images)}} \\
+\multicolumn{6}{l}{\emph{Fresh images of Section~\ref{sec:res-profile}, ConvNeXt-T (100 images)}} \\
 \quad LIME, uniform & 14 & 0.16 & 0.03 & \begin{tabular}[t]{@{}c@{}}$-$0.13\\ {\scriptsize[$-$0.15, $-$0.10]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.09\\ {\scriptsize[0.05, 0.13]}\end{tabular} \\
 \quad LIME, dropped & 14 & 0.16 & 0.10 & \begin{tabular}[t]{@{}c@{}}$-$0.07\\ {\scriptsize[$-$0.08, $-$0.04]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.15\\ {\scriptsize[0.11, 0.18]}\end{tabular} \\
 \quad KernelSHAP, uniform & 14 & 0.21 & 0.00 & \begin{tabular}[t]{@{}c@{}}$-$0.20\\ {\scriptsize[$-$0.22, $-$0.17]}\end{tabular} & \begin{tabular}[t]{@{}c@{}}0.08\\ {\scriptsize[0.05, 0.10]}\end{tabular} \\
